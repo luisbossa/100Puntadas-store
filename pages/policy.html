@@ -8,7 +8,11 @@
     <meta content="Online pop up 2021 : pantalons, sacs, chemises, prix unique - 60€" name="description" />
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="Webflow" name="generator" />
+    <link href="/css/global.css" rel="stylesheet" type="text/css" />
     <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/Header.css" rel="stylesheet" type="text/css" />
+    <link href="/css/Policy.css" rel="stylesheet" type="text/css" />
+    <link href="/css/Footer.css" rel="stylesheet" type="text/css" />
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
     <script type="text/javascript">
         WebFont.load({
@@ -53,222 +57,139 @@
 </head>
 
 <body class="body-3">
-    
+
     <div class="header">
+        <div class="logo-container">
+            <a href="/" aria-current="page" class="w-inline-block w--current">
+                <img src="/images/logo.png" loading="lazy" alt="logo 100Puntadas" class="image-2" />
+            </a>
+        </div>
+
         <div class="nav-links">
             <a href="/#bikinis" class="nav-link">Bikinis</a>
             <a href="/#jumpsuits" class="nav-link">Enterizos</a>
             <a href="/#sets" class="nav-link">Vestidos</a>
         </div>
 
-        <div class="logo-container">
-            <a href="/" aria-current="page" class="w-inline-block w--current">
-                <img src="/images/logo.png" loading="lazy" alt="logo 100Puntadas" class="image-2" />
-            </a>
-        </div>
+        <button class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+
+        <button class="close-button" id="closeMenuBtn">
+            <span></span>
+            <span></span>
+        </button>
+
+        <a href="/#bikinis" class="mobile-link">Bikinis</a>
+        <a href="/#jumpsuits" class="mobile-link">Enterizos</a>
+        <a href="/#sets" class="mobile-link">Vestidos</a>
     </div>
 
 
     <div class="section-cgv wf-section">
-        <h1 class="heading-4">CONDICIONES GENERALES DE VENTA</h1>
+        <h1 class="main-policy-title">CONDICIONES DE VENTA</h1>
 
-        <div class="text-block-18">
+        <section class="policy-div">
 
-            <!-- IDENTIFICACIÓN -->
-            <h2>IDENTIFICACIÓN DEL VENDEDOR</h2>
-            <p>
+            <h2 class="terms-title">IDENTIFICACIÓN DEL VENDEDOR</h2>
+            <p class="terms-text">
                 100Puntadas es un emprendimiento dedicado a la creación artesanal de trajes de baño y accesorios de
                 crochet.
-                Sede principal: Queensland, Australia.
-                Operación comercial: Australia y Costa Rica.
+                Sede principal: Queensland, Australia. Operación comercial: Australia y Costa Rica.
                 La empresa cumple con la <strong>Australian Consumer Law (ACL)</strong> y con la normativa de protección
-                al consumidor de Costa Rica (<strong>Ley 7472</strong> y leyes de comercio electrónico).
+                al
+                consumidor de Costa Rica (<strong>Ley 7472</strong>).
             </p>
-            <br>
 
-            <!-- ACEPTACIÓN -->
-            <h2>ACEPTACIÓN DE LAS CONDICIONES</h2>
-            <p>
-                Las presentes Condiciones Generales de Venta (CGV) se aplican a todas las compras efectuadas en el sitio
-                web <strong>100puntadas.com</strong>.
-                Al utilizar este sitio, usted confirma haber leído, comprendido y aceptado plenamente estas condiciones
-                y nuestra Política de Privacidad.
+            <h2 class="terms-title">ACEPTACIÓN DE LAS CONDICIONES</h2>
+            <p class="terms-text">
+                Las presentes Condiciones Generales de Venta (CGV) se aplican a todas las compras en
+                <strong>100puntadas.com</strong>.
+                Al usar este sitio, confirma haber leído y aceptado estas condiciones y la Política de Privacidad.
             </p>
-            <p>
-                100Puntadas podrá actualizar estas CGV en cualquier momento sin previo aviso. Las condiciones vigentes
-                al momento de la compra son las que aplicarán.
-                Le recomendamos revisar periódicamente esta sección.
+            <p class="terms-text">
+                100Puntadas podrá actualizar estas CGV en cualquier momento. Las condiciones vigentes al momento de la
+                compra
+                serán las aplicables.
             </p>
-            <br>
 
-            <!-- NAVEGACIÓN -->
-            <h2>NAVEGACIÓN EN EL SITIO</h2>
-            <p>
-                El usuario puede visualizar libremente los productos disponibles en 100Puntadas sin que ello implique
-                compromiso de compra.
-            </p>
-            <br>
+            <h2 class="terms-title">NAVEGACIÓN EN EL SITIO</h2>
+            <p class="terms-text">El usuario puede visualizar productos sin que ello implique compromiso de compra.</p>
 
-            <!-- DESCRIPCIÓN DE PRODUCTOS -->
-            <h2>DESCRIPCIÓN DE LOS PRODUCTOS</h2>
-            <p>
-                En 100Puntadas realizamos un esfuerzo constante por describir y mostrar nuestros productos de forma
-                precisa. Sin embargo, pueden existir:
-            </p>
-            <ul>
-                <li>Variaciones mínimas de color debido al tipo de pantalla del usuario.</li>
-                <li>Pequeñas imprecisiones tipográficas o de inventario.</li>
-            </ul>
-            <p>
-                Los artículos se confeccionan de manera artesanal, por lo que podrían existir diferencias naturales
-                entre piezas.
-            </p>
-            <p>
-                En caso de duda sobre un producto, puede contactarnos mediante el formulario de “Contacto”.
-            </p>
-            <br>
+            <p class="terms-text">Los artículos son artesanales y pueden presentar diferencias naturales.</p>
 
-            <!-- DISPONIBILIDAD -->
-            <h2>DISPONIBILIDAD DE PRODUCTOS</h2>
-            <p>
-                La mayoría de los productos se elaboran artesanalmente y en cantidades limitadas.
-                Si un artículo no se encuentra disponible después de su compra, le informaremos de inmediato por correo
-                electrónico y podrá:
-            </p>
-            <ul>
-                <li>Solicitar una fecha estimada de disponibilidad.</li>
-                <li>Solicitar el reembolso total.</li>
-            </ul>
-            <br>
-
-            <!-- PRECIOS Y PAGO -->
-            <h2>PRECIOS Y MÉTODOS DE PAGO</h2>
-            <p>
-                Los precios están indicados en <strong>dólares australianos (AUD)</strong> y no incluyen los costos de
-                envío, los cuales se mostrarán antes de finalizar la compra.
-            </p>
-            <p>
-                100Puntadas se reserva el derecho de modificar precios sin previo aviso.
-                Las compras se pagan al momento de realizar el pedido mediante los métodos disponibles en el sitio.
-            </p>
-            <br>
-
-            <!-- ENVÍO -->
-            <h2>ENVÍOS</h2>
-            <p>
-                Realizamos envíos a:
-            </p>
-            <ul>
-                <li>Todo Australia.</li>
-                <li>Costa Rica (envíos internacionales).</li>
+            <h2 class="terms-title">DISPONIBILIDAD DE PRODUCTOS</h2>
+            <p class="terms-text">Muchos productos se elaboran artesanalmente y en cantidades limitadas. Si no hay
+                disponibilidad:</p>
+            <ul class="terms-list">
+                <li>Se notificará por correo.</li>
+                <li>Podrá solicitar reembolso total.</li>
             </ul>
 
-            <p>
-                Después de realizada la compra, la dirección de envío no puede ser modificada.
-                El pedido será entregado en un plazo estimado informado por correo electrónico en la confirmación de
-                envío.
+            <h2 class="terms-title">PRECIOS Y MÉTODOS DE PAGO</h2>
+            <p class="terms-text">
+                Los precios están en <strong>AUD</strong> y no incluyen envío. 100Puntadas puede modificar precios sin
+                previo aviso.
             </p>
 
-            <p>
-                Si el pedido no se entrega dentro de los 30 días posteriores al envío (según ACL), el cliente tiene
-                derecho a solicitar reembolso.
-            </p>
-
-            <p><strong>Riesgo y responsabilidad:</strong> Una vez entregado el paquete a la dirección indicada, la
-                responsabilidad pasa al cliente.</p>
-            <br>
-
-            <!-- ENTREGA Y VERIFICACIÓN -->
-            <h2>RECEPCIÓN DEL PEDIDO</h2>
-            <p>
-                Al recibir el pedido, el cliente debe verificar:
-            </p>
-            <ul>
-                <li>Estado del paquete.</li>
-                <li>Coincidencia del producto solicitado.</li>
-                <li>Integridad del contenido.</li>
-            </ul>
-            <p>
-                Cualquier inconveniente debe reportarse en un plazo máximo de <strong>24 horas</strong> após la
-                recepción mediante nuestro formulario de contacto.
-            </p>
-            <br>
-
-            <!-- FUERZA MAYOR -->
-            <h2>FUERZA MAYOR</h2>
-            <p>
-                100Puntadas no será responsable por retrasos o incumplimientos causados por situaciones fuera de nuestro
-                control, como desastres naturales, fallos logísticos, huelgas o problemas de transporte.
-            </p>
-            <br>
-
-            <!-- CAMBIOS, DEVOLUCIONES Y DERECHO DE RETRACTO -->
-            <h2>CAMBIOS Y DEVOLUCIONES</h2>
-            <p>
-                Cumplimos con las normativas de devolución de Australia y Costa Rica.
-            </p>
-
-            <p><strong>Derecho de retracto (14 días):</strong><br>
-                El cliente puede solicitar devolución dentro de los 14 días siguientes a la recepción, siempre que:
-            </p>
-            <ul>
-                <li>El producto no haya sido usado.</li>
-                <li>Se encuentre en perfecto estado.</li>
-                <li>Incluya empaque y accesorios originales.</li>
+            <h2 class="terms-title">ENVÍOS</h2>
+            <p class="terms-text">Realizamos envíos a:</p>
+            <ul class="terms-list">
+                <li>Australia</li>
+                <li>Costa Rica</li>
             </ul>
 
-            <p>
-                Los trajes de baño no pueden ser devueltos si han sido usados, por razones de higiene.
-            </p>
-
-            <p>
-                Los costos de envío de la devolución son responsabilidad del cliente, salvo error comprobado por parte
-                de 100Puntadas.
-            </p>
-
-            <p>
-                El reembolso o cambio se efectuará una vez recibido el artículo y verificado su estado.
-            </p>
-            <br>
-
-            <!-- PRIVACIDAD -->
-            <h2>PROTECCIÓN DE DATOS PERSONALES</h2>
-            <p>
-                100Puntadas recopila únicamente la información necesaria para procesar pedidos y mejorar la experiencia
-                del usuario.
-                Sus datos no serán vendidos ni compartidos con terceros no autorizados.
-            </p>
-
-            <p>
-                De acuerdo a la legislación de protección de datos de Australia y Costa Rica, el usuario puede
-                solicitar:
-            </p>
-            <ul>
-                <li>Acceso a sus datos.</li>
-                <li>Corrección.</li>
-                <li>Eliminación cuando sea aplicable.</li>
+            <h2 class="terms-title">RECEPCIÓN DEL PEDIDO</h2>
+            <p class="terms-text">Al recibir el pedido, el cliente debe verificar:</p>
+            <ul class="terms-list">
+                <li>Estado del paquete</li>
+                <li>Coincidencia del producto</li>
+                <li>Integridad del contenido</li>
             </ul>
 
-            <p>
-                Las solicitudes deben realizarse por medio del formulario de contacto del sitio.
+            <h2 class="terms-title">FUERZA MAYOR</h2>
+            <p class="terms-text">
+                No seremos responsables por retrasos causados por desastres naturales, fallos logísticos o situaciones
+                fuera de
+                nuestro control.
             </p>
-            <br>
 
-            <!-- PROPIEDAD INTELECTUAL -->
-            <h2>PROPIEDAD INTELECTUAL</h2>
-            <p>
-                Todos los diseños, fotografías, textos y contenido del sitio son propiedad de 100Puntadas y están
-                protegidos por leyes de derechos de autor.
-                Queda prohibida su reproducción sin autorización.
+            <h2 class="terms-title">CAMBIOS Y DEVOLUCIONES</h2>
+            <p class="terms-text">
+                Se respetan las leyes de devoluciones de Australia y Costa Rica. El cliente tiene 14 días para solicitar
+                devolución si el producto:
             </p>
-            <br>
+            <ul class="terms-list">
+                <li>No ha sido usado</li>
+                <li>Está en perfecto estado</li>
+                <li>Incluye empaque original</li>
+            </ul>
 
-            <!-- RESPONSABILIDAD DEL SITIO -->
-            <h2>EXONERACIÓN DE RESPONSABILIDAD</h2>
-            <p>
-                No garantizamos que el sitio funcione sin interrupciones o errores. El usuario es responsable del uso de
-                su equipo y acceso a Internet.
+            <h2 class="terms-title">PROTECCIÓN DE DATOS</h2>
+            <p class="terms-text">
+                Solo recopilamos la información necesaria para procesar pedidos. El usuario puede solicitar acceso,
+                corrección o
+                eliminación de sus datos.
             </p>
+
+            <h2 class="terms-title">PROPIEDAD INTELECTUAL</h2>
+            <p class="terms-text">
+                Todos los contenidos del sitio son propiedad de 100Puntadas y no pueden reproducirse sin autorización.
+            </p>
+
+            <h2 class="terms-title">EXONERACIÓN DE RESPONSABILIDAD</h2>
+            <p class="terms-text">
+                No garantizamos que el sitio funcione sin interrupciones o errores.
+            </p>
+        </section>
+
+        <div id="footer" class="container w-container">
+            <!-- DINAMIC CONTENT -->
         </div>
     </div>
 
@@ -287,7 +208,6 @@
         gtag('config', 'GA_MEASUREMENT_ID');
     </script>
 
-
     <style>
         body:hover .cursor {
             opacity: 100%;
@@ -301,46 +221,8 @@
         }
     </style>
 
-    <script>
-        let tricksCursor = document.querySelector('.cursor');
-        window.addEventListener('mousemove', cursor);
-
-        function cursor(e) {
-            tricksCursor.style.top = e.pageY + 'px';
-            tricksCursor.style.left = e.pageX + 'px';
-        }
-
-        $("a").mouseenter(function () {
-            window.removeEventListener("mousemove", cursor);
-            var tricksWidth = $(this).outerWidth() / 2;
-            var tricksHeight = $(this).outerHeight() / 2;
-            var tricksTop = $(this).offset().top;
-            var tricksLeft = $(this).offset().left;
-            tricksCursor.style.top = (tricksTop + tricksHeight) + 'px';
-            tricksCursor.style.left = (tricksLeft + tricksWidth) + 'px';
-        });
-
-        $("a").mouseleave(function () {
-            window.addEventListener("mousemove", cursor);
-        });
-
-        $("a").mouseenter(function () {
-            $('.cursor').addClass('cursor-hover');
-        });
-
-        $("a").mouseleave(function () {
-            $('.cursor').removeClass('cursor-hover');
-        });
-
-
-        $("body").mousedown(function () {
-            $('.cursor').addClass('cursor-pressed');
-        });
-
-        $("body").mouseup(function () {
-            $('.cursor').removeClass('cursor-pressed');
-        });
-    </script>
+    <script src="/js/res-menu.js"></script>
+    <script src="/js/layout.js"></script>
 </body>
 
 </html>

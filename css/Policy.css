@@ -1,0 +1,61 @@
+.section-cgv {
+  width: 100%;
+  padding: 8% 10% 2.5rem;
+}
+
+.policy-div {
+  font-family: Hatton, Arial, sans-serif;
+  font-size: 1.1vw;
+  line-height: 4vh;
+  text-align: justify;
+  letter-spacing: 0.1vw;
+}
+
+.main-policy-title {
+  margin-bottom: 5%;
+  font-family: Hatton, Arial, sans-serif;
+  color: #272727;
+  font-size: 4vw;
+  line-height: 8vh;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0.3vw;
+}
+
+.terms-title {
+  font-size: clamp(1rem, 1.6vw, 1.6rem);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.terms-text {
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+
+.terms-list {
+  padding-left: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.terms-list li {
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  margin-bottom: 0.5rem;
+}
+
+.terms a {
+  color: #444;
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .section-cgv {
+    padding-top: 5rem;
+  }
+
+  .main-policy-title {
+    font-size: 1.3rem;
+  }
+}

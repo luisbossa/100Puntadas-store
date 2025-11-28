@@ -1,0 +1,141 @@
+.header {
+  width: 100%;
+  height: 110px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding-left: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to bottom, #ffa4db 15%, transparent 60%);
+  z-index: 10;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.nav-link {
+  font-family: Hatton, Arial, sans-serif;
+  text-decoration: none;
+  color: #222;
+  font-size: 1.3rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #fff;
+}
+
+.logo-container {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.image-2 {
+  width: 12vw;
+  transition: all 200ms ease;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  z-index: 20;
+}
+
+.hamburger span {
+  width: 22px;
+  height: 2px;
+  background: #222;
+  transition: 0.4s;
+}
+
+.close-button {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 30;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-button span {
+  position: absolute;
+  width: 22px;
+  height: 2px;
+  background: #222;
+  transition: 0.3s ease;
+}
+
+.close-button span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.close-button span:nth-child(2) {
+  transform: rotate(-45deg);
+}
+
+.mobile-menu {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  background: #ffa4db;
+  display: flex;
+  flex-direction: column;
+  padding: 7rem 2rem 2rem 2rem;
+  gap: 2.5rem;
+  transition: left 0.4s ease;
+  z-index: 15;
+}
+
+.mobile-menu.active {
+  left: 0;
+}
+
+.mobile-link {
+  font-family: Hatton, Arial, sans-serif;
+  text-decoration: none;
+  font-size: 1.8rem;
+  color: #222;
+}
+
+@media screen and (max-width: 1200px) {
+  .header {
+    padding-left: 2rem;
+  }
+
+  .image-2 {
+    width: 20vw;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .image-2 {
+    width: 33vw;
+  }
+}
