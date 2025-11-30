@@ -2822,7 +2822,7 @@
   -webkit-transition: all 200ms ease;
   transition: all 200ms ease;
   -o-object-fit: fill;
-  object-fit: cover;
+  object-fit: contain;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   z-index: 1;
