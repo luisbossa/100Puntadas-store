@@ -847,8 +847,10 @@ em {
 }
 
 .text-color-neutral-2 {
+  margin-top: 10px;
+  font-family: Hatton, Arial, sans-serif;
+  font-size: 2.2rem;
   color: #999;
-  font-family: Zichtbaar Regular, sans-serif;
   font-weight: 400;
 }
 
@@ -3734,10 +3736,10 @@ em {
   border: 1px solid #000;
   border-radius: 12px;
   margin-top: 0.8em;
-  padding: 0.5em 1.7rem 0.8em;
+  padding: 0.7em;
   font-family: Hatton, Arial, sans-serif;
   font-size: 2em;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .add-cart-btn:hover {
@@ -3795,7 +3797,7 @@ em {
   padding: 0 0.25em;
   font-family: Hatton, Arial, sans-serif;
   font-size: 3.375vw;
-  font-weight: 300;
+  font-weight: 400;
   transition: transform 0.4s;
 }
 
