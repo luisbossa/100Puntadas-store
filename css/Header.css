@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: space-between;
   background: linear-gradient(to bottom, #ffa4db 15%, transparent 60%);
-  z-index: 10;
+  z-index: 20;
 }
 
 .nav-links {
@@ -138,4 +138,95 @@
   .image-2 {
     width: 33vw;
   }
+}
+
+/*----- CART ------*/
+
+.cart-button {
+  margin-right: auto;
+  margin-left: auto;
+  border: 1px none #000;
+  border-radius: 0px;
+  background-color: transparent;
+  -webkit-filter: brightness(110%);
+  filter: brightness(110%);
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+}
+
+.cart-button:hover {
+  -webkit-filter: brightness(200%);
+  filter: brightness(200%);
+}
+
+.cart-quantity {
+  width: 122px;
+  height: 44px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  min-width: auto;
+  margin-right: auto;
+  padding-top: 5px;
+  margin-left: -4px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border: 1px solid #000;
+  border-radius: 12px;
+  background-color: transparent;
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+  font-family: Hatton, Arial, sans-serif;
+  color: #000;
+  font-size: 1.7rem;
+  font-weight: 200;
+}
+
+.cart-quantity:hover {
+  border-color: #000;
+  background-color: #fd64c0;
+  font-weight: 300;
+  color: #fff;
+}
+
+.cart {
+  right: 0px;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+.cart-container {
+  position: fixed;
+  left: auto;
+  top: 15px;
+  right: 3%;
+  bottom: auto;
+  z-index: 3;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  z-index: 110;
+}
+
+.cart-wrapper {
+  z-index: 40;
+  background-color: rgba(0, 0, 0, 0.5);
 }

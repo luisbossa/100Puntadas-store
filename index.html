@@ -11,8 +11,11 @@
     <meta content="Webflow" name="generator" />
     <link href="/css/global.css" rel="stylesheet" type="text/css" />
     <link href="/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/css/product-view.css" rel="stylesheet" type="text/css" />
     <link href="/css/Header.css" rel="stylesheet" type="text/css" />
-    <link href="/css/Footer.css" rel="stylesheet" type="text/css" />
+
+    <script>history.scrollRestoration = "manual"</script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
     <script type="text/javascript">
         WebFont.load({
@@ -55,152 +58,17 @@
     </script>
 </head>
 
-<body class="body">
-    <div data-w-id="55d89f31-a164-f83a-43c4-645cab556e10" class="section-2"><img
-            src="https://cdn.prod.website-files.com/60546f55587841a209183eb4/605e50eb34d3b88e05b71d65_mobilecs.gif"
-            loading="lazy" alt="pop up online jean sacs chemises prix unique 60€" class="image-4" />
-        <div data-w-id="a133da23-051a-7d4d-3f39-cfee913e90ec" data-is-ix2-target="1" class="lottie-animation"
-            data-animation-type="lottie"
-            data-src="https://cdn.prod.website-files.com/60546f55587841a209183eb4/605e493f435d29035be28793_newCS.json"
-            data-loop="0" data-direction="1" data-autoplay="0" data-renderer="svg" data-default-duration="2.625"
-            data-duration="0" data-ix2-initial-state="0"></div>
-    </div>
+<body>
     <div class="cart-container">
-        <div data-node-type="commerce-cart-wrapper" data-open-product="" data-wf-cart-type="modal" data-wf-cart-query="query Dynamo3 {
-  database {
-    id
-    commerceOrder {
-      comment
-      extraItems {
-        name
-        pluginId
-        pluginName
-        price {
-          decimalValue
-          string
-          unit
-          value
-        }
-      }
-      id
-      startedOn
-      statusFlags {
-        hasDownloads
-        hasSubscription
-        isFreeOrder
-        requiresShipping
-      }
-      subtotal {
-        decimalValue
-        string
-        unit
-        value
-      }
-      total {
-        decimalValue
-        string
-        unit
-        value
-      }
-      updatedOn
-      userItems {
-        count
-        id
-        price {
-          value
-          unit
-          decimalValue
-          string
-        }
-        product {
-          id
-          cmsLocaleId
-          draft
-          archived
-          f_name_: name
-          f_size_: fieldPlainText(slug: &quot;size&quot;)
-          f_sku_properties_3dr: skuProperties {
-            id
-            name
-            enum {
-              id
-              name
-              slug
-            }
-          }
-        }
-        rowTotal {
-          decimalValue
-          string
-          unit
-          value
-        }
-        sku {
-          cmsLocaleId
-          draft
-          archived
-          f_main_image_4dr: mainImage {
-            url
-            file {
-              size
-              origFileName
-              createdOn
-              updatedOn
-              mimeType
-              width
-              height
-              variants {
-                origFileName
-                quality
-                height
-                width
-                s3Url
-                error
-                size
-              }
-            }
-            alt
-          }
-          f_sku_values_3dr: skuValues {
-            property {
-              id
-            }
-            value {
-              id
-            }
-          }
-          id
-        }
-        subscriptionFrequency
-        subscriptionInterval
-        subscriptionTrial
-      }
-      userItemsCount
-    }
-  }
-  site {
-    commerce {
-      id
-      businessAddress {
-        country
-      }
-      defaultCountry
-      defaultCurrency
-      quickCheckoutEnabled
-    }
-  }
-}" data-wf-page-link-href-prefix="" class="w-commerce-commercecartwrapper cart">
+        <div data-node-type="commerce-cart-wrapper" data-wf-cart-type="modal"
+            class="w-commerce-commercecartwrapper cart">
+
+            <!--  CART BTN -->
+
             <a href="#" data-node-type="commerce-cart-open-link"
                 class="w-commerce-commercecartopenlink cart-button w-inline-block" role="button" aria-haspopup="dialog"
                 aria-label="Open cart">
-                <svg class="w-commerce-commercecartopenlinkicon icon" width="17px" height="17px" viewBox="0 0 17 17">
-                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                        <path
-                            d="M2.60592789,2 L0,2 L0,0 L4.39407211,0 L4.84288393,4 L16,4 L16,9.93844589 L3.76940945,12.3694378 L2.60592789,2 Z M15.5,17 C14.6715729,17 14,16.3284271 14,15.5 C14,14.6715729 14.6715729,14 15.5,14 C16.3284271,14 17,14.6715729 17,15.5 C17,16.3284271 16.3284271,17 15.5,17 Z M5.5,17 C4.67157288,17 4,16.3284271 4,15.5 C4,14.6715729 4.67157288,14 5.5,14 C6.32842712,14 7,14.6715729 7,15.5 C7,16.3284271 6.32842712,17 5.5,17 Z"
-                            fill="currentColor" fill-rule="nonzero"></path>
-                    </g>
-                </svg>
-                <div class="text-block w-inline-block">Cart</div>
+                <!-- <div class="text-block w-inline-block">Cart</div> -->
                 <div class="w-commerce-commercecartopenlinkcount cart-quantity">0</div>
             </a>
 
@@ -230,8 +98,8 @@
                         <form data-node-type="commerce-cart-form" style="display:none"
                             class="w-commerce-commercecartform default">
 
-                            <script type="text/x-wf-template"
-                                id="wf-template-ff4c1d08-591e-fc3d-2e0b-9a316306fe03">%3Cdiv%20class%3D%22w-commerce-commercecartitem%20cart-item%22%3E%3Cimg%20data-wf-bindings%3D%22%255B%257B%2522src%2522%253A%257B%2522type%2522%253A%2522ImageRef%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.sku.f_main_image_4dr%2522%257D%257D%255D%22%20src%3D%22%22%20alt%3D%22%22%20class%3D%22w-commerce-commercecartitemimage%20item-img%20w-dyn-bind-empty%22%2F%3E%3Cdiv%20class%3D%22w-commerce-commercecartiteminfo%20div-block-5%22%3E%3Cdiv%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522PlainText%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.product.f_name_%2522%257D%257D%255D%22%20class%3D%22w-commerce-commercecartproductname%20name-item%20w-dyn-bind-empty%22%3E%3C%2Fdiv%3E%3Cdiv%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522PlainText%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.product.f_size_%2522%257D%257D%255D%22%20class%3D%22w-commerce-commercecartproductname%20name-item%20w-dyn-bind-empty%22%3E%3C%2Fdiv%3E%3Cdiv%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522CommercePrice%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522price%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.price%2522%257D%257D%255D%22%20class%3D%22price-item%22%3E%240.00%3C%2Fdiv%3E%3Cscript%20type%3D%22text%2Fx-wf-template%22%20id%3D%22wf-template-ff4c1d08-591e-fc3d-2e0b-9a316306fe09%22%3E%253Cli%253E%253Cspan%2520data-wf-bindings%253D%2522%25255B%25257B%252522innerHTML%252522%25253A%25257B%252522type%252522%25253A%252522PlainText%252522%25252C%252522filter%252522%25253A%25257B%252522type%252522%25253A%252522identity%252522%25252C%252522params%252522%25253A%25255B%25255D%25257D%25252C%252522dataPath%252522%25253A%252522database.commerceOrder.userItems%25255B%25255D.product.f_sku_properties_3dr%25255B%25255D.name%252522%25257D%25257D%25255D%2522%2520class%253D%2522w-dyn-bind-empty%2522%253E%253C%252Fspan%253E%253Cspan%253E%253A%2520%253C%252Fspan%253E%253Cspan%2520data-wf-bindings%253D%2522%25255B%25257B%252522innerHTML%252522%25253A%25257B%252522type%252522%25253A%252522CommercePropValues%252522%25252C%252522filter%252522%25253A%25257B%252522type%252522%25253A%252522identity%252522%25252C%252522params%252522%25253A%25255B%25255D%25257D%25252C%252522dataPath%252522%25253A%252522database.commerceOrder.userItems%25255B%25255D.product.f_sku_properties_3dr%25255B%25255D%252522%25257D%25257D%25255D%2522%2520class%253D%2522w-dyn-bind-empty%2522%253E%253C%252Fspan%253E%253C%252Fli%253E%3C%2Fscript%3E%3Cul%20data-wf-bindings%3D%22%255B%257B%2522optionSets%2522%253A%257B%2522type%2522%253A%2522CommercePropTable%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.product.f_sku_properties_3dr%5B%5D%2522%257D%257D%252C%257B%2522optionValues%2522%253A%257B%2522type%2522%253A%2522CommercePropValues%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.sku.f_sku_values_3dr%2522%257D%257D%255D%22%20class%3D%22w-commerce-commercecartoptionlist%22%20data-wf-collection%3D%22database.commerceOrder.userItems%255B%255D.product.f_sku_properties_3dr%22%20data-wf-template-id%3D%22wf-template-ff4c1d08-591e-fc3d-2e0b-9a316306fe09%22%3E%3Cli%3E%3Cspan%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522PlainText%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.product.f_sku_properties_3dr%255B%255D.name%2522%257D%257D%255D%22%20class%3D%22w-dyn-bind-empty%22%3E%3C%2Fspan%3E%3Cspan%3E%3A%20%3C%2Fspan%3E%3Cspan%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522CommercePropValues%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.product.f_sku_properties_3dr%255B%255D%2522%257D%257D%255D%22%20class%3D%22w-dyn-bind-empty%22%3E%3C%2Fspan%3E%3C%2Fli%3E%3C%2Ful%3E%3Ca%20href%3D%22%23%22%20role%3D%22%22%20data-wf-bindings%3D%22%255B%257B%2522data-commerce-sku-id%2522%253A%257B%2522type%2522%253A%2522ItemRef%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.sku.id%2522%257D%257D%255D%22%20class%3D%22remove-button%20w-inline-block%22%20data-wf-cart-action%3D%22remove-item%22%20data-commerce-sku-id%3D%22%22%20aria-label%3D%22Remove%20item%20from%20cart%22%3E%3Cdiv%20class%3D%22remove-txt%22%3ERemove%3C%2Fdiv%3E%3C%2Fa%3E%3C%2Fdiv%3E%3Cinput%20data-wf-bindings%3D%22%255B%257B%2522value%2522%253A%257B%2522type%2522%253A%2522Number%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522numberPrecision%2522%252C%2522params%2522%253A%255B%25220%2522%252C%2522numberPrecision%2522%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.count%2522%257D%257D%252C%257B%2522data-commerce-sku-id%2522%253A%257B%2522type%2522%253A%2522ItemRef%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.sku.id%2522%257D%257D%255D%22%20class%3D%22w-commerce-commercecartquantity%20quantity%22%20required%3D%22%22%20pattern%3D%22%5E%5B0-9%5D%2B%24%22%20inputMode%3D%22numeric%22%20type%3D%22number%22%20name%3D%22quantity%22%20autoComplete%3D%22off%22%20data-wf-cart-action%3D%22update-item-quantity%22%20data-commerce-sku-id%3D%22%22%20value%3D%221%22%2F%3E%3C%2Fdiv%3E</script>
+                            <script type="text/x-wf-template" id="wf-template-ff4c1d08-591e-fc3d-2e0b-9a316306fe03">%3Cdiv%20class%3D%22w-commerce-commercecartitem%20cart-item%22%3E%3Cimg%20data-wf-bindings%3D%22%255B%257B%2522src%2522%253A%257B%2522type%2522%253A%2522ImageRef%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.sku.f_main_image_4dr%2522%257D%257D%255D%22%20src%3D%22%22%20alt%3D%22%22%20class%3D%22w-commerce-commercecartitemimage%20item-img%20w-dyn-bind-empty%22%2F%3E%3Cdiv%20class%3D%22w-commerce-commercecartiteminfo%20div-block-5%22%3E%3Cdiv%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522PlainText%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.product.f_name_%2522%257D%257D%255D%22%20class%3D%22w-commerce-commercecartproductname%20name-item%20w-dyn-bind-empty%22%3E%3C%2Fdiv%3E%3Cdiv%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522PlainText%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.product.f_size_%2522%257D%257D%255D%22%20class%3D%22w-commerce-commercecartproductname%20name-item%20w-dyn-bind-empty%22%3E%3C%2Fdiv%3E%3Cdiv%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522CommercePrice%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522price%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.price%2522%257D%257D%255D%22%20class%3D%22price-item%22%3E%240.00%3C%2Fdiv%3E%3Cscript%20type%3D%22text%2Fx-wf-template%22%20id%3D%22wf-template-ff4c1d08-591e-fc3d-2e0b-9a316306fe09%22%3E%253Cli%253E%253Cspan%2520data-wf-bindings%253D%2522%25255B%25257B%252522innerHTML%252522%25253A%25257B%252522type%252522%25253A%252522PlainText%252522%25252C%252522filter%252522%25253A%25257B%252522type%252522%25253A%252522identity%252522%25252C%252522params%252522%25253A%25255B%25255D%25257D%25252C%252522dataPath%252522%25253A%252522database.commerceOrder.userItems%25255B%25255D.product.f_sku_properties_3dr%25255B%25255D.name%252522%25257D%25257D%25255D%2522%2520class%253D%2522w-dyn-bind-empty%2522%253E%253C%252Fspan%253E%253Cspan%253E%253A%2520%253C%252Fspan%253E%253Cspan%2520data-wf-bindings%253D%2522%25255B%25257B%252522innerHTML%252522%25253A%25257B%252522type%252522%25253A%252522CommercePropValues%252522%25252C%252522filter%252522%25253A%25257B%252522type%252522%25253A%252522identity%252522%25252C%252522params%252522%25253A%25255B%25255D%25257D%25252C%252522dataPath%252522%25253A%252522database.commerceOrder.userItems%25255B%25255D.product.f_sku_properties_3dr%25255B%25255D%252522%25257D%25257D%25255D%2522%2520class%253D%2522w-dyn-bind-empty%2522%253E%253C%252Fspan%253E%253C%252Fli%253E%3C%2Fscript%3E%3Cul%20data-wf-bindings%3D%22%255B%257B%2522optionSets%2522%253A%257B%2522type%2522%253A%2522CommercePropTable%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.product.f_sku_properties_3dr%5B%5D%2522%257D%257D%252C%257B%2522optionValues%2522%253A%257B%2522type%2522%253A%2522CommercePropValues%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.sku.f_sku_values_3dr%2522%257D%257D%255D%22%20class%3D%22w-commerce-commercecartoptionlist%22%20data-wf-collection%3D%22database.commerceOrder.userItems%255B%255D.product.f_sku_properties_3dr%22%20data-wf-template-id%3D%22wf-template-ff4c1d08-591e-fc3d-2e0b-9a316306fe09%22%3E%3Cli%3E%3Cspan%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522PlainText%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.product.f_sku_properties_3dr%255B%255D.name%2522%257D%257D%255D%22%20class%3D%22w-dyn-bind-empty%22%3E%3C%2Fspan%3E%3Cspan%3E%3A%20%3C%2Fspan%3E%3Cspan%20data-wf-bindings%3D%22%255B%257B%2522innerHTML%2522%253A%257B%2522type%2522%253A%2522CommercePropValues%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.product.f_sku_properties_3dr%255B%255D%2522%257D%257D%255D%22%20class%3D%22w-dyn-bind-empty%22%3E%3C%2Fspan%3E%3C%2Fli%3E%3C%2Ful%3E%3Ca%20href%3D%22%23%22%20role%3D%22%22%20data-wf-bindings%3D%22%255B%257B%2522data-commerce-sku-id%2522%253A%257B%2522type%2522%253A%2522ItemRef%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.sku.id%2522%257D%257D%255D%22%20class%3D%22remove-button%20w-inline-block%22%20data-wf-cart-action%3D%22remove-item%22%20data-commerce-sku-id%3D%22%22%20aria-label%3D%22Remove%20item%20from%20cart%22%3E%3Cdiv%20class%3D%22remove-txt%22%3ERemove%3C%2Fdiv%3E%3C%2Fa%3E%3C%2Fdiv%3E%3Cinput%20data-wf-bindings%3D%22%255B%257B%2522value%2522%253A%257B%2522type%2522%253A%2522Number%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522numberPrecision%2522%252C%2522params%2522%253A%255B%25220%2522%252C%2522numberPrecision%2522%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.count%2522%257D%257D%252C%257B%2522data-commerce-sku-id%2522%253A%257B%2522type%2522%253A%2522ItemRef%2522%252C%2522filter%2522%253A%257B%2522type%2522%253A%2522identity%2522%252C%2522params%2522%253A%255B%255D%257D%252C%2522dataPath%2522%253A%2522database.commerceOrder.userItems%255B%255D.sku.id%2522%257D%257D%255D%22%20class%3D%22w-commerce-commercecartquantity%20quantity%22%20required%3D%22%22%20pattern%3D%22%5E%5B0-9%5D%2B%24%22%20inputMode%3D%22numeric%22%20type%3D%22number%22%20name%3D%22quantity%22%20autoComplete%3D%22off%22%20data-wf-cart-action%3D%22update-item-quantity%22%20data-commerce-sku-id%3D%22%22%20value%3D%221%22%2F%3E%3C%2Fdiv%3E
+                            </script>
 
                             <div class="w-commerce-commercecartlist cart-list"
                                 data-wf-collection="database.commerceOrder.userItems"
@@ -407,577 +275,706 @@
 
     <!-- --------------  MAIN ----------------- -->
 
-    <div class="collection">
-        <h2 class="baseline">
-            Crochet Hecho a Mano
-            <br />
-            para tu Estilo de Verano
-        </h2>
+    <div id="smooth-wrapper" class="smooth-wrapper">
+        <div id="smooth-content" class="page-wrapper overflow-none">
+            <section class="bk-shop border-top">
+                <div id="smooth-content" class="page-wrapper overflow-none">
+                    <div class="collection">
+                        <h2 class="baseline">
+                            Crochet Hecho a Mano
+                            <br />
+                            para tu Estilo de Verano
+                        </h2>
 
-        <div id="bikinis" class="collection-bikinis w-dyn-list">
-            <div role="list" class="collection-list-shirts w-dyn-items">
+                        <div id="bikinis" class="collection-bikinis w-dyn-list">
+                            <div role="list" class="collection-list-shirts w-dyn-items">
 
-                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div>
-                        <img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/swimwear-1.jpg" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/swimwear-1" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Bikini #1</div>
-                        <span>28.000 ₡</span>
-                    </div>
-                </div>
+                                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="/pages/product-view.html" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div>
+                                        <img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/swimwear-1.jpg"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/swimwear-1" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Black coffe</div>
+                                        <span>30.000 ₡</span>
+                                    </div>
+                                </div>
 
-                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div>
-                        <img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/swimwear-2.jpg" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/chemise-7" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Bikini #2</div>
-                        <span>31.000 ₡</span>
-                    </div>
-                </div>
+                                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div>
+                                        <img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/swimwear-2.jpg"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/chemise-7" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Bikini #2</div>
+                                        <span>31.000 ₡</span>
+                                    </div>
+                                </div>
 
-                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6">
+                                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6">
+                                        </div>
+                                        <img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/swimwear-3.jpg"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/chemise-19" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout">
+                                        <div>Bikini #3</div>
+                                        VENDIDO
+                                    </div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8 w-condition-invisible">S</div>
+                                </div>
+
+                                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div>
+                                        <img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/swimwear-4.jpg"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/chemise-24" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Bikini #4</div>
+                                        <span>35.000 ₡</span>
+                                    </div>
+                                </div>
+
+                                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div>
+                                        <img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/swimwear-5.jpg"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/chemise-18" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Bikini #5</div>
+                                        <span>33.000 ₡</span>
+                                    </div>
+                                </div>
+
+                                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div>
+                                        <img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/swimwear-6.jpg"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/chemise-27" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Bikini #6</div>
+                                        <span>34.000 ₡</span>
+                                    </div>
+                                </div>
+
+                                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div>
+                                        <img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/swimwear-7.jpg"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/chemise-31" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Bikini #7</div>
+                                        <span>32.500 ₡</span>
+                                    </div>
+                                </div>
+
+                                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div>
+                                        <img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/swimwear-8.jpg"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/chemise-37" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Bikini #8</div>
+                                        <span>33.200 ₡</span>
+                                    </div>
+                                </div>
+
+                                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div>
+                                        <img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/swimwear-9.jpg"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/chemise-38" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Bikini #9</div>
+                                        <span>30.000 ₡</span>
+                                    </div>
+                                </div>
+
+                                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div>
+                                        <img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/swimwear-10.jpg"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/chemise-15" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Bikini #10</div>
+                                        <span>34.500 ₡</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/swimwear-3.jpg" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/chemise-19" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout">
-                        <div>Bikini #3</div>
-                        VENDIDO
-                    </div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8 w-condition-invisible">S</div>
-                </div>
 
-                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div>
-                        <img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/swimwear-4.jpg" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/chemise-24" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Bikini #4</div>
-                        <span>35.000 ₡</span>
+
+                        <div id="jumpsuits" class="collection-jumpsuits w-dyn-list">
+                            <div role="list" class="collection-list-jean w-dyn-items">
+                                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/jumpsuit-1.png"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/jean-13" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Enterizo #1</div>
+                                        <span>63.000 ₡</span>
+                                    </div>
+                                </div>
+
+                                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/jumpsuit-2.png"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/jean-19" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Enterizo #2</div>
+                                        <span>60.000 ₡</span>
+                                    </div>
+                                </div>
+
+                                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/jumpsuit-3.png"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/jean-28" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Enterizo #3</div>
+                                        <span>62.000 ₡</span>
+                                    </div>
+                                </div>
+
+                                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/jumpsuit-4.png"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/jean-29" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Enterizo #4</div>
+                                        <span>65.000 ₡</span>
+                                    </div>
+                                </div>
+
+                                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/jumpsuit-5.png"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/jean-17" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Enterizo #5</div>
+                                        <span>63.500 ₡</span>
+                                    </div>
+                                </div>
+
+                                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/jumpsuit-6.png"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/jean-23" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Enterizo #6</div>
+                                        <span>64.000 ₡</span>
+                                    </div>
+                                </div>
+
+                                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/jumpsuit-7.png"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/jean-4" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Enterizo #7</div>
+                                        <span>61.000 ₡</span>
+                                    </div>
+                                </div>
+
+                                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/jumpsuit-8.png"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/jean-15" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Enterizo #8</div>
+                                        <span>60.200 ₡</span>
+                                    </div>
+                                </div>
+
+                                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/jumpsuit-9.png"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/jean-5" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Enterizo #9</div>
+                                        <span>66.000 ₡</span>
+                                    </div>
+                                </div>
+
+                                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/jumpsuit-10.png"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/jean-10" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Enterizo #10</div>
+                                        <span>62.500 ₡</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div id="sets" class="collection-sets w-dyn-list">
+                            <div role="list" class="collection-list-sacs w-dyn-items">
+                                <div id="w-node-c1ce0c8a-ac7d-db28-ea6b-ca5724a89c42-24a89c40" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible">
+                                        </div>
+                                        <img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/set-1.png"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/sac-4" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Vestido #1</div>
+                                        <span>69.500 ₡</span>
+                                    </div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                </div>
+
+                                <div id="w-node-c1ce0c8a-ac7d-db28-ea6b-ca5724a89c42-24a89c40" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/set-2.png"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/sac-5" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Vestido #2</div>
+                                        <span>63.500 ₡</span>
+                                    </div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                </div>
+
+                                <div id="w-node-c1ce0c8a-ac7d-db28-ea6b-ca5724a89c42-24a89c40" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible">
+                                        </div>
+                                        <img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/set-3.png"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/sac-6" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Vestido #3</div>
+                                        <span>64.000 ₡</span>
+                                    </div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                </div>
+
+                                <div id="w-node-c1ce0c8a-ac7d-db28-ea6b-ca5724a89c42-24a89c40" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible">
+                                        </div>
+                                        <img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/set-4.png"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/sac-7" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Vestido #4</div>
+                                        <span>68.000 ₡</span>
+                                    </div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                </div>
+
+                                <div id="w-node-c1ce0c8a-ac7d-db28-ea6b-ca5724a89c42-24a89c40" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible">
+                                        </div>
+                                        <img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/set-5.png"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/sac-9" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Vestido #5</div>
+                                        <span>72.000 ₡</span>
+                                    </div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                </div>
+
+                                <div id="w-node-c1ce0c8a-ac7d-db28-ea6b-ca5724a89c42-24a89c40" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible">
+                                        </div>
+                                        <img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/set-6.png"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/sac-14" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Vestido #6</div>
+                                        <span>67.500 ₡</span>
+                                    </div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                </div>
+
+                                <div id="w-node-c1ce0c8a-ac7d-db28-ea6b-ca5724a89c42-24a89c40" role="listitem"
+                                    class="collection-item w-dyn-item">
+                                    <a href="#" class="link-block w-inline-block w-clearfix">
+                                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                            class="div-block-6 w-condition-invisible">
+                                        </div>
+                                        <img alt="" loading="lazy"
+                                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
+                                            src="/images/set-7.png"
+                                            sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                                            class="item-image" />
+                                    </a>
+                                    <link rel="prerender" href="/product/sac-15" />
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="text-block-8">
+                                        <div>Vestido #7</div>
+                                        <span>71.000 ₡</span>
+                                    </div>
+                                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
+                                        class="soldout w-condition-invisible">VENDIDO</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+
+            <div class="footer-anim-wrapper pointer-none">
+                <div class="footer bk-color-black scroll-reference pointer-none">
+                    <div class="page-padding">
+                        <div class="padding-top-bottom-l padding-footer less-padding-top-mobile">
+                            <div class="content-wrapper">
+                                <div class="grid-2columns-50-50 in-footer footer-grid">
+                                    <div id="w-node-_8efb8465-6605-e5eb-0a90-c721986f75b9-bc0db844">
+                                        <p>OFFICE HOURS: 9AM—6PM(ISH)<br />MADE IN NEW YORK, NY<br />© COMPANY
+                                            POLICY, <span class="current-year">2022</span></p>
+                                    </div>
+                                    <div id="w-node-_8efb8465-6605-e5eb-0a90-c721986f75c2-bc0db844"
+                                        class="text-align-right">
+                                        <p><a href="https://cpwvlmubq8t.typeform.com/to/hJLaCu1T" target="_blank"
+                                                class="link">SIGN UP FOR OUR NEWSLETTER</a></p>
+                                        <div class="social-links-wrap">
+                                            <p>FOLLOW US ON:</p>
+                                            <div class="social-icons-wrapper">
+                                                <a href="https://www.instagram.com/co.policy/" target="_blank"
+                                                    class="link w-inline-block">
+                                                    <img src="https://cdn.prod.website-files.com/64ecdb261c8ba60e43e5361d/64ecdb261c8ba60e43e5364d_Group-1.svg"
+                                                        loading="lazy"
+                                                        id="w-node-_8efb8465-6605-e5eb-0a90-c721986f75cb-bc0db844"
+                                                        alt="" class="social-icon" />
+                                                </a>
+                                                <a href="https://www.linkedin.com/company/company-policy-studio/"
+                                                    target="_blank" class="link w-inline-block">
+                                                    <img src="https://cdn.prod.website-files.com/64ecdb261c8ba60e43e5361d/64ecdb261c8ba60e43e5364f_Group.svg"
+                                                        loading="lazy"
+                                                        id="w-node-_8efb8465-6605-e5eb-0a90-c721986f75cd-bc0db844"
+                                                        alt="" class="social-icon" />
+                                                </a>
+                                                <a href="https://workingnotworking.com/113459-adam" target="_blank"
+                                                    class="link w-inline-block">
+                                                    <img src="https://cdn.prod.website-files.com/64ecdb261c8ba60e43e5361d/64ecdb261c8ba60e43e5364e_Group-2.svg"
+                                                        loading="lazy"
+                                                        id="w-node-_8efb8465-6605-e5eb-0a90-c721986f75cf-bc0db844"
+                                                        alt="" class="social-icon" />
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <p>
+                                            <a href="#" class="link">
+                                                HELLO
+                                                <span class="in-line">@100</span>
+                                                PUNTADAS
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <a href="/old-home-2" class="logo-footer-wrapper in-footer w-inline-block">
+                                    <img src="/images/FOOTER-logo.png" loading="lazy" alt="" class="image" />
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="anim-footer pointer-none"></div>
+            </div>
+        </div>
+    </div>
 
-                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div>
-                        <img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/swimwear-5.jpg" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/chemise-18" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Bikini #5</div>
-                        <span>33.000 ₡</span>
-                    </div>
-                </div>
-
-                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div>
-                        <img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/swimwear-7.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/chemise-27" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Bikini #6</div>
-                        <span>34.000 ₡</span>
-                    </div>
-                </div>
-
-                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div>
-                        <img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/swimwear-8.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/chemise-31" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Bikini #7</div>
-                        <span>32.500 ₡</span>
-                    </div>
-                </div>
-
-                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div>
-                        <img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/swimwear-9.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/chemise-37" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Bikini #8</div>
-                        <span>33.200 ₡</span>
-                    </div>
-                </div>
-
-                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div>
-                        <img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/swimwear-10.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/chemise-38" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Bikini #9</div>
-                        <span>30.000 ₡</span>
-                    </div>
-                </div>
-
-                <div id="w-node-_4b6b4c1c-e758-7093-578e-bb5d572c2a47-572c2a45" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div>
-                        <img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/swimwear-11.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/chemise-15" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Bikini #10</div>
-                        <span>34.500 ₡</span>
+    <footer class="footer-wrapper">
+        <div class="footer bk-color-black footer-anim">
+            <div class="page-padding">
+                <div class="padding-top-bottom-l padding-footer less-padding-top-mobile">
+                    <div class="content-wrapper">
+                        <div class="grid-2columns-50-50 in-footer footer-grid">
+                            <div id="w-node-d68bd2ec-256a-d794-fd35-ba997990bd81-40af2fd3">
+                                <p>HORARIO DE OFICINA: 9AM—6PM<br>
+                                    HECHO EN AUSTRALIA, AU<br>
+                                    © POLÍTICA DE LA EMPRESA, <span class="current-year">2025</span>
+                                </p>
+                            </div>
+                            <div id="w-node-d68bd2ec-256a-d794-fd35-ba997990bd89-40af2fd3" class="text-align-right">
+                                <p>
+                                    <a href="/pages/policy.html" target="_blank" class="link">
+                                        CONDICIONES DEVENTA
+                                    </a>
+                                </p>
+                                <p>
+                                    <a href="#" class="link">
+                                        100PUNTADAS<span class="in-line">@</span>GMAIL.COM
+                                    </a>
+                                </p>
+                                <div class="social-links-wrap">
+                                    <p>SIGUENOS EN:</p>
+                                    <div class="social-icons-wrapper">
+                                        <a href="#" target="_blank" class="link w-inline-block">
+                                            <img src="/images/insta.svg"
+                                                loading="lazy" id="w-node-d68bd2ec-256a-d794-fd35-ba997990bd8e-40af2fd3"
+                                                alt="" class="social-icon" />
+                                        </a>
+                                        <a href="#" target="_blank" class="link w-inline-block">
+                                            <img src="/images/lin.svg"
+                                                loading="lazy" id="w-node-d68bd2ec-256a-d794-fd35-ba997990bd90-40af2fd3"
+                                                alt="" class="social-icon" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="logo-footer-wrapper in-footer w-inline-block">
+                            <img src="/images/footer-logo.png" loading="lazy" alt="" class="image" />
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-
-
-        <div id="jumpsuits" class="collection-jumpsuits w-dyn-list">
-            <div role="list" class="collection-list-jean w-dyn-items">
-                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/jumpsuit-1.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/jean-13" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Enterizo #1</div>
-                        <span>63.000 ₡</span>
-                    </div>
-                </div>
-
-                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/jumpsuit-2.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/jean-19" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Enterizo #2</div>
-                        <span>60.000 ₡</span>
-                    </div>
-                </div>
-
-                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/jumpsuit-3.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/jean-28" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Enterizo #3</div>
-                        <span>62.000 ₡</span>
-                    </div>
-                </div>
-
-                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/jumpsuit-4.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/jean-29" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Enterizo #4</div>
-                        <span>65.000 ₡</span>
-                    </div>
-                </div>
-
-                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/jumpsuit-5.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/jean-17" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Enterizo #5</div>
-                        <span>63.500 ₡</span>
-                    </div>
-                </div>
-
-                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/jumpsuit-6.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/jean-23" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Enterizo #6</div>
-                        <span>64.000 ₡</span>
-                    </div>
-                </div>
-
-                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/jumpsuit-7.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/jean-4" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Enterizo #7</div>
-                        <span>61.000 ₡</span>
-                    </div>
-                </div>
-
-                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/jumpsuit-8.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/jean-15" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Enterizo #8</div>
-                        <span>60.200 ₡</span>
-                    </div>
-                </div>
-
-                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/jumpsuit-9.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/jean-5" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Enterizo #9</div>
-                        <span>66.000 ₡</span>
-                    </div>
-                </div>
-
-                <div id="w-node-_896d9616-90c7-58bd-a64e-3e6f8c844282-8c844280" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/jumpsuit-10.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/jean-10" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Enterizo #10</div>
-                        <span>62.500 ₡</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div id="sets" class="collection-sets w-dyn-list">
-            <div role="list" class="collection-list-sacs w-dyn-items">
-                <div id="w-node-c1ce0c8a-ac7d-db28-ea6b-ca5724a89c42-24a89c40" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible">
-                        </div>
-                        <img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/set-1.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/sac-4" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Vestido #1</div>
-                        <span>69.500 ₡</span>
-                    </div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                </div>
-
-                <div id="w-node-c1ce0c8a-ac7d-db28-ea6b-ca5724a89c42-24a89c40" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible"></div><img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/set-2.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/sac-5" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Vestido #2</div>
-                        <span>63.500 ₡</span>
-                    </div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                </div>
-
-                <div id="w-node-c1ce0c8a-ac7d-db28-ea6b-ca5724a89c42-24a89c40" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible">
-                        </div>
-                        <img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/set-3.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/sac-6" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Vestido #3</div>
-                        <span>64.000 ₡</span>
-                    </div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                </div>
-
-                <div id="w-node-c1ce0c8a-ac7d-db28-ea6b-ca5724a89c42-24a89c40" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible">
-                        </div>
-                        <img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/set-4.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/sac-7" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Vestido #4</div>
-                        <span>68.000 ₡</span>
-                    </div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                </div>
-
-                <div id="w-node-c1ce0c8a-ac7d-db28-ea6b-ca5724a89c42-24a89c40" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible">
-                        </div>
-                        <img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/set-5.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/sac-9" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Vestido #5</div>
-                        <span>72.000 ₡</span>
-                    </div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                </div>
-
-                <div id="w-node-c1ce0c8a-ac7d-db28-ea6b-ca5724a89c42-24a89c40" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible">
-                        </div>
-                        <img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/set-6.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/sac-14" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Vestido #6</div>
-                        <span>67.500 ₡</span>
-                    </div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                </div>
-
-                <div id="w-node-c1ce0c8a-ac7d-db28-ea6b-ca5724a89c42-24a89c40" role="listitem"
-                    class="collection-item w-dyn-item">
-                    <a href="#" class="link-block w-inline-block w-clearfix">
-                        <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                            class="div-block-6 w-condition-invisible">
-                        </div>
-                        <img alt="" loading="lazy"
-                            data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                            src="/images/set-7.png" sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                            class="item-image" />
-                    </a>
-                    <link rel="prerender" href="/product/sac-15" />
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A1%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="text-block-8">
-                        <div>Vestido #7</div>
-                        <span>71.000 ₡</span>
-                    </div>
-                    <div data-wf-sku-conditions="%7B%22condition%22%3A%7B%22fields%22%3A%7B%22default-sku%3AecSkuInventoryQuantity%22%3A%7B%22eq%22%3A0%2C%22type%22%3A%22Number%22%7D%7D%7D%2C%22timezone%22%3A%22Europe%2FParis%22%7D"
-                        class="soldout w-condition-invisible">VENDIDO</div>
-                </div>
-            </div>
-        </div>
-
-        <footer class="footer">
-            <div class="footer-flex-container">
-                <div class="div-block-9">
-                    <a href="/pages/policy.html" class="link-block-2 w-inline-block">
-                        <h2 class="cvg">Condiciones de venta</h2>
-                    </a>
-                </div>
-            </div>
-
-            <div id="footer" class="container w-container">
-                <!-- DINAMIC CONTENT -->
-            </div>
-        </footer>
+    </footer>
     </div>
 
     <div class="cursor">
@@ -1036,7 +1033,6 @@
             window.addEventListener("mousemove", cursor);
         });
 
-
         // Add class on hover
         $("a").mouseenter(function () {
             $('.cursor').addClass('cursor-hover');
@@ -1046,7 +1042,6 @@
             $('.cursor').removeClass('cursor-hover');
         });
 
-
         // Add class on mouse down
         $("body").mousedown(function () {
             $('.cursor').addClass('cursor-pressed');
@@ -1054,6 +1049,326 @@
 
         $("body").mouseup(function () {
             $('.cursor').removeClass('cursor-pressed');
+        });
+    </script>
+
+    <!-- ---------------------------------------------------------------------- -->
+
+    <script src="/js/product-view.js" type="text/javascript" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/protonet-jquery.inview/1.1.2/jquery.inview.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.6/bundled/lenis.js"></script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        let lenis;
+
+        function isSafari() {
+            return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+        }
+        if (isSafari()) {
+            $('body').addClass('safari');
+        } else {
+        }
+
+        var lenisActive = false;
+        $(document).ready(function () {
+            if (Webflow.env('editor') != undefined) {
+                console.log('Editor is loaded: do not load custom js');
+            } else if (!isSafari()) {
+                lenis = new Lenis({
+                    duration: 0.8,
+                    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                    direction: 'vertical',
+                    gestureDirection: 'vertical',
+                    smooth: true,
+                    mouseMultiplier: 1,
+                    smoothTouch: false,
+                    touchMultiplier: 2,
+                    infinite: false,
+                })
+                function raf(time) {
+                    lenis.raf(time)
+                    requestAnimationFrame(raf)
+                }
+                requestAnimationFrame(raf)
+                lenisActive = true;
+            }
+        })
+
+        var currentYear = new Date().getFullYear();
+        $(".current-year").text(currentYear);
+
+        $('.indent-true').closest('.body').addClass('h2-indent');
+
+        $('.nav__link, .logo-wrapper, .btn-after, .button').on('click', function () {
+            localStorage.removeItem('my_app_name_here-quote-scroll');
+        });
+
+        if (window.innerWidth > 767) {
+            if (isSafari()) { } else {
+                // Run code for other browsers here
+                $(".pre-scroll-wrap").each(function (index) {
+                    let trigger = $(this);
+                    let sticky = trigger.next('section');
+                    let opacity = $(this).find('.opacity');
+                    let tl = gsap.timeline({
+                        scrollTrigger: {
+                            trigger: sticky,
+                            start: "top bottom",
+                            end: "top top",
+                            scrub: true,
+                        }
+                    });
+                    tl.to(
+                        opacity, {
+                        opacity: 0.8,
+                        ease: 'none'
+                    }
+                    );
+                    tl.to(
+                        trigger, {
+                        yPercent: -18,
+                        ease: 'none'
+                    }, '<');
+                    tl.to(
+                        trigger.find('h1, .logo-anim'), {
+                        yPercent: -150,
+                        ease: 'none'
+                    }, '<');
+                });
+            }
+        }
+
+        $('.w--current').find('.line-under').addClass('is-active');
+
+        $('#menu').on('click', function () {
+            if ($(this).hasClass('close')) {
+                $(this).removeClass('close');
+                $(this).find('.link-nav').text('MENU');
+                $(this).find('.line-underlink').removeClass('is-active');
+            } else {
+                $('.nav').css('z-index', '950');
+                $('.menu-hamb').css('z-index', '945');
+                $(this).find('.line-underlink').addClass('is-active');
+                $(this).addClass('close');
+                $(this).find('.link-nav').text('CLOSE');
+            }
+        });
+
+
+        function moveLine(myLine) {
+            var myDistance = myLine.offset().left - $('.nav__menu').offset().left;
+            var myWidth = myLine.width();
+            $('.nav__line').css({
+                'width': myWidth + 'px',
+                'transform': 'translateX(' + myDistance + 'px)'
+            });
+        }
+
+        $(document).ready(function () {
+            $('.nav__line').addClass('transitions');
+            if ($('.w--current p').length > 0) {
+                var myDistance = $('.w--current p').offset().left - $('.nav__menu').offset().left;
+                var myWidth = $('.w--current p').width();
+                $('.nav__line').css({
+                    'width': myWidth + 'px',
+                    'transform': 'translateX(' + myDistance + 'px)'
+                });
+            }
+        });
+
+        window.onresize = function () {
+            if ($('.w--current p').length > 0) {
+                moveLine($('.w--current p'));
+            }
+        }
+
+        $(".nav__link").mouseenter(function () {
+            moveLine($(this).find('p'));
+        });
+
+
+        $(".nav__link").mouseleave(function () {
+            if ($('.w--current p').length > 0) {
+                moveLine($('.w--current p'));
+            } else {
+                $('.nav__line').css('width', '0px');
+            }
+        });
+
+        $('.nav-anim-trigger').on('inview', function (event, isInView) {
+            if (isInView) {
+                $('.nav').addClass('nav-anim');
+            } else {
+                $('.nav').removeClass('nav-anim');
+            }
+        });
+
+        var lastScrollTop = 0;
+        $(window).scroll(function (event) {
+            var currentScroll = $(this).scrollTop();
+            if ($(this).scrollTop() > lastScrollTop) {
+                $('.nav-anim').addClass('hidden');
+            } else {
+                $('.nav-anim').removeClass('hidden');
+            }
+            lastScrollTop = currentScroll;
+        });
+
+        //RELOAD ON BACK BOUTTON
+        $(window).bind("pageshow", function (event) {
+            if (event.originalEvent.persisted) {
+                window.location.reload();
+            }
+        });
+
+        $('.no-scroll').on('click', toggleScrolling);
+
+        function toggleScrolling() {
+            $('html').addClass('no-scroll');
+        }
+
+        let s_saver;
+
+        function updateSaver() {
+            clearTimeout(s_saver);
+            s_saver = setTimeout(function () {
+                $('.screensaver').addClass('active');
+            }, 30000);
+            $('.screensaver').removeClass('active');
+        }
+        $('body').mousemove(function () {
+            updateSaver();
+        });
+
+        $(window).scroll(function () {
+            updateSaver();
+        });
+
+        var myVariable = 0;
+
+        // Detect if the browser supports the Page Visibility API
+        if (typeof document.hidden !== "undefined") {
+            // Set the name of the hidden property and the change event for visibility
+            var hidden = "hidden";
+            var visibilityChange = "visibilitychange";
+
+            // Use the Page Visibility API to update the variable when the user switches tabs
+            document.addEventListener(visibilityChange, function () {
+                if (document[hidden]) {
+                    // The tab has been hidden, update the variable accordingly
+                    myVariable = 1;
+                    console.log('tab hidden')
+                    clearTimeout(s_saver);
+                } else {
+                    // The tab has been shown, update the variable again
+                    myVariable = 0;
+                    console.log('tab active')
+                    updateSaver();
+                }
+            }, false);
+        }
+
+        $(".footer-anim-wrapper").each(function (index) {
+            let tl = gsap.timeline({
+                scrollTrigger: {
+                    id: "navScrolltrigger",
+                    trigger: $(this),
+                    start: "top bottom",
+                    end: "bottom 70%",
+                    scrub: true,
+                }
+            })
+            tl.from('.footer-wrapper .page-padding', {
+                yPercent: 50
+            });
+            tl.from('.logo-footer-wrapper img', {
+                yPercent: 20
+            }, '<');
+            tl.from('.footer-wrapper .page-padding', {
+                opacity: 0
+            }, '<0.1');
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            $('.product-img-wrap img').on('load', function () {
+                gsap.to(this, 1, {
+                    opacity: 1,
+                    ease: 'power2.out'
+                });
+            }).each(function () {
+                if (this.complete) {
+                    $(this).trigger('load');
+                }
+            });
+
+        });
+
+        gsap.from('.product-img-wrap img', {
+            filter: 'blur(4em)',
+            ease: 'power2.out',
+            duration: 2,
+        });
+
+        gsap.to('.shop-logo', {
+            opacity: 1,
+            ease: 'power2.out',
+            duration: 0.3,
+        });
+
+        var mySwiper;
+
+        function checkScreenWidth() {
+            if (window.innerWidth < 768) {
+                if (!mySwiper) {
+                    $(".shop-swiper").each(function (index, element) {
+                        let nav = $(this).find('.swiper-pagination')[0]
+                        mySwiper = new Swiper($(this)[0], {
+                            // Your options here
+                            // loop: true,
+                            grabCursor: true,
+                            slidesPerView: 1,
+                            slidesPerGroup: 1,
+                            spaceBetween: 20,
+                            pagination: {
+                                el: nav,
+                                clickable: true,
+                            },
+                        });
+                    });
+                }
+            } else {
+                if (mySwiper) {
+                    mySwiper.destroy(true, true);
+                    mySwiper = null;
+                }
+            }
+        }
+
+        checkScreenWidth();
+
+        window.addEventListener('resize', checkScreenWidth);
+
+
+        // Wait for the document to be ready
+        $(document).ready(function () {
+            // Select all elements with class "variant-btn"
+            $('.variant-btn').each(function () {
+                let text = $(this).text();
+                console.log(text);
+                // Check the text of the element
+                if (text === 'White') {
+                    $(this).addClass('is-white');
+                } else if (text === 'Blue') {
+                    $(this).addClass('is-blue');
+                }
+            });
         });
     </script>
 
