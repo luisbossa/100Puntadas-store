@@ -2200,7 +2200,7 @@ em {
 }
 
 .link-block {
-  width: 100%;
+  width: fit-content;
 }
 
 .count-up {
@@ -2615,11 +2615,6 @@ em {
   width: 100%;
   height: auto;
   display: inline;
-}
-
-.div-block-6 {
-  width: 100%;
-  display: inline-block;
 }
 
 .footer-wrapper {

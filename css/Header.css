@@ -21,13 +21,13 @@
 .nav-link {
   font-family: Hatton, Arial, sans-serif;
   text-decoration: none;
-  color: #222;
+  color: #161616;
   font-size: 1.3rem;
   transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-  color: #fff;
+  color: #3d3d3d;
 }
 
 .logo-container {

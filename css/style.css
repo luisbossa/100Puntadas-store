@@ -2748,8 +2748,8 @@
   margin-right: auto;
   margin-left: auto;
   grid-auto-columns: auto;
-  grid-column-gap: 0px;
-  grid-row-gap: 2rem;
+  grid-column-gap: 5px;
+  grid-row-gap: 0;
   -ms-grid-columns: repeat(5, 1fr);
   grid-template-columns: repeat(5, 1fr);
   -ms-grid-rows: auto;
@@ -3645,16 +3645,16 @@
 }
 
 .div-block-6 {
+  width: 100%;
   position: absolute;
   left: 0%;
   top: 0%;
   right: 0%;
   bottom: 0%;
-  z-index: 2;
-  width: auto;
   background-color: rgba(255, 255, 255, 0.5);
   background-clip: border-box;
   -webkit-text-fill-color: inherit;
+  z-index: 2;
 }
 
 .collection-list-associate {

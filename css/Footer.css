@@ -17,7 +17,7 @@
   border: 1px none #000;
   font-size: 0.9vw;
   text-align: center;
-  letter-spacing: 2vw;
+  letter-spacing: 1px;
 }
 
 .footer-flex-container {
@@ -80,7 +80,7 @@
 }
 
 .footer-link {
-  color: #444;
+  color: 161616;
   display: block;
   margin-bottom: 10px;
   font-weight: 500;

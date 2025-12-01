@@ -15,14 +15,14 @@ const bikinis = [
   },
   {
     nombre: "TURQUOISE",
-    precio: "VENDIDO",
+    precio: "AGOTADO",
     imagen: "/images/swimwear-3.jpg",
     link: "#",
-    stock: 0,
+    stock: 1,
   },
   {
     nombre: "BLUE CAPITAN",
-    precio: "35.000 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/swimwear-4.jpg",
     link: "#",
     stock: 1,
@@ -32,7 +32,7 @@ const bikinis = [
     precio: "33.000 ₡",
     imagen: "/images/swimwear-5.jpg",
     link: "#",
-    stock: 1,
+    stock: 0,
   },
   {
     nombre: "MALIBU",
@@ -50,28 +50,28 @@ const bikinis = [
   },
   {
     nombre: "COTTON CANDY- LILAC",
-    precio: "36.000 ₡",
+    precio: "31.000 ₡",
     imagen: "/images/swimwear-8.jpg",
     link: "#",
     stock: 1,
   },
   {
     nombre: "FAIRY FLOSS",
-    precio: "VENDIDO",
+    precio: "AGOTADO",
     imagen: "/images/swimwear-9.jpg",
     link: "#",
     stock: 1,
   },
   {
     nombre: "CLOUDY",
-    precio: "29.000 ₡",
+    precio: "33.000 ₡",
     imagen: "/images/swimwear-10.jpg",
     link: "#",
     stock: 1,
   },
   {
     nombre: "BLUSH",
-    precio: "38.000 ₡",
+    precio: "32.000 ₡",
     imagen: "/images/swimwear-11.jpg",
     link: "#",
     stock: 1,
@@ -84,9 +84,23 @@ const bikinis = [
     stock: 1,
   },
   {
-    nombre: "BLUSH - Sporty top",
-    precio: "37.000 ₡",
+    nombre: "LOLLIE",
+    precio: "30.000 ₡",
     imagen: "/images/swimwear-13.jpg",
+    link: "#",
+    stock: 1,
+  },
+  {
+    nombre: "RED WINE",
+    precio: "30.500 ₡",
+    imagen: "/images/swimwear-14.jpg",
+    link: "#",
+    stock: 1,
+  },
+  {
+    nombre: "SNAKE PRINT",
+    precio: "31.000 ₡",
+    imagen: "/images/swimwear-15.jpg",
     link: "#",
     stock: 1,
   },
@@ -115,7 +129,8 @@ bikinis.forEach((bikini) => {
                 <div class="soldout ${
                   bikini.stock === 0 ? "" : "w-condition-invisible"
                 }">
-                    VENDIDO
+                    <div>${bikini.nombre}</div>
+                    AGOTADO
                 </div>
 
                 <div class="text-block-8 ${
