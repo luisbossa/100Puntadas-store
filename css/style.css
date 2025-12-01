@@ -3320,6 +3320,7 @@
 }
 
 .link-block {
+  width: fit-content;
   -webkit-transform: scale3d(1none, 1none, 1none);
   transform: scale3d(1none, 1none, 1none);
   -webkit-transition: all 200ms ease;
@@ -4427,4 +4428,3 @@
   -ms-grid-column-span: 1;
   grid-column-end: span 1;
 }
-

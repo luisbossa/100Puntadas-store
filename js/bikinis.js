@@ -32,7 +32,7 @@ const bikinis = [
     precio: "30.000 ₡",
     imagen: "/images/swimwear-5.jpg",
     link: "#",
-    stock: 0,
+    stock: 1,
   },
   {
     nombre: "MALIBU",
@@ -117,37 +117,36 @@ const container = document.getElementById("bikinis-list");
 
 bikinis.forEach((bikini) => {
   const item = `
-            <div class="collection-item w-dyn-item">
-                <a href="${
-                  bikini.link
-                }" class="link-block w-inline-block w-clearfix">
-                    <div class="div-block-6 ${
-                      bikini.stock === 0 ? "" : "w-condition-invisible"
-                    }"></div>
-                    <img 
-                        alt="${bikini.nombre}" 
-                        loading="lazy"
-                        src="${bikini.imagen}"
-                        sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-                        class="item-image"
-                    />
-                </a>
+    <div class="collection-item w-dyn-item">
+        <a href="${bikini.link}" class="link-block w-inline-block w-clearfix">
+            <div class="div-block-6 ${
+              bikini.stock === 0 ? "" : "w-condition-invisible"
+            }"></div>
+            <img 
+                alt="${bikini.nombre}" 
+                loading="lazy"
+                src="${bikini.imagen}"
+                sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+                class="item-image"
+            />
+        </a>
 
-                <div class="soldout ${
-                  bikini.stock === 0 ? "" : "w-condition-invisible"
-                }">
-                    <div>${bikini.nombre}</div>
-                    AGOTADO
-                </div>
+        <div class="soldout ${
+          bikini.stock === 0 ? "" : "w-condition-invisible"
+        }">
+            <div>${bikini.nombre}</div>
+            AGOTADO
+        </div>
 
-                <div class="text-block-8 ${
-                  bikini.stock === 0 ? "w-condition-invisible" : ""
-                }">
-                    <div>${bikini.nombre}</div>
-                    <span>${bikini.precio}</span>
-                </div>
-            </div>
-        `;
+        <div class="text-block-8 ${
+          bikini.stock === 0 ? "w-condition-invisible" : ""
+        }">
+            <div>${bikini.nombre}</div>
+            <span>${bikini.precio}</span>
+        </div>
+    </div>
+  `;
 
   container.innerHTML += item;
 });
+

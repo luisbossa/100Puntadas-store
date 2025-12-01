@@ -1,6 +1,6 @@
 .header {
   width: 100%;
-  height: 110px;
+  height: 120px;
   position: fixed;
   left: 0;
   top: 0;
@@ -8,7 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(to bottom, #ffa4db 15%, transparent 60%);
+  background: linear-gradient(to bottom, #ffa4db 15%, #FCFAF6 70%);
   z-index: 20;
 }
 
@@ -123,6 +123,7 @@
 
 @media screen and (max-width: 1200px) {
   .header {
+    height: 80px;
     padding-left: 2rem;
   }
 
