@@ -57,8 +57,8 @@
 }
 
 .hamburger span {
-  width: 22px;
-  height: 2px;
+  width: 20px;
+  height: 1.7px;
   background: #222;
   transition: 0.4s;
 }
@@ -123,8 +123,8 @@
 
 @media screen and (max-width: 1200px) {
   .header {
-    height: 80px;
-    padding-left: 2rem;
+    height: 70px;
+    padding-left: 1.5rem;
   }
 
   .image-2 {

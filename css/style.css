@@ -2790,6 +2790,7 @@
   transition: all 200ms ease;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
+  margin: 0 auto;
 }
 
 .collection-item:hover {
@@ -4089,7 +4090,7 @@
   }
 
   .collection {
-    padding: 20% 0 0;
+    padding: 21% 0 0;
   }
 }
 
@@ -4103,10 +4104,8 @@
     grid-template-rows: auto auto auto;
   }
 
-  .item-image:hover {
-    -webkit-transform: none;
-    -ms-transform: none;
-    transform: none;
+  .item-image {
+    width: 190px;
   }
 
   .cart-quantity {
