@@ -15,7 +15,7 @@ const bikinis = [
   },
   {
     nombre: "TURQUOISE",
-    precio: "AGOTADO",
+    precio: "30.000 ₡",
     imagen: "/images/swimwear-3.jpg",
     link: "#",
     stock: 1,
