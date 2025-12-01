@@ -1062,7 +1062,7 @@ em {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 6em;
+  padding-top: 7.6rem;
   padding-bottom: 6em;
   display: flex;
   position: relative;
@@ -3773,7 +3773,7 @@ em {
 .product-rt p {
   margin-top: 1em;
   font-family: Zichtbaar Regular, sans-serif;
-  font-size: 1.35em;
+  font-size: 1.1rem;
   font-weight: 400;
 }
 
@@ -3791,7 +3791,7 @@ em {
   margin-right: 0.3em;
   padding: 0 0.25em;
   font-family: Hatton, Arial, sans-serif;
-  font-size: 3.375vw;
+  font-size: 2.2vw;
   font-weight: 400;
   transition: transform 0.4s;
 }
@@ -4336,10 +4336,6 @@ em {
   .shop-p {
     font-size: 1.5em;
   }
-
-  .variant-btn {
-    font-size: 4.2vw;
-  }
 }
 
 @media screen and (max-width: 767px) {
@@ -4375,10 +4371,6 @@ em {
 
   .button.margin-top-m.btn-submit {
     font-size: 1.4em;
-  }
-
-  .text-color-neutral-2 {
-    font-family: Zichtbaar Regular, sans-serif;
   }
 
   .grid-split-screen.is-shop {
@@ -4624,7 +4616,6 @@ em {
   .variant-btn {
     padding-left: 0.15em;
     padding-right: 0.15em;
-    font-size: 8vw;
   }
 
   .shop-imgs-product-wrap {
@@ -5041,7 +5032,7 @@ em {
   }
 
   .variant-btn {
-    font-size: 12vw;
+    font-size: 2rem;
   }
 
   .div-block-16 {

@@ -479,7 +479,7 @@
                                                     <div class="shop-thumb-wrap">
                                                         <img alt="" loading="lazy"
                                                             data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                                                            src="/images/swimwear-.jpg"
+                                                            src="/images/swimwear-14.jpg"
                                                             sizes="(max-width: 479px) 43vw, (max-width: 991px) 45vw, 30vw"
                                                             class="shop-thumb-img is-main" />
                                                     </div>
@@ -507,7 +507,7 @@
                                                     <div class="shop-thumb-wrap">
                                                         <img alt="" loading="lazy"
                                                             data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                                                            src="/images/swimwear-.jpg"
+                                                            src="/images/swimwear-15.jpg"
                                                             sizes="(max-width: 479px) 43vw, (max-width: 991px) 45vw, 30vw"
                                                             class="shop-thumb-img is-main" />
                                                     </div>
@@ -535,7 +535,7 @@
                                                     <div class="shop-thumb-wrap">
                                                         <img alt="" loading="lazy"
                                                             data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_main_image_4dr%22%2C%22to%22%3A%22src%22%7D%5D"
-                                                            src="/images/swimwear-.jpg"
+                                                            src="/images/swimwear-16.jpg"
                                                             sizes="(max-width: 479px) 43vw, (max-width: 991px) 45vw, 30vw"
                                                             class="shop-thumb-img is-main" />
                                                     </div>
@@ -757,69 +757,6 @@
 
         $('.w--current').find('.line-under').addClass('is-active');
 
-        $('#menu').on('click', function () {
-            if ($(this).hasClass('close')) {
-                $(this).removeClass('close');
-                $(this).find('.link-nav').text('MENU');
-                $(this).find('.line-underlink').removeClass('is-active');
-            } else {
-                $('.nav').css('z-index', '950');
-                $('.menu-hamb').css('z-index', '945');
-                $(this).find('.line-underlink').addClass('is-active');
-                $(this).addClass('close');
-                $(this).find('.link-nav').text('CLOSE');
-            }
-        });
-
-
-        function moveLine(myLine) {
-            var myDistance = myLine.offset().left - $('.nav__menu').offset().left;
-            var myWidth = myLine.width();
-            $('.nav__line').css({
-                'width': myWidth + 'px',
-                'transform': 'translateX(' + myDistance + 'px)'
-            });
-        }
-
-        $(document).ready(function () {
-            $('.nav__line').addClass('transitions');
-            if ($('.w--current p').length > 0) {
-                var myDistance = $('.w--current p').offset().left - $('.nav__menu').offset().left;
-                var myWidth = $('.w--current p').width();
-                $('.nav__line').css({
-                    'width': myWidth + 'px',
-                    'transform': 'translateX(' + myDistance + 'px)'
-                });
-            }
-        });
-
-        window.onresize = function () {
-            if ($('.w--current p').length > 0) {
-                moveLine($('.w--current p'));
-            }
-        }
-
-        $(".nav__link").mouseenter(function () {
-            moveLine($(this).find('p'));
-        });
-
-
-        $(".nav__link").mouseleave(function () {
-            if ($('.w--current p').length > 0) {
-                moveLine($('.w--current p'));
-            } else {
-                $('.nav__line').css('width', '0px');
-            }
-        });
-
-        $('.nav-anim-trigger').on('inview', function (event, isInView) {
-            if (isInView) {
-                $('.nav').addClass('nav-anim');
-            } else {
-                $('.nav').removeClass('nav-anim');
-            }
-        });
-
         var lastScrollTop = 0;
         $(window).scroll(function (event) {
             var currentScroll = $(this).scrollTop();
@@ -843,23 +780,6 @@
         function toggleScrolling() {
             $('html').addClass('no-scroll');
         }
-
-        let s_saver;
-
-        function updateSaver() {
-            clearTimeout(s_saver);
-            s_saver = setTimeout(function () {
-                $('.screensaver').addClass('active');
-            }, 30000);
-            $('.screensaver').removeClass('active');
-        }
-        $('body').mousemove(function () {
-            updateSaver();
-        });
-
-        $(window).scroll(function () {
-            updateSaver();
-        });
 
         var myVariable = 0;
 
@@ -906,9 +826,9 @@
             }, '<0.1');
         });
     </script>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-
             $('.product-img-wrap img').on('load', function () {
                 gsap.to(this, 1, {
                     opacity: 1,
@@ -923,16 +843,11 @@
         });
 
         gsap.from('.product-img-wrap img', {
-            filter: 'blur(4em)',
+            filter: 'blur(2em)',
             ease: 'power2.out',
-            duration: 2,
+            duration: 0.4,
         });
 
-        gsap.to('.shop-logo', {
-            opacity: 1,
-            ease: 'power2.out',
-            duration: 0.3,
-        });
 
         var mySwiper;
 

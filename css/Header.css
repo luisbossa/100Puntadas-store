@@ -51,6 +51,11 @@
   z-index: 20;
 }
 
+.hamburger.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .hamburger span {
   width: 22px;
   height: 2px;
@@ -102,7 +107,7 @@
   padding: 7rem 2rem 2rem 2rem;
   gap: 2.5rem;
   transition: left 0.4s ease;
-  z-index: 15;
+  z-index: 200;
 }
 
 .mobile-menu.active {
