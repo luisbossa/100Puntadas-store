@@ -37,7 +37,7 @@
 }
 
 .main-logo {
-  width: clamp(80px, 12vw, 160px);
+  width: clamp(110px, 12vw, 160px);
   transition: all 200ms ease;
 }
 
