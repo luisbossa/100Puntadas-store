@@ -48,7 +48,7 @@ const bikinis = [
     discount: 0,
   },
   {
-    nombre: "COTTON CANDY - AQUA",
+    nombre: "AQUA",
     precio: "30.000 ₡",
     imagen: "/images/swimwear-7.jpg",
     link: "#",
@@ -56,7 +56,7 @@ const bikinis = [
     discount: 0,
   },
   {
-    nombre: "COTTON CANDY - LILAC",
+    nombre: "LILAC",
     precio: "30.000 ₡",
     imagen: "/images/swimwear-8.jpg",
     link: "#",
