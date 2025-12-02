@@ -2727,14 +2727,6 @@
   }
 }
 
-.body {
-  display: grid;
-  min-height: 100dvh;
-  grid-template-rows: auto 1fr auto;
-  font-size: 1vw;
-  cursor: crosshair;
-}
-
 .collection {
   width: 100%;
   height: auto;

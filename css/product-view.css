@@ -1076,10 +1076,6 @@ em {
   padding-bottom: 2em;
 }
 
-.padding-top-bottom-l.padding-footer {
-  padding-bottom: 3.125em;
-}
-
 .padding-top-bottom-l.border-top {
   border-top: 1px solid #d8d9da;
 }
@@ -1605,10 +1601,6 @@ em {
 .footer.bk-color-black.scroll-reference {
   opacity: 0;
   position: relative;
-}
-
-.footer.bk-color-black.scroll-reference.pointer-none {
-  z-index: -1;
 }
 
 .footer.bk-color-black.footer-anim {

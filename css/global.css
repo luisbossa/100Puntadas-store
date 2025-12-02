@@ -1,7 +1,6 @@
 @font-face {
   font-family: "Hatton";
-  src: url("/fonts/Hatton-Ultralight.otf")
-    format("opentype");
+  src: url("/fonts/Hatton-Ultralight.otf") format("opentype");
   font-weight: 200;
   font-style: normal;
   font-display: swap;
@@ -9,8 +8,7 @@
 
 @font-face {
   font-family: "Hatton";
-  src: url("/fonts/Hatton-Medium.otf")
-    format("opentype");
+  src: url("/fonts/Hatton-Medium.otf") format("opentype");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -25,17 +23,23 @@
 }
 
 html {
-  font-family: sans-serif;
+  height: 100%;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
+  min-height: 100%;
+  background-color: #fff;
+  font-family: sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #161616;
   overflow-x: hidden;
   user-select: none;
 }
+
 article,
 aside,
 details,
@@ -243,21 +247,10 @@ th {
   content: "\e903";
 }
 * {
+  margin: 0;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-}
-html {
-  height: 100%;
-}
-body {
-  margin: 0;
-  min-height: 100%;
-  background-color: #fff;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  line-height: 20px;
-  color: #333;
 }
 img {
   max-width: 100%;
@@ -868,4 +861,3 @@ textarea.w-select {
     width: 100%;
   }
 }
-
