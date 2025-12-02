@@ -905,11 +905,6 @@ em {
   height: 100%;
 }
 
-.line-divider.is-grey {
-  background-color: #a7a7a7;
-  flex: none;
-}
-
 .margin-bottom-xs {
   color: #0662ff;
   margin-bottom: 0.5em;
@@ -1632,46 +1627,6 @@ em {
 
 .image {
   width: 100%;
-}
-
-.nav {
-  z-index: 145;
-  color: #fff;
-  mix-blend-mode: difference;
-  border-bottom: 1px solid #fff;
-  transition: transform 0.25s;
-  position: fixed;
-  top: 0%;
-  bottom: auto;
-  left: 0%;
-  right: 0%;
-}
-
-.nav.hidden {
-  transform: translate(0, -100%);
-}
-
-.padding-nav {
-  width: 100%;
-  justify-content: center;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  display: flex;
-}
-
-.logo-wrapper {
-  width: 11em;
-}
-
-.nav__menu {
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  position: relative;
-}
-
-.nav__menu.mobile {
-  display: none;
 }
 
 .img-fullscreen-text-wrapper {
@@ -3648,7 +3603,7 @@ em {
 .financier {
   text-transform: none;
   font-family: Lato, sans-serif;
-  font-size: 1.55em;
+  font-size: 1.6rem;
   font-weight: 100;
 }
 
@@ -3730,7 +3685,7 @@ em {
 }
 
 .add-cart-btn:hover {
-  color: #fcfaf6;
+  color: #fff;
   background-color: #161616;
 }
 
@@ -3767,31 +3722,97 @@ em {
   font-family: "Zichtbaar Regular", sans-serif;
   font-size: clamp(0.9rem, 1vw + 0.3rem, 1.1rem);
   font-weight: 400;
+  text-align: center;
 }
 
-.button-group {
-  justify-content: center;
-  margin-bottom: 0.5em;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
+/*-------- BUY BTN ---------*/
+
+.size-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+  letter-spacing: 1px;
+  gap: 2.5rem;
+}
+
+.size-title-div {
+  width: 80px;
+  display: flex;
+  text-align: left;
+  justify-content: flex-start;
+  font-size: 1.1rem;
+}
+
+.size-btn-div {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.size-btn-group {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem auto 0 auto;
 }
 
 .variant-btn {
+  width: clamp(2.5rem, 4vw, 3.5rem);
+  height: clamp(2.5rem, 4vw, 3.5rem);
   color: #161616;
   background-color: transparent;
-  border-style: none;
-  margin-right: 0.3em;
-  padding: 0 0.25em;
+  margin-right: 0.2em;
+  padding-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 1px solid #161616;
   font-family: Hatton, Arial, sans-serif;
-  font-size: clamp(1.2rem, 1.5vw + 0.5rem, 2rem);
+  font-size: clamp(1.2rem, 1.5vw + 0.5rem, 1.3rem);
   font-weight: 400;
-  transition: transform 0.4s, color 0.25s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  user-select: none;
 }
 
-.variant-btn.w--ecommerce-pill-selected {
-  color: #3a3a3a;
-  background-color: transparent;
+.variant-btn:has(input[type="radio"]:checked) {
+  color: #fff;
+  background-color: #161616;
 }
+
+.style-btn {
+  width: auto;
+  color: #161616;
+  background-color: transparent;
+  margin-right: 0.2em;
+  padding: 16px 14px 10px 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #161616;
+  font-family: Hatton, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.style-btn:has(input[type="radio"]:checked) {
+  color: #fff;
+  background-color: #161616;
+}
+
+/*---------------------------------------*/
 
 .variant-btn.is-white {
   background-color: #fff;
@@ -4200,6 +4221,10 @@ em {
 
 .paragraph-5 {
   height: auto;
+}
+
+.size-div {
+  width: 100%;
 }
 
 @media screen and (max-width: 991px) {
