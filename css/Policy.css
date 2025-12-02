@@ -1,25 +1,26 @@
 .section-cgv {
   width: 100%;
-  padding: 8% 10% 2.5rem;
+  padding: clamp(4rem, 10vw, 10rem) clamp(2rem, 8vw, 8rem) 1%;
+  background-color: #FCFAF6;
 }
 
 .policy-div {
   font-family: Hatton, Arial, sans-serif;
-  font-size: 1.1vw;
-  line-height: 4vh;
+  font-size: clamp(0.9rem, 1.1vw, 1.1rem);
+  line-height: clamp(2rem, 4vh, 4vh);
   text-align: justify;
-  letter-spacing: 0.1vw;
+  letter-spacing: clamp(0.05rem, 0.1vw, 0.1vw);
 }
 
 .main-policy-title {
   margin-bottom: 5%;
   font-family: Hatton, Arial, sans-serif;
   color: #272727;
-  font-size: 4vw;
-  line-height: 8vh;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: clamp(3rem, 8vh, 8vh);
   font-weight: 400;
   text-align: center;
-  letter-spacing: 0.3vw;
+  letter-spacing: clamp(0.1rem, 0.3vw, 0.3vw);
 }
 
 .terms-title {
@@ -30,6 +31,7 @@
 }
 
 .terms-text {
+  font-family: Lato, sans-serif;
   font-size: clamp(1rem, 1.3vw, 1.15rem);
   margin-bottom: 1rem;
   font-weight: 300;
@@ -41,6 +43,7 @@
 }
 
 .terms-list li {
+  font-family: Lato, sans-serif;
   font-size: clamp(1rem, 1.3vw, 1.15rem);
   margin-bottom: 0.5rem;
 }
@@ -50,12 +53,3 @@
   text-decoration: underline;
 }
 
-@media (max-width: 480px) {
-  .section-cgv {
-    padding-top: 5rem;
-  }
-
-  .main-policy-title {
-    font-size: 1.3rem;
-  }
-}
