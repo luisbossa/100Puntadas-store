@@ -3827,7 +3827,7 @@
 
 .maintitle-text {
   margin-bottom: 10px;
-  font-size: clamp(1.2rem, 3vw, 3rem);
+  font-size: clamp(1rem, 3vw, 3rem);
   font-weight: 600;
   line-height: 1.1;
 }
@@ -3991,11 +3991,6 @@
     max-width: 11%;
   }
 
-  .maintitle-div {
-    font-size: 3vw;
-    line-height: 6vh;
-  }
-
   .lottie-animation {
     display: none;
   }
@@ -4071,16 +4066,11 @@
   .date {
     font-size: 5vw;
   }
-
-  .maintitle-div {
-    font-size: 3vw;
-    line-height: 6vh;
-  }
 }
 
 @media screen and (max-width: 479px) {
   .collection {
-    padding-top: 5rem;
+    padding-top: 7rem;
   }
 
   .collection-list-shirts {
@@ -4329,14 +4319,6 @@
   .cvg {
     margin-top: 20px;
     font-size: 4vw;
-  }
-
-  .maintitle-div {
-    margin-top: 20px;
-    margin-right: 5%;
-    margin-left: 5%;
-    font-size: 5vw;
-    line-height: 5vh;
   }
 
   .lottie-animation {
