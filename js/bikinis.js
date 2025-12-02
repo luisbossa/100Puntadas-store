@@ -150,3 +150,5 @@ bikinis.forEach((bikini) => {
   container.innerHTML += item;
 });
 
+
+

@@ -35,6 +35,10 @@
   width: clamp(35px, 6vw, 80px);
 }
 
+.footer-p {
+  margin-bottom: 5px;
+}
+
 .footer-link {
   color: #161616;
   display: block;

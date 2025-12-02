@@ -151,7 +151,7 @@
 .cart-button {
   margin-right: auto;
   margin-left: auto;
-  border: 1px none #000;
+  border: 1px none #161616;
   border-radius: 0px;
   background-color: transparent;
   -webkit-filter: brightness(110%);
@@ -184,19 +184,19 @@
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  border: 1px solid #000;
+  border: 1px solid #161616;
   border-radius: 12px;
   background-color: transparent;
   -webkit-transition: all 200ms ease;
   transition: all 200ms ease;
   font-family: Hatton, Arial, sans-serif;
-  color: #000;
+  color: #161616;
   font-size: 1.7rem;
   font-weight: 200;
 }
 
 .cart-quantity:hover {
-  border-color: #000;
+  border-color: #161616;
   background-color: #fd64c0;
   font-weight: 300;
   color: #fff;

@@ -668,7 +668,7 @@
 }
 
 .w-commerce-commercecartapplepaybutton {
-  background-color: #000;
+  background-color: #161616;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   border-top-left-radius: 2px;
@@ -707,7 +707,7 @@
 }
 
 .w-commerce-commercecartquickcheckoutbutton {
-  background-color: #000;
+  background-color: #161616;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   border-top-left-radius: 2px;
@@ -854,22 +854,22 @@
   border-bottom-width: 1px;
   border-left-width: 1px;
   border-right-width: 1px;
-  border-top-color: #000;
-  border-bottom-color: #000;
-  border-left-color: #000;
-  border-right-color: #000;
+  border-top-color: #161616;
+  border-bottom-color: #161616;
+  border-left-color: #161616;
+  border-right-color: #161616;
   border-top-style: solid;
   border-bottom-style: solid;
   border-left-style: solid;
   border-right-style: solid;
-  color: #000;
+  color: #161616;
   background-color: #fff;
   cursor: pointer;
 }
 
 .w-commerce-commerceaddtocartoptionpill.w--ecommerce-pill-selected {
   color: #fff;
-  background-color: #000;
+  background-color: #161616;
 }
 
 .w-commerce-commerceaddtocartoptionpill.w--ecommerce-pill-disabled {
@@ -2810,31 +2810,9 @@
 .item-image {
   width: 100%;
   max-width: 280px;
-  position: relative;
-  clear: none;
-  -webkit-perspective-origin: 50% 50%;
-  perspective-origin: 50% 50%;
-  -webkit-transform: perspective(100px) scale3d(1none, 1none, 1none);
-  transform: perspective(100px) scale3d(1none, 1none, 1none);
-  -webkit-transform-origin: 50% 50%;
-  -ms-transform-origin: 50% 50%;
-  transform-origin: 50% 50%;
-  -webkit-transition: all 200ms ease;
-  transition: all 200ms ease;
-  -o-object-fit: fill;
   object-fit: contain;
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-  z-index: 1;
-}
-
-.item-image:hover {
-  -webkit-transform: translate(0px, 0px);
-  -ms-transform: translate(0px, 0px);
-  transform: translate(0px, 0px);
-  -webkit-transform-origin: 50% 50%;
-  -ms-transform-origin: 50% 50%;
-  transform-origin: 50% 50%;
+  border-radius: 10px;
+  background: transparent;
 }
 
 .image-btn {
@@ -2850,7 +2828,7 @@
   padding: 0px;
   border-style: none;
   border-width: 2px;
-  border-color: #217023;
+  border-color: #161616;
   border-radius: 0px;
   background-color: transparent;
   z-index: 100;
@@ -2858,14 +2836,14 @@
 
 .icon {
   display: none;
-  color: #000;
+  color: #161616;
 }
 
 .text-block {
   display: none;
   overflow: visible;
   font-family: Hatton, Arial, sans-serif;
-  color: #000;
+  color: #161616;
   font-size: 1vw;
   line-height: 3vh;
   font-weight: 200;
@@ -2948,7 +2926,7 @@
   flex: 0 0 auto;
   border-style: solid;
   border-width: 1px;
-  border-color: #000;
+  border-color: #161616;
   border-radius: 0px;
   background-color: #fff;
   background-image: none;
@@ -2960,13 +2938,13 @@
   -webkit-transition: all 200ms ease;
   transition: all 200ms ease;
   font-family: Hatton, Arial, sans-serif;
-  color: #000;
+  color: #161616;
   font-size: 2vw;
   line-height: 2vh;
   font-weight: 200;
   text-align: center;
   letter-spacing: 0.5vw;
-  text-shadow: 0 0 0 #000, 0 0 0 #000;
+  text-shadow: 0 0 0 #161616, 0 0 0 #161616;
   -o-object-fit: fill;
   object-fit: fill;
 }
@@ -2974,7 +2952,7 @@
 .add-button:hover {
   border-style: solid;
   border-color: #fff;
-  background-color: #000;
+  background-color: #161616;
   -webkit-filter: none;
   filter: none;
   font-family: Hatton, Arial, sans-serif;
@@ -2999,14 +2977,14 @@
   -webkit-flex: 0 auto;
   -ms-flex: 0 auto;
   flex: 0 auto;
-  border: 2px solid #000;
+  border: 2px solid #161616;
   background-color: #fff;
   -webkit-transition: all 200ms ease;
   transition: all 200ms ease;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  color: #000;
+  color: #161616;
   font-size: 2vw;
   line-height: 1vh;
   font-weight: 300;
@@ -3014,7 +2992,7 @@
 }
 
 .buy-button:hover {
-  background-color: #000;
+  background-color: #161616;
   color: #fff;
 }
 
@@ -3109,7 +3087,7 @@
   text-align: center;
   letter-spacing: 0.7vw;
   text-transform: uppercase;
-  text-shadow: 0 0 0 #000, 0 0 0 #000;
+  text-shadow: 0 0 0 #161616, 0 0 0 #161616;
 }
 
 .div-block-3 {
@@ -3143,7 +3121,7 @@
   font-weight: 200;
   text-align: center;
   letter-spacing: 0.5vw;
-  text-shadow: 0 0 0 #000;
+  text-shadow: 0 0 0 #161616;
 }
 
 .collection-products {
@@ -3247,7 +3225,7 @@
   bottom: 0%;
   padding-top: 15px;
   padding-bottom: 15px;
-  background-color: #000;
+  background-color: #161616;
   font-family: Hatton, Arial, sans-serif;
   color: #fff;
   font-size: 1.3vw;
@@ -3390,7 +3368,7 @@
 .div-block {
   margin-bottom: 20px;
   padding: 20px;
-  border: 2px solid #000;
+  border: 2px solid #161616;
 }
 
 .heading-3 {
@@ -3462,7 +3440,7 @@
   line-height: 20vh;
   font-weight: 200;
   letter-spacing: 0.1vw;
-  text-shadow: 0 0 0 #000;
+  text-shadow: 0 0 0 #161616;
 }
 
 .clock-label {
@@ -3529,7 +3507,7 @@
 }
 
 .link-block-2 {
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #161616;
   text-decoration: none;
 }
 
@@ -3613,7 +3591,7 @@
   text-align: center;
   letter-spacing: 0.5vw;
   text-transform: uppercase;
-  text-shadow: 0 0 0 #000;
+  text-shadow: 0 0 0 #161616;
 }
 
 .collection-list-jean {
@@ -3817,18 +3795,18 @@
   margin: 0px 0%;
   padding-top: 0px;
   font-family: Hatton, Arial, sans-serif;
-  color: #000;
+  color: #161616;
   font-size: 1vw;
   line-height: 4vh;
   font-weight: 500;
   text-align: center;
   letter-spacing: 0.3vw;
   text-transform: uppercase;
-  text-shadow: 0 0 0 #000;
+  text-shadow: 0 0 0 #161616;
   white-space: normal;
 }
 
-.baseline {
+.maintitle-div {
   display: block;
   width: auto;
   margin: 0% 0% 5%;
@@ -3840,8 +3818,14 @@
   text-align: center;
   letter-spacing: 0.3vw;
   text-transform: uppercase;
-  text-shadow: 0 0 0 #000;
   white-space: normal;
+}
+
+.maintitle-text {
+  margin-bottom: 10px;
+  font-size: clamp(1.2rem, 3vw, 3rem);
+  font-weight: 600;
+  line-height: 1.1;
 }
 
 .div-block-9 {
@@ -4003,7 +3987,7 @@
     max-width: 11%;
   }
 
-  .baseline {
+  .maintitle-div {
     font-size: 3vw;
     line-height: 6vh;
   }
@@ -4084,7 +4068,7 @@
     font-size: 5vw;
   }
 
-  .baseline {
+  .maintitle-div {
     font-size: 3vw;
     line-height: 6vh;
   }
@@ -4263,7 +4247,7 @@
 
   .clock-label {
     font-size: 5vw;
-    text-shadow: 0 0 0 #000;
+    text-shadow: 0 0 0 #161616;
   }
 
   .heading-countdown {
@@ -4343,7 +4327,7 @@
     font-size: 4vw;
   }
 
-  .baseline {
+  .maintitle-div {
     margin-top: 20px;
     margin-right: 5%;
     margin-left: 5%;

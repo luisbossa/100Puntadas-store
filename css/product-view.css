@@ -37,17 +37,17 @@ a {
 }
 
 .w-commerce-commerceaddtocartoptionpill {
-  color: #000;
+  color: #161616;
   cursor: pointer;
   background-color: #fff;
-  border: 1px solid #000;
+  border: 1px solid #161616;
   margin-right: 10px;
   padding: 8px 15px;
 }
 
 .w-commerce-commerceaddtocartoptionpill.w--ecommerce-pill-selected {
   color: #fff;
-  background-color: #000;
+  background-color: #161616;
 }
 
 .w-commerce-commerceaddtocartoptionpill.w--ecommerce-pill-disabled {
@@ -524,7 +524,7 @@ a {
 }
 
 body {
-  color: #000;
+  color: #161616;
   background-color: #fcfaf6;
   font-family: Hatton, Arial, sans-serif;
   font-size: 1vw;
@@ -681,7 +681,7 @@ em {
   width: 4vw;
   height: 4vw;
   opacity: 0.2;
-  background-color: #000;
+  background-color: #161616;
   position: fixed;
   top: 0%;
   bottom: auto;
@@ -758,9 +758,9 @@ em {
 }
 
 .button.button-variant-1 {
-  color: #000;
+  color: #161616;
   background-color: rgba(0, 0, 0, 0);
-  border: 1px solid #000;
+  border: 1px solid #161616;
 }
 
 .button.btn-work {
@@ -790,7 +790,7 @@ em {
 }
 
 .button.field {
-  color: #000;
+  color: #161616;
 }
 
 .button.field:hover {
@@ -798,13 +798,13 @@ em {
 }
 
 .button.black {
-  color: #000;
-  border-color: #000;
+  color: #161616;
+  border-color: #161616;
 }
 
 .button.black:hover {
   color: #fff;
-  background-color: #000;
+  background-color: #161616;
 }
 
 .padding-box-small {
@@ -897,7 +897,7 @@ em {
 .line-divider {
   width: 100%;
   height: 1px;
-  background-color: #000;
+  background-color: #161616;
 }
 
 .line-divider.line-vertical {
@@ -1335,7 +1335,7 @@ em {
 .accordion-icon-stripe-1 {
   width: 1px;
   height: 100%;
-  background-color: #000;
+  background-color: #161616;
 }
 
 .accordion-top {
@@ -1347,7 +1347,7 @@ em {
 .accordion-icon-stripe-2 {
   width: 100%;
   height: 1px;
-  background-color: #000;
+  background-color: #161616;
   position: absolute;
 }
 
@@ -1911,7 +1911,7 @@ em {
 .line-square {
   width: 100%;
   height: 3px;
-  background-color: #000;
+  background-color: #161616;
 }
 
 .line-square._02 {
@@ -2010,7 +2010,7 @@ em {
 .text-area:focus,
 .text-area.-wfp-focus {
   border-width: 1px;
-  border-color: #000;
+  border-color: #161616;
 }
 
 .text-area::-ms-input-placeholder {
@@ -2052,7 +2052,7 @@ em {
 }
 
 .text-block {
-  color: #000;
+  color: #161616;
   text-align: left;
 }
 
@@ -2069,7 +2069,7 @@ em {
 .ticker-wrapper {
   z-index: 1;
   color: #3667f6;
-  background-color: #000;
+  background-color: #161616;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
@@ -2277,7 +2277,7 @@ em {
 }
 
 .dashed-wrap {
-  color: #000;
+  color: #161616;
   justify-content: flex-end;
   align-items: center;
   display: flex;
@@ -2323,7 +2323,7 @@ em {
 .case-study-hero {
   width: 100%;
   height: 100vh;
-  background-color: #000;
+  background-color: #161616;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -2459,7 +2459,7 @@ em {
   z-index: 0;
   width: 100%;
   height: 100vh;
-  background-color: #000;
+  background-color: #161616;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -2513,7 +2513,7 @@ em {
   z-index: 150;
   width: 100%;
   height: 100vh;
-  background-color: #000;
+  background-color: #161616;
   justify-content: center;
   align-items: flex-start;
   display: none;
@@ -2867,7 +2867,7 @@ em {
   width: 100%;
   height: 100vh;
   opacity: 0;
-  background-color: #000;
+  background-color: #161616;
   transition: opacity 0.2s;
   position: fixed;
   top: 0%;
@@ -2983,7 +2983,7 @@ em {
 
 .paragraph {
   color: #0662ff;
-  border: 0 solid #000;
+  border: 0 solid #161616;
   font-size: 1.2vw;
 }
 
@@ -2991,7 +2991,7 @@ em {
   clear: none;
   color: #0662ff;
   text-align: left;
-  border-left: 1px solid #000;
+  border-left: 1px solid #161616;
   align-self: auto;
   display: block;
 }
@@ -3033,7 +3033,7 @@ em {
 
 .image-6 {
   outline-offset: 0px;
-  background-image: linear-gradient(#000, #fff);
+  background-image: linear-gradient(#161616, #fff);
   outline: 1px solid #d8d9da;
 }
 
@@ -3111,7 +3111,7 @@ em {
   z-index: 800;
   color: #fcfaf6;
   mix-blend-mode: difference;
-  border: 0 solid #000;
+  border: 0 solid #161616;
   font-family: Zichtbaar, sans-serif;
   font-weight: 600;
   position: fixed;
@@ -3187,12 +3187,12 @@ em {
 }
 
 .cart-wrapper {
-  color: #000;
+  color: #161616;
   background-color: rgba(0, 0, 0, 0);
 }
 
 .checkout-btn {
-  background-color: #000;
+  background-color: #161616;
   border-radius: 4em;
   padding-top: 0.6em;
   padding-bottom: 0.6em;
@@ -3267,7 +3267,7 @@ em {
 .cart-line {
   width: 100%;
   height: 1px;
-  background-color: #000;
+  background-color: #161616;
 }
 
 .cart-line.m-bottom {
@@ -3344,8 +3344,8 @@ em {
   width: 100%;
   height: 100vh;
   max-height: 100svh;
-  color: #000;
-  background-color: #000;
+  color: #161616;
+  background-color: #161616;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -3385,7 +3385,7 @@ em {
 }
 
 .bk-shop.border-top {
-  border-top: 1px solid #000;
+  border-top: 1px solid #161616;
 }
 
 .hero-switch {
@@ -3411,7 +3411,7 @@ em {
 }
 
 .hero-switch.is-02.is-active {
-  background-color: #000;
+  background-color: #161616;
 }
 
 .hero-switch.is-01 {
@@ -3639,7 +3639,7 @@ em {
 .carroussel-hover-block {
   max-width: 20em;
   opacity: 0;
-  color: #000;
+  color: #161616;
   background-color: #fff;
   border-radius: 0.8em;
   padding: 0.8em;
@@ -3722,9 +3722,9 @@ em {
 }
 
 .add-cart-btn {
-  color: #000;
+  color: #161616;
   background-color: rgba(0, 0, 0, 0);
-  border: 1px solid #000;
+  border: 1px solid #161616;
   border-radius: 12px;
   margin-top: 0.8em;
   padding: 0.7em;
@@ -3737,12 +3737,12 @@ em {
 
 .add-cart-btn:hover {
   color: #fcfaf6;
-  background-color: #000;
+  background-color: #161616;
 }
 
 .add-cart-btn.ofs {
   color: #fcfaf6;
-  background-color: #000;
+  background-color: #161616;
   padding-top: 0.7em;
 }
 
@@ -3841,7 +3841,7 @@ em {
   height: 100%;
   max-height: 100svh;
   color: #fff;
-  background-color: #000;
+  background-color: #161616;
   flex-direction: column;
   align-items: flex-start;
   padding-top: 8em;
@@ -4087,7 +4087,7 @@ em {
 
 .discounts {
   background-color: rgba(0, 0, 0, 0);
-  border-color: #000;
+  border-color: #161616;
   margin-bottom: 20px;
 }
 
@@ -4113,7 +4113,7 @@ em {
 .block-header {
   background-color: rgba(0, 0, 0, 0);
   border-style: solid none none;
-  border-top-color: #000;
+  border-top-color: #161616;
   margin-top: 2rem;
   padding-top: 1rem;
   padding-left: 0;
@@ -4122,7 +4122,7 @@ em {
 
 .block-content {
   background-color: rgba(0, 0, 0, 0);
-  border: 1px #000;
+  border: 1px #161616;
   margin-top: 1rem;
   padding-left: 0;
   padding-right: 0;
@@ -4130,12 +4130,12 @@ em {
 
 .shipping-method {
   background-color: rgba(0, 0, 0, 0);
-  border: 1px solid #000;
+  border: 1px solid #161616;
   align-items: center;
 }
 
 .shipping-method-list {
-  border: 1px #000;
+  border: 1px #161616;
 }
 
 .container-2 {
@@ -4196,7 +4196,7 @@ em {
 
 .empty-state-3 {
   background-color: rgba(0, 0, 0, 0);
-  border: 1px solid #000;
+  border: 1px solid #161616;
 }
 
 .error-state-2 {
@@ -4644,11 +4644,11 @@ em {
     height: 1.4em;
     opacity: 1;
     background-color: rgba(0, 0, 0, 0);
-    border: 1px solid #000;
+    border: 1px solid #161616;
   }
 
   .swiper-pagination-bullet.swiper-pagination-bullet-active {
-    background-color: #000;
+    background-color: #161616;
   }
 
   .cart-content {
