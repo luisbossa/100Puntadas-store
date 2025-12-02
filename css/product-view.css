@@ -4423,8 +4423,9 @@ em {
     margin-bottom: 6em;
   }
 
-  .footer.bk-color-black.scroll-reference.pointer-none {
+  .footer.bk-color-black.scroll-reference.pointer-auto {
     opacity: 1;
+    pointer-events: auto !important;
   }
 
   .footer.bk-color-black.footer-anim {

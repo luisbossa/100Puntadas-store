@@ -2730,7 +2730,7 @@
 .collection {
   width: 100%;
   height: auto;
-  padding: 10% 8rem 1%;
+  padding: 10rem 8rem 1%;
 }
 
 .collection-list-shirts {
@@ -3291,20 +3291,13 @@
 }
 
 .link-block {
+  position: relative; 
   width: fit-content;
   -webkit-transform: scale3d(1none, 1none, 1none);
   transform: scale3d(1none, 1none, 1none);
-  -webkit-transition: all 200ms ease;
-  transition: all 200ms ease;
   text-decoration: none;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
-}
-
-.link-block:hover {
-  -webkit-transform: scale(0.9);
-  -ms-transform: scale(0.9);
-  transform: scale(0.9);
 }
 
 .collection-similar {
@@ -3592,8 +3585,8 @@
   display: grid;
   margin: 0 auto;
   grid-auto-columns: auto;
-  grid-column-gap: 0px;
-  grid-row-gap: 2rem;
+  grid-column-gap: 5px;
+  grid-row-gap: 0;
   -ms-grid-columns: repeat(5, 1fr);
   grid-template-columns: repeat(5, 1fr);
   -ms-grid-rows: auto;
@@ -3616,18 +3609,37 @@
   margin-top: 5%;
 }
 
-.div-block-6 {
+.no-stock {
   width: 100%;
   position: absolute;
-  left: 0%;
-  top: 0%;
-  right: 0%;
-  bottom: 0%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
   background-color: rgba(255, 255, 255, 0.5);
-  background-clip: border-box;
-  -webkit-text-fill-color: inherit;
   z-index: 2;
 }
+
+.badge-discount {
+  position: absolute;
+  top: -3px;
+  left: -15px;
+  background: #d41935;
+  color: #fff;
+  font-weight: 700;
+  padding: 0.4rem 0.5rem 0.2rem;
+  font-size: clamp(0.6rem, 1vw, 0.8rem);
+  border-radius: 0.4rem;
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform: rotate(-20deg);
+}
+
 
 .collection-list-associate {
   display: -ms-grid;
@@ -3651,8 +3663,8 @@
   margin-right: auto;
   margin-left: auto;
   grid-auto-columns: auto;
-  grid-column-gap: 0px;
-  grid-row-gap: 2rem;
+  grid-column-gap: 5px;
+  grid-row-gap: 0;
   -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   -ms-grid-rows: auto;
@@ -3914,7 +3926,7 @@
 
 @media screen and (max-width: 1500px) {
   .collection {
-    padding: 10% 1rem 1rem;
+    padding: 8rem 1rem 1rem;
   }
 }
 
@@ -4064,13 +4076,13 @@
     font-size: 3vw;
     line-height: 6vh;
   }
-
-  .collection {
-    padding: 21% 0 0;
-  }
 }
 
 @media screen and (max-width: 479px) {
+  .collection {
+    padding-top: 5rem;
+  }
+
   .collection-list-shirts {
     grid-column-gap: 0px;
     grid-row-gap: 0px;
