@@ -849,7 +849,7 @@ em {
 .text-color-neutral-2 {
   margin-top: 10px;
   font-family: Hatton, Arial, sans-serif;
-  font-size: 2.2rem;
+  font-size: clamp(1.2rem, 1.5vw + 0.5rem, 2rem);
   color: #999;
   font-weight: 400;
 }
@@ -3051,17 +3051,18 @@ em {
 }
 
 .store-coll-list {
-  grid-column-gap: 2em;
-  grid-row-gap: 4em;
+  display: grid;
   grid-template-rows: auto;
   grid-template-columns: 1fr 1fr 1fr;
   grid-auto-columns: 1fr;
-  display: grid;
+  grid-column-gap: 2em;
+  grid-row-gap: 4em;
+  margin-top: 1.5rem;
 }
 
 .text-style-h3 {
   font-family: Hatton, Arial, sans-serif;
-  font-size: 2.4em;
+  font-size: clamp(1rem, 1.2vw + 0.5rem, 1.7rem);
   font-weight: 500;
 }
 
@@ -3074,7 +3075,7 @@ em {
 }
 
 .text-style-h3.is-title {
-  font-size: 3.375em;
+  font-size: clamp(1.8rem, 2vw + 1rem, 2.7rem);
 }
 
 .text-style-h3.is-title.is-big {
@@ -3303,10 +3304,9 @@ em {
 }
 
 .prices-wrap {
-  grid-column-gap: 1em;
-  grid-row-gap: 1em;
-  align-items: center;
   display: flex;
+  align-items: center;
+  margin-top: 5px;
 }
 
 .prices-wrap.is-product {
@@ -3729,8 +3729,10 @@ em {
   margin-top: 0.8em;
   padding: 0.7em;
   font-family: Hatton, Arial, sans-serif;
-  font-size: 2em;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   font-weight: 400;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .add-cart-btn:hover {
@@ -3768,8 +3770,8 @@ em {
 
 .product-rt p {
   margin-top: 1em;
-  font-family: Zichtbaar Regular, sans-serif;
-  font-size: 1.1rem;
+  font-family: "Zichtbaar Regular", sans-serif;
+  font-size: clamp(0.9rem, 1vw + 0.3rem, 1.1rem);
   font-weight: 400;
 }
 
@@ -3781,20 +3783,20 @@ em {
 }
 
 .variant-btn {
-  color: #a7a7a7;
-  background-color: rgba(0, 0, 0, 0);
+  color: #161616;
+  background-color: transparent;
   border-style: none;
   margin-right: 0.3em;
   padding: 0 0.25em;
   font-family: Hatton, Arial, sans-serif;
-  font-size: 2.2vw;
+  font-size: clamp(1.2rem, 1.5vw + 0.5rem, 2rem);
   font-weight: 400;
-  transition: transform 0.4s;
+  transition: transform 0.4s, color 0.25s ease;
 }
 
 .variant-btn.w--ecommerce-pill-selected {
-  color: #000;
-  background-color: rgba(0, 0, 0, 0);
+  color: #3a3a3a;
+  background-color: transparent;
 }
 
 .variant-btn.is-white {
@@ -4325,10 +4327,6 @@ em {
     grid-template-columns: 1fr 1fr;
   }
 
-  .text-style-h3 {
-    font-size: 2.5em;
-  }
-
   .shop-p {
     font-size: 1.5em;
   }
@@ -4592,10 +4590,6 @@ em {
     line-height: 1.2;
   }
 
-  .text-style-h3 {
-    font-size: 2.4em;
-  }
-
   .shop-p {
     font-size: 1.4em;
   }
@@ -4646,8 +4640,8 @@ em {
   }
 
   .swiper-pagination-bullet {
-    width: 1.8em;
-    height: 1.8em;
+    width: 1.4em;
+    height: 1.4em;
     opacity: 1;
     background-color: rgba(0, 0, 0, 0);
     border: 1px solid #000;
@@ -4680,7 +4674,7 @@ em {
   }
 
   h3 {
-    font-size: 2.2em;
+    font-size: 2em;
   }
 
   .text-align-right {
@@ -4999,10 +4993,6 @@ em {
     grid-row-gap: 2em;
   }
 
-  .text-style-h3 {
-    font-size: 2.2em;
-  }
-
   .cart-container {
     max-width: none;
     min-width: auto;
@@ -5025,10 +5015,6 @@ em {
   .shop-item-infos-wrap {
     padding-left: 0;
     padding-right: 0;
-  }
-
-  .variant-btn {
-    font-size: 2rem;
   }
 
   .div-block-16 {
