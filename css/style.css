@@ -2804,6 +2804,7 @@
   max-width: 280px;
   object-fit: contain;
   border-radius: 10px;
+  border: 1px solid #d8d9da;
   background: transparent;
 }
 
@@ -3813,14 +3814,14 @@
 .maintitle-div {
   display: block;
   width: auto;
-  margin: 0% 0% 5%;
+  margin-bottom: clamp(2rem, 8%, 6rem);
   font-family: Hatton, Arial, sans-serif;
   color: #272727;
-  font-size: 2.3vw;
-  line-height: 8vh;
+  font-size: clamp(2.2rem, 2.8vw, 3rem);
+  line-height: clamp(2.5rem, 8vh, 4.5rem);
   font-weight: 400;
   text-align: center;
-  letter-spacing: 0.3vw;
+  letter-spacing: clamp(0.1rem, 0.3vw, 0.3rem);
   text-transform: uppercase;
   white-space: normal;
 }

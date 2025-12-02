@@ -3089,6 +3089,8 @@ em {
   height: 100%;
   object-fit: cover;
   position: absolute;
+  border-radius: 10px;
+  border: 1px solid #d8d9da;
   top: 0%;
   bottom: 0%;
   left: 0%;
@@ -3856,6 +3858,8 @@ em {
   opacity: 0;
   object-fit: cover;
   position: absolute;
+  border-radius: 10px;
+  border: 1px solid #d8d9da;
   top: 0%;
   bottom: 0%;
   left: 0%;
@@ -4007,15 +4011,14 @@ em {
 .product-img-wrap {
   width: 100%;
   background-color: #fff;
-  border: 1px solid #d8d9da;
   margin-bottom: 2em;
   padding-bottom: 100%;
   position: relative;
 }
 
 .product-img-wrap.swiper-slide {
-  max-height: none;
   max-width: 100%;
+  max-height: none;
 }
 
 .html-embed-5 {
