@@ -109,6 +109,16 @@
             <a href="/pages/sizes.html" class="mobile-link">Tallas</a>
         </div>
 
+        <!-- MODAL -->
+        <div id="window-send-suggestion" class="sizechart-modal-window">
+            <div class="sizechart-modal">
+                <button class="close-modal-btn" onclick="closeSizeChart()">✕</button>
+
+                <h2>Guía de Tallas</h2>
+                <img src="/images/size-chart.jpg" alt="Size Chart">
+            </div>
+        </div>
+
         <!-- PRODUCT 1 -->
         <div id="smooth-wrapper" class="smooth-wrapper">
             <div id="smooth-content" class="page-wrapper overflow-none">
@@ -171,20 +181,9 @@
                                                     encanto único en cada uso.</p>
                                             </div>
 
-                                            <!-- MODAL -->
-                                            <div id="window-send-suggestion" class="sizechart-modal-window">
-                                                <div class="sizechart-modal">
-                                                    <button class="close-modal-btn"
-                                                        onclick="closeSizeChart()">✕</button>
-
-                                                    <h2>Guía de Tallas</h2>
-                                                    <img src="/images/size-chart.jpg" alt="Size Chart">
-                                                </div>
-                                            </div>
-
-
                                             <div class="mini-sizeChart-div">
-                                                <button id="btn-sizeChart" class="mini-sizeChart-btn" onclick="openSizeChart()">
+                                                <button id="btn-sizeChart" class="mini-sizeChart-btn"
+                                                    onclick="openSizeChart()">
                                                     <svg class="mini-sizeChart-icon" width="18" height="18"
                                                         viewBox="0 0 24 24" fill="none">
                                                         <path d="M4 6h16M4 12h10M4 18h7" stroke="currentColor"
