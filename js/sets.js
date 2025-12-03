@@ -29,7 +29,7 @@ productos.forEach((p) => {
       <img
         src="${p.imagen}"
         alt="${p.nombre}"
-        loading="lazy"
+        loading="eager"
         class="item-image"
         sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
       />

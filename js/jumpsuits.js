@@ -43,7 +43,7 @@ jumpsuits.forEach((p) => {
 
       <img
         alt="${p.nombre}"
-        loading="lazy"
+        loading="eager"
         src="${p.imagen}"
         sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
         class="item-image"

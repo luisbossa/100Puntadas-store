@@ -33,7 +33,7 @@ function generateProducts() {
         <div class="shop-thumb-wrap">
           <img 
             alt="${product.name}"
-            loading="lazy"
+            loading="eager"
             src="${product.img}"
             class="shop-thumb-img is-main"
             sizes="(max-width: 479px) 43vw, (max-width: 991px) 45vw, 30vw"

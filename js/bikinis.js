@@ -148,7 +148,7 @@ bikinis.forEach((bikini) => {
 
           <img 
               alt="${bikini.nombre}" 
-              loading="lazy"
+              loading="eager"
               src="${bikini.imagen}"
               sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
               class="item-image"
