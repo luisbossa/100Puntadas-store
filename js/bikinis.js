@@ -6,14 +6,16 @@ const bikinis = [
     link: "/pages/product-view.html",
     stock: 1,
     discount: 0,
+    oldPrice: "30.000 ₡",
   },
   {
     nombre: "COW PRINT",
-    precio: "30.000 ₡",
+    precio: "21.000 ₡",
     imagen: "/images/swimwears/swimwear-2.webp",
     link: "#",
     stock: 1,
     discount: 1,
+    oldPrice: "30.000 ₡",
   },
   {
     nombre: "TURQUOISE",
@@ -22,6 +24,7 @@ const bikinis = [
     link: "#",
     stock: 1,
     discount: 0,
+    oldPrice: "30.000 ₡",
   },
   {
     nombre: "BLUE CAPITAN",
@@ -30,6 +33,7 @@ const bikinis = [
     link: "#",
     stock: 1,
     discount: 0,
+    oldPrice: "30.000 ₡",
   },
   {
     nombre: "EARTH",
@@ -38,6 +42,7 @@ const bikinis = [
     link: "#",
     stock: 1,
     discount: 0,
+    oldPrice: "30.000 ₡",
   },
   {
     nombre: "MALIBU",
@@ -46,6 +51,7 @@ const bikinis = [
     link: "#",
     stock: 1,
     discount: 0,
+    oldPrice: "30.000 ₡",
   },
   {
     nombre: "AQUA",
@@ -54,6 +60,7 @@ const bikinis = [
     link: "#",
     stock: 1,
     discount: 0,
+    oldPrice: "30.000 ₡",
   },
   {
     nombre: "LILAC",
@@ -62,6 +69,7 @@ const bikinis = [
     link: "#",
     stock: 1,
     discount: 0,
+    oldPrice: "30.000 ₡",
   },
   {
     nombre: "FAIRY FLOSS",
@@ -70,6 +78,7 @@ const bikinis = [
     link: "#",
     stock: 1,
     discount: 0,
+    oldPrice: "30.000 ₡",
   },
   {
     nombre: "CLOUDY",
@@ -78,6 +87,7 @@ const bikinis = [
     link: "#",
     stock: 1,
     discount: 0,
+    oldPrice: "30.000 ₡",
   },
   {
     nombre: "BLUSH",
@@ -86,6 +96,7 @@ const bikinis = [
     link: "#",
     stock: 1,
     discount: 0,
+    oldPrice: "30.000 ₡",
   },
   {
     nombre: "CANDY",
@@ -94,6 +105,7 @@ const bikinis = [
     link: "#",
     stock: 1,
     discount: 0,
+    oldPrice: "32.500 ₡",
   },
   {
     nombre: "LOLLIE",
@@ -102,6 +114,7 @@ const bikinis = [
     link: "#",
     stock: 1,
     discount: 0,
+    oldPrice: "30.000 ₡",
   },
   {
     nombre: "RED WINE",
@@ -110,14 +123,16 @@ const bikinis = [
     link: "#",
     stock: 1,
     discount: 0,
+    oldPrice: "32.500 ₡",
   },
   {
     nombre: "SNAKE PRINT",
-    precio: "30.000 ₡",
+    precio: "21.000 ₡",
     imagen: "/images/swimwears/swimwear-15.webp",
     link: "#",
     stock: 1,
     discount: 1,
+    oldPrice: "30.000 ₡",
   },
   {
     nombre: "HEART OF OCEAN",
@@ -126,6 +141,7 @@ const bikinis = [
     link: "#",
     stock: 1,
     discount: 0,
+    oldPrice: "30.000 ₡",
   },
 ];
 
@@ -166,6 +182,13 @@ bikinis.forEach((bikini) => {
           bikini.stock === 0 ? "w-condition-invisible" : ""
         }">
             <div>${bikini.nombre}</div>
+
+            ${
+              bikini.discount === 1
+                ? `<span class="old-price">${bikini.oldPrice}</span>`
+                : ""
+            }
+
             <span>${bikini.precio}</span>
         </div>
     </div>

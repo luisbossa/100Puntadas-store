@@ -4228,6 +4228,54 @@ em {
   width: 100%;
 }
 
+.mini-sizeChart-div {
+  width: 100%;
+  max-width: 550px;
+  font-family: Hatton, Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 1rem 0 0;
+}
+
+.mini-sizeChart-btn {
+  width: auto;
+  color: #161616;
+  background-color: transparent;
+  padding: 10px 11px 7px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid #161616;
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  font-weight: 400;
+  vertical-align: middle;
+  cursor: pointer;
+  box-sizing: border-box;
+  user-select: none;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  gap: 0.2rem;
+}
+
+.mini-sizeChart-icon {
+  margin-top: -5px;
+  width: clamp(15px, 2.7vw, 16px);
+  height: clamp(15px, 2.7vw, 16px);
+  display: block;
+}
+
+.mini-sizeChart-btn:hover {
+  color: #fff;
+  background-color: #161616;
+}
+
+@media (max-width: 600px) {
+  .mini-sizeChart-btn {
+    font-size: 0.95rem;
+    gap: 0.3rem;
+  }
+}
+
 @media screen and (max-width: 991px) {
   body {
     font-size: 1.25vw;

@@ -3286,13 +3286,13 @@
   line-height: 1.8rem;
   font-weight: 500;
   text-align: center;
-  letter-spacing: 0.2vw;
+  letter-spacing: 1px;
   text-decoration: none;
   text-shadow: none;
 }
 
 .link-block {
-  position: relative; 
+  position: relative;
   width: fit-content;
   -webkit-transform: scale3d(1none, 1none, 1none);
   transform: scale3d(1none, 1none, 1none);
@@ -3641,7 +3641,6 @@
   transform: rotate(-20deg);
 }
 
-
 .collection-list-associate {
   display: -ms-grid;
   display: grid;
@@ -3923,6 +3922,13 @@
 .link {
   color: #161616;
   text-decoration: none;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #d32a43;
+  font-size: 0.8rem;
+  margin-left: 0.4rem;
 }
 
 @media screen and (max-width: 1500px) {

@@ -9,6 +9,7 @@
     <link href="/css/global.css" rel="stylesheet" type="text/css" />
     <link href="/css/product-view.css" rel="stylesheet" type="text/css" />
     <link href="/css/Header.css" rel="stylesheet" type="text/css" />
+    <link href="/css/modal.css" rel="stylesheet" type="text/css" />
     <link href="/css/Footer.css" rel="stylesheet" type="text/css" />
 
 
@@ -109,7 +110,6 @@
         </div>
 
         <!-- PRODUCT 1 -->
-
         <div id="smooth-wrapper" class="smooth-wrapper">
             <div id="smooth-content" class="page-wrapper overflow-none">
 
@@ -171,13 +171,34 @@
                                                     encanto único en cada uso.</p>
                                             </div>
 
+                                            <!-- MODAL -->
+                                            <div id="window-send-suggestion" class="sizechart-modal-window">
+                                                <div class="sizechart-modal">
+                                                    <button class="close-modal-btn"
+                                                        onclick="closeSizeChart()">✕</button>
+
+                                                    <h2>Guía de Tallas</h2>
+                                                    <img src="/images/size-chart.jpg" alt="Size Chart">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="mini-sizeChart-div">
+                                                <button id="btn-sizeChart" class="mini-sizeChart-btn" onclick="openSizeChart()">
+                                                    <svg class="mini-sizeChart-icon" width="18" height="18"
+                                                        viewBox="0 0 24 24" fill="none">
+                                                        <path d="M4 6h16M4 12h10M4 18h7" stroke="currentColor"
+                                                            stroke-width="2" stroke-linecap="round" />
+                                                    </svg>
+                                                    Tallas
+                                                </button>
+                                            </div>
+
                                             <div class="add-cart-btn-wrap">
                                                 <div class="add-to-cart">
                                                     <form class="w-commerce-commerceaddtocartform default-state">
                                                         <div class="opt-list" role="group">
                                                             <div role="group" class="size-div">
-
-
 
                                                                 <div class="size-btn-group" role="radiogroup"
                                                                     aria-label="Size">
@@ -667,6 +688,11 @@
     <script src="/js/layout.js"></script>
     <script src="/js/related.js"></script>
     <script src="/js/footer.js"></script>
+
+    <script src="/gsap/gsap.min.js"></script>
+    <script src="/gsap/Flip.min.js"></script>
+    <script src="/gsap/CustomEase.min.js"></script>
+    <script src="/js/modal.js"></script>
 </body>
 
 </html>
