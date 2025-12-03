@@ -3814,7 +3814,7 @@
 .maintitle-div {
   display: block;
   width: auto;
-  margin-bottom: clamp(2rem, 8%, 6rem);
+  margin-bottom: clamp(3.5rem, 8%, 6rem);
   font-family: Hatton, Arial, sans-serif;
   color: #272727;
   font-size: clamp(2.2rem, 2.8vw, 3rem);
@@ -4069,7 +4069,7 @@
 
 @media screen and (max-width: 479px) {
   .collection {
-    padding-top: 7rem;
+    padding-top: 6rem;
   }
 
   .collection-list-shirts {
