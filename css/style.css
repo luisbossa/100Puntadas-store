@@ -3927,8 +3927,8 @@
 .old-price {
   text-decoration: line-through;
   color: #d32a43;
-  font-size: 0.8rem;
-  margin-left: 0.4rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
 }
 
 @media screen and (max-width: 1500px) {
