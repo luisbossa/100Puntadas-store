@@ -4258,7 +4258,7 @@ em {
 }
 
 .mini-sizeChart-icon {
-  margin-top: -5px;
+  margin-top: -4px;
   width: clamp(15px, 2.7vw, 16px);
   height: clamp(15px, 2.7vw, 16px);
   display: block;
