@@ -1,7 +1,7 @@
 .section-cgv {
   width: 100%;
-  padding: clamp(4rem, 10vw, 10rem) clamp(2rem, 8vw, 8rem) 1%;
-  background-color: #FCFAF6;
+  padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 6vw, 8rem) 1%;
+  background-color: #fcfaf6;
 }
 
 .policy-div {
@@ -13,7 +13,7 @@
 }
 
 .main-policy-title {
-  margin-bottom: 5%;
+  margin-bottom: clamp(2rem, 8%, 3rem);
   font-family: Hatton, Arial, sans-serif;
   color: #272727;
   font-size: clamp(2rem, 4vw, 4rem);
@@ -52,4 +52,3 @@
   color: #444;
   text-decoration: underline;
 }
-

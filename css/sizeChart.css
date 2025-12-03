@@ -1,0 +1,119 @@
+.section-cgv {
+  width: 100%;
+  padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 6vw, 8rem) 1%;
+  background-color: #fcfaf6;
+}
+
+.sizechart {
+  width: 100%;
+  font-family: Lato, sans-serif;
+}
+
+.sizechart-title {
+  margin-bottom: clamp(2rem, 8%, 3rem);
+  font-family: Hatton, Arial, sans-serif;
+  color: #272727;
+  font-size: clamp(2.2rem, 2.8vw, 3rem);
+  line-height: clamp(2.5rem, 8vh, 4.5rem);
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: clamp(0.1rem, 0.3vw, 0.3rem);
+  text-transform: uppercase;
+}
+
+.sizechart-table {
+  width: 100%;
+  display: grid;
+}
+
+.sizechart-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 1rem;
+  font-size: clamp(0.9rem, 1vw + 0.4rem, 1.1rem);
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.sizechart-row--head {
+  background-color: #D6B9DA;
+  color: #161616;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.sizechart-row:nth-child(odd):not(.sizechart-row--head) {
+  background-color: #fafafa;
+}
+
+.sizechart-row:nth-child(even):not(.sizechart-row--head) {
+  background-color: #ECDDF0;
+}
+
+.sizechart-guides {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  margin-top: 7rem;
+}
+
+.sizechart-guide {
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 14px;
+  border: 1px solid #e4e4e4;
+}
+
+.sizechart-subtitle {
+  font-family: Hatton, Arial, sans-serif;
+  font-size: clamp(1.2rem, 1vw + 0.5rem, 1.6rem);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.sizechart-note {
+  font-size: clamp(0.9rem, 1vw + 0.3rem, 1.1rem);
+  color: #444;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.sizechart-image {
+  width: 100%;
+  border-radius: 10px;
+  display: block;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 700px) {
+  .sizechart-table {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .sizechart-row--head {
+    display: none !important;
+  }
+
+  .sizechart-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+  }
+
+  .sizechart-row span {
+    padding: 0.4rem 0;
+    position: relative;
+  }
+
+  .sizechart-row span::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #333;
+    display: block;
+    font-size: 0.85rem;
+  }
+}
