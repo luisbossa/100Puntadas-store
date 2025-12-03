@@ -1,6 +1,6 @@
 .section-cgv {
   width: 100%;
-  padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 6vw, 8rem) 1%;
+  padding: clamp(4rem, 7vw, 5rem) clamp(1rem, 7vw, 8rem) 1%;
   background-color: #fcfaf6;
 }
 
@@ -13,11 +13,11 @@
   margin-bottom: clamp(2rem, 8%, 3rem);
   font-family: Hatton, Arial, sans-serif;
   color: #272727;
-  font-size: clamp(2.2rem, 2.8vw, 3rem);
-  line-height: clamp(2.5rem, 8vh, 4.5rem);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: clamp(2.2rem, 6vw, 4.5rem);
   font-weight: 400;
   text-align: center;
-  letter-spacing: clamp(0.1rem, 0.3vw, 0.3rem);
+  letter-spacing: clamp(0.08rem, 0.3vw, 0.3rem);
   text-transform: uppercase;
 }
 
@@ -29,16 +29,17 @@
 .sizechart-row {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  padding: 1rem;
-  font-size: clamp(0.9rem, 1vw + 0.4rem, 1.1rem);
+  padding: clamp(0.6rem, 2vw, 1rem);
+  font-size: clamp(0.75rem, 1.1vw, 1.1rem);
   border-bottom: 1px solid #e5e5e5;
 }
 
 .sizechart-row--head {
-  background-color: #D6B9DA;
+  background-color: #d6b9da;
   color: #161616;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
+  font-size: clamp(0.6rem, 1.2vw, 1.2rem);
 }
 
 .sizechart-row:nth-child(odd):not(.sizechart-row--head) {
@@ -46,14 +47,32 @@
 }
 
 .sizechart-row:nth-child(even):not(.sizechart-row--head) {
-  background-color: #ECDDF0;
+  background-color: #ecddf0;
 }
 
 .sizechart-guides {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
-  margin-top: 7rem;
+  margin-top: 5rem;
+}
+
+.sizechart-subtitle {
+  font-family: Hatton, Arial, sans-serif;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-weight: 600;
+}
+
+.sizechart-note {
+  font-size: clamp(0.8rem, 1.3vw, 1.1rem);
+  line-height: clamp(1.2rem, 2.2vw, 1.6rem);
+  color: #444;
+}
+
+.sizechart-image {
+  width: 100%;
+  margin-top: 0.7rem;
+  border-radius: 10px;
 }
 
 .sizechart-guide {
@@ -84,36 +103,28 @@
   margin-top: 0.5rem;
 }
 
-@media (max-width: 700px) {
-  .sizechart-table {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+@media (max-width: 600px) {
+  .section-cgv {
+    padding-left: 15px;
+    padding-right: 15px;
   }
+}
 
-  .sizechart-row--head {
-    display: none !important;
+@media (max-width: 420px) {
+  .sizechart-title {
+    font-size: 1.5rem;
   }
 
   .sizechart-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    background: #fff;
-    border: 1px solid #eee;
-    border-radius: 12px;
-    padding: 1rem 1.2rem;
+    font-size: 0.7rem;
+    padding: 0.6rem;
   }
 
-  .sizechart-row span {
-    padding: 0.4rem 0;
-    position: relative;
+  .sizechart-subtitle {
+    font-size: 1.1rem;
   }
 
-  .sizechart-row span::before {
-    content: attr(data-label);
-    font-weight: 600;
-    color: #333;
-    display: block;
+  .sizechart-note {
     font-size: 0.85rem;
   }
 }

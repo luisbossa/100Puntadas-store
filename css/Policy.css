@@ -1,6 +1,6 @@
 .section-cgv {
   width: 100%;
-  padding: clamp(2rem, 6vw, 5rem) clamp(1rem, 6vw, 8rem) 1%;
+  padding: clamp(4rem, 7vw, 5rem) clamp(1rem, 7vw, 8rem) 1%;
   background-color: #fcfaf6;
 }
 
