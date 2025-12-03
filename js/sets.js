@@ -2,14 +2,14 @@ const productos = [
   {
     nombre: "Vestido #1",
     precio: "69.500 ₡",
-    imagen: "/images/set-1.jpg",
+    imagen: "/images/sets/set-1.webp",
     link: "/product/sac-4",
     stock: 1,
   },
   {
     nombre: "Vestido #2",
     precio: "63.500 ₡",
-    imagen: "/images/set-2.jpg",
+    imagen: "/images/sets/set-2.webp",
     link: "/product/sac-5",
     stock: 1,
   },

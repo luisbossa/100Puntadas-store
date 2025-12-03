@@ -2,19 +2,19 @@ const relatedProducts = [
   {
     name: "LEOPARD",
     price: "30.000 ₡",
-    img: "/images/swimwear-14.jpg",
+    img: "/images/swimwears/swimwear-14.webp",
     link: "#",
   },
   {
     name: "LILAC",
     price: "30.000 ₡",
-    img: "/images/swimwear-15.jpg",
+    img: "/images/swimwears/swimwear-15.webp",
     link: "#",
   },
   {
     name: "ORANGE BLAST",
     price: "30.000 ₡",
-    img: "/images/swimwear-16.jpg",
+    img: "/images/swimwears/swimwear-16.webp",
     link: "#",
   },
 ];
@@ -22,7 +22,7 @@ const relatedProducts = [
 const container = document.getElementById("macy-container");
 
 function generateProducts() {
-  container.innerHTML = ""; // Limpia primero
+  container.innerHTML = "";
 
   relatedProducts.forEach((product) => {
     const item = document.createElement("div");

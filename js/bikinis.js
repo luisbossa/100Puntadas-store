@@ -2,7 +2,7 @@ const bikinis = [
   {
     nombre: "BLACK COFFEE",
     precio: "30.000 ₡",
-    imagen: "/images/swimwear-1.jpg",
+    imagen: "/images/swimwears/swimwear-1.webp",
     link: "/pages/product-view.html",
     stock: 1,
     discount: 0,
@@ -10,7 +10,7 @@ const bikinis = [
   {
     nombre: "COW PRINT",
     precio: "30.000 ₡",
-    imagen: "/images/swimwear-2.jpg",
+    imagen: "/images/swimwears/swimwear-2.webp",
     link: "#",
     stock: 1,
     discount: 1,
@@ -18,7 +18,7 @@ const bikinis = [
   {
     nombre: "TURQUOISE",
     precio: "30.000 ₡",
-    imagen: "/images/swimwear-3.jpg",
+    imagen: "/images/swimwears/swimwear-3.webp",
     link: "#",
     stock: 1,
     discount: 0,
@@ -26,7 +26,7 @@ const bikinis = [
   {
     nombre: "BLUE CAPITAN",
     precio: "30.000 ₡",
-    imagen: "/images/swimwear-4.jpg",
+    imagen: "/images/swimwears/swimwear-4.webp",
     link: "#",
     stock: 1,
     discount: 0,
@@ -34,7 +34,7 @@ const bikinis = [
   {
     nombre: "EARTH",
     precio: "30.000 ₡",
-    imagen: "/images/swimwear-5.jpg",
+    imagen: "/images/swimwears/swimwear-5.webp",
     link: "#",
     stock: 1,
     discount: 0,
@@ -42,7 +42,7 @@ const bikinis = [
   {
     nombre: "MALIBU",
     precio: "30.000 ₡",
-    imagen: "/images/swimwear-6.jpg",
+    imagen: "/images/swimwears/swimwear-6.webp",
     link: "#",
     stock: 1,
     discount: 0,
@@ -50,7 +50,7 @@ const bikinis = [
   {
     nombre: "AQUA",
     precio: "30.000 ₡",
-    imagen: "/images/swimwear-7.jpg",
+    imagen: "/images/swimwears/swimwear-7.webp",
     link: "#",
     stock: 1,
     discount: 0,
@@ -58,7 +58,7 @@ const bikinis = [
   {
     nombre: "LILAC",
     precio: "30.000 ₡",
-    imagen: "/images/swimwear-8.jpg",
+    imagen: "/images/swimwears/swimwear-8.webp",
     link: "#",
     stock: 1,
     discount: 0,
@@ -66,7 +66,7 @@ const bikinis = [
   {
     nombre: "FAIRY FLOSS",
     precio: "30.000 ₡",
-    imagen: "/images/swimwear-9.jpg",
+    imagen: "/images/swimwears/swimwear-9.webp",
     link: "#",
     stock: 1,
     discount: 0,
@@ -74,7 +74,7 @@ const bikinis = [
   {
     nombre: "CLOUDY",
     precio: "30.000 ₡",
-    imagen: "/images/swimwear-10.jpg",
+    imagen: "/images/swimwears/swimwear-10.webp",
     link: "#",
     stock: 1,
     discount: 0,
@@ -82,7 +82,7 @@ const bikinis = [
   {
     nombre: "BLUSH",
     precio: "30.000 ₡",
-    imagen: "/images/swimwear-11.jpg",
+    imagen: "/images/swimwears/swimwear-11.webp",
     link: "#",
     stock: 1,
     discount: 0,
@@ -90,7 +90,7 @@ const bikinis = [
   {
     nombre: "CANDY",
     precio: "32.500 ₡",
-    imagen: "/images/swimwear-12.jpg",
+    imagen: "/images/swimwears/swimwear-12.webp",
     link: "#",
     stock: 1,
     discount: 0,
@@ -98,7 +98,7 @@ const bikinis = [
   {
     nombre: "LOLLIE",
     precio: "30.000 ₡",
-    imagen: "/images/swimwear-13.jpg",
+    imagen: "/images/swimwears/swimwear-13.webp",
     link: "#",
     stock: 1,
     discount: 0,
@@ -106,7 +106,7 @@ const bikinis = [
   {
     nombre: "RED WINE",
     precio: "32.500 ₡",
-    imagen: "/images/swimwear-14.jpg",
+    imagen: "/images/swimwears/swimwear-14.webp",
     link: "#",
     stock: 1,
     discount: 0,
@@ -114,7 +114,7 @@ const bikinis = [
   {
     nombre: "SNAKE PRINT",
     precio: "30.000 ₡",
-    imagen: "/images/swimwear-15.jpg",
+    imagen: "/images/swimwears/swimwear-15.webp",
     link: "#",
     stock: 1,
     discount: 1,
@@ -122,7 +122,7 @@ const bikinis = [
   {
     nombre: "HEART OF OCEAN",
     precio: "30.000 ₡",
-    imagen: "/images/swimwear-16.jpg",
+    imagen: "/images/swimwears/swimwear-16.webp",
     link: "#",
     stock: 1,
     discount: 0,
