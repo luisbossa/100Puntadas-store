@@ -3676,7 +3676,7 @@ em {
   border: 1px solid #161616;
   border-radius: 12px;
   margin-top: 0.8em;
-  padding: 0.7em;
+  padding: 0.7em 0.7em 0.5em;
   text-transform: uppercase;
   font-family: Hatton, Arial, sans-serif;
   font-size: clamp(1.1rem, 2.5vw, 1.5rem);
