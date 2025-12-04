@@ -9,6 +9,7 @@
     <link href="/css/global.css" rel="stylesheet" type="text/css" />
     <link href="/css/product-view.css" rel="stylesheet" type="text/css" />
     <link href="/css/Header.css" rel="stylesheet" type="text/css" />
+    <link href="/css/accordion.css" rel="stylesheet" type="text/css" />
     <link href="/css/modal.css" rel="stylesheet" type="text/css" />
     <link href="/css/Footer.css" rel="stylesheet" type="text/css" />
 
@@ -291,17 +292,87 @@
                                                 Comprar ahora
                                             </a>
 
-                                            <!-- <a data-node-type="commerce-buy-now-button"
-                                                            data-default-text="Buy now"
-                                                            data-subscription-text="Subscribe now" aria-busy="false"
-                                                            aria-haspopup="false" style="display:none"
-                                                            class="w-commerce-commercebuynowbutton"
-                                                            href="#"
-                                                           rel="noopener noreferrer">
-                                                            Agregar al carrito
-                                                        </a> -->
 
-                                            </form>
+
+
+                                            <section class="accordion-section">
+                                                <!-- ITEM 1 -->
+                                                <div class="accordion-item">
+                                                    <button class="accordion-header">
+                                                        <span>Lo que necesitas saber</span>
+                                                        <svg class="accordion-icon" width="20" height="20"
+                                                            viewBox="0 0 20 20">
+                                                            <path d="M5 7l5 5 5-5" stroke="#000" stroke-width="2"
+                                                                fill="none" stroke-linecap="round" />
+                                                        </svg>
+                                                    </button>
+                                                    <div class="accordion-content">
+                                                        <ul class="acordion-p features-list">
+                                                            <li class="features-item">Incluye <strong>tanto arriba como
+                                                                    inferior</strong>.</li>
+                                                            <li class="features-item">Diseño fijo (no ajustable).</li>
+                                                            <li class="features-item">Forrado con tela interior suave
+                                                                para mayor comodidad.</li>
+                                                            <li class="features-item">Ligeramente elástico y se estira
+                                                                ligeramente para adaptarse a tu cuerpo.</li>
+                                                            <li class="features-item">
+                                                                Disponible en dos estilos de fondo:
+                                                                <strong>Regular</strong> o <strong>Tanga</strong>.
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <!-- ITEM 2 -->
+                                                <div class="accordion-item">
+                                                    <button class="accordion-header">
+                                                        <span>Instrucciones de cuidado</span>
+                                                        <svg class="accordion-icon" width="20" height="20"
+                                                            viewBox="0 0 20 20">
+                                                            <path d="M5 7l5 5 5-5" stroke="#000" stroke-width="2"
+                                                                fill="none" stroke-linecap="round" />
+                                                        </svg>
+                                                    </button>
+                                                    <div class="accordion-content">
+                                                        <p class="acordion-p">Lava las manos en frío. Acuéstate plano
+                                                            para secar en interior.</p>
+                                                    </div>
+                                                </div>
+
+                                                <!-- ITEM 3 -->
+                                                <div class="accordion-item">
+                                                    <button class="accordion-header">
+                                                        <span>Envíos y devoluciones</span>
+                                                        <svg class="accordion-icon" width="20" height="20"
+                                                            viewBox="0 0 20 20">
+                                                            <path d="M5 7l5 5 5-5" stroke="#000" stroke-width="2"
+                                                                fill="none" stroke-linecap="round" />
+                                                        </svg>
+                                                    </button>
+                                                    <div class="accordion-content">
+                                                        <p class="acordion-p">Enviamos a todo el mundo. El coste de
+                                                            envío se calcula en el momento de la compra.</p>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                             <div tabindex="0" style="display:none"
                                                 class="w-commerce-commerceaddtocartoutofstock add-cart-btn ofs"
                                                 tabindex="0">
@@ -396,11 +467,6 @@
                                                 id="w-node-d68bd2ec-256a-d794-fd35-ba997990bd90-40af2fd3" alt=""
                                                 class="social-icon" />
                                         </a>
-                                        <a href="#" target="_blank" class="link w-inline-block">
-                                            <img src="/images/tiktok.svg" loading="lazy"
-                                                id="w-node-d68bd2ec-256a-d794-fd35-ba997990bd90-40af2fd4" alt=""
-                                                class="social-icon" />
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -449,11 +515,6 @@
                                         target="_blank" class="link w-inline-block">
                                         <img src="/images/pinterest.svg" loading="lazy"
                                             id="w-node-d68bd2ec-256a-d794-fd35-ba997990bd90-40af2fd3" alt=""
-                                            class="social-icon" />
-                                    </a>
-                                    <a href="#" target="_blank" class="link w-inline-block">
-                                        <img src="/images/tiktok.svg" loading="lazy"
-                                            id="w-node-d68bd2ec-256a-d794-fd35-ba997990bd90-40af2fd4" alt=""
                                             class="social-icon" />
                                     </a>
                                 </div>
@@ -685,6 +746,7 @@
 
     <script src="/js/res-menu.js"></script>
     <script src="/js/layout.js"></script>
+    <script src="/js/accordion.js"></script>
     <script src="/js/related.js"></script>
     <script src="/js/footer.js"></script>
 

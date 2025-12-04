@@ -528,7 +528,6 @@ body {
   background-color: #fcfaf6;
   font-family: Hatton, Arial, sans-serif;
   font-size: 1vw;
-  font-weight: 600;
   line-height: 1;
 }
 
@@ -586,10 +585,8 @@ h6 {
 }
 
 p {
-  text-transform: uppercase;
-  margin-bottom: 0;
-  font-size: 1.2em;
-  line-height: 1.2;
+  margin-bottom: -9px;
+  font-size: 1.1rem;
 }
 
 strong {
@@ -1284,81 +1281,6 @@ em {
   grid-row-gap: 4em;
 }
 
-.accordion-bottom-wrap {
-  width: 100%;
-}
-
-.accordion-top-icon-wrap {
-  width: 17px;
-  height: 17px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
-  position: relative;
-}
-
-.accordion {
-  width: 100%;
-  cursor: pointer;
-  border-bottom: 1px solid #202020;
-}
-
-.accordion-top-icon {
-  justify-content: center;
-  align-items: center;
-  margin-right: -16px;
-  padding: 16px;
-  position: relative;
-}
-
-.accordion-divider {
-  height: 0;
-  border-top: 1px solid #202020;
-}
-
-.accordion-bottom-text {
-  width: 100%;
-  color: #7e7e7e;
-  margin-bottom: 0;
-  font-weight: 400;
-}
-
-.accordion-icon-stripe-1 {
-  width: 1px;
-  height: 100%;
-  background-color: #161616;
-}
-
-.accordion-top {
-  width: 100%;
-  align-items: center;
-  display: flex;
-}
-
-.accordion-icon-stripe-2 {
-  width: 100%;
-  height: 1px;
-  background-color: #161616;
-  position: absolute;
-}
-
-.accordion-top-text {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-}
-
-.accordion-bottom {
-  width: 100%;
-  perspective-origin: 50% 0;
-  transform-origin: 50% 0;
-  overflow: hidden;
-}
-
-.accordion-top-wrap {
-  flex: 1;
-}
-
 .padding-website {
   padding-left: 2em;
   padding-right: 2em;
@@ -1603,15 +1525,12 @@ em {
 }
 
 .social-icons-wrapper {
-  grid-column-gap: 0.5em;
-  grid-row-gap: 0.5em;
-  grid-template-rows: auto;
-  grid-template-columns: max-content;
-  grid-auto-columns: max-content;
-  grid-auto-flow: column;
-  display: grid;
-  position: relative;
-  top: -0.1em;
+  height: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
 }
 
 .social-icon {
@@ -1650,7 +1569,7 @@ em {
 }
 
 .link:hover {
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .link.logo-homepage {
@@ -4835,8 +4754,7 @@ em {
   }
 
   .social-icons-wrapper {
-    grid-column-gap: 1em;
-    grid-row-gap: 1em;
+    gap: 1em;
   }
 
   .social-icon {

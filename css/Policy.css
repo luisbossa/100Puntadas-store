@@ -40,12 +40,22 @@
 .terms-list {
   padding-left: 1.4rem;
   margin-bottom: 1.5rem;
+  list-style-type: disc; 
+  font-family: inherit;
 }
 
 .terms-list li {
   font-family: Lato, sans-serif;
   font-size: clamp(1rem, 1.3vw, 1.15rem);
   margin-bottom: 0.5rem;
+}
+
+
+.terms-item {
+  margin-bottom: 6px;
+  line-height: 1.4;
+  color: #333; 
+  font-size: 15px;
 }
 
 .terms a {
