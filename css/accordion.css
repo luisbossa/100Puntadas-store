@@ -30,7 +30,7 @@
   padding: 15px 15px 13px;
   font-weight: 600;
   text-transform: uppercase;
-  font-size: clamp(1.1rem, 1.2vw, 1.2rem);
+  font-size: clamp(0.8rem, 1.2vw, 1.2rem);
   justify-content: space-between;
   align-items: center;
   letter-spacing: 1px;

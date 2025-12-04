@@ -1054,7 +1054,7 @@ em {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 7.6rem;
+  padding-top: 6.5rem;
   padding-bottom: 6em;
   display: flex;
   position: relative;
@@ -2942,6 +2942,7 @@ em {
 
 .text-style-h3.is-title {
   font-size: clamp(1.8rem, 2vw + 1rem, 2.7rem);
+  text-align: left;
 }
 
 .text-style-h3.is-title.is-big {
@@ -3523,6 +3524,8 @@ em {
   text-transform: none;
   font-family: Lato, sans-serif;
   font-size: clamp(1.1rem, 1.5vw, 1.5rem);
+  line-height: 1.2;
+  text-align: left;
   font-weight: 100;
 }
 
@@ -3562,7 +3565,8 @@ em {
 }
 
 .product-title-wrap {
-  max-width: 42ch;
+  width: 100%;
+  padding: 0 2.5em 2rem;
 }
 
 .nav-shop-grid {
@@ -3583,7 +3587,7 @@ em {
 
 .add-cart-btn-wrap {
   width: 100%;
-  justify-content: center;
+  justify-content: start;
   margin-top: 0;
   margin-bottom: 2em;
   display: flex;
@@ -3598,7 +3602,7 @@ em {
   padding: 0.7em 0.7em 0.5em;
   text-transform: uppercase;
   font-family: Hatton, Arial, sans-serif;
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
   font-weight: 400;
   transition: background-color 0.3s ease, color 0.3s ease,
     border-color 0.3s ease;
@@ -3616,13 +3620,7 @@ em {
 }
 
 .product-desc-wrap {
-  padding: 1em 2.5em 2em;
-}
-
-.product-desc-wrap.is-top {
-  margin-top: 1em;
-  margin-bottom: 1em;
-  padding-bottom: 0;
+  padding: 0 2.5em;
 }
 
 .product-rt em {
@@ -3661,7 +3659,7 @@ em {
   display: flex;
   text-align: left;
   justify-content: flex-start;
-  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+  font-size: clamp(0.8rem, 1.2vw, 1.1rem);
 }
 
 .size-btn-div {
@@ -3675,8 +3673,9 @@ em {
   max-width: 500px;
   display: flex;
   flex-direction: column;
+  padding-left: 2.5em;
   margin: 2rem auto 0 auto;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .variant-btn {
