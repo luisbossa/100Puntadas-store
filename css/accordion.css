@@ -19,7 +19,7 @@
   margin-bottom: 6px;
   line-height: 1.45;
   color: #444;
-  font-size: 0.95rem;
+  font-size: clamp(1rem, 1vw, 1.15rem); 
 }
 
 .accordion-header {
@@ -27,7 +27,7 @@
   background: none;
   border: none;
   padding: 15px;
-  font-size: clamp(0.9rem, 1.2vw, 1.3rem);
+  font-size: clamp(1.1rem, 1.2vw, 1.3rem);
   font-weight: 600;
   display: flex;
   justify-content: space-between;
@@ -55,4 +55,5 @@
   padding: 0 15px 15px;
   line-height: 1.4;
   color: #444;
+  font-size: clamp(1rem, 1vw, 1.15rem); 
 }
