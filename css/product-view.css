@@ -3711,7 +3711,7 @@ em {
   color: #161616;
   background-color: transparent;
   margin-right: 0.2em;
-  padding: 15px 14px 11px 14px;
+  padding: 13px 13px 7px 13px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -4154,7 +4154,7 @@ em {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin: 1rem 0 0;
+  margin: 5rem 0 1rem;
 }
 
 .mini-sizeChart-btn {
@@ -4706,10 +4706,6 @@ em {
 
   .grid-2columns-50-50.grid-contact {
     grid-row-gap: 4em;
-  }
-
-  .accordion-bottom-wrap {
-    padding-right: 0;
   }
 
   .page-padding {

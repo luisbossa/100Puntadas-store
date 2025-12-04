@@ -1,7 +1,7 @@
 .accordion-section {
+  width: 100%;
   max-width: 600px;
-  margin: 3rem auto 0;
-  font-family: sans-serif;
+  margin: 6rem auto 0;
 }
 
 .accordion-item {
@@ -19,19 +19,21 @@
   margin-bottom: 6px;
   line-height: 1.45;
   color: #444;
-  font-size: clamp(1rem, 1vw, 1.15rem); 
+  font-size: clamp(1rem, 1vw, 1.15rem);
 }
 
 .accordion-header {
   width: 100%;
+  display: flex;
   background: none;
   border: none;
-  padding: 15px;
-  font-size: clamp(1.1rem, 1.2vw, 1.3rem);
+  padding: 15px 15px 10px;
   font-weight: 600;
-  display: flex;
+  text-transform: uppercase;
+  font-size: clamp(1.1rem, 1.2vw, 1.2rem);
   justify-content: space-between;
   align-items: center;
+  letter-spacing: 1px;
   cursor: pointer;
 }
 
@@ -55,5 +57,5 @@
   padding: 0 15px 15px;
   line-height: 1.4;
   color: #444;
-  font-size: clamp(1rem, 1vw, 1.15rem); 
+  font-size: clamp(1rem, 1vw, 1.15rem);
 }
