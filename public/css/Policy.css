@@ -1,7 +1,8 @@
-.section-cgv {
+.policy-section {
   width: 100%;
-  padding: clamp(4rem, 7vw, 5rem) clamp(1rem, 7vw, 8rem) 1%;
+  height: auto;
   background-color: #fcfaf6;
+  padding: 7rem clamp(1rem, 7vw, 8rem) 1%;
 }
 
 .policy-div {
@@ -40,7 +41,7 @@
 .terms-list {
   padding-left: 1.4rem;
   margin-bottom: 1.5rem;
-  list-style-type: disc; 
+  list-style-type: disc;
   font-family: inherit;
 }
 
@@ -50,11 +51,10 @@
   margin-bottom: 0.5rem;
 }
 
-
 .terms-item {
   margin-bottom: 6px;
   line-height: 1.4;
-  color: #333; 
+  color: #333;
   font-size: 15px;
 }
 

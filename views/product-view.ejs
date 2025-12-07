@@ -1,39 +1,5 @@
 <div>
-    <!-- HEADER -->
-    <div class="header">
-        <div class="logo-container">
-            <a href="/" aria-current="page" class="w-inline-block w--current">
-                <img src="/images/logo.png" loading="lazy" alt="logo 100Puntadas" class="main-logo" />
-            </a>
-        </div>
-
-        <div class="nav-links">
-            <a href="/#bikinis" class="nav-link">Bikinis</a>
-            <a href="/#jumpsuits" class="nav-link">Enterizos</a>
-            <a href="/#sets" class="nav-link">Vestidos</a>
-            <a href="/pages/sizes.html" class="nav-link">Tallas</a>
-        </div>
-
-        <button class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-
-    <div class="mobile-menu" id="mobileMenu">
-
-        <button class="close-button" id="closeMenuBtn">
-            <span></span>
-            <span></span>
-        </button>
-
-        <a href="/" class="mobile-link">Inicio</a>
-        <a href="/#bikinis" class="mobile-link">Bikinis</a>
-        <a href="/#jumpsuits" class="mobile-link">Enterizos</a>
-        <a href="/#sets" class="mobile-link">Vestidos</a>
-        <a href="/pages/sizes.html" class="mobile-link">Tallas</a>
-    </div>
+    <%- include("partials/header", { isHome: false, noCursorZone: false }) %>
 
     <!-- MODAL -->
     <div id="window-send-suggestion" class="sizechart-modal-window">
@@ -178,27 +144,31 @@
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="size-container">
-                                                                    <div class="size-title-div">
-                                                                        <span>BOTTOM STYLE</span>
-                                                                    </div>
+                                                                <div class="style-wrapper">
+                                                                    <div class="size-container">
+                                                                        <div class="size-title-div">
+                                                                            <span>BOTTOM STYLE</span>
+                                                                        </div>
 
-                                                                    <div class="size-btn-div">
-                                                                        <div class="style-div">
-                                                                            <img src="/images/regular.png"
-                                                                                class="style-img" alt="Regular">
-                                                                            <label class="style-btn">
-                                                                                <input type="radio" name="bottom-style"
-                                                                                    value="REGULAR" hidden checked>
-                                                                                REGULAR
-                                                                            </label>
-                                                                            <img src="/images/thong.png"
-                                                                                class="style-img" alt="Thong">
-                                                                            <label class="style-btn">
-                                                                                <input type="radio" name="bottom-style"
-                                                                                    value="THONG" hidden>
-                                                                                TANGA
-                                                                            </label>
+                                                                        <div class="size-btn-div">
+                                                                            <div class="style-div">
+                                                                                <img src="/images/regular.png"
+                                                                                    class="style-img" alt="Regular">
+                                                                                <label class="style-btn">
+                                                                                    <input type="radio"
+                                                                                        name="bottom-style"
+                                                                                        value="REGULAR" hidden checked>
+                                                                                    REGULAR
+                                                                                </label>
+                                                                                <img src="/images/thong.png"
+                                                                                    class="style-img" alt="Thong">
+                                                                                <label class="style-btn">
+                                                                                    <input type="radio"
+                                                                                        name="bottom-style"
+                                                                                        value="THONG" hidden>
+                                                                                    TANGA
+                                                                                </label>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -294,17 +264,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="line-divider"></div>
-                                    <div class="product-desc-wrap">
-                                        <div class="product-rt w-richtext">
-                                            <p>Material: 100% Crochet
-                                                <br />
-                                                Color: Café con negro
-                                                <br />
-                                                Hecho en Costa Rica
-                                            </p>
-                                        </div>
-                                    </div> -->
                             </div>
                         </div>
                     </div>
@@ -331,103 +290,14 @@
                 </div>
             </section>
 
-            <footer class="footer-anim-wrapper no-cursor-zone">
-                <div class="footer bk-color-black scroll-reference pointer-auto">
-                    <div class="page-padding">
-                        <div class="padding-top-bottom-l padding-footer less-padding-top-mobile">
-                            <div class="content-wrapper">
-                                <div class="grid-2columns-50-50 in-footer footer-grid">
-                                    <div id="w-node-d68bd2ec-256a-d794-fd35-ba997990bd81-40af2fd3">
-                                        <p class="footer-p">DIRECCIÓN: SAN RAMÓN, ALAJUELA</p>
-                                        <p class="footer-p">COSTA RICA.</p>
-                                        <p class="footer-p margin-t">© 100PUNTADAS, 2025</p>
-                                    </div>
-                                    <div id="w-node-_8efb8465-6605-e5eb-0a90-c721986f75c2-bc0db844"
-                                        class="text-align-right">
-                                        <p class="footer-p">
-                                            <a href="/pages/policy.html" class="link">
-                                                CONDICIONES DE VENTA
-                                            </a>
-                                        </p>
-                                        <!-- <p class="footer-p">
-                                        <a href="#" class="link">
-                                            100PUNTADAS<span class="in-line">@</span>GMAIL.COM
-                                        </a>
-                                    </p> -->
-                                        <div class="social-icons-wrapper">
-                                            <p>SIGUENOS EN:</p>
-                                            <a href="https://www.instagram.com/100puntadas_au?igsh=czZrYzJhampnMjVl"
-                                                target="_blank" class="link w-inline-block">
-                                                <img src="/images/insta.svg" loading="lazy"
-                                                    id="w-node-d68bd2ec-256a-d794-fd35-ba997990bd8e-40af2fd3" alt=""
-                                                    class="social-icon" />
-                                            </a>
-                                            <a href="https://www.pinterest.com/100Puntadas/?invite_code=2211715059af433bb26a09e07743d2e9&sender=663366357521380688"
-                                                target="_blank" class="link w-inline-block">
-                                                <img src="/images/pinterest.svg" loading="lazy"
-                                                    id="w-node-d68bd2ec-256a-d794-fd35-ba997990bd90-40af2fd3" alt=""
-                                                    class="social-icon" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div href="#" class="logo-footer-wrapper in-footer w-inline-block">
-                                    <img src="/images/footer-logo.webp" loading="lazy" alt="Footer logo"
-                                        class="image" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </div>
-    </div>
+            <script src="/js/product-view.js" type="text/javascript"></script>
+            <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
-    <footer class="footer-wrapper no-cursor-zone">
-        <div class="footer bk-color-black footer-anim">
-            <div class="page-padding">
-                <div class="padding-top-bottom-l padding-footer less-padding-top-mobile">
-                    <div class="content-wrapper">
-                        <div class="grid-2columns-50-50 in-footer footer-grid">
-                            <div id="w-node-d68bd2ec-256a-d794-fd35-ba997990bd81-40af2fd3">
-                                <p class="footer-p">DIRECCIÓN: SAN RAMÓN, ALAJUELA</p>
-                                <p class="footer-p">COSTA RICA.</p>
-                                <p class="footer-p margin-t">© 100PUNTADAS, 2025</p>
-                            </div>
-                            <div id="w-node-d68bd2ec-256a-d794-fd35-ba997990bd89-40af2fd3" class="text-align-right">
-                                <p class="footer-p">
-                                    <a href="/pages/policy.html" class="link">
-                                        CONDICIONES DE VENTA
-                                    </a>
-                                </p>
-                                <!-- <p class="footer-p">
-                                        <a href="#" class="link">
-                                            100PUNTADAS<span class="in-line">@</span>GMAIL.COM
-                                        </a>
-                                    </p> -->
-                                <div class="social-icons-wrapper">
-                                    <p>SIGUENOS EN:</p>
-                                    <a href="https://www.instagram.com/100puntadas_au?igsh=czZrYzJhampnMjVl"
-                                        target="_blank" class="link w-inline-block">
-                                        <img src="/images/insta.svg" loading="lazy"
-                                            id="w-node-d68bd2ec-256a-d794-fd35-ba997990bd8e-40af2fd3" alt=""
-                                            class="social-icon" />
-                                    </a>
-                                    <a href="https://www.pinterest.com/100Puntadas/?invite_code=2211715059af433bb26a09e07743d2e9&sender=663366357521380688"
-                                        target="_blank" class="link w-inline-block">
-                                        <img src="/images/pinterest.svg" loading="lazy"
-                                            id="w-node-d68bd2ec-256a-d794-fd35-ba997990bd90-40af2fd3" alt=""
-                                            class="social-icon" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div href="#" class="logo-footer-wrapper in-footer w-inline-block">
-                            <img src="/images/footer-logo.webp" loading="lazy" alt="" class="image" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-</div>
+            <script src="/js/accordion.js" type="text/javascript"></script>
+            <script src="/js/related.js" type="text/javascript"></script>
+            <script src="/js/slider.js" type="text/javascript"></script>
+
+            <script src="/gsap/gsap.min.js" type="text/javascript"></script>
+            <script src="/gsap/Flip.min.js" type="text/javascript"></script>
+            <script src="/gsap/CustomEase.min.js" type="text/javascript"></script>
+            <script src="/js/modal.js" type="text/javascript"></script>

@@ -1,0 +1,34 @@
+<header class="header <%= noCursorZone ? 'no-cursor-zone' : '' %>">
+    <div class="logo-container">
+        <a href="/" aria-current="page" class="w-inline-block">
+            <img src="/images/logo.png" loading="lazy" alt="logo 100Puntadas" class="main-logo" />
+        </a>
+    </div>
+
+    <div class="nav-links">
+        <a href="<%= isHome ? '#bikinis' : '/#bikinis' %>" class="nav-link">Bikinis</a>
+        <a href="<%= isHome ? '#jumpsuits' : '/#jumpsuits' %>" class="nav-link">Enterizos</a>
+        <a href="<%= isHome ? '#sets' : '/#sets' %>" class="nav-link">Vestidos</a>
+        <a href="/sizes" class="nav-link">Tallas</a>
+    </div>
+
+    <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</header>
+
+<header class="mobile-menu <%= noCursorZone ? 'no-cursor-zone' : '' %>" id="mobileMenu">
+
+    <button class="close-button" id="closeMenuBtn">
+        <span></span>
+        <span></span>
+    </button>
+
+    <a href="/" class="mobile-link">Inicio</a>
+    <a href="<%= isHome ? '#bikinis' : '/#bikinis' %>" class="mobile-link">Bikinis</a>
+    <a href="<%= isHome ? '#jumpsuits' : '/#jumpsuits' %>" class="mobile-link">Enterizos</a>
+    <a href="<%= isHome ? '#sets' : '/#sets' %>" class="mobile-link">Vestidos</a>
+    <a href="/sizes" class="mobile-link">Tallas</a>
+</header>

@@ -1068,10 +1068,6 @@ em {
   padding-bottom: 2em;
 }
 
-.padding-top-bottom-l.border-top {
-  border-top: 1px solid #d8d9da;
-}
-
 .padding-top-bottom-l.no-bottom {
   padding-bottom: 0;
 }
@@ -3254,7 +3250,7 @@ em {
 }
 
 .bk-shop.border-top {
-  border-top: 1px solid #161616;
+  border-top: 1px solid #999;
 }
 
 .hero-switch {
@@ -3645,6 +3641,10 @@ em {
 
 /*-------- BUY BTN ---------*/
 
+.style-wrapper {
+  margin-top: 1rem;
+}
+
 .size-container {
   width: 100%;
   display: grid;
@@ -3664,6 +3664,7 @@ em {
 
 .size-btn-div {
   display: flex;
+  gap: 5px;
 }
 
 .style-div {

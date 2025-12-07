@@ -1,10 +1,11 @@
-.section-cgv {
+.sizechart-section {
   width: 100%;
-  padding: clamp(4rem, 7vw, 5rem) clamp(1rem, 7vw, 8rem) 1%;
+  height: auto;
   background-color: #fcfaf6;
+  padding: 7rem clamp(1rem, 7vw, 8rem) 1%;
 }
 
-.sizechart {
+.sizechart-div {
   width: 100%;
   font-family: Lato, sans-serif;
 }
@@ -119,18 +120,17 @@
 }
 
 .sizechart-div ul {
-  list-style: none;         
-  padding-left: 0;          
+  list-style: none;
+  padding-left: 0;
 }
 
 .sizechart-div li {
-  margin-bottom: 10px;      
+  margin-bottom: 10px;
 }
 
 .sizechart-div li p {
-  margin: 0;               
+  margin: 0;
 }
-
 
 .sizechart-note {
   font-size: clamp(1rem, 1vw + 0.3rem, 1.1rem);
@@ -147,7 +147,7 @@
 }
 
 @media (max-width: 600px) {
-  .section-cgv {
+  .sizeChart-section {
     padding-left: 15px;
     padding-right: 15px;
   }

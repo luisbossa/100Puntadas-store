@@ -1,163 +1,37 @@
-<!DOCTYPE html>
-<html data-wf-domain="coursaint-recycle.webflow.io" data-wf-page="605cba953f1b400169ac3f7d"
-    data-wf-site="60546f55587841a209183eb4" data-wf-status="1">
+<div>
+    <%- include("partials/header", { isHome: false, noCursorZone: false }) %>
 
-<head>
-    <meta charset="utf-8" />
-    <title>Terms and conditions</title>
-    <meta content="Online pop up 2021 : pantalons, sacs, chemises, prix unique - 60€" name="description" />
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta content="Webflow" name="generator" />
-    <link href="/css/global.css" rel="stylesheet" type="text/css" />
-    <link href="/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="/css/Header.css" rel="stylesheet" type="text/css" />
-    <link href="/css/Policy.css" rel="stylesheet" type="text/css" />
-    <link href="/css/Footer.css" rel="stylesheet" type="text/css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        WebFont.load({
-            google: {
-                families: ["Oswald:200,300,400,500,600,700"]
-            }
-        });
-    </script>
+        <div id="smooth-wrapper" class="smooth-wrapper">
+            <div id="smooth-content" class="page-wrapper overflow-none">
 
-    <script type="text/javascript">
-        ! function (o, c) {
-            var n = c.documentElement,
-                t = " w-mod-";
-            n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
-        }(window, document);
-    </script>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+                <section class="policy-section">
+                    <h2 class="maintitle-div">
+                        <p class="maintitle-text">CONDICIONES DE</p>
+                        <p class="maintitle-text">VENTA</p>
+                    </h2>
 
-    <script type="text/javascript">
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'G-BY32EGLDCP', {
-            'anonymize_ip': false
-        });
-    </script>
-    <script type="text/javascript">
-        window.__WEBFLOW_CURRENCY_SETTINGS = {
-            "currencyCode": "EUR",
-            "$init": true,
-            "symbol": "€",
-            "decimal": ",",
-            "fractionDigits": 2,
-            "group": " ",
-            "template": "{{wf {\"path\":\"symbol\",\"type\":\"PlainText\"} }} {{wf {\"path\":\"amount\",\"type\":\"CommercePrice\"} }} {{wf {\"path\":\"currencyCode\",\"type\":\"PlainText\"} }}",
-            "hideDecimalForWholeNumbers": false
-        };
-    </script>
-</head>
-
-<body class="body-3">
-
-    <!-- HEADER -->
-    <div class="header">
-        <div class="logo-container">
-            <a href="/" aria-current="page" class="w-inline-block w--current">
-                <img src="/images/logo.png" loading="lazy" alt="logo 100Puntadas" class="main-logo" />
-            </a>
-        </div>
-
-        <div class="nav-links">
-            <a href="/#bikinis" class="nav-link">Bikinis</a>
-            <a href="/#jumpsuits" class="nav-link">Enterizos</a>
-            <a href="/#sets" class="nav-link">Vestidos</a>
-            <a href="/pages/sizes.html" class="nav-link">Tallas</a>
-        </div>
-
-        <button class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-    </div>
-
-    <div class="mobile-menu" id="mobileMenu">
-
-        <button class="close-button" id="closeMenuBtn">
-            <span></span>
-            <span></span>
-        </button>
-
-        <a href="/" class="mobile-link">Inicio</a>
-        <a href="/#bikinis" class="mobile-link">Bikinis</a>
-        <a href="/#jumpsuits" class="mobile-link">Enterizos</a>
-        <a href="/#sets" class="mobile-link">Vestidos</a>
-        <a href="/pages/sizes.html" class="mobile-link">Tallas</a>
-    </div>
+                    <div class="policy-div">
+                        <h2 class="terms-title">Política de cambio y retorno</h2>
+                        <ul class="terms-list">
+                            <li class="terms-item">Aceptamos cambios por talla</li>
+                            <li class="terms-item">No aceptamos cambios por cambio de opinión</li>
+                            <li class="terms-item">No aceptamos cambios ni devoluciones por prendas en descuento</li>
+                            <li class="terms-item">Cualquier problema con la prenda debe ser notificado lo antes posible
+                            </li>
+                            <li class="terms-item">Al hacer una devolución, la prenda debe estar en la condición
+                                original
+                                que
+                                fue
+                                enviada</li>
+                            <li class="terms-item">El comprador es responsable de cubrir costos de envío por cambios de
+                                talla
+                            </li>
+                        </ul>
 
 
-    <div class="section-cgv wf-section">
-
-        <h2 class="maintitle-div">
-            <p class="maintitle-text">CONDICIONES DE</p>
-            <p class="maintitle-text">VENTA</p>
-        </h2>
-
-        <section class="policy-div">
-
-            <h2 class="terms-title">Política de cambio y retorno</h2>
-            <ul class="terms-list">
-                <li class="terms-item">Aceptamos cambios por talla</li>
-                <li class="terms-item">No aceptamos cambios por cambio de opinión</li>
-                <li class="terms-item">No aceptamos cambios ni devoluciones por prendas en descuento</li>
-                <li class="terms-item">Cualquier problema con la prenda debe ser notificado lo antes posible</li>
-                <li class="terms-item">Al hacer una devolución, la prenda debe estar en la condición original que fue
-                    enviada</li>
-                <li class="terms-item">El comprador es responsable de cubrir costos de envío por cambios de talla</li>
-            </ul>
-
-
-            <h2 class="terms-title">Envíos</h2>
-            <p class="terms-text">
-                Envíos rápidos y seguros por medio de correos de Costa Rica.
-            </p>
-
-        </section>
-
-        <div id="footer" class="container w-container">
-            <!-- DINAMIC CONTENT -->
-        </div>
-    </div>
-
-    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=60546f55587841a209183eb4"
-        type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-        crossorigin="anonymous"></script>
-
-    <script>
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-
-        gtag('config', 'GA_MEASUREMENT_ID');
-    </script>
-
-    <style>
-        body:hover .cursor {
-            opacity: 100%;
-        }
-
-        .cursor {
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-            position: absolute;
-            opacity: 0%;
-        }
-    </style>
-
-    <script src="/js/res-menu.js"></script>
-    <script src="/js/layout.js"></script>
-</body>
-
-</html>
+                        <h2 class="terms-title">Envíos</h2>
+                        <p class="terms-text">
+                            Envíos rápidos y seguros por medio de correos de Costa Rica.
+                        </p>
+                    </div>
+                </section>
