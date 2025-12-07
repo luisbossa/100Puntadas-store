@@ -4402,3 +4402,21 @@
   -ms-grid-column-span: 1;
   grid-column-end: span 1;
 }
+
+.cursor {
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+body:hover .cursor {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .cursor {
+    display: none !important;
+  }
+}
