@@ -3,7 +3,7 @@ const bikinis = [
     nombre: "BLACK COFFEE",
     precio: "30.000 ₡",
     imagen: "/images/swimwears/swimwear-1.webp",
-    link: "/pages/product-view.html",
+    link: "/product1",
     stock: 1,
     discount: 0,
     oldPrice: "30.000 ₡",
