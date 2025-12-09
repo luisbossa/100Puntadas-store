@@ -173,9 +173,9 @@
 
 .cart-count {
   position: absolute;
-  top: -5px;
+  top: -3px;
   right: -25px;
-  background: #636363;
+  background: #161616;
   color: #fff;
   width: 20px;
   height: 20px;
@@ -185,7 +185,7 @@
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  padding-top: 3px;
+  padding-top: 0.14rem;
 }
 
 .cart-quantity {
