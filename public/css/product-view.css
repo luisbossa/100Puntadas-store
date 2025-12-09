@@ -3553,7 +3553,7 @@ em {
   text-align: center;
   flex-direction: column;
   align-items: center;
-  padding: 2.5em 2em 4em;
+  padding: 1.3em 2em 4em;
   display: flex;
   position: -webkit-sticky;
   position: sticky;
@@ -3592,6 +3592,7 @@ em {
 .btns-wrapper {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 15px;
 }
@@ -3676,7 +3677,8 @@ em {
 .style-div {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+  flex-wrap: wrap;
   gap: 10px;
 }
 
