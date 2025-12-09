@@ -1,5 +1,6 @@
 exports.home = (req, res) => {
-  res.render("index", {});
+  const { paymentIntentId } = req.query; 
+  res.render("index", { paymentIntentId });
 };
 
 exports.policy = (req, res) => {

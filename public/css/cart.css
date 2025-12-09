@@ -1,0 +1,248 @@
+/* ==========================
+   OVERLAY OSCURO
+========================== */
+.cart-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 999;
+}
+
+.cart-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ==========================
+   PANEL DEL CARRITO
+========================== */
+.cart-panel {
+  position: fixed;
+  right: -400px;
+  top: 0;
+  width: 360px;
+  height: 100vh;
+  background: #ffffff;
+  box-shadow: -3px 0 12px rgba(0, 0, 0, 0.18);
+  transition: right 0.35s ease;
+  z-index: 1000;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-panel.open {
+  right: 0;
+}
+
+/* ==========================
+   HEADER DEL CARRITO
+========================== */
+.cart-header {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.cart-header h2 {
+  font-family: Hatton, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Botón de cerrar en esquina */
+.cart-close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+  transition: transform 0.2s ease;
+}
+
+.cart-close-btn:hover {
+  transform: scale(1.2);
+}
+
+/* ==========================
+   LISTA DE PRODUCTOS
+========================== */
+.cart-items {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.cart-items::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cart-items::-webkit-scrollbar-thumb {
+  background: #cccccc;
+  border-radius: 10px;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 12px;
+  padding: 3px 0 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Imagen */
+.cart-item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* Info del producto */
+.cart-info-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: Lato, sans-serif;
+  gap: 6px;
+}
+
+.cart-heading {
+  font-family: Hatton, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.cart-info-div p {
+  margin: 0;
+  font-size: 15px;
+  color: #444;
+}
+
+/* ==========================
+   TOTAL Y FOOTER
+========================== */
+.cart-footer {
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cart-total-box {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Checkout */
+.cart-checkout-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  font-family: Lato, sans-serif;
+  text-transform: uppercase;
+  background: #161616;
+  color: #fff;
+  border-radius: 6px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.cart-checkout-btn:hover {
+  opacity: 0.85;
+}
+
+/* Animación para desaparecer el producto */
+.cart-item.fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Estilo para el botón de eliminar */
+.cart-item .delete-btn {
+  font-family: Lato, sans-serif;
+  background-color: #161616;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.cart-item .delete-btn:focus {
+  outline: none;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-btn {
+  padding: 5px 10px;
+  background-color: #ccc;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.quantity-input {
+  width: 50px;
+  text-align: center;
+  font-size: 16px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Animación de desaparición al eliminar */
+.fade-out {
+  animation: fadeOut 0.3s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.quantity-btn:focus {
+  outline: none;
+}
+
+.quantity {
+  font-size: 16px;
+  margin: 0 10px;
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+@media (max-width: 480px) {
+  .cart-panel {
+    width: 100%;
+    right: -100%;
+  }
+}

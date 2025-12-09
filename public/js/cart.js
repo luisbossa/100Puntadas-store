@@ -1,0 +1,202 @@
+/* ============================================================
+   OBTENER INFORMACIÓN DEL PRODUCTO
+============================================================ */
+function getProductInfo() {
+  const name = document.getElementById("productName").textContent.trim();
+
+  // Precio (quitar ₡ y comas)
+  let priceText = document.querySelector(".prices-wrap p").textContent.trim();
+  let price = parseFloat(priceText.replace(/[₡,\. ,]/g, ""));
+
+  // Imagen principal
+  const imageElement = document.getElementById("productImage");
+  const image = imageElement ? imageElement.src : "/images/default.png";
+
+  // Radios seleccionados
+  const topSize = document.querySelector('input[name="top-size"]:checked')?.value;
+  const bottomSize = document.querySelector('input[name="bottom-size"]:checked')?.value;
+  const bottomStyle = document.querySelector('input[name="bottom-style"]:checked')?.value;
+
+  return {
+    name,
+    price,
+    image,
+    topSize,
+    bottomSize,
+    bottomStyle,
+    quantity: 1,
+  };
+}
+
+/* ============================================================
+   FUNCIONES DEL CARRITO
+============================================================ */
+
+// Obtener carrito desde localStorage
+function getCart() {
+  return JSON.parse(localStorage.getItem("cartItems")) || [];
+}
+
+// Guardar carrito
+function saveCart(cart) {
+  localStorage.setItem("cartItems", JSON.stringify(cart));
+}
+
+// Calcular total
+function calculateTotal(cart) {
+  return cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+}
+
+/* ============================================================
+   INICIALIZACIÓN
+============================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  const panel = document.getElementById("cartPanel");
+  const overlay = document.getElementById("cartOverlay");
+  const closeBtn = document.getElementById("closeCartBtn");
+  const addBtn = document.getElementById("addToCartBtn");
+
+  // Seleccionamos el botón para abrir el carrito
+  const openCartBtn = document.getElementById("openCartBtn");
+
+  /* ===================================
+     RENDER DEL CARRITO
+  ===================================== */
+  window.renderCart = function () {
+    let cart = getCart();
+
+    const container = document.querySelector(".cart-items");
+    const totalBox = document.getElementById("cartTotal");
+
+    container.innerHTML = "";
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      total += item.price * item.quantity;
+
+      container.innerHTML += `
+        <div class="cart-item" data-index="${index}">
+            <img src="${item.image}">
+            <div class="cart-info-div">
+                <h3 class="cart-heading">${item.name}</h3>
+                <p>Talla top: ${item.topSize}</p>
+                <p>Talla bottom: ${item.bottomSize}</p>
+                <p>Estilo: ${item.bottomStyle}</p>
+                <p>₡${item.price.toLocaleString("es-CR")}</p>
+                <div class="quantity-controls">
+                    <button class="quantity-btn decrease">-</button>
+                    <input type="number" class="quantity-input" value="${item.quantity}" min="1" />
+                    <button class="quantity-btn increase">+</button>
+                </div>
+            </div>
+            <button class="delete-btn">Eliminar</button>
+        </div>
+      `;
+    });
+
+    totalBox.textContent = total.toLocaleString("es-CR");
+
+    // Agregar funcionalidad de eliminar
+    const deleteButtons = document.querySelectorAll(".delete-btn");
+    deleteButtons.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const cartItem = e.target.closest(".cart-item"); // Seleccionar el item
+        const index = cartItem.getAttribute("data-index"); // Obtener el índice del producto en el carrito
+
+        // Animación para desaparecer
+        cartItem.classList.add("fade-out");
+
+        // Después de la animación, eliminar el producto
+        setTimeout(() => {
+          let cart = getCart();
+          cart.splice(index, 1); // Eliminar producto del carrito
+          saveCart(cart); // Guardar el carrito actualizado
+
+          // Volver a renderizar el carrito
+          renderCart();
+        }, 300); // Tiempo de animación (300ms)
+      });
+    });
+
+    // Agregar funcionalidad de aumentar/disminuir cantidad
+    const quantityBtns = document.querySelectorAll(".quantity-btn");
+    quantityBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const cartItem = e.target.closest(".cart-item"); // Seleccionar el item
+        const index = cartItem.getAttribute("data-index"); // Obtener el índice del producto en el carrito
+        let cart = getCart();
+        const item = cart[index];
+
+        if (e.target.classList.contains("increase")) {
+          item.quantity += 1; // Aumentar cantidad
+        } else if (e.target.classList.contains("decrease") && item.quantity > 1) {
+          item.quantity -= 1; // Disminuir cantidad
+        }
+
+        saveCart(cart); // Guardar carrito actualizado
+        renderCart(); // Volver a renderizar el carrito
+
+        // Actualizar la cantidad en el input
+        const quantityElement = cartItem.querySelector(".quantity-input");
+        quantityElement.value = item.quantity;
+      });
+    });
+
+    // Actualizar la cantidad cuando se escriba directamente en el input
+    const quantityInputs = document.querySelectorAll(".quantity-input");
+    quantityInputs.forEach((input) => {
+      input.addEventListener("input", (e) => {
+        const cartItem = e.target.closest(".cart-item"); // Seleccionar el item
+        const index = cartItem.getAttribute("data-index"); // Obtener el índice del producto en el carrito
+        let cart = getCart();
+        const item = cart[index];
+
+        // Asegurar que la cantidad sea un número mayor o igual a 1
+        const newQuantity = Math.max(1, parseInt(e.target.value));
+
+        item.quantity = newQuantity; // Actualizar la cantidad
+        saveCart(cart); // Guardar carrito actualizado
+        renderCart(); // Volver a renderizar el carrito
+      });
+    });
+  };
+
+  /* ===================================
+     ABRIR Y CERRAR PANEL
+  ===================================== */
+  window.openCart = function () {
+    panel.classList.add("open");
+    overlay.classList.add("show");
+    renderCart();
+  };
+
+  closeBtn.addEventListener("click", () => {
+    panel.classList.remove("open");
+    overlay.classList.remove("show");
+  });
+
+  overlay.addEventListener("click", () => {
+    panel.classList.remove("open");
+    overlay.classList.remove("show");
+  });
+
+  /* ===================================
+     AGREGAR AL CARRITO
+  ===================================== */
+  addBtn.addEventListener("click", () => {
+    const product = getProductInfo();
+    let cart = getCart();
+
+    cart.push(product);
+    saveCart(cart);
+
+    console.log("CARRITO:", cart);
+
+    openCart(); // Abre el carrito después de agregar el producto
+  });
+
+  // Añadir funcionalidad al botón "Carrito"
+  openCartBtn.addEventListener("click", () => {
+    openCart(); // Abre el carrito cuando se haga clic en el botón
+  });
+});

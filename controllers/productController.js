@@ -1,3 +1,4 @@
 exports.product1 = (req, res) => {
-  res.render("product-view", {});
+  const { paymentIntentId } = req.query; 
+  res.render("product-view", { paymentIntentId }); 
 };
