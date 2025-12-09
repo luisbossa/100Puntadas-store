@@ -19,8 +19,19 @@
     </button>
 
     <button id="openCartBtn" class="cart-button">
-        Carrito
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"
+            class="cart-icon">
+            <path
+                d="M0 1a1 1 0 0 1 1-1h1.5a1 1 0 0 1 .96.73L3.89 3H14a1 1 0 0 1 .98 1.2l-1.5 6A1 1 0 0 1 12.5 11H4a1 1 0 0 1-.96-.73L1.61 2H1a1 1 0 0 1-1-1z" />
+            <circle cx="6" cy="13.5" r="1" />
+            <circle cx="11" cy="13.5" r="1" />
+        </svg>
+
+        <span class="cart-text">Carrito</span>
+
+        <span class="cart-count">0</span>
     </button>
+
 </header>
 
 <header class="mobile-menu <%= noCursorZone ? 'no-cursor-zone' : '' %>" id="mobileMenu">
@@ -36,6 +47,3 @@
     <a href="<%= isHome ? '#sets' : '/#sets' %>" class="mobile-link">Vestidos</a>
     <a href="/sizes" class="mobile-link">Tallas</a>
 </header>
-
-
-
