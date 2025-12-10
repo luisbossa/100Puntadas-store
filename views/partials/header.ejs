@@ -1,17 +1,18 @@
 <header class="header <%= noCursorZone ? 'no-cursor-zone' : '' %>">
-    <div class="logo-container">
-        <a href="/" aria-current="page" class="w-inline-block">
-            <img src="/images/logo.png" loading="lazy" alt="logo 100Puntadas" class="main-logo" />
-        </a>
-    </div>
-
+    
     <div class="nav-links">
         <a href="<%= isHome ? '#bikinis' : '/#bikinis' %>" class="nav-link">Bikinis</a>
         <a href="<%= isHome ? '#jumpsuits' : '/#jumpsuits' %>" class="nav-link">Enterizos</a>
         <a href="<%= isHome ? '#sets' : '/#sets' %>" class="nav-link">Vestidos</a>
         <a href="/sizes" class="nav-link">Tallas</a>
     </div>
-
+    
+    <div class="logo-container">
+        <a href="/" aria-current="page" class="w-inline-block">
+            <img src="/images/logo.png" loading="lazy" alt="logo 100Puntadas" class="main-logo" />
+        </a>
+    </div>
+    
     <button class="hamburger" id="hamburger">
         <span></span>
         <span></span>

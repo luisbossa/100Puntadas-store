@@ -21,6 +21,8 @@ function checkScreenWidth() {
       $(".shop-swiper").each(function (index, element) {
         let nav = $(this).find(".swiper-pagination")[0];
         mySwiper = new Swiper($(this)[0], {
+          // Your options here
+          // loop: true,
           grabCursor: true,
           slidesPerView: 1,
           slidesPerGroup: 1,
@@ -41,3 +43,20 @@ function checkScreenWidth() {
 }
 
 checkScreenWidth();
+
+window.addEventListener("resize", checkScreenWidth);
+
+// Wait for the document to be ready
+$(document).ready(function () {
+  // Select all elements with class "variant-btn"
+  $(".variant-btn").each(function () {
+    let text = $(this).text();
+    console.log(text);
+    // Check the text of the element
+    if (text === "White") {
+      $(this).addClass("is-white");
+    } else if (text === "Blue") {
+      $(this).addClass("is-blue");
+    }
+  });
+});

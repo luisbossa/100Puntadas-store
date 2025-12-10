@@ -3012,10 +3012,6 @@
   align-items: center;
 }
 
-.body-2 {
-  font-size: 1vw;
-}
-
 .add-to-cart-2 {
   position: fixed;
   left: 0%;
@@ -3787,10 +3783,6 @@
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-}
-
-.body-3 {
-  font-size: 1vw;
 }
 
 .cvg {

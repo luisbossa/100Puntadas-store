@@ -5,9 +5,6 @@ const btn = document.querySelector("#btn-sizeChart");
 window.openSizeChart = function () {
   modalWindow.style.display = "flex";
 
-  // Añadir la clase no-scroll al body
-  document.body.classList.add("no-scroll");
-
   gsap.set(modal, { clearProps: "all" });
 
   modal.style.overflow = "hidden";
@@ -57,9 +54,6 @@ window.openSizeChart = function () {
 
 window.closeSizeChart = function () {
   modal.style.overflow = "hidden";
-
-  // Eliminar la clase no-scroll del body
-  document.body.classList.remove("no-scroll");
 
   const btnRect = btn.getBoundingClientRect();
   const state = Flip.getState(modal);

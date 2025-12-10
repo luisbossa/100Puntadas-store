@@ -525,7 +525,6 @@ a {
 
 body {
   color: #161616;
-  background-color: #fcfaf6;
   font-family: Hatton, Arial, sans-serif;
   font-size: 1vw;
   line-height: 1;
@@ -1700,10 +1699,6 @@ em {
   justify-content: center;
   align-items: flex-start;
   display: flex;
-}
-
-.body.is-shop {
-  background-color: #eee;
 }
 
 .grid-news {
@@ -4274,10 +4269,6 @@ em {
     width: 100%;
   }
 
-  .body.is-shop {
-    font-size: 1.25vw;
-  }
-
   .logo-item {
     width: 17em;
   }
@@ -4482,10 +4473,6 @@ em {
 
   .img-process {
     width: 80%;
-  }
-
-  .body.is-shop {
-    font-size: 1.8vw;
   }
 
   .grid-news {
@@ -4819,10 +4806,6 @@ em {
   .line-underlink.is-active {
     height: 1px;
     margin-top: 0;
-  }
-
-  .body.is-shop {
-    font-size: 2.8vw;
   }
 
   .grid-news {

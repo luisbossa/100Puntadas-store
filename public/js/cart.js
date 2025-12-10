@@ -13,9 +13,15 @@ function getProductInfo() {
   const image = imageElement ? imageElement.src : "/images/default.png";
 
   // Radios seleccionados
-  const topSize = document.querySelector('input[name="top-size"]:checked')?.value;
-  const bottomSize = document.querySelector('input[name="bottom-size"]:checked')?.value;
-  const bottomStyle = document.querySelector('input[name="bottom-style"]:checked')?.value;
+  const topSize = document.querySelector(
+    'input[name="top-size"]:checked'
+  )?.value;
+  const bottomSize = document.querySelector(
+    'input[name="bottom-size"]:checked'
+  )?.value;
+  const bottomStyle = document.querySelector(
+    'input[name="bottom-style"]:checked'
+  )?.value;
 
   return {
     name,
@@ -67,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const container = document.querySelector(".cart-items");
     const totalBox = document.getElementById("cartTotal");
-    const emptyCartMessage = document.getElementById("emptyCartMessage");  // Elemento para el mensaje vacío
+    const emptyCartMessage = document.getElementById("emptyCartMessage"); // Elemento para el mensaje vacío
 
     container.innerHTML = ""; // Limpiar el contenedor antes de agregar los productos
     totalBox.textContent = "₡0"; // Si no hay productos, no mostrar total
@@ -75,15 +81,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Mostrar mensaje de carrito vacío si no hay productos
     if (cart.length === 0) {
-      emptyCartMessage.style.display = "block";  // Mostrar mensaje
+      emptyCartMessage.style.display = "block"; // Mostrar mensaje
     } else {
-      emptyCartMessage.style.display = "none";  // Ocultar mensaje si hay productos
+      emptyCartMessage.style.display = "none"; // Ocultar mensaje si hay productos
       cart.forEach((item, index) => {
         total += item.price * item.quantity;
 
         container.innerHTML += `
           <div class="cart-item" data-index="${index}">
-              <img src="${item.image}">
+              <img src="${item.image}" loading="eager">
               <div class="cart-info-div">
                   <h3 class="cart-heading">${item.name}</h3>
                   <p>Talla top: ${item.topSize}</p>
@@ -92,11 +98,17 @@ document.addEventListener("DOMContentLoaded", () => {
                   <p>₡${item.price.toLocaleString("es-CR")}</p>
                   <div class="quantity-controls">
                       <button class="quantity-btn decrease">-</button>
-                      <input type="number" class="quantity-input" value="${item.quantity}" min="1" />
+                      <input type="number" class="quantity-input" value="${
+                        item.quantity
+                      }" min="1" />
                       <button class="quantity-btn increase">+</button>
                   </div>
               </div>
-              <button class="delete-btn">Eliminar</button>
+              <button class="delete-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 6h18M19 6l-1 14H6L5 6H4M8 10v6M12 10v6M16 10v6M3 6h18"></path>
+                </svg>
+              </button>
           </div>
         `;
       });
@@ -137,7 +149,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (e.target.classList.contains("increase")) {
           item.quantity += 1; // Aumentar cantidad
-        } else if (e.target.classList.contains("decrease") && item.quantity > 1) {
+        } else if (
+          e.target.classList.contains("decrease") &&
+          item.quantity > 1
+        ) {
           item.quantity -= 1; // Disminuir cantidad
         }
 
@@ -173,26 +188,17 @@ document.addEventListener("DOMContentLoaded", () => {
      ABRIR Y CERRAR PANEL
   ===================================== */
   window.openCart = function () {
-    // Agregar la clase no-scroll al body cuando se abra el carrito
-    document.body.classList.add("no-scroll");
-
     panel.classList.add("open");
     overlay.classList.add("show");
     renderCart();
   };
 
   closeBtn.addEventListener("click", () => {
-    // Eliminar la clase no-scroll del body cuando se cierre el carrito
-    document.body.classList.remove("no-scroll");
-
     panel.classList.remove("open");
     overlay.classList.remove("show");
   });
 
   overlay.addEventListener("click", () => {
-    // Eliminar la clase no-scroll del body cuando se cierre el carrito
-    document.body.classList.remove("no-scroll");
-
     panel.classList.remove("open");
     overlay.classList.remove("show");
   });

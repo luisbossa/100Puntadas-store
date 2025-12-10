@@ -40,6 +40,14 @@ body {
   user-select: none;
 }
 
+/* ==========================
+   EVITAR EL SCROLL DEL BODY
+========================== */
+.no-scroll {
+  overflow: hidden; 
+}
+
+
 article,
 aside,
 details,
