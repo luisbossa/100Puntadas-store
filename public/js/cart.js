@@ -53,6 +53,11 @@ function calculateTotal(cart) {
   return cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 }
 
+// Calcular la cantidad total de productos en el carrito
+function calculateTotalQuantity(cart) {
+  return cart.reduce((acc, item) => acc + item.quantity, 0);
+}
+
 /* ============================================================
    INICIALIZACIÓN
 ============================================================ */
@@ -64,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Seleccionamos el botón para abrir el carrito
   const openCartBtn = document.getElementById("openCartBtn");
+  const cartCount = document.querySelector(".cart-count"); // Elemento donde se muestra el total de productos
 
   /* ===================================
      RENDER DEL CARRITO
@@ -98,6 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   <p>₡${item.price.toLocaleString("es-CR")}</p>
                   <div class="quantity-controls">
                       <button class="quantity-btn decrease">-</button>
+
                       <input type="number" class="quantity-input" value="${
                         item.quantity
                       }" min="1" />
@@ -115,6 +122,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     totalBox.textContent = total.toLocaleString("es-CR");
+
+    // Actualizar el total de productos en el carrito
+    cartCount.textContent = calculateTotalQuantity(cart);
 
     // Agregar funcionalidad de eliminar
     const deleteButtons = document.querySelectorAll(".delete-btn");
