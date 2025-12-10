@@ -174,8 +174,8 @@
 /* Estilo para el botón de eliminar */
 .delete-btn {
   position: absolute;
-  top: 0;
   right: 0;
+  bottom: 10px;
   background: transparent;
   border: none;
   cursor: pointer;
