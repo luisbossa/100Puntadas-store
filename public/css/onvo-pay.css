@@ -1,0 +1,43 @@
+/* onvo-pay.css */
+
+/* Estilo del body de la página de pago */
+.onvo-body {
+  font-family: "Arial", sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  margin: 0;
+  padding: 2rem;
+}
+
+/* Título de la página */
+.onvo-heading {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Contenedor del checkout de OnvoPay */
+.onvo-checkout-container {
+  width: 100%;
+  max-width: 800px;
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 500px) {
+  .onvo-checkout-container {
+    width: 100%;
+    padding: 1rem;
+  }
+  .onvo-heading {
+    font-size: 1.5rem;
+  }
+}
