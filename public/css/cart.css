@@ -29,7 +29,7 @@
   box-shadow: -3px 0 12px rgba(0, 0, 0, 0.18);
   transition: right 0.35s ease;
   z-index: 1000;
-  padding: 22px;
+  padding: 22px 22px 35px;
   display: flex;
   flex-direction: column;
 }
