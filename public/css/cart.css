@@ -25,7 +25,7 @@
   top: 0;
   width: 360px;
   height: 100vh;
-  background: #FCFAF6;
+  background: #fcfaf6;
   box-shadow: -3px 0 12px rgba(0, 0, 0, 0.18);
   transition: right 0.35s ease;
   z-index: 1000;
@@ -233,9 +233,17 @@
   margin: 0 10px;
 }
 
-/* ==========================
-   RESPONSIVE
-========================== */
+/********************/
+
+.emptyCartMessage {
+  display: none;
+  color: #666;
+  text-align: center;
+  font-size: 1.1rem;
+  font-family: Lato, sans-serif;
+  margin: 20px 0;
+}
+
 @media (max-width: 480px) {
   .cart-panel {
     width: 100%;

@@ -67,32 +67,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const container = document.querySelector(".cart-items");
     const totalBox = document.getElementById("cartTotal");
+    const emptyCartMessage = document.getElementById("emptyCartMessage");  // Elemento para el mensaje vacío
 
-    container.innerHTML = "";
+    container.innerHTML = ""; // Limpiar el contenedor antes de agregar los productos
+    totalBox.textContent = "₡0"; // Si no hay productos, no mostrar total
     let total = 0;
 
-    cart.forEach((item, index) => {
-      total += item.price * item.quantity;
+    // Mostrar mensaje de carrito vacío si no hay productos
+    if (cart.length === 0) {
+      emptyCartMessage.style.display = "block";  // Mostrar mensaje
+    } else {
+      emptyCartMessage.style.display = "none";  // Ocultar mensaje si hay productos
+      cart.forEach((item, index) => {
+        total += item.price * item.quantity;
 
-      container.innerHTML += `
-        <div class="cart-item" data-index="${index}">
-            <img src="${item.image}">
-            <div class="cart-info-div">
-                <h3 class="cart-heading">${item.name}</h3>
-                <p>Talla top: ${item.topSize}</p>
-                <p>Talla bottom: ${item.bottomSize}</p>
-                <p>Estilo: ${item.bottomStyle}</p>
-                <p>₡${item.price.toLocaleString("es-CR")}</p>
-                <div class="quantity-controls">
-                    <button class="quantity-btn decrease">-</button>
-                    <input type="number" class="quantity-input" value="${item.quantity}" min="1" />
-                    <button class="quantity-btn increase">+</button>
-                </div>
-            </div>
-            <button class="delete-btn">Eliminar</button>
-        </div>
-      `;
-    });
+        container.innerHTML += `
+          <div class="cart-item" data-index="${index}">
+              <img src="${item.image}">
+              <div class="cart-info-div">
+                  <h3 class="cart-heading">${item.name}</h3>
+                  <p>Talla top: ${item.topSize}</p>
+                  <p>Talla bottom: ${item.bottomSize}</p>
+                  <p>Estilo: ${item.bottomStyle}</p>
+                  <p>₡${item.price.toLocaleString("es-CR")}</p>
+                  <div class="quantity-controls">
+                      <button class="quantity-btn decrease">-</button>
+                      <input type="number" class="quantity-input" value="${item.quantity}" min="1" />
+                      <button class="quantity-btn increase">+</button>
+                  </div>
+              </div>
+              <button class="delete-btn">Eliminar</button>
+          </div>
+        `;
+      });
+    }
 
     totalBox.textContent = total.toLocaleString("es-CR");
 
@@ -165,17 +173,26 @@ document.addEventListener("DOMContentLoaded", () => {
      ABRIR Y CERRAR PANEL
   ===================================== */
   window.openCart = function () {
+    // Agregar la clase no-scroll al body cuando se abra el carrito
+    document.body.classList.add("no-scroll");
+
     panel.classList.add("open");
     overlay.classList.add("show");
     renderCart();
   };
 
   closeBtn.addEventListener("click", () => {
+    // Eliminar la clase no-scroll del body cuando se cierre el carrito
+    document.body.classList.remove("no-scroll");
+
     panel.classList.remove("open");
     overlay.classList.remove("show");
   });
 
   overlay.addEventListener("click", () => {
+    // Eliminar la clase no-scroll del body cuando se cierre el carrito
+    document.body.classList.remove("no-scroll");
+
     panel.classList.remove("open");
     overlay.classList.remove("show");
   });
