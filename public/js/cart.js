@@ -107,7 +107,9 @@ document.addEventListener("DOMContentLoaded", () => {
                   <p>₡${item.price.toLocaleString("es-CR")}</p>
                   <div class="quantity-controls">
                       <button class="quantity-btn decrease">-</button>
-                      <input type="number" class="quantity-input" value="${item.quantity}" min="1" />
+                      <input type="number" class="quantity-input" value="${
+                        item.quantity
+                      }" min="1" />
                       <button class="quantity-btn increase">+</button>
                   </div>
               </div>
@@ -223,13 +225,53 @@ document.addEventListener("DOMContentLoaded", () => {
     cart.push(product);
     saveCart(cart);
 
-    console.log("CARRITO:", cart);
-
     openCart(); // Abre el carrito después de agregar el producto
   });
 
   // Añadir funcionalidad al botón "Carrito"
   openCartBtn.addEventListener("click", () => {
-    openCart(); 
+    openCart();
   });
+});
+
+// Función para crear el paymentIntent
+async function createPaymentIntent() {
+  const cart = getCart();
+
+  // Obtener el nombre del primer producto del carrito
+  const productName = cart.length > 0 ? cart[0].name : "Producto";
+
+  // Calcular el total real del carrito
+  const amount = calculateTotal(cart);
+
+  // Enviar la solicitud al backend
+  const response = await fetch("/create-intent", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      amount,
+      productName, // 👉 ENVIAMOS EL NOMBRE AL BACKEND
+    }),
+  });
+
+  const data = await response.json();
+
+  if (data.ok) {
+    const paymentIntentId = data.paymentIntentId;
+
+    // Ahora redirigimos al usuario a la página de pago
+    window.location.href = `/payment?paymentIntentId=${paymentIntentId}&productName=${encodeURIComponent(
+      productName
+    )}`;
+  } else {
+    alert("Error al crear el pago, por favor intente de nuevo.");
+  }
+}
+
+// Llama a la función cuando el usuario hace clic en el botón de "Finalizar compra"
+document.querySelector(".cart-checkout-btn").addEventListener("click", (e) => {
+  e.preventDefault();
+  createPaymentIntent();
 });
