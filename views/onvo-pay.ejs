@@ -22,7 +22,6 @@
             paymentIntentId: paymentIntentId,
             paymentType: "one_time",
             onSuccess: (result) => {
-                console.log("Pago exitoso:", result);
                 window.close();
             },
             onError: (err) => {
