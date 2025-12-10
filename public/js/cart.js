@@ -71,6 +71,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const openCartBtn = document.getElementById("openCartBtn");
   const cartCount = document.querySelector(".cart-count"); // Elemento donde se muestra el total de productos
 
+  // Actualizar el contador de productos en el carrito al cargar la página
+  cartCount.textContent = calculateTotalQuantity(getCart());
+
   /* ===================================
      RENDER DEL CARRITO
   ===================================== */
@@ -104,10 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   <p>₡${item.price.toLocaleString("es-CR")}</p>
                   <div class="quantity-controls">
                       <button class="quantity-btn decrease">-</button>
-
-                      <input type="number" class="quantity-input" value="${
-                        item.quantity
-                      }" min="1" />
+                      <input type="number" class="quantity-input" value="${item.quantity}" min="1" />
                       <button class="quantity-btn increase">+</button>
                   </div>
               </div>
@@ -230,6 +230,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Añadir funcionalidad al botón "Carrito"
   openCartBtn.addEventListener("click", () => {
-    openCart(); // Abre el carrito cuando se haga clic en el botón
+    openCart(); 
   });
 });

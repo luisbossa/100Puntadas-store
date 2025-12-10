@@ -161,16 +161,16 @@
 }
 
 .cart-icon {
-  width: 17px;
-  height: 17px;
+  width: 32px;
+  height: 32px;
   color: #1b1b1b;
 }
 
 .cart-count {
   position: absolute;
-  top: -3px;
-  right: -25px;
-  background: #161616;
+  top: 4.4px;
+  right: 5px;
+  background: transparent;
   color: #fff;
   width: 20px;
   height: 20px;

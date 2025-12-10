@@ -51,7 +51,6 @@ $(document).ready(function () {
   // Select all elements with class "variant-btn"
   $(".variant-btn").each(function () {
     let text = $(this).text();
-    console.log(text);
     // Check the text of the element
     if (text === "White") {
       $(this).addClass("is-white");
