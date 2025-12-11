@@ -9,28 +9,32 @@
 </head>
 
 <body class="onvo-body">
-    <h1 class="onvo-heading">Realiza tu pago</h1>
-    <div id="onvo-checkout-container" class="onvo-checkout-container"></div>
+    <div class="onvo-wrapper">
+        <div class="onvo-heading-div">
+            <h1 class="onvo-heading">Realiza tu pago</h1>
+        </div>
+        <div id="onvo-checkout-container" class="onvo-checkout-container"></div>
 
-    <script src="https://sdk.onvopay.com/sdk.js"></script>
+        <script src="https://sdk.onvopay.com/sdk.js"></script>
 
-    <script>
-        const paymentIntentId = "<%= paymentIntentId %>";
+        <script>
+            const paymentIntentId = "<%= paymentIntentId %>";
 
-        const onvoInstance = onvo.pay({
-            publicKey: "<%= ONVO_PUBLIC_KEY %>",
-            paymentIntentId: paymentIntentId,
-            paymentType: "one_time",
-            onSuccess: (result) => {
-                window.close();
-            },
-            onError: (err) => {
-                console.error("Error en el pago:", err);
-            },
-        });
+            const onvoInstance = onvo.pay({
+                publicKey: "<%= ONVO_PUBLIC_KEY %>",
+                paymentIntentId: paymentIntentId,
+                paymentType: "one_time",
+                onSuccess: (result) => {
+                    window.close();
+                },
+                onError: (err) => {
+                    console.error("Error en el pago:", err);
+                },
+            });
 
-        onvoInstance.render("#onvo-checkout-container");
-    </script>
+            onvoInstance.render("#onvo-checkout-container");
+        </script>
+    </div>
 </body>
 
 </html>

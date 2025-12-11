@@ -10,31 +10,48 @@
   padding: 2rem;
 }
 
-/* Título de la página */
+.onvo-wrapper {
+  width: 100%;
+  max-width: 800px;
+  background-color: #fff;
+  padding: 0 1.5rem 1.5rem;
+}
+
+.onvo-heading-div {
+  width: 100%;
+  padding: 1rem 0;
+}
+
 .onvo-heading {
   font-family: Hatton, Arial, sans-serif;
   font-size: 2rem;
   color: #333;
-  margin-bottom: 2rem;
+  margin: 0;
   text-align: center;
 }
 
-/* Contenedor del checkout de OnvoPay */
 .onvo-checkout-container {
   width: 100%;
-  max-width: 800px;
-  background-color: #fff;
-  padding: 1.5rem;
-  /* border-radius: 10px;
-  border: 1px solid #999; */
+  margin: 0 auto;
 }
 
-/* Responsivo para pantallas pequeñas */
 @media (max-width: 500px) {
-  .onvo-checkout-container {
-    width: 100%;
-    padding: 1rem;
+  .onvo-body {
+    padding: 2rem 0;
   }
+
+  .onvo-wrapper {
+    margin-right: 0;
+  }
+
+  .onvo-checkout-container {
+    width: 98%;
+  }
+
+  .onvo-heading-div {
+    border-bottom: 1px solid #d8d9da;
+  }
+
   .onvo-heading {
     font-size: 1.5rem;
   }
