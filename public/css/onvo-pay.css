@@ -1,9 +1,6 @@
-/* onvo-pay.css */
-
-/* Estilo del body de la página de pago */
 .onvo-body {
   font-family: "Arial", sans-serif;
-  background-color: #f5f5f5;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,6 +12,7 @@
 
 /* Título de la página */
 .onvo-heading {
+  font-family: Hatton, Arial, sans-serif;
   font-size: 2rem;
   color: #333;
   margin-bottom: 2rem;
@@ -27,8 +25,8 @@
   max-width: 800px;
   background-color: #fff;
   padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  /* border-radius: 10px;
+  border: 1px solid #999; */
 }
 
 /* Responsivo para pantallas pequeñas */
