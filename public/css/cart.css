@@ -20,11 +20,11 @@
    PANEL DEL CARRITO
 ========================== */
 .cart-panel {
+  width: 360px;
+  height: 100dvh;
   position: fixed;
   right: -400px;
   top: 0;
-  width: 360px;
-  height: 100vh;
   background: #fcfaf6;
   box-shadow: -3px 0 12px rgba(0, 0, 0, 0.18);
   transition: right 0.35s ease;
