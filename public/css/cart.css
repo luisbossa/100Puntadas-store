@@ -29,7 +29,7 @@
   box-shadow: -3px 0 12px rgba(0, 0, 0, 0.18);
   transition: right 0.35s ease;
   z-index: 1000;
-  padding: 22px 22px 35px;
+  padding: 22px 22px 25px;
   display: flex;
   flex-direction: column;
 }
@@ -160,8 +160,18 @@
   transition: 0.2s ease;
 }
 
+/* Estado normal */
 .cart-checkout-btn:hover {
   opacity: 0.85;
+}
+
+/* Estado deshabilitado */
+.cart-checkout-btn.disabled {
+  pointer-events: none;        
+  opacity: 0.45;             
+  background: #aaaaaa;         
+  cursor: not-allowed;        
+  color: #ffffff;              
 }
 
 /* Animación para desaparecer el producto */
