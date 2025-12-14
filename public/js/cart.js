@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="cart-item" data-index="${index}">
             <img src="${item.image}" loading="eager">
             <div class="cart-info-div">
-              <h3>${item.name}</h3>
+              <h3 class="cart-heading">${item.name}</h3>
               <p>Top: ${item.topSize}</p>
               <p>Bottom: ${item.bottomSize}</p>
               <p>Estilo: ${item.bottomStyle}</p>
@@ -88,11 +88,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
               <div class="quantity-controls">
                 <button class="quantity-btn decrease">-</button>
-                <input type="number" class="quantity-input" value="${item.quantity}" min="1">
+                <input type="number" class="quantity-input" value="${
+                  item.quantity
+                }" min="1">
                 <button class="quantity-btn increase">+</button>
               </div>
             </div>
-            <button class="delete-btn">✕</button>
+            <button class="delete-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 6h18M19 6l-1 14H6L5 6H4M8 10v6M12 10v6M16 10v6M3 6h18"></path>
+                </svg>
+            </button>
           </div>
         `;
       });

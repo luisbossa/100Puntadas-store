@@ -3588,7 +3588,7 @@ em {
   width: 100%;
   justify-content: center;
   margin-top: 0;
-  margin-bottom: 2em;
+  margin-bottom: 2.5rem;
   display: flex;
 }
 
@@ -3675,7 +3675,7 @@ em {
 .size-btn-div {
   display: flex;
   justify-content: end;
-  gap: 5px;
+  gap: 8px;
 }
 
 .style-div {
