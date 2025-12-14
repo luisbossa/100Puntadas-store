@@ -110,11 +110,23 @@ document.addEventListener("DOMContentLoaded", () => {
     /* DELETE */
     document.querySelectorAll(".delete-btn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
-        const index = e.target.closest(".cart-item").dataset.index;
-        const cart = getCart();
-        cart.splice(index, 1);
-        saveCart(cart);
-        renderCart();
+        const cartItem = e.target.closest(".cart-item");
+        const index = cartItem.dataset.index;
+
+        // Agrega la animación
+        cartItem.classList.add("fade-out");
+
+        // Espera a que termine la animación
+        cartItem.addEventListener(
+          "animationend",
+          () => {
+            const cart = getCart();
+            cart.splice(index, 1);
+            saveCart(cart);
+            renderCart();
+          },
+          { once: true }
+        );
       });
     });
 
@@ -170,4 +182,33 @@ document.addEventListener("DOMContentLoaded", () => {
   openCartBtn?.addEventListener("click", openCart);
 
   renderCart();
+
+  /* ============================================================
+     MOBILE MENU OPEN / CLOSE (ANIMATED)
+  ============================================================ */
+  const hamburger = document.querySelector(".hamburger");
+  const mobileMenu = document.querySelector(".mobile-menu");
+  const closeMenuBtn = document.querySelector(".close-button");
+  const mobileLinks = document.querySelectorAll(".mobile-link");
+
+  function openMobileMenu() {
+    mobileMenu?.classList.add("active");
+    document.body.classList.add("no-scroll"); // si ya usas esta clase
+  }
+
+  function closeMobileMenu() {
+    mobileMenu?.classList.remove("active");
+    document.body.classList.remove("no-scroll");
+  }
+
+  /* OPEN */
+  hamburger?.addEventListener("click", openMobileMenu);
+
+  /* CLOSE */
+  closeMenuBtn?.addEventListener("click", closeMobileMenu);
+
+  /* CLOSE ON LINK CLICK */
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", closeMobileMenu);
+  });
 });

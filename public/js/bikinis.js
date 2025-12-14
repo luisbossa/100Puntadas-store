@@ -162,13 +162,14 @@ bikinis.forEach((bikini) => {
             bikini.stock === 0 ? "" : "w-condition-invisible"
           }"></div>
 
-          <img 
+          <div class="image-wrapper skeleton">
+            <img 
               alt="${bikini.nombre}" 
-              loading="eager"
               src="${bikini.imagen}"
               sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
               class="item-image"
-          />
+            />
+          </div>
         </a>
 
         <div class="soldout ${
@@ -195,4 +196,16 @@ bikinis.forEach((bikini) => {
   `;
 
   container.innerHTML += item;
+});
+
+document.querySelectorAll(".image-wrapper img").forEach((img) => {
+  const wrapper = img.parentElement;
+
+  if (img.complete) {
+    wrapper.classList.add("loaded");
+  } else {
+    img.addEventListener("load", () => {
+      wrapper.classList.add("loaded");
+    });
+  }
 });
