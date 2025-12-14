@@ -12,7 +12,7 @@
 .features-list {
   margin: 0;
   padding-left: 20px;
-  list-style-type: none;
+  list-style-type:circle;
 }
 
 .features-item {
@@ -54,7 +54,7 @@
 .acordion-p {
   font-family: Lato, sans-serif;
   text-align: left;
-  padding: 0 15px 15px;
+  padding-bottom: 10px;
   line-height: 1.4;
   color: #444;
   font-size: clamp(1rem, 1vw, 1.15rem);

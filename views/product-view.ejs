@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <!-- PRODUCT 1 -->
+    <!-- PRODUCTS -->
     <div id="smooth-wrapper" class="smooth-wrapper">
         <div id="smooth-content" class="page-wrapper overflow-none">
 
@@ -18,201 +18,83 @@
                 <div class="page-padding">
                     <div class="padding-top-bottom-l no-bottom">
                         <div class="content-wrapper">
-                            <div class="grid-split-screen is-shop shop-swiper">
-                                <div id="w-node-e9d94511-491c-3ab6-8e52-2a7c0ed37b03-43e5363c"
-                                    class="shop-imgs-product-wrap swiper-wrapper">
-                                    <div class="product-img-wrap swiper-slide">
-                                        <img id="productImage" src="/images/swimwears/swimwear-1.webp" loading="eager"
-                                            alt="Product 1"
-                                            sizes="(max-width: 479px) 91vw, (max-width: 767px) 93vw, 51vw"
-                                            class="product-img" />
-                                    </div>
-                                    <div class="product-img-wrap swiper-slide">
-                                        <img id="productImage" src="/images/products/product-1.webp" loading="eager"
-                                            alt="Product 2"
-                                            sizes="(max-width: 479px) 91vw, (max-width: 767px) 93vw, 51vw"
-                                            class="product-img" />
-                                    </div>
-                                    <div class="product-img-wrap swiper-slide">
-                                        <img src="/images/products/product-2.webp" loading="eager" alt="Product 3"
-                                            sizes="(max-width: 479px) 91vw, (max-width: 767px) 93vw, 51vw"
-                                            class="product-img" />
-                                    </div>
-                                    <div class="product-img-wrap swiper-slide">
-                                        <img src="/images/products/product-3.webp" loading="eager" alt="Product 4"
-                                            sizes="(max-width: 479px) 91vw, (max-width: 767px) 93vw, 51vw"
-                                            class="product-img" />
-                                    </div>
-                                    <div class="product-img-wrap swiper-slide">
-                                        <img src="/images/products/product-4.webp" loading="eager" alt="Product 5"
-                                            sizes="(max-width: 479px) 91vw, (max-width: 767px) 93vw, 51vw"
-                                            class="product-img" />
-                                    </div>
+                            <!-- PRODUCT PAGE -->
+                            <div class="grid-split-screen is-shop shop-swiper" id="product-page">
+
+                                <!-- IMAGES -->
+                                <div class="shop-imgs-product-wrap swiper-wrapper" id="productImages">
+                                    <!-- JS injects slides -->
                                 </div>
+
                                 <div class="swiper-pagination-wrap">
-                                    <div class="swiper-pagination">
-                                        <div class="swiper-pagination-bullet"></div>
-                                        <div class="swiper-pagination-bullet"></div>
-                                        <div class="swiper-pagination-bullet"></div>
-                                    </div>
+                                    <div class="swiper-pagination"></div>
                                 </div>
+
+                                <!-- INFO -->
                                 <div class="div-block-18">
                                     <div class="shop-item-infos-wrap">
+
                                         <div class="product-topdiv">
                                             <div class="product-title-wrap">
-                                                <h2 id="productName" class="text-style-h3 is-title">BLACK COFFE</h2>
+                                                <h2 id="productName" class="text-style-h3 is-title"></h2>
                                                 <div class="prices-wrap is-product">
-                                                    <p id="productPrice"
-                                                        data-wf-sku-bindings="%5B%7B%22from%22%3A%22f_price_%22%2C%22to%22%3A%22innerHTML%22%7D%5D"
-                                                        class="text-color-neutral-2">30.000 ₡</p>
+                                                    <p id="productPrice" class="text-color-neutral-2"></p>
                                                 </div>
                                             </div>
+
                                             <div class="product-desc-wrap is-top">
-                                                <p class="financier">Traje de baño Black Coffee con detalles
-                                                    artesanales en crochet. Diseñado para brindar estilo y un
-                                                    encanto único en cada uso.</p>
+                                                <p id="productDescription" class="financier"></p>
                                             </div>
                                         </div>
 
+                                        <!-- SIZE CHART -->
                                         <div class="mini-sizeChart-div">
                                             <button id="btn-sizeChart" class="mini-sizeChart-btn"
                                                 onclick="openSizeChart()">
-                                                <svg class="mini-sizeChart-icon" width="18" height="18"
-                                                    viewBox="0 0 24 24" fill="none">
-                                                    <path d="M4 6h16M4 12h10M4 18h7" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" />
-                                                </svg>
                                                 Tallas
                                             </button>
                                         </div>
 
+
+
+
+                                        <!-- OPTIONS -->
                                         <div class="add-cart-btn-wrap">
-                                            <div class="add-to-cart">
-                                                <form class="w-commerce-commerceaddtocartform default-state">
-                                                    <div class="opt-list" role="group">
-                                                        <div role="group" class="size-div">
+                                            <form id="productForm" class="add-to-cart">
 
-                                                            <div class="size-btn-group" role="radiogroup"
-                                                                aria-label="Size">
+                                                <!-- TOP -->
+                                                <div class="size-container">
+                                                    <span>TOP</span>
+                                                    <div class="size-btn-div" id="topSizes"></div>
+                                                </div>
 
-                                                                <div class="size-container">
-                                                                    <div class="size-title-div">
-                                                                        <span>TOP</span>
-                                                                    </div>
+                                                <!-- BOTTOM -->
+                                                <div class="size-container">
+                                                    <span>BOTTOM</span>
+                                                    <div class="size-btn-div" id="bottomSizes"></div>
+                                                </div>
 
-                                                                    <div class="size-btn-div">
-                                                                        <label class="variant-btn">
-                                                                            <input type="radio" name="top-size"
-                                                                                value="XS" hidden checked>
-                                                                            XS
-                                                                        </label>
-                                                                        <label class="variant-btn">
-                                                                            <input type="radio" name="top-size"
-                                                                                value="S" hidden>
-                                                                            S
-                                                                        </label>
-                                                                        <label class="variant-btn">
-                                                                            <input type="radio" name="top-size"
-                                                                                value="M" hidden>
-                                                                            M
-                                                                        </label>
-                                                                        <label class="variant-btn">
-                                                                            <input type="radio" name="top-size"
-                                                                                value="L" hidden>
-                                                                            L
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
+                                                <!-- STYLE -->
+                                                <div class="size-container">
+                                                    <span>BOTTOM STYLE</span>
+                                                    <div class="style-div" id="bottomStyles"></div>
+                                                </div>
 
-                                                                <div class="size-container">
-                                                                    <div class="size-title-div">
-                                                                        <span>BOTTOM</span>
-                                                                    </div>
-
-                                                                    <div class="size-btn-div">
-                                                                        <label class="variant-btn">
-                                                                            <input type="radio" name="bottom-size"
-                                                                                value="XS" hidden checked>
-                                                                            XS
-                                                                        </label>
-                                                                        <label class="variant-btn">
-                                                                            <input type="radio" name="bottom-size"
-                                                                                value="S" hidden>
-                                                                            S
-                                                                        </label>
-                                                                        <label class="variant-btn">
-                                                                            <input type="radio" name="bottom-size"
-                                                                                value="M" hidden>
-                                                                            M
-                                                                        </label>
-                                                                        <label class="variant-btn">
-                                                                            <input type="radio" name="bottom-size"
-                                                                                value="L" hidden>
-                                                                            L
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="style-wrapper">
-                                                                    <div class="size-container">
-                                                                        <div class="size-title-div">
-                                                                            <span>BOTTOM STYLE</span>
-                                                                        </div>
-
-                                                                        <div class="size-btn-div">
-                                                                            <div class="style-div">
-                                                                                <div class="style-rb-div">
-                                                                                    <img src="/images/regular.png"
-                                                                                        class="style-img" alt="Regular">
-                                                                                    <label class="style-btn">
-                                                                                        <input type="radio"
-                                                                                            name="bottom-style"
-                                                                                            value="REGULAR" hidden
-                                                                                            checked>
-                                                                                        REGULAR
-                                                                                    </label>
-                                                                                </div>
-
-                                                                                <div class="style-rb-div">
-                                                                                    <img src="/images/thong.png"
-                                                                                        class="style-img" alt="Thong">
-                                                                                    <label class="style-btn">
-                                                                                        <input type="radio"
-                                                                                            name="bottom-style"
-                                                                                            value="TANGA" hidden>
-                                                                                        TANGA
-                                                                                    </label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
+                                            </form>
                                         </div>
 
+                                        <!-- BUTTONS -->
                                         <div class="btns-wrapper">
                                             <button id="buyNowBtn" class="add-cart-btn">Comprar ahora</button>
-
                                             <button id="addToCartBtn" class="add-cart-btn">Agregar ahora</button>
                                         </div>
-
-
-
-
-
-
 
 
                                         <section class="accordion-section">
                                             <!-- ITEM 1 -->
                                             <div class="accordion-item">
                                                 <button class="accordion-header">
-                                                    <span>Lo que necesitas saber</span>
+                                                    <span>Lo Que necesitas saber</span>
                                                     <svg class="accordion-icon" width="20" height="20"
                                                         viewBox="0 0 20 20">
                                                         <path d="M5 7l5 5 5-5" stroke="#000" stroke-width="2"
@@ -221,17 +103,12 @@
                                                 </button>
                                                 <div class="accordion-content">
                                                     <ul class="acordion-p features-list">
-                                                        <li class="features-item">Incluye <strong>tanto arriba como
-                                                                inferior</strong>.</li>
+                                                        <li class="features-item">Precio incluye las dos piezas: Top y
+                                                            bottom (las puedes combinar).</li>
                                                         <li class="features-item">Diseño fijo (no ajustable).</li>
-                                                        <li class="features-item">Forrado con tela interior suave
-                                                            para mayor comodidad.</li>
-                                                        <li class="features-item">Ligeramente elástico y se estira
-                                                            ligeramente para adaptarse a tu cuerpo.</li>
-                                                        <li class="features-item">
-                                                            Disponible en dos estilos de fondo:
-                                                            <strong>Regular</strong> o <strong>Tanga</strong>.
-                                                        </li>
+                                                        <li class="features-item">Posee bandas elásticas que se ajustan
+                                                            a tu figura.</li>
+                                                        <li class="features-item">Incluye forro.</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -247,15 +124,17 @@
                                                     </svg>
                                                 </button>
                                                 <div class="accordion-content">
-                                                    <p class="acordion-p">Lava las manos en frío. Acuéstate plano
-                                                        para secar en interior.</p>
+                                                    <ul class="acordion-p features-list">
+                                                        <li class="features-item">Lavado a mano.</li>
+                                                        <li class="features-item">No meter en lavadora ni secadora.</li>
+                                                    </ul>
                                                 </div>
                                             </div>
 
                                             <!-- ITEM 3 -->
                                             <div class="accordion-item">
                                                 <button class="accordion-header">
-                                                    <span>Envíos y devoluciones</span>
+                                                    <span>Envíos</span>
                                                     <svg class="accordion-icon" width="20" height="20"
                                                         viewBox="0 0 20 20">
                                                         <path d="M5 7l5 5 5-5" stroke="#000" stroke-width="2"
@@ -263,8 +142,8 @@
                                                     </svg>
                                                 </button>
                                                 <div class="accordion-content">
-                                                    <p class="acordion-p">Enviamos a todo el mundo. El coste de
-                                                        envío se calcula en el momento de la compra.</p>
+                                                    <p class="acordion-p">Envíos rápidos y seguros por medio de correos
+                                                        de Costa Rica.</p>
                                                 </div>
                                             </div>
                                         </section>
@@ -296,12 +175,17 @@
                 </div>
             </section>
 
+            <script>
+                window.PRODUCT_SLUG = "<%= slug %>";
+            </script>
+
             <script src="/js/product-view.js" type="text/javascript"></script>
             <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
             <script src="/js/accordion.js" type="text/javascript"></script>
             <script src="/js/related.js" type="text/javascript"></script>
             <script src="/js/slider.js" type="text/javascript"></script>
+            <script src="/js/products.js" type="text/javascript"></script>
 
             <script src="/gsap/gsap.min.js" type="text/javascript"></script>
             <script src="/gsap/Flip.min.js" type="text/javascript"></script>
