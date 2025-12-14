@@ -4,6 +4,6 @@ exports.productView = (req, res) => {
 
   res.render("product-view", {
     paymentIntentId,
-    slug, // 👈 CLAVE
+    slug, // CLAVE
   });
 };
