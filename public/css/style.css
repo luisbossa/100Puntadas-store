@@ -2804,6 +2804,7 @@
   max-width: 280px;
   position: relative;
   border-radius: 10px;
+  border: 1px solid #d8d9da;
   overflow: hidden;
 }
 
@@ -2812,8 +2813,8 @@
   object-fit: contain;
   display: block;
   opacity: 0;
-  filter: blur(6px); /* ⬅ antes 18px */
-  transform: scale(1.015); /* ⬅ casi imperceptible */
+  filter: blur(6px);
+  transform: scale(1.015);
   transition: opacity 0.35s ease, filter 0.45s ease, transform 0.45s ease;
 }
 
@@ -2843,16 +2844,9 @@
   }
 }
 
-.image-btn {
-  width: 120px;
-  max-width: none;
-  margin-right: auto;
-  margin-left: -2rem;
-}
-
 .cursor {
-  display: block;
   width: 60px;
+  display: block;
   padding: 0px;
   border-style: none;
   border-width: 2px;
@@ -2860,6 +2854,25 @@
   border-radius: 0px;
   background-color: transparent;
   z-index: 100;
+}
+
+.cursor-btn {
+  width: 110px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-left: -17px;
+  background-color: #ffa4db;
+  color: #161616;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid #fff;
+  font-family: Hatton, Arial, sans-serif;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
 }
 
 .icon {

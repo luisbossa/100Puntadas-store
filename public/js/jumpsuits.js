@@ -41,13 +41,14 @@ jumpsuits.forEach((p) => {
         p.stock === 0 ? "" : "w-condition-invisible"
       }"></div>
 
-      <img
-        alt="${p.nombre}"
-        loading="eager"
-        src="${p.imagen}"
-        sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-        class="item-image"
-      />
+      <div class="image-wrapper skeleton">
+        <img
+          alt="${p.nombre}"
+          src="${p.imagen}"
+          sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+          class="item-image"
+        />
+      </div>
     </a>
 
     <link rel="prerender" href="${p.link}" />
@@ -63,4 +64,16 @@ jumpsuits.forEach((p) => {
   `;
 
   contenedorJumpsuits.appendChild(item);
+});
+
+document.querySelectorAll(".image-wrapper img").forEach((img) => {
+  const wrapper = img.parentElement;
+
+  if (img.complete) {
+    wrapper.classList.add("loaded");
+  } else {
+    img.addEventListener("load", () => {
+      wrapper.classList.add("loaded");
+    });
+  }
 });

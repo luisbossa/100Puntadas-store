@@ -26,13 +26,14 @@ productos.forEach((p) => {
       <div class="div-block-6 ${
         p.stock === 0 ? "" : "w-condition-invisible"
       }"></div>
-      <img
-        src="${p.imagen}"
-        alt="${p.nombre}"
-        loading="eager"
-        class="item-image"
-        sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
-      />
+      <div class="image-wrapper skeleton">
+        <img
+          src="${p.imagen}"
+          alt="${p.nombre}"
+          class="item-image"
+          sizes="(max-width: 479px) 50vw, (max-width: 991px) 33vw, 20vw"
+        />
+      </div>
     </a>
 
     <link rel="prerender" href="${p.link}" />
@@ -48,4 +49,16 @@ productos.forEach((p) => {
   `;
 
   contenedor.appendChild(item);
+});
+
+document.querySelectorAll(".image-wrapper img").forEach((img) => {
+  const wrapper = img.parentElement;
+
+  if (img.complete) {
+    wrapper.classList.add("loaded");
+  } else {
+    img.addEventListener("load", () => {
+      wrapper.classList.add("loaded");
+    });
+  }
 });
