@@ -10,7 +10,7 @@ const beachwearProducts = {
     slug: "black-coffee",
     link: "/product/black-coffee",
     name: "BLACK COFFEE",
-    price: 30000,
+    price: 32500,
     currency: "₡",
     description:
       "Traje de baño Black Coffee con tonos café profundo y detalles artesanales en crochet, diseñado para un look elegante y natural.",
@@ -33,7 +33,7 @@ const beachwearProducts = {
     slug: "cow-print",
     link: "/product/cow-print",
     name: "COW PRINT",
-    price: 21000,
+    price: 22750,
     currency: "₡",
     description:
       "Traje de baño Cow Print con estampado inspirado en vacas, ideal para un estilo atrevido y divertido en la playa.",
@@ -54,7 +54,7 @@ const beachwearProducts = {
     slug: "turquoise",
     link: "/product/turquoise",
     name: "TURQUOISE",
-    price: 30000,
+    price: 32500,
     currency: "₡",
     description:
       "Traje de baño Turquoise con un vibrante color turquesa que resalta el bronceado y evoca frescura tropical.",
@@ -74,7 +74,7 @@ const beachwearProducts = {
     slug: "blue-capitan",
     link: "/product/blue-capitan",
     name: "BLUE CAPITAN",
-    price: 30000,
+    price: 32500,
     currency: "₡",
     description:
       "Traje de baño Blue Capitan con tono azul marino clásico, inspirado en el océano y la libertad del mar.",
@@ -96,7 +96,7 @@ const beachwearProducts = {
     slug: "earth",
     link: "#",
     name: "EARTH",
-    price: 30000,
+    price: 32500,
     currency: "₡",
     description:
       "Traje de baño Earth con tonos tierra suaves, inspirado en la naturaleza y el equilibrio natural.",
@@ -117,7 +117,7 @@ const beachwearProducts = {
     slug: "malibu",
     link: "#",
     name: "MALIBU",
-    price: 30000,
+    price: 32500,
     currency: "₡",
     description:
       "Traje de baño Malibu inspirado en las playas californianas, fresco, juvenil y lleno de energía.",
@@ -139,7 +139,7 @@ const beachwearProducts = {
     slug: "aqua",
     link: "#",
     name: "AQUA",
-    price: 30000,
+    price: 32500,
     currency: "₡",
     description:
       "Traje de baño Aqua con tonos claros y frescos, perfecto para días soleados junto al mar.",
@@ -160,7 +160,7 @@ const beachwearProducts = {
     slug: "lilac",
     link: "#",
     name: "LILAC",
-    price: 30000,
+    price: 32500,
     currency: "₡",
     description:
       "Traje de baño Lilac con un delicado tono lila que transmite suavidad, feminidad y elegancia.",

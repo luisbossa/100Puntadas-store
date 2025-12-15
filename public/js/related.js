@@ -7,7 +7,7 @@ const relatedProducts = [
   },
   {
     nombre: "COW PRINT",
-    precio: "21.000 ₡",
+    precio: "22.750 ₡",
     imagen: "/images/swimwears/swimwear-2.webp",
     link: "/product/cow-print",
   },
@@ -85,7 +85,7 @@ const relatedProducts = [
   },
   {
     nombre: "SNAKE PRINT",
-    precio: "21.000 ₡",
+    precio: "22.750 ₡",
     imagen: "/images/swimwears/swimwear-15.webp",
     link: "#",
   },
@@ -146,6 +146,7 @@ const relatedProducts = [
 const container = document.getElementById("macy-container");
 const RELATED_LIMIT = 3;
 
+// Función para mezclar un array
 function shuffleArray(array) {
   return [...array].sort(() => Math.random() - 0.5);
 }
@@ -155,7 +156,16 @@ function generateProducts() {
 
   container.innerHTML = "";
 
-  const randomProducts = shuffleArray(relatedProducts).slice(0, RELATED_LIMIT);
+  // Obtener el path actual
+  const currentPath = window.location.pathname;
+
+  // Filtrar el producto actual
+  const filteredProducts = relatedProducts.filter(
+    (product) => product.link !== currentPath
+  );
+
+  // Mezclar y tomar los primeros N productos
+  const randomProducts = shuffleArray(filteredProducts).slice(0, RELATED_LIMIT);
 
   randomProducts.forEach((product) => {
     const item = document.createElement("div");
