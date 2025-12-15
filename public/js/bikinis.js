@@ -1,7 +1,7 @@
 const bikinis = [
   {
     nombre: "BLACK COFFEE",
-    precio: "30.000 ₡",
+    precio: "32.500 ₡",
     imagen: "/images/swimwears/swimwear-1.webp",
     link: "/product/black-coffee",
     stock: 1,
@@ -15,11 +15,11 @@ const bikinis = [
     link: "/product/cow-print",
     stock: 1,
     discount: 1,
-    oldPrice: "30.000 ₡",
+    oldPrice: "32.500 ₡",
   },
   {
     nombre: "TURQUOISE",
-    precio: "30.000 ₡",
+    precio: "32.500 ₡",
     imagen: "/images/swimwears/swimwear-3.webp",
     link: "/product/turquoise",
     stock: 1,
@@ -28,7 +28,7 @@ const bikinis = [
   },
   {
     nombre: "BLUE CAPITAN",
-    precio: "30.000 ₡",
+    precio: "32.500 ₡",
     imagen: "/images/swimwears/swimwear-4.webp",
     link: "/product/blue-capitan",
     stock: 1,
@@ -37,7 +37,7 @@ const bikinis = [
   },
   {
     nombre: "EARTH",
-    precio: "30.000 ₡",
+    precio: "32.500 ₡",
     imagen: "/images/swimwears/swimwear-5.webp",
     link: "/product/earth",
     stock: 1,
@@ -46,7 +46,7 @@ const bikinis = [
   },
   {
     nombre: "MALIBU",
-    precio: "30.000 ₡",
+    precio: "32.500 ₡",
     imagen: "/images/swimwears/swimwear-6.webp",
     link: "/product/malibu",
     stock: 1,
@@ -55,7 +55,7 @@ const bikinis = [
   },
   {
     nombre: "AQUA",
-    precio: "30.000 ₡",
+    precio: "32.500 ₡",
     imagen: "/images/swimwears/swimwear-7.webp",
     link: "/product/aqua",
     stock: 1,
@@ -64,7 +64,7 @@ const bikinis = [
   },
   {
     nombre: "LILAC",
-    precio: "30.000 ₡",
+    precio: "32.500 ₡",
     imagen: "/images/swimwears/swimwear-8.webp",
     link: "/product/lilac",
     stock: 1,
@@ -73,7 +73,7 @@ const bikinis = [
   },
   {
     nombre: "FAIRY FLOSS",
-    precio: "30.000 ₡",
+    precio: "32.500 ₡",
     imagen: "/images/swimwears/swimwear-9.webp",
     link: "#",
     stock: 1,
@@ -82,7 +82,7 @@ const bikinis = [
   },
   {
     nombre: "CLOUDY",
-    precio: "30.000 ₡",
+    precio: "32.500 ₡",
     imagen: "/images/swimwears/swimwear-10.webp",
     link: "#",
     stock: 1,
@@ -91,7 +91,7 @@ const bikinis = [
   },
   {
     nombre: "BLUSH",
-    precio: "30.000 ₡",
+    precio: "32.500 ₡",
     imagen: "/images/swimwears/swimwear-11.webp",
     link: "#",
     stock: 1,
@@ -100,7 +100,7 @@ const bikinis = [
   },
   {
     nombre: "CANDY",
-    precio: "32.500 ₡",
+    precio: "34.500 ₡",
     imagen: "/images/swimwears/swimwear-12.webp",
     link: "#",
     stock: 1,
@@ -109,7 +109,7 @@ const bikinis = [
   },
   {
     nombre: "LOLLIE",
-    precio: "30.000 ₡",
+    precio: "32.500 ₡",
     imagen: "/images/swimwears/swimwear-13.webp",
     link: "#",
     stock: 1,
@@ -118,7 +118,7 @@ const bikinis = [
   },
   {
     nombre: "RED WINE",
-    precio: "32.500 ₡",
+    precio: "34.500 ₡",
     imagen: "/images/swimwears/swimwear-14.webp",
     link: "#",
     stock: 1,
@@ -132,11 +132,11 @@ const bikinis = [
     link: "#",
     stock: 1,
     discount: 1,
-    oldPrice: "30.000 ₡",
+    oldPrice: "32.500 ₡",
   },
   {
     nombre: "HEART OF OCEAN",
-    precio: "30.000 ₡",
+    precio: "32.500 ₡",
     imagen: "/images/swimwears/swimwear-16.webp",
     link: "#",
     stock: 1,

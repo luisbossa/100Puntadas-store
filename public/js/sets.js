@@ -1,16 +1,23 @@
 const productos = [
   {
-    nombre: "Vestido #1",
+    nombre: "Rosé set",
     precio: "69.500 ₡",
-    imagen: "/images/sets/set-1.webp",
+    imagen: "/images/sets/set-1.jpg",
     link: "/product/sac-4",
     stock: 1,
   },
   {
-    nombre: "Vestido #2",
+    nombre: "Dahlia set",
     precio: "63.500 ₡",
-    imagen: "/images/sets/set-2.webp",
+    imagen: "/images/sets/set-2.jpg",
     link: "/product/sac-5",
+    stock: 1,
+  },
+  {
+    nombre: "Isla blanca",
+    precio: "63.500 ₡",
+    imagen: "/images/sets/set-3.jpg",
+    link: "/product/sac-6",
     stock: 1,
   },
 ];

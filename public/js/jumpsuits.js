@@ -1,28 +1,28 @@
 const jumpsuits = [
   {
     nombre: "KIINI ONE PIECE",
-    precio: "35.000 ₡",
+    precio: "36.500 ₡",
     imagen: "/images/jumpsuits/jumpsuit-1.webp",
     link: "/product/jean-13",
     stock: 1,
   },
   {
     nombre: "ENTERIZO 2",
-    precio: "35.000 ₡",
+    precio: "36.500 ₡",
     imagen: "/images/jumpsuits/jumpsuit-2.webp",
     link: "/product/jean-19",
     stock: 1,
   },
   {
     nombre: "BLOOM",
-    precio: "35.000 ₡",
+    precio: "36.500 ₡",
     imagen: "/images/jumpsuits/jumpsuit-3.webp",
     link: "/product/jean-28",
     stock: 1,
   },
   {
     nombre: "MONOKINI",
-    precio: "35.000 ₡",
+    precio: "36.500 ₡",
     imagen: "/images/jumpsuits/jumpsuit-4.webp",
     link: "/product/jean-29",
     stock: 1,

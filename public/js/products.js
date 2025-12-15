@@ -40,6 +40,7 @@ const beachwearProducts = {
     images: [
       "/images/swimwears/swimwear-2.webp",
       "/images/products/product-2.1.jpg",
+      "/images/products/product-2.2.jpg",
     ],
     sizes: ["XS", "S", "M", "L"],
     styles: [
