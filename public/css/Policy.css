@@ -40,7 +40,7 @@
 
 .terms-list {
   padding-left: 1.4rem;
-  margin-bottom: 1.5rem;
+  margin: 10px 0 1.5rem;
   list-style-type: disc;
   font-family: inherit;
 }
