@@ -25,7 +25,7 @@
 }
 
 .terms-title {
-  font-size: clamp(0.8rem, 1.6vw, 1.6rem);
+  font-size: clamp(1rem, 1.6vw, 1.6rem);
   margin-top: 2.4rem;
   font-weight: 600;
   text-align: left;
