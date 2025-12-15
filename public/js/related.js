@@ -125,19 +125,19 @@ const relatedProducts = [
   // ===== SETS =====
   {
     nombre: "Rosé set",
-    precio: "69.500 ₡",
+    precio: "36,500 ₡",
     imagen: "/images/sets/set-1.jpg",
     link: "/product/sac-4",
   },
   {
     nombre: "Dahlia set",
-    precio: "63.500 ₡",
+    precio: "36,500 ₡",
     imagen: "/images/sets/set-2.jpg",
     link: "/product/sac-5",
   },
   {
     nombre: "Isla blanca",
-    precio: "63.500 ₡",
+    precio: "36,500 ₡",
     imagen: "/images/sets/set-3.jpg",
     link: "/product/sac-6",
   },
