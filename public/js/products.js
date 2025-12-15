@@ -1,9 +1,3 @@
-/* ============================================================
-   PRODUCTOS
-============================================================ */
-/* ============================================================
-   PRODUCTOS
-============================================================ */
 const beachwearProducts = {
   "black-coffee": {
     id: "black-coffee",
@@ -24,7 +18,7 @@ const beachwearProducts = {
     sizes: ["XS", "S", "M", "L"],
     styles: [
       { label: "REGULAR", img: "/images/regular.png" },
-      { label: "TANGA", img: "/images/thong.png" },
+      { label: "HILO", img: "/images/thong.png" },
     ],
   },
 
@@ -45,7 +39,7 @@ const beachwearProducts = {
     sizes: ["XS", "S", "M", "L"],
     styles: [
       { label: "REGULAR", img: "/images/regular.png" },
-      { label: "TANGA", img: "/images/thong.png" },
+      { label: "HILO", img: "/images/thong.png" },
     ],
   },
 
@@ -61,11 +55,12 @@ const beachwearProducts = {
     images: [
       "/images/swimwears/swimwear-3.webp",
       "/images/products/product-3.1.jpg",
+      "/images/products/product-3.2.jpg",
     ],
     sizes: ["XS", "S", "M", "L"],
     styles: [
       { label: "REGULAR", img: "/images/regular.png" },
-      { label: "TANGA", img: "/images/thong.png" },
+      { label: "HILO", img: "/images/thong.png" },
     ],
   },
 
@@ -87,7 +82,7 @@ const beachwearProducts = {
     sizes: ["XS", "S", "M", "L"],
     styles: [
       { label: "REGULAR", img: "/images/regular.png" },
-      { label: "TANGA", img: "/images/thong.png" },
+      { label: "HILO", img: "/images/thong.png" },
     ],
   },
 
@@ -108,7 +103,7 @@ const beachwearProducts = {
     sizes: ["XS", "S", "M", "L"],
     styles: [
       { label: "REGULAR", img: "/images/regular.png" },
-      { label: "TANGA", img: "/images/thong.png" },
+      { label: "HILO", img: "/images/thong.png" },
     ],
   },
 
@@ -130,7 +125,7 @@ const beachwearProducts = {
     sizes: ["XS", "S", "M", "L"],
     styles: [
       { label: "REGULAR", img: "/images/regular.png" },
-      { label: "TANGA", img: "/images/thong.png" },
+      { label: "HILO", img: "/images/thong.png" },
     ],
   },
 
@@ -151,10 +146,9 @@ const beachwearProducts = {
     sizes: ["XS", "S", "M", "L"],
     styles: [
       { label: "REGULAR", img: "/images/regular.png" },
-      { label: "TANGA", img: "/images/thong.png" },
+      { label: "HILO", img: "/images/thong.png" },
     ],
   },
-
   lilac: {
     id: "lilac",
     slug: "lilac",
@@ -172,7 +166,170 @@ const beachwearProducts = {
     sizes: ["XS", "S", "M", "L"],
     styles: [
       { label: "REGULAR", img: "/images/regular.png" },
-      { label: "TANGA", img: "/images/thong.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  fairyFloss: {
+    id: "fairy-floss",
+    slug: "fairy-floss",
+    link: "#",
+    name: "FAIRY FLOSS",
+    price: 32500,
+    currency: "₡",
+    description:
+      "Vestido de baño Fairy Floss en color rosa suave, ideal para un look dulce y veraniego.",
+    images: [
+      "/images/swimwears/swimwear-9.webp",
+      "/images/products/product-9.1.jpg",
+      "/images/products/product-9.2.jpg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  cloudy: {
+    id: "cloudy",
+    slug: "cloudy",
+    link: "#",
+    name: "CLOUDY",
+    price: 32500,
+    currency: "₡",
+    description:
+      "Vestido de baño Cloudy en tonos suaves, combina comodidad y estilo para tus días de playa.",
+    images: [
+      "/images/swimwears/swimwear-10.webp",
+      "/images/products/product-10.1.jpg",
+      "/images/products/product-10.2.jpg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  blush: {
+    id: "blush",
+    slug: "blush",
+    link: "#",
+    name: "BLUSH",
+    price: 32500,
+    currency: "₡",
+    description:
+      "Vestido de baño Blush en tono rosa elegante, perfecto para un look femenino y sofisticado.",
+    images: [
+      "/images/swimwears/swimwear-11.webp",
+      "/images/products/product-11.1.jpg",
+      "/images/products/product-11.2.jpg",
+      "/images/products/product-11.3.jpg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  candy: {
+    id: "candy",
+    slug: "candy",
+    link: "#",
+    name: "CANDY",
+    price: 34500,
+    currency: "₡",
+    description:
+      "Vestido de baño Candy en colores vibrantes, ideal para destacar en tus días de playa.",
+    images: [
+      "/images/swimwears/swimwear-12.webp",
+      "/images/products/product-12.1.jpg",
+      "/images/products/product-12.2.jpg",
+      "/images/products/product-12.3.jpg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  lollie: {
+    id: "lollie",
+    slug: "lollie",
+    link: "#",
+    name: "LOLLIE",
+    price: 32500,
+    currency: "₡",
+    description:
+      "Vestido de baño Lollie en color rosa pastel, con un diseño delicado y femenino.",
+    images: [
+      "/images/swimwears/swimwear-13.webp",
+      "/images/products/product-13.1.jpg",
+      "/images/products/product-13.2.jpg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  redWine: {
+    id: "red-wine",
+    slug: "red-wine",
+    link: "#",
+    name: "RED WINE",
+    price: 34500,
+    currency: "₡",
+    description:
+      "Vestido de baño Red Wine en color vino intenso, sofisticado y elegante para la playa o piscina.",
+    images: [
+      "/images/swimwears/swimwear-14.webp",
+      "/images/products/product-14.1.jpg",
+      "/images/products/product-14.2.jpg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  snakePrint: {
+    id: "snake-print",
+    slug: "snake-print",
+    link: "#",
+    name: "SNAKE PRINT",
+    price: 22750,
+    currency: "₡",
+    description:
+      "Vestido de baño Snake Print con estampado de serpiente, atrevido y moderno para un look impactante.",
+    images: [
+      "/images/swimwears/swimwear-15.webp",
+      "/images/products/product-15.1.jpg",
+      "/images/products/product-15.2.jpg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  heartOfOcean: {
+    id: "heart-of-ocean",
+    slug: "heart-of-ocean",
+    link: "#",
+    name: "HEART OF OCEAN",
+    price: 32500,
+    currency: "₡",
+    description:
+      "Vestido de baño Heart of Ocean en azul profundo, ideal para un look elegante y clásico.",
+    images: [
+      "/images/swimwears/swimwear-16.webp",
+      "/images/products/product-16.1.jpg",
+      "/images/products/product-16.2.jpg",
+      "/images/products/product-16.3.jpg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
     ],
   },
 };

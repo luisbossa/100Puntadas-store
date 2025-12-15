@@ -51,49 +51,49 @@ const relatedProducts = [
     nombre: "FAIRY FLOSS",
     precio: "32.500 ₡",
     imagen: "/images/swimwears/swimwear-9.webp",
-    link: "#",
+    link: "/product/fairyFloss",
   },
   {
     nombre: "CLOUDY",
     precio: "32.500 ₡",
     imagen: "/images/swimwears/swimwear-10.webp",
-    link: "#",
+    link: "/product/cloudy",
   },
   {
     nombre: "BLUSH",
     precio: "32.500 ₡",
     imagen: "/images/swimwears/swimwear-11.webp",
-    link: "#",
+    link: "/product/blush",
   },
   {
     nombre: "CANDY",
     precio: "34.500 ₡",
     imagen: "/images/swimwears/swimwear-12.webp",
-    link: "#",
+    link: "/product/candy",
   },
   {
     nombre: "LOLLIE",
     precio: "32.500 ₡",
     imagen: "/images/swimwears/swimwear-13.webp",
-    link: "#",
+    link: "/product/lollie",
   },
   {
     nombre: "RED WINE",
     precio: "34.500 ₡",
     imagen: "/images/swimwears/swimwear-14.webp",
-    link: "#",
+    link: "/product/redWine",
   },
   {
     nombre: "SNAKE PRINT",
     precio: "22.750 ₡",
     imagen: "/images/swimwears/swimwear-15.webp",
-    link: "#",
+    link: "/product/snakePrint",
   },
   {
     nombre: "HEART OF OCEAN",
     precio: "32.500 ₡",
     imagen: "/images/swimwears/swimwear-16.webp",
-    link: "#",
+    link: "/product/heartOfOcean",
   },
 
   // ===== JUMPSUITS =====
@@ -146,7 +146,6 @@ const relatedProducts = [
 const container = document.getElementById("macy-container");
 const RELATED_LIMIT = 3;
 
-// Función para mezclar un array
 function shuffleArray(array) {
   return [...array].sort(() => Math.random() - 0.5);
 }
@@ -156,10 +155,8 @@ function generateProducts() {
 
   container.innerHTML = "";
 
-  // Obtener el path actual
   const currentPath = window.location.pathname;
 
-  // Filtrar el producto actual
   const filteredProducts = relatedProducts.filter(
     (product) => product.link !== currentPath
   );
