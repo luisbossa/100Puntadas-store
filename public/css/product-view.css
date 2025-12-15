@@ -2920,6 +2920,7 @@ em {
 
 .text-style-h3 {
   font-family: Hatton, Arial, sans-serif;
+  text-transform: uppercase;
   font-size: clamp(1rem, 1.2vw + 0.5rem, 1.7rem);
   font-weight: 500;
 }
