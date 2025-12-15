@@ -48,7 +48,7 @@
 .terms-list li {
   font-family: Lato, sans-serif;
   font-size: clamp(1rem, 1.3vw, 1.15rem);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
 }
 
 .terms-item {
