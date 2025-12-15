@@ -10,7 +10,7 @@ const bikinis = [
   },
   {
     nombre: "COW PRINT",
-    precio: "21.000 ₡",
+    precio: "22.750 ₡",
     imagen: "/images/swimwears/swimwear-2.webp",
     link: "/product/cow-print",
     stock: 1,
@@ -127,7 +127,7 @@ const bikinis = [
   },
   {
     nombre: "SNAKE PRINT",
-    precio: "21.000 ₡",
+    precio: "22.750 ₡",
     imagen: "/images/swimwears/swimwear-15.webp",
     link: "#",
     stock: 1,
