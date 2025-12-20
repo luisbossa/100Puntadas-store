@@ -332,6 +332,204 @@ const beachwearProducts = {
       { label: "HILO", img: "/images/thong.png" },
     ],
   },
+  bubblegum: {
+    id: "bubble-gum-kiini",
+    slug: "bubble-gum-kiini",
+    link: "#",
+    name: "BUBBLE GUM KIINI",
+    price: 32500,
+    currency: "₡",
+    description:
+      "Para las amantes de tonos pasteles. Este Kiini restalta muy bien el bronceado. Amamos el contrate de la base amarillo pastel con bordes multicolor hechos en crochet. Súper femenino y delicado. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+    images: [
+      "/images/swimwears/swimwear-17.jpeg",
+      "/images/products/product-17.1.jpeg",
+      "/images/products/product-17.2.jpeg",
+      "/images/products/product-17.3.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  marshmallow: {
+    id: "marshmallow",
+    slug: "marshmallow",
+    link: "#",
+    name: "MARSHMALLOW",
+    price: 32500,
+    currency: "₡",
+    description:
+      "Para las amantes de tonos pasteles. Este Kiini restalta muy bien el bronceado. Amamos el contrate de la base celeste con bordes crema. Súper femenino y delicado. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+    images: [
+      "/images/swimwears/swimwear-18.jpeg",
+      "/images/products/product-18.1.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  vintageSummer: {
+    id: "vintage-summer",
+    slug: "vintage-summer",
+    link: "#",
+    name: "VINTAGE SUMMER",
+    price: 32500,
+    currency: "₡",
+    description:
+      "Este bikini de la nueva colección resalta muy bien el bronceado. Base color pistacho suave con bordes rosa y crema hechos en crochet crean un contraste armonioso, suave y femenino. Para las amantes de tonos pasteles, nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+    images: [
+      "/images/swimwears/swimwear-19.jpeg",
+      "/images/products/product-19.1.jpeg",
+      "/images/products/product-19.2.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  cherry: {
+    id: "cherry",
+    slug: "cherry",
+    link: "#",
+    name: "CHERRY",
+    price: 32500,
+    currency: "₡",
+    description:
+      "Un bikini sofisticado y glamuroso. Amamos la elegancia del contraste vino tinto con bordes blanco y negro en crochet. Para las amantes de tonos oscuros. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+    images: [
+      "/images/swimwears/swimwear-20.jpeg",
+      "/images/products/product-20.1.jpeg",
+      "/images/products/product-20.2.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  navyBlue: {
+    id: "navy-blue",
+    slug: "navy-blue",
+    link: "#",
+    name: "NAVY BLUE",
+    price: 32500,
+    currency: "₡",
+    description:
+      "Este Kiini es un Must-have, inspirado en la base naval, amamos la combinación del azul escolar en contraste con bordes multicolor en crochet. Para las amantes de tonos oscuros. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+    images: [
+      "/images/swimwears/swimwear-21.jpeg",
+      "/images/products/product-21.1.jpeg",
+      "/images/products/product-21.2.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  leopard: {
+    id: "leopard",
+    slug: "leopard",
+    link: "#",
+    name: "LEOPARD KIINI",
+    price: 32500,
+    currency: "₡",
+    description:
+      "Un Kiini salvaje y sensual para las amantes de estampado animal. La tendencia Safari se encuentra con el estilo bohemio creando una pieza llena de personalidad. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+    images: [
+      "/images/swimwears/swimwear-22.jpeg",
+      "/images/products/product-22.1.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+
+  // ===== JUMPSUITS =====
+
+  onePiece: {
+    id: "one-piece",
+    slug: "one-piece",
+    link: "#",
+    name: "KIINI ONE PIECE",
+    price: 36500,
+    currency: "₡",
+    description:
+      "Amamos la versión enterizo de los kiinis. Tienen un toque deportivo y retro. Personalizable en el color que gustes. Nuestros bikinis reflejan un acabo artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+    images: [
+      "/images/jumpsuits/jumpsuit-1.webp",
+      "/images/jumpsuits/jumpsuit-1.1.jpeg",
+      "/images/jumpsuits/jumpsuit-1.2.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  tulum: {
+    id: "tulum",
+    slug: "tulum",
+    link: "#",
+    name: "TULUM",
+    price: 36500,
+    currency: "₡",
+    description:
+      "Estilo Boho-Luxe (sofisticado y artesanal) 100% elaborado a mano en crochet Centro crema/beige con delicado borde rosa (el color del borde puede ser personalizable). Esta pieza es la definición de la elegancia bohemia. Es ajustable a los lados haciendo que se amolde muy bien a tu figura.",
+    images: [
+      "/images/jumpsuits/jumpsuit-2.webp",
+      "/images/jumpsuits/jumpsuit-2.1.jpeg",
+      "/images/jumpsuits/jumpsuit-2.2.jpeg",
+      "/images/jumpsuits/jumpsuit-2.3.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  bloom: {
+    id: "bloom",
+    slug: "bloom",
+    link: "#",
+    name: "BLOOM",
+    price: 36500,
+    currency: "₡",
+    description:
+      "Una prenda súper femenina de la tendencia Coquette, dulce y con un aire vintage. Amamos el contraste crema con flores en relieve celestes.",
+    images: [
+      "/images/jumpsuits/jumpsuit-3.webp",
+      "/images/jumpsuits/jumpsuit-3.1.jpeg",
+      "/images/jumpsuits/jumpsuit-3.2.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  monokini: {
+    id: "monokini",
+    slug: "monokini",
+    link: "#",
+    name: "MONOKINI",
+    price: 36500,
+    currency: "₡",
+    description: "",
+    images: ["/images/jumpsuits/jumpsuit-4.webp"],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
 };
 
 /* ============================================================

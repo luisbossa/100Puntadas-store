@@ -95,31 +95,67 @@ const relatedProducts = [
     imagen: "/images/swimwears/swimwear-16.webp",
     link: "/product/heartOfOcean",
   },
+  {
+    nombre: "BUBBLE GUM KIINI",
+    precio: "32.500 ₡",
+    imagen: "/images/swimwears/swimwear-17.jpeg",
+    link: "/product/bubblegum",
+  },
+  {
+    nombre: "MARSHMALLOW",
+    precio: "32.500 ₡",
+    imagen: "/images/swimwears/swimwear-18.jpeg",
+    link: "/product/marshmallow",
+  },
+  {
+    nombre: "VINTAGE SUMMER",
+    precio: "32.500 ₡",
+    imagen: "/images/swimwears/swimwear-19.jpeg",
+    link: "/product/vintageSummer",
+  },
+  {
+    nombre: "CHERRY",
+    precio: "32.500 ₡",
+    imagen: "/images/swimwears/swimwear-20.jpeg",
+    link: "/product/cherry",
+  },
+  {
+    nombre: "NAVY BLUE",
+    precio: "32.500 ₡",
+    imagen: "/images/swimwears/swimwear-21.jpeg",
+    link: "/product/navyBlue",
+  },
+  {
+    nombre: "LEOPARD KIINI",
+    precio: "32.500 ₡",
+    imagen: "/images/swimwears/swimwear-22.jpeg",
+    link: "/product/leopard",
+  },
 
   // ===== JUMPSUITS =====
   {
     nombre: "KIINI ONE PIECE",
     precio: "36.500 ₡",
     imagen: "/images/jumpsuits/jumpsuit-1.webp",
-    link: "/product/jean-13",
+    link: "/product/onePiece",
   },
   {
-    nombre: "ENTERIZO 2",
+    nombre: "TULUM",
     precio: "36.500 ₡",
     imagen: "/images/jumpsuits/jumpsuit-2.webp",
-    link: "/product/jean-19",
+    link: "/product/tulum",
   },
   {
     nombre: "BLOOM",
     precio: "36.500 ₡",
     imagen: "/images/jumpsuits/jumpsuit-3.webp",
-    link: "/product/jean-28",
+    link: "/product/bloom",
   },
   {
     nombre: "MONOKINI",
     precio: "36.500 ₡",
     imagen: "/images/jumpsuits/jumpsuit-4.webp",
-    link: "/product/jean-29",
+    link: "/product/monokini",
   },
 
   // ===== SETS =====
