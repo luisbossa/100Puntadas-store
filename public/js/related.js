@@ -151,12 +151,6 @@ const relatedProducts = [
     imagen: "/images/jumpsuits/jumpsuit-3.webp",
     link: "/product/bloom",
   },
-  {
-    nombre: "MONOKINI",
-    precio: "36.500 ₡",
-    imagen: "/images/jumpsuits/jumpsuit-4.webp",
-    link: "/product/monokini",
-  },
 
   // ===== CROCHETS =====
 

@@ -20,13 +20,6 @@ const jumpsuits = [
     link: "/product/bloom",
     stock: 1,
   },
-  {
-    nombre: "MONOKINI",
-    precio: "36.500 ₡",
-    imagen: "/images/jumpsuits/jumpsuit-4.webp",
-    link: "/product/monokini",
-    stock: 1,
-  },
 ];
 
 const contenedorJumpsuits = document.getElementById("lista-jumpsuits");

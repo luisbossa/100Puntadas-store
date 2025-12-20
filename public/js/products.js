@@ -515,21 +515,6 @@ const beachwearProducts = {
       { label: "HILO", img: "/images/thong.png" },
     ],
   },
-  monokini: {
-    id: "monokini",
-    slug: "monokini",
-    link: "#",
-    name: "MONOKINI",
-    price: 36500,
-    currency: "₡",
-    description: "",
-    images: ["/images/jumpsuits/jumpsuit-4.webp"],
-    sizes: ["XS", "S", "M", "L"],
-    styles: [
-      { label: "REGULAR", img: "/images/regular.png" },
-      { label: "HILO", img: "/images/thong.png" },
-    ],
-  },
 
   // ===== CROCHETS =====
 
