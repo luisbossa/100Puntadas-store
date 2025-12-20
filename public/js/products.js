@@ -530,6 +530,52 @@ const beachwearProducts = {
       { label: "HILO", img: "/images/thong.png" },
     ],
   },
+
+  // ===== CROCHETS =====
+
+  daisyBikini: {
+    id: "daisy-bikini",
+    slug: "daisy-bikini",
+    link: "#",
+    name: "DAISY BIKINI",
+    price: 32500,
+    currency: "₡",
+    description:
+      "Este diseño es una obra de arte  La creación más original de 100puntadas. Elaborado 100% a crochet con material suave de algodón. Tiene un estilo “Coquette” y destaca por sus delicadas flores pasteles en relieve.  Top posee varillas incorporadas para mayor soporte y bottom es ajustable a los costados. Puedes personalizarlo en diferentes tonos.",
+    images: [
+      "/images/crochets/crochet-1.jpeg",
+      "/images/crochets/crochet-1.1.jpeg",
+      "/images/crochets/crochet-1.2.jpeg",
+      "/images/crochets/crochet-1.3.jpeg",
+      "/images/crochets/crochet-1.4.jpeg",
+      "/images/crochets/crochet-1.5.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  scarlettBikini: {
+    id: "scarlett-bikini",
+    slug: "scarlett-bikini",
+    link: "#",
+    name: "SCARLETT BIKINI",
+    price: 32500,
+    currency: "₡",
+    description:
+      "Este diseño fue un best seller en el 2018, así que decidimos traerlo de vuelta. Diseño sexy y atrevido elaborado 100% a crochet con material de algodón suave.",
+    images: [
+      "/images/crochets/crochet-2.jpeg",
+      "/images/crochets/crochet-2.1.jpeg",
+      "/images/crochets/crochet-2.2.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
 };
 
 /* ============================================================

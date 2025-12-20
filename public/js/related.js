@@ -158,6 +158,21 @@ const relatedProducts = [
     link: "/product/monokini",
   },
 
+  // ===== CROCHETS =====
+
+  {
+    nombre: "DAISY BIKINI",
+    precio: "32.500 ₡",
+    imagen: "/images/crochets/crochet-1.jpeg",
+    link: "/product/daisyBikini",
+  },
+  {
+    nombre: "SCARLETT BIKINI",
+    precio: "32.500 ₡",
+    imagen: "/images/crochets/crochet-2.jpeg",
+    link: "/product/scarlettBikini",
+  },
+
   // ===== SETS =====
   {
     nombre: "Rosé set",
