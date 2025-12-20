@@ -7,7 +7,7 @@ const beachwearProducts = {
     price: 32500,
     currency: "₡",
     description:
-      "Traje de baño Black Coffee con tonos café profundo y detalles artesanales en crochet, diseñado para un look elegante y natural.",
+      "Este diseño minimalista es un Best Seller. Amamos la combinación de centro negro con borde tejido color arena. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-1.webp",
       "/images/products/product-1.1.webp",
@@ -30,7 +30,7 @@ const beachwearProducts = {
     price: 22750,
     currency: "₡",
     description:
-      "Traje de baño Cow Print con estampado inspirado en vacas, ideal para un estilo atrevido y divertido en la playa.",
+      "Diseño único con estampado de vaca en blanco y negro para un estilo divertido y moderno. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-2.webp",
       "/images/products/product-2.1.jpg",
@@ -51,7 +51,7 @@ const beachwearProducts = {
     price: 32500,
     currency: "₡",
     description:
-      "Traje de baño Turquoise con un vibrante color turquesa que resalta el bronceado y evoca frescura tropical.",
+      "Diseño color azul/verdoso con contraste perfecto de bordes multicolor elaborados en crochet. Para las amantes de tonos oscuros. Nuestros bikinis reflejan un acabado artesanal de alta calidad.Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-3.webp",
       "/images/products/product-3.1.jpg",
@@ -72,7 +72,7 @@ const beachwearProducts = {
     price: 32500,
     currency: "₡",
     description:
-      "Traje de baño Blue Capitan con tono azul marino clásico, inspirado en el océano y la libertad del mar.",
+      "Amamos el contraste de este bikini, azul rey con bordes a crochet blancos. Es la pieza perfecta para quienes buscan un look veraniego, vibrante y con personalidad. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-4.webp",
       "/images/products/product-4.1.jpg",
@@ -94,7 +94,7 @@ const beachwearProducts = {
     price: 32500,
     currency: "₡",
     description:
-      "Traje de baño Earth con tonos tierra suaves, inspirado en la naturaleza y el equilibrio natural.",
+      "Earth Kiini fue inspirado en colores de la naturaleza. Amamos el contraste del verde musgo con bordes hechos en crochet color crema. Dándole un look natural y orgánico (Tipo boho-chic) Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-5.webp",
       "/images/products/product-5.1.jpg",
@@ -115,7 +115,7 @@ const beachwearProducts = {
     price: 32500,
     currency: "₡",
     description:
-      "Traje de baño Malibu inspirado en las playas californianas, fresco, juvenil y lleno de energía.",
+      "Este kiini es para las amantes de tonos neón. Amamos esta combinación vibrante y energética. MALIBÚ Kiini es un bikini alegre, perfecto para resaltar el bronceado. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-6.webp",
       "/images/products/product-6.1.jpg",
@@ -137,7 +137,7 @@ const beachwearProducts = {
     price: 32500,
     currency: "₡",
     description:
-      "Traje de baño Aqua con tonos claros y frescos, perfecto para días soleados junto al mar.",
+      "Inspirado en los colores del algodón de azúcar. Para las amantes de tonos pasteles. Este bikini resalta muy bien en piel morena. Los detalles hechos a crochet en tonos pasteles, le dan un toque fresco y juveníl. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-7.webp",
       "/images/products/product-7.1.jpg",
@@ -157,7 +157,7 @@ const beachwearProducts = {
     price: 32500,
     currency: "₡",
     description:
-      "Traje de baño Lilac con un delicado tono lila que transmite suavidad, feminidad y elegancia.",
+      "Inspirado en los colores del algodón de azúcar. Para las amantes de tonos pasteles. Este bikini resalta muy bien en piel morena. Los detalles hechos a crochet en tonos pasteles, le dan un toque fresco y juveníl. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-8.webp",
       "/images/products/product-8.1.jpg",
@@ -177,7 +177,7 @@ const beachwearProducts = {
     price: 32500,
     currency: "₡",
     description:
-      "Vestido de baño Fairy Floss en color rosa suave, ideal para un look dulce y veraniego.",
+      "Inspirado en los colores del algodón de azúcar. Para las amantes de tonos pasteles. Este bikini resalta muy bien en piel morena. Los detalles hechos a crochet en tonos pasteles, le dan un toque fresco y juveníl. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-9.webp",
       "/images/products/product-9.1.jpg",
@@ -197,7 +197,7 @@ const beachwearProducts = {
     price: 32500,
     currency: "₡",
     description:
-      "Vestido de baño Cloudy en tonos suaves, combina comodidad y estilo para tus días de playa.",
+      "Cloudy kiini tiene tela con textura granulada. Para las amantes de tonos pasteles. Este bikini tiene un contraste perfecto de celeste bebé con bordes en crochet color crema. Además tiene un delicado toque color naranja.  Súper femenino y coqueto.   Este modelo destaca por su juego de texturas y colores suaves. Nuestros bikinis reflejan un acabado artesanal de alta calidad.Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-10.webp",
       "/images/products/product-10.1.jpg",
@@ -217,7 +217,7 @@ const beachwearProducts = {
     price: 32500,
     currency: "₡",
     description:
-      "Vestido de baño Blush en tono rosa elegante, perfecto para un look femenino y sofisticado.",
+      "Para las amantes de tonos pasteles. Este bikini resalta muy bien en piel morena. Amamos la combinación palo rosa con borde crema y un toque sutil en verde limón le dan un toque fresco y juveníl. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-11.webp",
       "/images/products/product-11.1.jpg",
@@ -238,7 +238,7 @@ const beachwearProducts = {
     price: 34500,
     currency: "₡",
     description:
-      "Vestido de baño Candy en colores vibrantes, ideal para destacar en tus días de playa.",
+      "Este Kiini tiene un estampado de ensueño en tonos pasteles. La mezcla de colores lila, menta y crema crea un efecto mármoleado irresistible. Para las amantes de tonos pasteles. Este bikini resalta muy bien el bronceado. Sin duda es el bikini más dulce de la colección. Nuestros bikinis reflejan un acabado artesanal de alta calidad.Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-12.webp",
       "/images/products/product-12.1.jpg",
@@ -259,7 +259,7 @@ const beachwearProducts = {
     price: 32500,
     currency: "₡",
     description:
-      "Vestido de baño Lollie en color rosa pastel, con un diseño delicado y femenino.",
+      "Este Kiini es el equilibrio perfecto entre lo dulce y atrevido. Para las amantes de tonos pasteles. Este Kiini restalta muy bien el bronceado.Amamos el contrate de la base palo rosa con detalles multicolor a crochet. Súper femenino y delicado. Nuestros bikinis reflejan un acabado artesanal de alta calidad.Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-13.webp",
       "/images/products/product-13.1.jpg",
@@ -279,7 +279,7 @@ const beachwearProducts = {
     price: 34500,
     currency: "₡",
     description:
-      "Vestido de baño Red Wine en color vino intenso, sofisticado y elegante para la playa o piscina.",
+      "Cuando la elegancia se junta con lo artesanal, este es el resultado. Amamos el contraste de la base vino tinto con elásticos rosa satinado. Súper femenino y delicado. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-14.webp",
       "/images/products/product-14.1.jpg",
@@ -299,7 +299,7 @@ const beachwearProducts = {
     price: 22750,
     currency: "₡",
     description:
-      "Vestido de baño Snake Print con estampado de serpiente, atrevido y moderno para un look impactante.",
+      "Un Kiini salvaje y sensual para las amantes de estampado animal. La tendencia Safari se encuentra con el estilo bohemio creando una pieza llena de personalidad. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-15.webp",
       "/images/products/product-15.1.jpg",
@@ -319,7 +319,7 @@ const beachwearProducts = {
     price: 32500,
     currency: "₡",
     description:
-      "Vestido de baño Heart of Ocean en azul profundo, ideal para un look elegante y clásico.",
+      "Un Kiini único inspirado en los colores del mar. Destaca por su azul intenso combinado con bordes multicolor hechos en crochet. Para las amantes de tonos oscuros. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-16.webp",
       "/images/products/product-16.1.jpg",

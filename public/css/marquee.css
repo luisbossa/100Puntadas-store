@@ -1,0 +1,39 @@
+.promo-marquee {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  background: #161616;
+  padding: 0.75rem 0 0.55rem;
+}
+
+.promo-track {
+  width: max-content;
+  display: flex;
+  animation: marquee 18s linear infinite;
+  gap: 8rem;
+}
+
+.promo-track span {
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* pausa al hover */
+.promo-marquee:hover .promo-track {
+  animation-play-state: paused;
+}

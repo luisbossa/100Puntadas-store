@@ -847,7 +847,7 @@ em {
   margin-top: 10px;
   font-family: Hatton, Arial, sans-serif;
   font-size: clamp(1.2rem, 1.5vw + 0.5rem, 2rem);
-  color: #999;
+  color: #5e5e5e;
   font-weight: 400;
 }
 

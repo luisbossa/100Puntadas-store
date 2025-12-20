@@ -1,38 +1,66 @@
 <header class="header <%= noCursorZone ? 'no-cursor-zone' : '' %>">
-    
-    <div class="nav-links">
-        <a href="<%= isHome ? '#bikinis' : '/#bikinis' %>" class="nav-link">Bikinis</a>
-        <a href="<%= isHome ? '#jumpsuits' : '/#jumpsuits' %>" class="nav-link">Enterizos</a>
-        <a href="<%= isHome ? '#sets' : '/#sets' %>" class="nav-link">Sets de playa</a>
-        <a href="/sizes" class="nav-link">Tallas</a>
-    </div>
-    
-    <div class="logo-container">
-        <a href="/" aria-current="page" class="w-inline-block">
-            <img src="/images/logo.png" loading="lazy" alt="logo 100Puntadas" class="main-logo" />
-        </a>
-    </div>
-    
-    <button class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
 
-    <button id="openCartBtn" class="cart-button">
-        <span class="cart-text">Carrito</span>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16"
-            class="cart-icon">
-            <path
-                d="M0 1a1 1 0 0 1 1-1h1.5a1 1 0 0 1 .96.73L3.89 3H14a1 1 0 0 1 .98 1.2l-1.5 6A1 1 0 0 1 12.5 11H4a1 1 0 0 1-.96-.73L1.61 2H1a1 1 0 0 1-1-1z" />
-            <circle cx="6" cy="13.5" r="1" />
-            <circle cx="11" cy="13.5" r="1" />
-        </svg>
-        <span class="cart-count">0</span>
-    </button>
+    <div class="nav-wrapper">
+        <div class="promo-marquee">
+            <div class="promo-track">
+                <span>2 A MITAD DE PRECIO</span>
+                <span>ENVÍO GRATIS EN COMPRAS MAYORES A ₡50.000</span>
+                <span>DESCUENTOS LIMITADOS</span>
+                <span>2 A MITAD DE PRECIO</span>
+                <span>ENVÍO GRATIS EN COMPRAS MAYORES A ₡50.000</span>
+
+                <span>2 A MITAD DE PRECIO</span>
+                <span>ENVÍO GRATIS EN COMPRAS MAYORES A ₡50.000</span>
+                <span>DESCUENTOS LIMITADOS</span>
+                <span>2 A MITAD DE PRECIO</span>
+                <span>ENVÍO GRATIS EN COMPRAS MAYORES A ₡50.000</span>
+            </div>
+        </div>
+
+        <div class="links-div">
+            <div class="nav-links">
+                <a href="<%= isHome ? '#bikinis' : '/#bikinis' %>" class="nav-link">Bikinis</a>
+                <a href="<%= isHome ? '#jumpsuits' : '/#jumpsuits' %>" class="nav-link">Enterizos</a>
+                <a href="<%= isHome ? '#sets' : '/#sets' %>" class="nav-link">Sets de playa</a>
+                <!-- <a href="/sizes" class="nav-link">Tallas</a> -->
+            </div>
+
+            <div class="logo-container">
+                <a href="/" aria-current="page" class="w-inline-block">
+                    <img src="/images/logo.png" loading="lazy" alt="logo 100Puntadas" class="main-logo" />
+                </a>
+            </div>
+
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+
+            <div class="cart-rightdiv">
+                <a href="/sizes" class="cart-button">Tallas</a>
+                <button id="openCartBtn" class="cart-button">
+                    <span class="cart-text">Carrito</span>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        viewBox="0 0 16 16" class="cart-icon">
+                        <path
+                            d="M0 1a1 1 0 0 1 1-1h1.5a1 1 0 0 1 .96.73L3.89 3H14a1 1 0 0 1 .98 1.2l-1.5 6A1 1 0 0 1 12.5 11H4a1 1 0 0 1-.96-.73L1.61 2H1a1 1 0 0 1-1-1z" />
+                        <circle cx="6" cy="13.5" r="1" />
+                        <circle cx="11" cy="13.5" r="1" />
+                    </svg>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </div>
 
 </header>
+
+
+
+
 
 <header class="mobile-menu <%= noCursorZone ? 'no-cursor-zone' : '' %>" id="mobileMenu">
 
