@@ -576,6 +576,74 @@ const beachwearProducts = {
       { label: "HILO", img: "/images/thong.png" },
     ],
   },
+
+  // ===== SETS =====
+
+  rose: {
+    id: "rose-set",
+    slug: "rose-set",
+    link: "#",
+    name: "ROSÉ SET",
+    price: 36500,
+    currency: "₡",
+    description:
+      "Conjunto elaborado en un tipo de tejido flexible que se amolda al cuerpo y resalta tu figura.",
+    images: [
+      "/images/sets/set-1.jpg",
+      "/images/sets/set-1.1.jpeg",
+      "/images/sets/set-1.2.jpeg",
+      "/images/sets/set-1.3.jpeg",
+      "/images/sets/set-1.4.jpeg",
+      "/images/sets/set-1.5.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  dahlia: {
+    id: "dahlia-set",
+    slug: "dahlia-set",
+    link: "#",
+    name: "DAHLIA SET",
+    price: 36500,
+    currency: "₡",
+    description:
+      "Salida de playa elaborada 100% a crochet.",
+    images: [
+      "/images/sets/set-2.jpg",
+      "/images/sets/set-2.1.jpeg",
+      "/images/sets/set-2.2.jpeg",
+      "/images/sets/set-2.3.jpeg",
+      "/images/sets/set-2.4.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  islaBlanca: {
+    id: "isla-blanca",
+    slug: "isla-blanca",
+    link: "#",
+    name: "ISLA BLANCA",
+    price: 36500,
+    currency: "₡",
+    description:
+      "Salida de playa elaborada 100% a crochet.",
+    images: [
+      "/images/sets/set-3.jpg",
+      "/images/sets/set-3.1.jpeg",
+      "/images/sets/set-3.2.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
 };
 
 /* ============================================================
