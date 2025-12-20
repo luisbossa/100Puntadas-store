@@ -170,8 +170,13 @@
   transition-delay: 0.55s;
 }
 
+.navsize-button {
+  background-color: rgba(0, 0, 0, 0);
+  padding: 0;
+}
+
 @media screen and (max-width: 1360px) {
-  .nav-links {
+  .nav-links, .navsize-link {
     display: none;
   }
 
