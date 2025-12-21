@@ -629,6 +629,26 @@ const beachwearProducts = {
       { label: "HILO", img: "/images/thong.png" },
     ],
   },
+    selena: {
+    id: "selena-set",
+    slug: "selena-set",
+    link: "#",
+    name: "SELENA SET",
+    price: 36500,
+    currency: "₡",
+    description:
+      "Salida de playa elaborada 100% a crochet.",
+    images: [
+      "/images/sets/set-4.jpeg",
+      "/images/sets/set-4.1.jpeg",
+      "/images/sets/set-4.2.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
 };
 
 /* ============================================================

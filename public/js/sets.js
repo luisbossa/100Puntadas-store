@@ -20,6 +20,13 @@ const productos = [
     link: "/product/islaBlanca",
     stock: 1,
   },
+  {
+    nombre: "Selena set",
+    precio: "36.500 ₡",
+    imagen: "/images/sets/set-4.jpeg",
+    link: "/product/selena",
+    stock: 1,
+  },
 ];
 
 const contenedor = document.getElementById("lista-productos");

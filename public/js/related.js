@@ -186,6 +186,12 @@ const relatedProducts = [
     imagen: "/images/sets/set-3.jpg",
     link: "/product/islaBlanca",
   },
+  {
+    nombre: "Selena set",
+    precio: "36.500 ₡",
+    imagen: "/images/sets/set-4.jpeg",
+    link: "/product/selena",
+  },
 ];
 
 const container = document.getElementById("macy-container");
