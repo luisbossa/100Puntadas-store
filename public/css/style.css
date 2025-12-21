@@ -3869,7 +3869,7 @@
 
 .maintitle-text {
   margin-bottom: 10px;
-  font-size: clamp(1rem, 3vw, 3rem);
+  font-size: clamp(1.2rem, 3vw, 3rem);
   font-weight: 600;
   line-height: 1.1;
 }
@@ -4446,7 +4446,8 @@
 }
 
 .h3-titles {
-  margin: 0 0 1% 2.3%;
+  margin: 0 0 0.7rem 2.3%;
+  font-size: clamp(1.4rem, 2.5vw, 2.8rem);
 }
 
 .cursor {
