@@ -2,6 +2,7 @@ const beachwearProducts = {
   "black-coffee": {
     id: "black-coffee",
     slug: "black-coffee",
+    productType: "bikini",
     link: "/product/black-coffee",
     name: "BLACK COFFEE",
     price: 32500,
@@ -25,6 +26,7 @@ const beachwearProducts = {
   "cow-print": {
     id: "cow-print",
     slug: "cow-print",
+    productType: "bikini",
     link: "/product/cow-print",
     name: "COW PRINT",
     price: 22750,
@@ -46,6 +48,7 @@ const beachwearProducts = {
   turquoise: {
     id: "turquoise",
     slug: "turquoise",
+    productType: "bikini",
     link: "/product/turquoise",
     name: "TURQUOISE",
     price: 32500,
@@ -67,6 +70,7 @@ const beachwearProducts = {
   "blue-capitan": {
     id: "blue-capitan",
     slug: "blue-capitan",
+    productType: "bikini",
     link: "/product/blue-capitan",
     name: "BLUE CAPITAN",
     price: 32500,
@@ -85,10 +89,10 @@ const beachwearProducts = {
       { label: "HILO", img: "/images/thong.png" },
     ],
   },
-
   earth: {
     id: "earth",
     slug: "earth",
+    productType: "bikini",
     link: "#",
     name: "EARTH",
     price: 32500,
@@ -110,6 +114,7 @@ const beachwearProducts = {
   malibu: {
     id: "malibu",
     slug: "malibu",
+    productType: "bikini",
     link: "#",
     name: "MALIBU",
     price: 32500,
@@ -132,6 +137,7 @@ const beachwearProducts = {
   aqua: {
     id: "aqua",
     slug: "aqua",
+    productType: "bikini",
     link: "#",
     name: "AQUA",
     price: 32500,
@@ -152,6 +158,7 @@ const beachwearProducts = {
   lilac: {
     id: "lilac",
     slug: "lilac",
+    productType: "bikini",
     link: "#",
     name: "LILAC",
     price: 32500,
@@ -172,6 +179,7 @@ const beachwearProducts = {
   fairyFloss: {
     id: "fairy-floss",
     slug: "fairy-floss",
+    productType: "bikini",
     link: "#",
     name: "FAIRY FLOSS",
     price: 32500,
@@ -192,6 +200,7 @@ const beachwearProducts = {
   cloudy: {
     id: "cloudy",
     slug: "cloudy",
+    productType: "bikini",
     link: "#",
     name: "CLOUDY",
     price: 32500,
@@ -212,6 +221,7 @@ const beachwearProducts = {
   blush: {
     id: "blush",
     slug: "blush",
+    productType: "bikini",
     link: "#",
     name: "BLUSH",
     price: 32500,
@@ -233,6 +243,7 @@ const beachwearProducts = {
   candy: {
     id: "candy",
     slug: "candy",
+    productType: "bikini",
     link: "#",
     name: "CANDY",
     price: 34500,
@@ -254,6 +265,7 @@ const beachwearProducts = {
   lollie: {
     id: "lollie",
     slug: "lollie",
+    productType: "bikini",
     link: "#",
     name: "LOLLIE",
     price: 32500,
@@ -274,6 +286,7 @@ const beachwearProducts = {
   redWine: {
     id: "red-wine",
     slug: "red-wine",
+    productType: "bikini",
     link: "#",
     name: "RED WINE",
     price: 34500,
@@ -294,6 +307,7 @@ const beachwearProducts = {
   snakePrint: {
     id: "snake-print",
     slug: "snake-print",
+    productType: "bikini",
     link: "#",
     name: "SNAKE PRINT",
     price: 22750,
@@ -314,6 +328,7 @@ const beachwearProducts = {
   heartOfOcean: {
     id: "heart-of-ocean",
     slug: "heart-of-ocean",
+    productType: "bikini",
     link: "#",
     name: "HEART OF OCEAN",
     price: 32500,
@@ -335,6 +350,7 @@ const beachwearProducts = {
   bubblegum: {
     id: "bubble-gum-kiini",
     slug: "bubble-gum-kiini",
+    productType: "bikini",
     link: "#",
     name: "BUBBLE GUM KIINI",
     price: 32500,
@@ -356,6 +372,7 @@ const beachwearProducts = {
   marshmallow: {
     id: "marshmallow",
     slug: "marshmallow",
+    productType: "bikini",
     link: "#",
     name: "MARSHMALLOW",
     price: 32500,
@@ -375,6 +392,7 @@ const beachwearProducts = {
   vintageSummer: {
     id: "vintage-summer",
     slug: "vintage-summer",
+    productType: "bikini",
     link: "#",
     name: "VINTAGE SUMMER",
     price: 32500,
@@ -395,6 +413,7 @@ const beachwearProducts = {
   cherry: {
     id: "cherry",
     slug: "cherry",
+    productType: "bikini",
     link: "#",
     name: "CHERRY",
     price: 32500,
@@ -415,6 +434,7 @@ const beachwearProducts = {
   navyBlue: {
     id: "navy-blue",
     slug: "navy-blue",
+    productType: "bikini",
     link: "#",
     name: "NAVY BLUE",
     price: 32500,
@@ -435,6 +455,7 @@ const beachwearProducts = {
   leopard: {
     id: "leopard",
     slug: "leopard",
+    productType: "bikini",
     link: "#",
     name: "LEOPARD KIINI",
     price: 32500,
@@ -457,6 +478,7 @@ const beachwearProducts = {
   onePiece: {
     id: "one-piece",
     slug: "one-piece",
+    productType: "one-piece",
     link: "#",
     name: "KIINI ONE PIECE",
     price: 36500,
@@ -477,6 +499,7 @@ const beachwearProducts = {
   tulum: {
     id: "tulum",
     slug: "tulum",
+    productType: "one-piece",
     link: "#",
     name: "TULUM",
     price: 36500,
@@ -498,6 +521,7 @@ const beachwearProducts = {
   bloom: {
     id: "bloom",
     slug: "bloom",
+    productType: "one-piece",
     link: "#",
     name: "BLOOM",
     price: 36500,
@@ -521,6 +545,7 @@ const beachwearProducts = {
   daisyBikini: {
     id: "daisy-bikini",
     slug: "daisy-bikini",
+    productType: "crochet",
     link: "#",
     name: "DAISY BIKINI",
     price: 32500,
@@ -544,6 +569,7 @@ const beachwearProducts = {
   scarlettBikini: {
     id: "scarlett-bikini",
     slug: "scarlett-bikini",
+    productType: "crochet",
     link: "#",
     name: "SCARLETT BIKINI",
     price: 32500,
@@ -567,6 +593,7 @@ const beachwearProducts = {
   rose: {
     id: "rose-set",
     slug: "rose-set",
+    productType: "set",
     link: "#",
     name: "ROSÉ SET",
     price: 36500,
@@ -587,15 +614,15 @@ const beachwearProducts = {
       { label: "HILO", img: "/images/thong.png" },
     ],
   },
-  dahlia: {
-    id: "dahlia-set",
-    slug: "dahlia-set",
+  catalina: {
+    id: "catalina-set",
+    slug: "catalina-set",
+    productType: "set",
     link: "#",
-    name: "DAHLIA SET",
+    name: "CATALINA SET",
     price: 36500,
     currency: "₡",
-    description:
-      "Salida de playa elaborada 100% a crochet.",
+    description: "Salida de playa elaborada 100% a crochet.",
     images: [
       "/images/sets/set-2.jpg",
       "/images/sets/set-2.1.jpeg",
@@ -612,12 +639,12 @@ const beachwearProducts = {
   islaBlanca: {
     id: "isla-blanca",
     slug: "isla-blanca",
+    productType: "set",
     link: "#",
     name: "ISLA BLANCA",
     price: 36500,
     currency: "₡",
-    description:
-      "Salida de playa elaborada 100% a crochet.",
+    description: "Salida de playa elaborada 100% a crochet.",
     images: [
       "/images/sets/set-3.jpg",
       "/images/sets/set-3.1.jpeg",
@@ -629,15 +656,15 @@ const beachwearProducts = {
       { label: "HILO", img: "/images/thong.png" },
     ],
   },
-    selena: {
+  selena: {
     id: "selena-set",
     slug: "selena-set",
+    productType: "set",
     link: "#",
     name: "SELENA SET",
     price: 36500,
     currency: "₡",
-    description:
-      "Salida de playa elaborada 100% a crochet.",
+    description: "Salida de playa elaborada 100% a crochet.",
     images: [
       "/images/sets/set-4.jpeg",
       "/images/sets/set-4.1.jpeg",
@@ -661,6 +688,9 @@ if (!product) {
   console.error("Producto no encontrado:", slug);
 }
 
+const isBikini = product.productType === "bikini";
+const hasTopBottom = ["bikini", "set", "crochet"].includes(product.productType);
+
 /* ============================================================
    RENDER PRODUCTO
 ============================================================ */
@@ -669,22 +699,30 @@ document.getElementById("productPrice").textContent =
   product.price.toLocaleString("es-CR") + " " + product.currency;
 document.getElementById("productDescription").textContent = product.description;
 
-/* IMÁGENES */
+/* ============================================================
+   IMÁGENES
+============================================================ */
 const imagesWrap = document.getElementById("productImages");
-imagesWrap.innerHTML = product.images
-  .map(
-    (img, i) => `
-    <div class="product-img-wrap swiper-slide">
-      <img src="${img}" alt="${product.name} ${i + 1}" class="product-img">
-    </div>
-  `
-  )
-  .join("");
+if (imagesWrap) {
+  imagesWrap.innerHTML = product.images
+    .map(
+      (img, i) => `
+      <div class="product-img-wrap swiper-slide">
+        <img src="${img}" alt="${product.name} ${i + 1}" class="product-img">
+      </div>
+    `
+    )
+    .join("");
+}
 
-/* TALLAS */
-function renderSizes(containerId, name) {
+/* ============================================================
+   TALLAS
+============================================================ */
+function renderSizes(containerId, name, sizes = product.sizes) {
   const container = document.getElementById(containerId);
-  container.innerHTML = product.sizes
+  if (!container) return;
+
+  container.innerHTML = sizes
     .map(
       (size, i) => `
       <label class="variant-btn">
@@ -698,44 +736,94 @@ function renderSizes(containerId, name) {
     .join("");
 }
 
-renderSizes("topSizes", "top-size");
-renderSizes("bottomSizes", "bottom-size");
+/* ============================================================
+   ELEMENTOS DEL DOM (según tu EJS)
+============================================================ */
+const addCartWrap = document.querySelector(".add-cart-btn-wrap");
 
-/* ESTILOS */
-const stylesWrap = document.getElementById("bottomStyles");
-stylesWrap.innerHTML = product.styles
-  .map(
-    (style, i) => `
-    <div class="style-rb-div">
-      <img src="${style.img}" class="style-img">
-      <label class="style-btn">
-        <input type="radio" name="bottom-style" value="${style.label}" ${
-      i === 0 ? "checked" : ""
-    } hidden>
-        ${style.label}
-      </label>
-    </div>
-  `
-  )
-  .join("");
+const sizeContainers = document.querySelectorAll(".size-container");
+
+const topContainer = sizeContainers[0]; // TOP
+const bottomContainer = sizeContainers[1]; // BOTTOM
+const styleContainer = sizeContainers[2]; // BOTTOM STYLE
+
+const topLabel = topContainer?.querySelector("span");
+
+/* ============================================================
+   LÓGICA POR CATEGORÍA
+============================================================ */
+
+const COLORS = ["R", "N", "P"];
+
+if (isBikini) {
+  // 👙 BIKINI → todo visible
+  if (topLabel) topLabel.textContent = "TOP";
+
+  renderSizes("topSizes", "top-size");
+  renderSizes("bottomSizes", "bottom-size");
+
+  document.getElementById("bottomStyles").innerHTML = product.styles
+    .map(
+      (style, i) => `
+      <div class="style-rb-div">
+        <img src="${style.img}" class="style-img">
+        <label class="style-btn">
+          <input type="radio" name="bottom-style" value="${style.label}" ${
+        i === 0 ? "checked" : ""
+      } hidden>
+          ${style.label}
+        </label>
+      </div>
+    `
+    )
+    .join("");
+
+  if (bottomContainer) bottomContainer.style.display = "";
+  if (styleContainer) styleContainer.style.display = "";
+  if (addCartWrap) addCartWrap.style.display = "";
+} else if (hasTopBottom) {
+  // 🧶 SET / CROCHET → TOP + BOTTOM (SIN STYLE)
+
+  if (topLabel) topLabel.textContent = "TOP";
+  renderSizes("topSizes", "top-size");
+
+  const bottomLabel = bottomContainer?.querySelector("span");
+  if (bottomLabel) bottomLabel.textContent = "BOTTOM";
+  renderSizes("bottomSizes", "bottom-size");
+
+  if (bottomContainer) bottomContainer.style.display = "";
+  if (styleContainer) styleContainer.style.display = "none";
+} else {
+  // 👗 OTRAS CATEGORÍAS → TALLAS + COLORES
+
+  if (topLabel) topLabel.textContent = "TALLAS";
+  renderSizes("topSizes", "single-size", ["XS", "S", "M", "L"]);
+
+  const bottomLabel = bottomContainer?.querySelector("span");
+  if (bottomLabel) bottomLabel.textContent = "COLORES";
+  renderSizes("bottomSizes", "color", COLORS);
+
+  if (bottomContainer) bottomContainer.style.display = "";
+  if (styleContainer) styleContainer.style.display = "none";
+}
 
 /* ============================================================
    ADD TO CART
 ============================================================ */
 document.getElementById("addToCartBtn")?.addEventListener("click", () => {
+  if (!isBikini) return;
+
   const item = {
     id: product.id,
     name: product.name,
     price: product.price,
     currency: product.currency,
     image: product.images[0],
-
     topSize: document.querySelector('input[name="top-size"]:checked')?.value,
     bottomSize: document.querySelector('input[name="bottom-size"]:checked')
       ?.value,
     bottomStyle: document.querySelector('input[name="bottom-style"]:checked')
       ?.value,
-
     quantity: 1,
   };
 

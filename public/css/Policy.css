@@ -2,7 +2,7 @@
   width: 100%;
   height: auto;
   background-color: #fcfaf6;
-  padding: 7rem clamp(1rem, 7vw, 8rem) 1%;
+  padding: 9rem clamp(1rem, 7vw, 8rem) 1%;
 }
 
 .policy-div {

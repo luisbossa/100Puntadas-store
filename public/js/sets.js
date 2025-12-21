@@ -7,10 +7,10 @@ const productos = [
     stock: 1,
   },
   {
-    nombre: "Dahlia set",
+    nombre: "Catalina set",
     precio: "36.500 ₡",
     imagen: "/images/sets/set-2.jpg",
-    link: "/product/dahlia",
+    link: "/product/catalina",
     stock: 1,
   },
   {
