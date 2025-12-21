@@ -333,17 +333,3 @@
   }
 }
 
-@media (max-width: 480px) {
-  .cart-icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .cart-count {
-    width: 14px;
-    height: 14px;
-    font-size: 9px;
-    top: 2px;
-    right: 2px;
-  }
-}

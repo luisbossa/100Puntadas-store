@@ -4445,6 +4445,10 @@
   grid-column-end: span 1;
 }
 
+.h3-titles {
+  margin: 0 0 1% 2.3%;
+}
+
 .cursor {
   transform: translate(-50%, -50%);
   pointer-events: none;
