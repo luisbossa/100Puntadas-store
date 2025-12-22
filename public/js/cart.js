@@ -72,6 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalBox = document.getElementById("cartTotal");
     const shippingBox = document.getElementById("cartShipping");
     const emptyMessage = document.getElementById("emptyCartMessage");
+    const shippingRow = document.getElementById("shippingRow");
+    const totalRow = document.getElementById("totalRow");
     const checkoutBtn = document.querySelector(".cart-checkout-btn");
     const discountRow = document.getElementById("discountRow");
     const discountBox = document.getElementById("cartDiscount");
@@ -85,10 +87,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (cart.length === 0) {
       emptyMessage.style.display = "block";
+      shippingRow?.classList.add("disable-text");
+      totalRow?.classList.add("disable-text");
       checkoutBtn?.classList.add("disabled");
       discountRow.style.display = "none";
     } else {
       emptyMessage.style.display = "none";
+      shippingRow?.classList.remove("disable-text");
+      totalRow?.classList.remove("disable-text");
       checkoutBtn?.classList.remove("disabled");
 
       cart.forEach((item, index) => {

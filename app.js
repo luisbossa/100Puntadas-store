@@ -30,6 +30,7 @@ app.locals.ONVO_PUBLIC_KEY = process.env.ONVOPAY_PUBLIC_KEY;
 // Routes
 app.use(require("./routes/homeRoute"));
 app.use(require("./routes/productRoute"));
+app.use(require("./routes/checkoutRoute"));
 app.use(require("./routes/onvopayRoute"));
 
 

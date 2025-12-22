@@ -182,9 +182,16 @@
 .cart-checkout-btn.disabled {
   pointer-events: none;
   opacity: 0.45;
-  background: #aaaaaa;
+  background: #5e5e5e;
   cursor: not-allowed;
   color: #fff;
+}
+
+.disable-text {
+  pointer-events: none;
+  opacity: 0.95;
+  cursor: not-allowed;
+  color: #5e5e5e;
 }
 
 /* ==========================
