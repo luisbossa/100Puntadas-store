@@ -6,6 +6,8 @@ const COLOR_LABELS = {
   black: "Negro",
 };
 
+const DISCOUNT_RATE = 0.15;
+const DISCOUNT_MIN_ITEMS = 2;
 const SHIPPING_COST = 2500;
 
 /* ============================================================
@@ -52,6 +54,7 @@ window.addToCart = function (item) {
 /* ============================================================
    DOM READY
 ============================================================ */
+
 document.addEventListener("DOMContentLoaded", () => {
   const panel = document.getElementById("cartPanel");
   const overlay = document.getElementById("cartOverlay");
@@ -62,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ============================================================
      RENDER CART
   ============================================================ */
+
   window.renderCart = function () {
     const cart = getCart();
     const container = document.querySelector(".cart-items");
@@ -69,42 +73,58 @@ document.addEventListener("DOMContentLoaded", () => {
     const shippingBox = document.getElementById("cartShipping");
     const emptyMessage = document.getElementById("emptyCartMessage");
     const checkoutBtn = document.querySelector(".cart-checkout-btn");
+    const discountRow = document.getElementById("discountRow");
+    const discountBox = document.getElementById("cartDiscount");
 
     if (!container) return;
 
     container.innerHTML = "";
+
     let subtotal = 0;
+    let totalQuantity = 0;
 
     if (cart.length === 0) {
       emptyMessage.style.display = "block";
       checkoutBtn?.classList.add("disabled");
+      discountRow.style.display = "none";
     } else {
       emptyMessage.style.display = "none";
       checkoutBtn?.classList.remove("disabled");
 
       cart.forEach((item, index) => {
         subtotal += item.price * item.quantity;
+        totalQuantity += item.quantity;
 
         container.innerHTML += `
           <div class="cart-item" data-index="${index}">
-            <img src="${item.image}" loading="eager">
+            <img src="${item.image}" loading="eager" alt="${item.name}">
+            
             <div class="cart-info-div">
               <h3 class="cart-heading">${item.name}</h3>
               ${item.topSize ? `<p>Top: ${item.topSize}</p>` : ""}
               ${item.bottomSize ? `<p>Bottom: ${item.bottomSize}</p>` : ""}
               ${item.bottomStyle ? `<p>Estilo: ${item.bottomStyle}</p>` : ""}
               ${item.size ? `<p>Talla: ${item.size}</p>` : ""}
-              ${item.color ? `<p>Color: ${COLOR_LABELS[item.color] || item.color}</p>` : ""}
+              ${
+                item.color
+                  ? `<p>Color: ${COLOR_LABELS[item.color] || item.color}</p>`
+                  : ""
+              }
               <p>₡${item.price.toLocaleString("es-CR")}</p>
 
               <div class="quantity-controls">
                 <button class="quantity-btn decrease">-</button>
-                <input type="number" class="quantity-input" value="${item.quantity}" min="1">
+                <input
+                  type="number"
+                  class="quantity-input"
+                  value="${item.quantity}"
+                  min="1"
+                >
                 <button class="quantity-btn increase">+</button>
               </div>
             </div>
 
-            <button class="delete-btn">
+            <button class="delete-btn" aria-label="Eliminar producto">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -116,14 +136,52 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
+    /* ================= DISCOUNT LOGIC ================= */
+
+    let discount = 0;
+
+    // Pares completos (2, 4, 6, 8...)
+    const pairs = Math.floor(totalQuantity / DISCOUNT_MIN_ITEMS);
+
+    if (pairs > 0) {
+      // Expandimos precios por cantidad
+      const prices = [];
+
+      cart.forEach((item) => {
+        for (let i = 0; i < item.quantity; i++) {
+          prices.push(item.price);
+        }
+      });
+
+      // Ordenamos del más barato al más caro
+      prices.sort((a, b) => a - b);
+
+      // Prendas que entran en el descuento
+      const discountedItemsCount = pairs * DISCOUNT_MIN_ITEMS;
+
+      const discountedSubtotal = prices
+        .slice(0, discountedItemsCount)
+        .reduce((acc, price) => acc + price, 0);
+
+      discount = Math.round(discountedSubtotal * DISCOUNT_RATE);
+
+      discountRow.style.display = "flex";
+      discountBox.textContent = discount.toLocaleString("es-CR");
+    } else {
+      discountRow.style.display = "none";
+    }
+
+    /* ================= TOTAL ================= */
+
     const shipping = cart.length > 0 ? SHIPPING_COST : 0;
-    const total = subtotal + shipping;
+    const total = subtotal - discount + shipping;
 
     shippingBox.textContent = shipping.toLocaleString("es-CR");
     totalBox.textContent = total.toLocaleString("es-CR");
-    cartCount.textContent = calculateTotalQuantity(cart);
+    if (cartCount) cartCount.textContent = totalQuantity;
 
-    /* DELETE */
+    /* ================= DELETE ================= */
+
     document.querySelectorAll(".delete-btn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         const cartItem = e.target.closest(".cart-item");
@@ -143,30 +201,38 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    /* QUANTITY BUTTONS */
+    /* ================= QUANTITY BUTTONS ================= */
+
     document.querySelectorAll(".quantity-btn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         const itemEl = e.target.closest(".cart-item");
         const index = itemEl.dataset.index;
         const cart = getCart();
 
-        if (btn.classList.contains("increase")) cart[index].quantity++;
-        if (btn.classList.contains("decrease") && cart[index].quantity > 1)
+        if (btn.classList.contains("increase")) {
+          cart[index].quantity++;
+        }
+
+        if (btn.classList.contains("decrease") && cart[index].quantity > 1) {
           cart[index].quantity--;
+        }
 
         saveCart(cart);
         renderCart();
       });
     });
 
-    /* QUANTITY INPUT */
+    /* ================= QUANTITY INPUT ================= */
+
     document.querySelectorAll(".quantity-input").forEach((input) => {
-      input.addEventListener("input", (e) => {
+      input.addEventListener("change", (e) => {
         const itemEl = e.target.closest(".cart-item");
         const index = itemEl.dataset.index;
         const cart = getCart();
 
-        cart[index].quantity = Math.max(1, parseInt(e.target.value) || 1);
+        const value = parseInt(e.target.value, 10);
+        cart[index].quantity = value >= 1 ? value : 1;
+
         saveCart(cart);
         renderCart();
       });
@@ -174,8 +240,9 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   /* ============================================================
-     OPEN / CLOSE
+     OPEN / CLOSE CART
   ============================================================ */
+
   window.openCart = function () {
     panel?.classList.add("open");
     overlay?.classList.add("show");
@@ -195,36 +262,4 @@ document.addEventListener("DOMContentLoaded", () => {
   openCartBtn?.addEventListener("click", openCart);
 
   renderCart();
-
-  /* ============================================================
-     CHECKOUT CON ONVO PAY
-  ============================================================ */
-  const checkoutBtn = document.querySelector(".cart-checkout-btn");
-  checkoutBtn?.addEventListener("click", async () => {
-    const cart = getCart();
-    if (cart.length === 0) return;
-
-    let subtotal = 0;
-    cart.forEach(item => subtotal += item.price * item.quantity);
-    const shipping = cart.length > 0 ? SHIPPING_COST : 0;
-    const total = subtotal + shipping;
-
-    try {
-      const res = await fetch("/api/create-payment-intent", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ amount: total })
-      });
-      const data = await res.json();
-
-      if (data.ok && data.paymentIntentId) {
-        // Redirige al checkout de Onvo Pay
-        window.location.href = `https://checkout.onvopay.com/pay/${data.paymentIntentId}`;
-      } else {
-        console.error("Error creando el pago:", data.error);
-      }
-    } catch (err) {
-      console.error("Error en la petición de pago:", err);
-    }
-  });
 });

@@ -29,7 +29,7 @@
   box-shadow: -3px 0 12px rgba(0, 0, 0, 0.18);
   transition: right 0.35s ease;
   z-index: 1000;
-  padding: 22px 22px 25px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
 }
@@ -53,7 +53,7 @@
   margin: 0;
 }
 
-/* Botón de cerrar en esquina */
+/* Botón de cerrar */
 .cart-close-btn {
   position: absolute;
   right: 0;
@@ -90,12 +90,11 @@
   display: grid;
   grid-template-columns: 80px 1fr;
   gap: 12px;
-  padding: 3px 0 15px;
+  padding: 5px 0 15px;
   margin-bottom: 15px;
   border-bottom: 1px solid #eee;
 }
 
-/* Imagen */
 .cart-item img {
   width: 80px;
   height: 80px;
@@ -103,13 +102,12 @@
   object-fit: cover;
 }
 
-/* Info del producto */
 .cart-info-div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   font-family: Lato, sans-serif;
-  gap: 6px;
+  gap: 4px;
 }
 
 .cart-heading {
@@ -133,20 +131,27 @@
   padding-top: 15px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
 }
 
-.cart-shipping,
-.cart-total-box {
-  font-size: 18px;
-  font-weight: 700;
-  margin: 0;
-  padding: 0 10px;
+.totals {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.totals-row {
   display: flex;
   justify-content: space-between;
+  font-size: 16px;
+  color: #161616;
 }
 
-/* Checkout */
+.total-row {
+  font-size: 18px;
+  font-weight: 700;
+}
+
 .cart-checkout-btn {
   width: 100%;
   padding: 12px;
@@ -162,28 +167,27 @@
   transition: 0.2s ease;
 }
 
-/* Estado normal */
 .cart-checkout-btn:hover {
   opacity: 0.85;
 }
 
-/* Estado deshabilitado */
 .cart-checkout-btn.disabled {
-  pointer-events: none;        
-  opacity: 0.45;             
-  background: #aaaaaa;         
-  cursor: not-allowed;        
-  color: #ffffff;              
+  pointer-events: none;
+  opacity: 0.45;
+  background: #aaaaaa;
+  cursor: not-allowed;
+  color: #fff;
 }
 
-/* Animación para desaparecer el producto */
+/* ==========================
+   CANTIDAD Y BOTÓN ELIMINAR
+========================== */
 .cart-item.fade-out {
   opacity: 0;
   transform: scale(0.95);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Estilo para el botón de eliminar */
 .delete-btn {
   position: absolute;
   right: 0;
@@ -200,7 +204,7 @@
 .delete-btn svg {
   width: 24px;
   height: 24px;
-  fill: #ffffff;
+  fill: #fff;
 }
 
 .delete-btn:hover svg {
@@ -220,12 +224,15 @@
 .quantity-btn {
   width: 27px;
   height: 27px;
-  padding: auto;
   background-color: #161616;
   color: #fff;
   border: none;
   cursor: pointer;
   border-radius: 5px;
+}
+
+.quantity-btn:focus {
+  outline: none;
 }
 
 .quantity-input {
@@ -237,7 +244,6 @@
   border-radius: 5px;
 }
 
-/* Animación de desaparición al eliminar */
 .fade-out {
   animation: fadeOut 0.3s forwards;
 }
@@ -251,17 +257,6 @@
   }
 }
 
-.quantity-btn:focus {
-  outline: none;
-}
-
-.quantity {
-  font-size: 16px;
-  margin: 0 10px;
-}
-
-/********************/
-
 .emptyCartMessage {
   display: none;
   color: #666;
@@ -271,6 +266,9 @@
   margin: 20px 0;
 }
 
+/* ==========================
+   MOBILE
+========================== */
 @media (max-width: 480px) {
   .cart-panel {
     width: 100%;
