@@ -1,7 +1,7 @@
 const crochets = [
   {
     nombre: "DAISY BIKINI",
-    precio: "32.500 ₡",
+    precio: "33.500 ₡",
     imagen: "/images/crochets/crochet-1.jpeg",
     link: "/product/daisyBikini",
     stock: 1,
@@ -10,7 +10,7 @@ const crochets = [
   },
   {
     nombre: "SCARLETT BIKINI",
-    precio: "32.500 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/crochets/crochet-2.jpeg",
     link: "/product/scarlettBikini",
     stock: 1,

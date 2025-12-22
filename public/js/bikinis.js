@@ -1,7 +1,7 @@
 const bikinis = [
   {
     nombre: "BLACK COFFEE",
-    precio: "32.500 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/swimwears/swimwear-1.webp",
     link: "/product/black-coffee",
     stock: 1,
@@ -10,16 +10,16 @@ const bikinis = [
   },
   {
     nombre: "COW PRINT",
-    precio: "22.750 ₡",
+    precio: "21.000 ₡",
     imagen: "/images/swimwears/swimwear-2.webp",
     link: "/product/cow-print",
     stock: 1,
     discount: 1,
-    oldPrice: "32.500 ₡",
+    oldPrice: "30.000 ₡",
   },
   {
     nombre: "TURQUOISE",
-    precio: "32.500 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/swimwears/swimwear-3.webp",
     link: "/product/turquoise",
     stock: 1,
@@ -28,7 +28,7 @@ const bikinis = [
   },
   {
     nombre: "BLUE CAPITAN",
-    precio: "32.500 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/swimwears/swimwear-4.webp",
     link: "/product/blue-capitan",
     stock: 1,
@@ -37,7 +37,7 @@ const bikinis = [
   },
   {
     nombre: "EARTH",
-    precio: "32.500 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/swimwears/swimwear-5.webp",
     link: "/product/earth",
     stock: 1,
@@ -46,7 +46,7 @@ const bikinis = [
   },
   {
     nombre: "MALIBU",
-    precio: "32.500 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/swimwears/swimwear-6.webp",
     link: "/product/malibu",
     stock: 1,
@@ -55,7 +55,7 @@ const bikinis = [
   },
   {
     nombre: "AQUA",
-    precio: "32.500 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/swimwears/swimwear-7.webp",
     link: "/product/aqua",
     stock: 1,
@@ -64,7 +64,7 @@ const bikinis = [
   },
   {
     nombre: "LILAC",
-    precio: "32.500 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/swimwears/swimwear-8.webp",
     link: "/product/lilac",
     stock: 1,
@@ -73,7 +73,7 @@ const bikinis = [
   },
   {
     nombre: "FAIRY FLOSS",
-    precio: "32.500 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/swimwears/swimwear-9.webp",
     link: "/product/fairyFloss",
     stock: 1,
@@ -82,7 +82,7 @@ const bikinis = [
   },
   {
     nombre: "CLOUDY",
-    precio: "32.500 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/swimwears/swimwear-10.webp",
     link: "/product/cloudy",
     stock: 1,
@@ -91,7 +91,7 @@ const bikinis = [
   },
   {
     nombre: "BLUSH",
-    precio: "32.500 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/swimwears/swimwear-11.webp",
     link: "/product/blush",
     stock: 1,
@@ -100,7 +100,7 @@ const bikinis = [
   },
   {
     nombre: "CANDY",
-    precio: "34.500 ₡",
+    precio: "32.500 ₡",
     imagen: "/images/swimwears/swimwear-12.webp",
     link: "/product/candy",
     stock: 1,
@@ -109,7 +109,7 @@ const bikinis = [
   },
   {
     nombre: "LOLLIE",
-    precio: "32.500 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/swimwears/swimwear-13.webp",
     link: "/product/lollie",
     stock: 1,
@@ -118,7 +118,7 @@ const bikinis = [
   },
   {
     nombre: "RED WINE",
-    precio: "34.500 ₡",
+    precio: "32.500 ₡",
     imagen: "/images/swimwears/swimwear-14.webp",
     link: "/product/redWine",
     stock: 1,
@@ -127,16 +127,16 @@ const bikinis = [
   },
   {
     nombre: "SNAKE PRINT",
-    precio: "22.750 ₡",
+    precio: "21.000 ₡",
     imagen: "/images/swimwears/swimwear-15.webp",
     link: "/product/snakePrint",
     stock: 1,
     discount: 1,
-    oldPrice: "32.500 ₡",
+    oldPrice: "30.000 ₡",
   },
   {
     nombre: "HEART OF OCEAN",
-    precio: "32.500 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/swimwears/swimwear-16.webp",
     link: "/product/heartOfOcean",
     stock: 1,
@@ -145,7 +145,7 @@ const bikinis = [
   },
   {
     nombre: "BUBBLE GUM KIINI",
-    precio: "32.500 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/swimwears/swimwear-17.jpeg",
     link: "/product/bubblegum",
     stock: 1,
@@ -154,7 +154,7 @@ const bikinis = [
   },
   {
     nombre: "MARSHMALLOW",
-    precio: "32.500 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/swimwears/swimwear-18.jpeg",
     link: "/product/marshmallow",
     stock: 1,
@@ -163,7 +163,7 @@ const bikinis = [
   },
   {
     nombre: "VINTAGE SUMMER",
-    precio: "32.500 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/swimwears/swimwear-19.jpeg",
     link: "/product/vintageSummer",
     stock: 1,
@@ -172,7 +172,7 @@ const bikinis = [
   },
   {
     nombre: "CHERRY",
-    precio: "32.500 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/swimwears/swimwear-20.jpeg",
     link: "/product/cherry",
     stock: 1,
@@ -181,7 +181,7 @@ const bikinis = [
   },
   {
     nombre: "NAVY BLUE",
-    precio: "32.500 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/swimwears/swimwear-21.jpeg",
     link: "/product/navyBlue",
     stock: 1,
@@ -190,7 +190,7 @@ const bikinis = [
   },
   {
     nombre: "LEOPARD KIINI",
-    precio: "32.500 ₡",
+    precio: "30.000 ₡",
     imagen: "/images/swimwears/swimwear-22.jpeg",
     link: "/product/leopard",
     stock: 1,

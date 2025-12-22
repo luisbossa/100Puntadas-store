@@ -1,28 +1,28 @@
 const productos = [
   {
     nombre: "Rosé set",
-    precio: "36.500 ₡",
+    precio: "35.000 ₡",
     imagen: "/images/sets/set-1.jpg",
     link: "/product/rose",
     stock: 1,
   },
   {
     nombre: "Catalina set",
-    precio: "36.500 ₡",
+    precio: "35.000 ₡",
     imagen: "/images/sets/set-2.jpg",
     link: "/product/catalina",
     stock: 1,
   },
   {
     nombre: "Isla blanca",
-    precio: "36.500 ₡",
+    precio: "35.000 ₡",
     imagen: "/images/sets/set-3.jpg",
     link: "/product/islaBlanca",
     stock: 1,
   },
   {
     nombre: "Selena set",
-    precio: "36.500 ₡",
+    precio: "35.000 ₡",
     imagen: "/images/sets/set-4.jpeg",
     link: "/product/selena",
     stock: 1,
