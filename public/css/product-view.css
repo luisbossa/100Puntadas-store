@@ -3561,7 +3561,7 @@ em {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding-left: 15px;
+  padding-left: 8px;
   gap: 20px;
 }
 
@@ -5140,6 +5140,59 @@ em {
     justify-self: start;
   }
 }
+
+/* Contenedor */
+.color-swatch {
+  display: inline-flex;
+  cursor: pointer;
+}
+
+/* Círculo base */
+.color-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid #dcdcdc;
+  transition: transform 0.25s ease, border 0.25s ease;
+}
+
+/* Hover */
+.color-swatch:hover .color-circle {
+  transform: scale(1.04);
+}
+
+/* Seleccionado */
+.color-swatch input:checked + .color-circle {
+  border: 1px solid #161616;
+}
+
+/* =========================
+   IMÁGENES POR COLOR
+========================= */
+
+.color-circle[data-color="white"] {
+  background-image: url("/images/colors/white.jpeg");
+}
+
+.color-circle[data-color="coffe"] {
+  background-image: url("/images/colors/coffe.jpeg");
+}
+
+.color-circle[data-color="pink"] {
+  background-image: url("/images/colors/pink.jpeg");
+}
+
+.color-circle[data-color="red"] {
+  background-image: url("/images/colors/red.jpeg");
+}
+
+.color-circle[data-color="black"] {
+  background-image: url("/images/colors/black.jpeg");
+}
+
+/*--------------------*/
 
 .social-icons-wrapper svg {
   color: #161616 !important;

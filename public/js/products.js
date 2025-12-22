@@ -756,7 +756,35 @@ const topLabel = topContainer?.querySelector("span");
    LÓGICA POR CATEGORÍA
 ============================================================ */
 
-const COLORS = ["R", "N", "P", "B"];
+const COLORS = [
+  { id: "white", label: "White" },
+  { id: "coffe", label: "Coffe" },
+  { id: "pink", label: "Pink" },
+  { id: "red", label: "Red" },
+  { id: "black", label: "Black" },
+];
+
+function renderColors(containerId, name, colors) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  container.innerHTML = colors
+    .map(
+      (color, i) => `
+      <label class="color-swatch">
+        <input 
+          type="radio" 
+          name="${name}" 
+          value="${color.id}" 
+          ${i === 0 ? "checked" : ""} 
+          hidden
+        >
+        <span class="color-circle" data-color="${color.id}"></span>
+      </label>
+    `
+    )
+    .join("");
+}
 
 if (isBikini) {
   // 👙 BIKINI → TOP + BOTTOM + STYLE
@@ -785,8 +813,6 @@ if (isBikini) {
   if (styleContainer) styleContainer.style.display = "";
   if (addCartWrap) addCartWrap.style.display = "";
 } else if (["set", "crochet"].includes(product.productType)) {
-  // 🧶 SET / CROCHET → TOP + BOTTOM + COLORES (SIN STYLE)
-
   if (topLabel) topLabel.textContent = "TOP";
   renderSizes("topSizes", "top-size");
 
@@ -797,19 +823,19 @@ if (isBikini) {
   // 🎨 COLORES (reemplaza styles)
   const styleLabel = styleContainer?.querySelector("span");
   if (styleLabel) styleLabel.textContent = "COLORES";
-  renderSizes("bottomStyles", "color", COLORS);
+  renderColors("bottomStyles", "color", COLORS);
 
   if (bottomContainer) bottomContainer.style.display = "";
   if (styleContainer) styleContainer.style.display = "";
 } else {
-  // 👗 ONE-PIECE / OTROS → TALLAS + COLORES
-
   if (topLabel) topLabel.textContent = "TALLAS";
   renderSizes("topSizes", "single-size", ["XS", "S", "M", "L"]);
 
   const bottomLabel = bottomContainer?.querySelector("span");
   if (bottomLabel) bottomLabel.textContent = "COLORES";
-  renderSizes("bottomSizes", "color", COLORS);
+
+  // 👉 colores van en BOTTOM
+  renderColors("bottomSizes", "color", COLORS);
 
   if (bottomContainer) bottomContainer.style.display = "";
   if (styleContainer) styleContainer.style.display = "none";
