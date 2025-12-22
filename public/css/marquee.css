@@ -11,11 +11,14 @@
 .promo-track {
   width: max-content;
   display: flex;
+  align-items: center;
   animation: marquee 18s linear infinite;
-  gap: 8rem;
+  gap: 5rem;
 }
 
 .promo-track span {
+  display: inline-flex;
+  align-items: center;
   color: #fff;
   font-size: clamp(0.5rem, 2vw, 0.8rem);
   font-weight: 600;
@@ -25,6 +28,20 @@
   white-space: nowrap;
 }
 
+.promo-track .maquee-off {
+  color: #FDE35C;
+  font-weight: 700;
+  margin: 0 0.25rem;
+}
+
+.promo-highlight::before,
+.promo-highlight::after {
+  content: "✦";
+  color: #FDE35C;
+  margin: 0 0.4rem;
+  font-size: 0.7em;
+  opacity: 0.8;
+}
 
 @keyframes marquee {
   from {

@@ -43,9 +43,8 @@ body {
    EVITAR EL SCROLL DEL BODY
 ========================== */
 .no-scroll {
-  overflow: hidden; 
+  overflow: hidden;
 }
-
 
 article,
 aside,
@@ -78,7 +77,10 @@ template {
   display: none;
 }
 a {
+  color: #161616;
+  text-decoration: none;
   background-color: transparent;
+  cursor: pointer;
 }
 a:active,
 a:hover {
