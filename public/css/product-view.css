@@ -5149,8 +5149,8 @@ em {
 
 /* Círculo base */
 .color-circle {
-  width: 42px;
-  height: 42px;
+  width: clamp(35px, 6vw, 42px);
+  height: clamp(35px, 6vw, 42px);
   border-radius: 50%;
   background-size: cover;
   background-position: center;

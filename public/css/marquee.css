@@ -5,7 +5,7 @@
   width: 100%;
   overflow: hidden;
   background: #161616;
-  padding: 0.65rem 0 0.45rem;
+  padding: 0.45rem 0;
 }
 
 .promo-track {
@@ -19,6 +19,7 @@
   color: #fff;
   font-size: clamp(0.5rem, 2vw, 0.8rem);
   font-weight: 600;
+  font-family: Lato, sans-serif;
   letter-spacing: clamp(0.08em, 0.4vw, 0.15em);
   text-transform: uppercase;
   white-space: nowrap;
