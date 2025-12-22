@@ -484,7 +484,7 @@ const beachwearProducts = {
     price: 36500,
     currency: "₡",
     description:
-      "Amamos la versión enterizo de los kiinis. Tienen un toque deportivo y retro. Personalizable en el color que gustes. Nuestros bikinis reflejan un acabo artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Amamos la versión enterizo de los kiinis. Tienen un toque deportivo y retro. Personalizable en el color que gustes.",
     images: [
       "/images/jumpsuits/jumpsuit-1.webp",
       "/images/jumpsuits/jumpsuit-1.1.jpeg",
@@ -505,7 +505,7 @@ const beachwearProducts = {
     price: 36500,
     currency: "₡",
     description:
-      "Estilo Boho-Luxe (sofisticado y artesanal) 100% elaborado a mano en crochet Centro crema/beige con delicado borde rosa (el color del borde puede ser personalizable). Esta pieza es la definición de la elegancia bohemia. Es ajustable a los lados haciendo que se amolde muy bien a tu figura.",
+      "Estilo Boho-Luxe (sofisticado y artesanal) 100% elaborado a mano en crochet.Esta pieza es la definición de la elegancia bohemia. Es ajustable a los lados haciendo que se amolde muy bien a tu figura.",
     images: [
       "/images/jumpsuits/jumpsuit-2.webp",
       "/images/jumpsuits/jumpsuit-2.1.jpeg",
@@ -527,7 +527,7 @@ const beachwearProducts = {
     price: 36500,
     currency: "₡",
     description:
-      "Una prenda súper femenina de la tendencia Coquette, dulce y con un aire vintage. Amamos el contraste crema con flores en relieve celestes.",
+      "Una prenda súper femenina de la tendencia Coquette y con un aire vintage. Amamos el contraste crema con flores en relieve celestes.Elaborado en un material de tejido flexible.",
     images: [
       "/images/jumpsuits/jumpsuit-3.webp",
       "/images/jumpsuits/jumpsuit-3.1.jpeg",
@@ -575,7 +575,7 @@ const beachwearProducts = {
     price: 32500,
     currency: "₡",
     description:
-      "Este diseño fue un best seller en el 2018, así que decidimos traerlo de vuelta. Diseño sexy y atrevido elaborado 100% a crochet con material de algodón suave.",
+      "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave. Top strapless y bottom en corte V. Ambos ajustables.",
     images: [
       "/images/crochets/crochet-2.jpeg",
       "/images/crochets/crochet-2.1.jpeg",
@@ -599,7 +599,7 @@ const beachwearProducts = {
     price: 36500,
     currency: "₡",
     description:
-      "Conjunto elaborado en un tipo de tejido flexible que se amolda al cuerpo y resalta tu figura.",
+      "Conjunto elaborado en un tipo de tejido flexible que se amolda al cuerpo y resalta tu figura. Perfecto para usarlo como outfit de playa y/o festival.",
     images: [
       "/images/sets/set-1.jpg",
       "/images/sets/set-1.1.jpeg",
@@ -622,7 +622,8 @@ const beachwearProducts = {
     name: "CATALINA SET",
     price: 36500,
     currency: "₡",
-    description: "Salida de playa elaborada 100% a crochet.",
+    description:
+      "Conjunto  elaborado 100% a crochet .Top estilo halter con detalle de flores en relieve y falda con volados pronunciados en capas con tejido estilo malla. Perfecta para usarla como outfit de playa y/o festival",
     images: [
       "/images/sets/set-2.jpg",
       "/images/sets/set-2.1.jpeg",
@@ -644,7 +645,8 @@ const beachwearProducts = {
     name: "ISLA BLANCA",
     price: 36500,
     currency: "₡",
-    description: "Salida de playa elaborada 100% a crochet.",
+    description:
+      "Conjunto  elaborado 100% a crochet. El top es súper versátil, se puede utilizar con tirantes cruzados al cuello o tirantes  amarrados en nudo al frente. Perfecto para usarlo como outfit de playa y/o festival.",
     images: [
       "/images/sets/set-3.jpg",
       "/images/sets/set-3.1.jpeg",
@@ -664,7 +666,8 @@ const beachwearProducts = {
     name: "SELENA SET",
     price: 36500,
     currency: "₡",
-    description: "Salida de playa elaborada 100% a crochet.",
+    description:
+      "Salida de playa elaborada 100% a crochet con puntada de malla. El top estilo bolero amarrable al frente y falta ajustable a la medida. Perfeta para usarla como outfit de playa y/o festival.",
     images: [
       "/images/sets/set-4.jpeg",
       "/images/sets/set-4.1.jpeg",
@@ -753,10 +756,10 @@ const topLabel = topContainer?.querySelector("span");
    LÓGICA POR CATEGORÍA
 ============================================================ */
 
-const COLORS = ["R", "N", "P"];
+const COLORS = ["R", "N", "P", "B"];
 
 if (isBikini) {
-  // 👙 BIKINI → todo visible
+  // 👙 BIKINI → TOP + BOTTOM + STYLE
   if (topLabel) topLabel.textContent = "TOP";
 
   renderSizes("topSizes", "top-size");
@@ -765,24 +768,24 @@ if (isBikini) {
   document.getElementById("bottomStyles").innerHTML = product.styles
     .map(
       (style, i) => `
-      <div class="style-rb-div">
-        <img src="${style.img}" class="style-img">
-        <label class="style-btn">
-          <input type="radio" name="bottom-style" value="${style.label}" ${
+        <div class="style-rb-div">
+          <img src="${style.img}" class="style-img">
+          <label class="style-btn">
+            <input type="radio" name="bottom-style" value="${style.label}" ${
         i === 0 ? "checked" : ""
       } hidden>
-          ${style.label}
-        </label>
-      </div>
-    `
+            ${style.label}
+          </label>
+        </div>
+      `
     )
     .join("");
 
   if (bottomContainer) bottomContainer.style.display = "";
   if (styleContainer) styleContainer.style.display = "";
   if (addCartWrap) addCartWrap.style.display = "";
-} else if (hasTopBottom) {
-  // 🧶 SET / CROCHET → TOP + BOTTOM (SIN STYLE)
+} else if (["set", "crochet"].includes(product.productType)) {
+  // 🧶 SET / CROCHET → TOP + BOTTOM + COLORES (SIN STYLE)
 
   if (topLabel) topLabel.textContent = "TOP";
   renderSizes("topSizes", "top-size");
@@ -791,10 +794,15 @@ if (isBikini) {
   if (bottomLabel) bottomLabel.textContent = "BOTTOM";
   renderSizes("bottomSizes", "bottom-size");
 
+  // 🎨 COLORES (reemplaza styles)
+  const styleLabel = styleContainer?.querySelector("span");
+  if (styleLabel) styleLabel.textContent = "COLORES";
+  renderSizes("bottomStyles", "color", COLORS);
+
   if (bottomContainer) bottomContainer.style.display = "";
-  if (styleContainer) styleContainer.style.display = "none";
+  if (styleContainer) styleContainer.style.display = "";
 } else {
-  // 👗 OTRAS CATEGORÍAS → TALLAS + COLORES
+  // 👗 ONE-PIECE / OTROS → TALLAS + COLORES
 
   if (topLabel) topLabel.textContent = "TALLAS";
   renderSizes("topSizes", "single-size", ["XS", "S", "M", "L"]);
