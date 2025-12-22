@@ -114,6 +114,7 @@
   font-family: Hatton, Arial, sans-serif;
   font-size: 15px;
   font-weight: 600;
+  letter-spacing: 1px;
   margin-bottom: 4px;
 }
 
@@ -145,11 +146,17 @@
   justify-content: space-between;
   font-size: 16px;
   color: #161616;
+  font-family: Lato, sans-serif;
 }
 
 .total-row {
   font-size: 18px;
   font-weight: 700;
+  font-family: Hatton, Arial, sans-serif;
+}
+
+.red-discount {
+  color: #ce4843;
 }
 
 .cart-checkout-btn {
@@ -157,10 +164,11 @@
   padding: 12px;
   font-size: 1rem;
   border: none;
-  font-family: Lato, sans-serif;
+  font-family: Hatton, Arial, sans-serif;
   text-transform: uppercase;
   background: #161616;
   color: #fff;
+  letter-spacing: 1px;
   border-radius: 6px;
   text-align: center;
   cursor: pointer;
