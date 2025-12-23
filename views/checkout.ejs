@@ -14,7 +14,7 @@
 	<!-- ================= HEADER ================= -->
 	<header class="checkout-header">
 		<div class="checkout-brand">
-			100<span>Puntadas</span>
+			<span class="pink-span">100</span><span>Puntadas</span>
 		</div>
 
 		<nav class="checkout-steps">
@@ -37,15 +37,15 @@
 
 	<!-- ================= MAIN ================= -->
 	<main class="checkout-wrapper">
-
-		<!-- ===== LEFT ===== -->
 		<section class="checkout-left">
 			<!-- CONTACT -->
 			<div class="card">
 				<h2>Información de contacto</h2>
 
-				<input class="input" type="email" placeholder="Correo electrónico" />
-				<input class="input" type="tel" placeholder="Teléfono" />
+				<div class="row">
+					<input class="input" type="email" placeholder="Correo electrónico" />
+					<input class="input" type="tel" placeholder="Teléfono de contacto" />
+				</div>
 			</div>
 
 			<!-- SHIPPING -->
@@ -53,11 +53,9 @@
 				<h2>Dirección de entrega</h2>
 
 				<div class="row">
-					<input class="input" placeholder="Nombre" />
-					<input class="input" placeholder="Apellidos" />
+					<input class="input" placeholder="Nombre completo" />
+					<input class="input" placeholder="Cédula" />
 				</div>
-
-				<input class="input" placeholder="Dirección exacta" />
 
 				<div class="row">
 					<input class="input" placeholder="Provincia" />
@@ -66,11 +64,12 @@
 
 				<div class="row">
 					<input class="input" placeholder="Distrito" />
-					<input class="input" placeholder="Código postal" />
+					<input class="input" placeholder="Barrio o comunidad" />
 				</div>
 
-				<textarea class="input textarea" placeholder="Notas para el repartidor (opcional)"></textarea>
+				<textarea class="input textarea" placeholder="Información adicional del domicilio"></textarea>
 			</div>
+
 
 			<!-- TRUST (SVG) -->
 			<div class="trust">
