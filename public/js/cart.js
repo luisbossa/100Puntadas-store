@@ -1,15 +1,3 @@
-const COLOR_LABELS = {
-  white: "Blanco",
-  coffe: "Café",
-  pink: "Rosado",
-  red: "Rojo",
-  black: "Negro",
-};
-
-const DISCOUNT_RATE = 0.15;
-const DISCOUNT_MIN_ITEMS = 2;
-const SHIPPING_COST = 2500;
-
 /* ============================================================
    CART GLOBAL
 ============================================================ */
@@ -38,8 +26,6 @@ window.addToCart = function (item) {
   };
 
   const variantKey = JSON.stringify(variantData);
-
-  // 🔑 variantId estable (string)
   const variantId = `${item.id}-${btoa(variantKey)}`;
 
   const existing = cart.find(
@@ -52,7 +38,7 @@ window.addToCart = function (item) {
     cart.push({
       ...item,
       variantKey,
-      variantId, // ✅ NUEVO
+      variantId,
     });
   }
 
@@ -81,8 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalBox = document.getElementById("cartTotal");
     const shippingBox = document.getElementById("cartShipping");
     const emptyMessage = document.getElementById("emptyCartMessage");
-    const shippingRow = document.getElementById("shippingRow");
-    const totalRow = document.getElementById("totalRow");
     const checkoutBtn = document.querySelector(".cart-checkout-btn");
     const discountRow = document.getElementById("discountRow");
     const discountBox = document.getElementById("cartDiscount");
@@ -96,22 +80,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (cart.length === 0) {
       emptyMessage.style.display = "block";
-      shippingRow?.classList.add("disable-text");
-      totalRow?.classList.add("disable-text");
       checkoutBtn?.classList.add("disabled");
       discountRow.style.display = "none";
-    } else {
-      emptyMessage.style.display = "none";
-      shippingRow?.classList.remove("disable-text");
-      totalRow?.classList.remove("disable-text");
-      checkoutBtn?.classList.remove("disabled");
+      totalBox.textContent = "0";
+      shippingBox.textContent = "0";
+      if (cartCount) cartCount.textContent = "0";
+      return;
+    }
 
-      cart.forEach((item, index) => {
-        subtotal += item.price * item.quantity;
-        totalQuantity += item.quantity;
+    emptyMessage.style.display = "none";
+    checkoutBtn?.classList.remove("disabled");
 
-        container.innerHTML += `
-          <div class="cart-item" data-index="${index}">
+    cart.forEach((item, index) => {
+      subtotal += item.price * item.quantity;
+      totalQuantity += item.quantity;
+
+      container.innerHTML += `
+        <div class="cart-item" data-index="${index}">
             <img src="${item.image}" loading="eager" alt="${item.name}">
             
             <div class="cart-info-div">
@@ -147,19 +132,15 @@ document.addEventListener("DOMContentLoaded", () => {
               </svg>
             </button>
           </div>
-        `;
-      });
-    }
+      `;
+    });
 
-    /* ================= DISCOUNT LOGIC ================= */
+    /* ================= DESCUENTO ================= */
 
     let discount = 0;
-
-    // Pares completos (2, 4, 6, 8...)
     const pairs = Math.floor(totalQuantity / DISCOUNT_MIN_ITEMS);
 
     if (pairs > 0) {
-      // Expandimos precios por cantidad
       const prices = [];
 
       cart.forEach((item) => {
@@ -168,10 +149,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       });
 
-      // Ordenamos del más barato al más caro
       prices.sort((a, b) => a - b);
 
-      // Prendas que entran en el descuento
       const discountedItemsCount = pairs * DISCOUNT_MIN_ITEMS;
 
       const discountedSubtotal = prices
@@ -188,7 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* ================= TOTAL ================= */
 
-    const shipping = cart.length > 0 ? SHIPPING_COST : 0;
+    const shipping = SHIPPING_COST;
     const total = subtotal - discount + shipping;
 
     shippingBox.textContent = shipping.toLocaleString("es-CR");
@@ -199,55 +178,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll(".delete-btn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
-        const cartItem = e.target.closest(".cart-item");
-        const index = cartItem.dataset.index;
-
-        cartItem.classList.add("fade-out");
-        cartItem.addEventListener(
-          "animationend",
-          () => {
-            const cart = getCart();
-            cart.splice(index, 1);
-            saveCart(cart);
-            renderCart();
-          },
-          { once: true }
-        );
+        const index = e.target.closest(".cart-item").dataset.index;
+        const cart = getCart();
+        cart.splice(index, 1);
+        saveCart(cart);
+        renderCart();
       });
     });
 
-    /* ================= QUANTITY BUTTONS ================= */
+    /* ================= QUANTITY ================= */
 
     document.querySelectorAll(".quantity-btn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
-        const itemEl = e.target.closest(".cart-item");
-        const index = itemEl.dataset.index;
+        const index = e.target.closest(".cart-item").dataset.index;
         const cart = getCart();
 
-        if (btn.classList.contains("increase")) {
-          cart[index].quantity++;
-        }
-
-        if (btn.classList.contains("decrease") && cart[index].quantity > 1) {
+        if (btn.classList.contains("increase")) cart[index].quantity++;
+        if (btn.classList.contains("decrease") && cart[index].quantity > 1)
           cart[index].quantity--;
-        }
 
         saveCart(cart);
         renderCart();
       });
     });
 
-    /* ================= QUANTITY INPUT ================= */
-
     document.querySelectorAll(".quantity-input").forEach((input) => {
       input.addEventListener("change", (e) => {
-        const itemEl = e.target.closest(".cart-item");
-        const index = itemEl.dataset.index;
+        const index = e.target.closest(".cart-item").dataset.index;
         const cart = getCart();
-
         const value = parseInt(e.target.value, 10);
         cart[index].quantity = value >= 1 ? value : 1;
-
         saveCart(cart);
         renderCart();
       });
@@ -279,8 +239,8 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCart();
 
   /* ============================================================
-   CHECKOUT
-============================================================ */
+     CHECKOUT (NUMÉRICO, SIN DOM)
+  ============================================================ */
 
   const checkoutBtn = document.getElementById("checkoutBtn");
 
@@ -288,43 +248,56 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const cart = getCart();
-    if (!cart || cart.length === 0) {
-      console.log("El carrito está vacío");
-      return;
+    if (!cart.length) return;
+
+    let subtotal = 0;
+    let totalQuantity = 0;
+
+    cart.forEach((item) => {
+      subtotal += item.price * item.quantity;
+      totalQuantity += item.quantity;
+    });
+
+    let discount = 0;
+    const pairs = Math.floor(totalQuantity / DISCOUNT_MIN_ITEMS);
+
+    if (pairs > 0) {
+      const prices = [];
+      cart.forEach((item) => {
+        for (let i = 0; i < item.quantity; i++) prices.push(item.price);
+      });
+      prices.sort((a, b) => a - b);
+
+      const discountedSubtotal = prices
+        .slice(0, pairs * DISCOUNT_MIN_ITEMS)
+        .reduce((a, b) => a + b, 0);
+
+      discount = Math.round(discountedSubtotal * DISCOUNT_RATE);
     }
 
-    // Totales desde el DOM (ya calculados)
-    const total = document.getElementById("cartTotal")?.textContent;
-    const shipping = document.getElementById("cartShipping")?.textContent;
-    const discount =
-      document.getElementById("cartDiscount")?.textContent || "0";
+    const shipping = SHIPPING_COST;
+    const total = subtotal - discount + shipping;
 
-    // Normalizamos datos (color en español incluido)
     const checkoutCart = cart.map((item) => ({
       name: item.name,
       image: item.image,
+      quantity: item.quantity,
+      price: item.price,
+      color: COLOR_LABELS[item.color] || item.color,
       topSize: item.topSize || null,
       bottomSize: item.bottomSize || null,
       bottomStyle: item.bottomStyle || null,
       size: item.size || null,
-      color: COLOR_LABELS[item.color] || item.color,
-      quantity: item.quantity,
-      price: item.price,
     }));
 
-    const checkoutData = {
-      cart: checkoutCart,
-      totals: {
-        total,
-        shipping,
-        discount,
-      },
-    };
+    localStorage.setItem(
+      "checkoutData",
+      JSON.stringify({
+        cart: checkoutCart,
+        totals: { total, shipping, discount },
+      })
+    );
 
-    // Guardamos TODO para el checkout
-    localStorage.setItem("checkoutData", JSON.stringify(checkoutData));
-
-    // 👉 Redirección al checkout.ejs
     window.location.href = "/checkout";
   });
 });

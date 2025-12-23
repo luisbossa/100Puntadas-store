@@ -682,6 +682,13 @@ const beachwearProducts = {
 };
 
 /* ============================================================
+   CART HELPERS
+============================================================ */
+function getCart() {
+  return JSON.parse(localStorage.getItem("cartItems")) || [];
+}
+
+/* ============================================================
    PRODUCTO ACTUAL
 ============================================================ */
 const slug = window.PRODUCT_SLUG;
@@ -719,9 +726,9 @@ if (imagesWrap) {
 }
 
 /* ============================================================
-   TALLAS
+   HELPERS DE RENDER
 ============================================================ */
-function renderSizes(containerId, name, sizes = product.sizes) {
+function renderSizes(containerId, name, sizes) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
@@ -739,23 +746,6 @@ function renderSizes(containerId, name, sizes = product.sizes) {
     .join("");
 }
 
-/* ============================================================
-   ELEMENTOS DEL DOM (según tu EJS)
-============================================================ */
-const addCartWrap = document.querySelector(".add-cart-btn-wrap");
-
-const sizeContainers = document.querySelectorAll(".size-container");
-
-const topContainer = sizeContainers[0]; // TOP
-const bottomContainer = sizeContainers[1]; // BOTTOM
-const styleContainer = sizeContainers[2]; // BOTTOM STYLE
-
-const topLabel = topContainer?.querySelector("span");
-
-/* ============================================================
-   LÓGICA POR CATEGORÍA
-============================================================ */
-
 const COLORS = [
   { id: "white", label: "White" },
   { id: "coffe", label: "Coffe" },
@@ -772,13 +762,9 @@ function renderColors(containerId, name, colors) {
     .map(
       (color, i) => `
       <label class="color-swatch">
-        <input 
-          type="radio" 
-          name="${name}" 
-          value="${color.id}" 
-          ${i === 0 ? "checked" : ""} 
-          hidden
-        >
+        <input type="radio" name="${name}" value="${color.id}" ${
+        i === 0 ? "checked" : ""
+      } hidden>
         <span class="color-circle" data-color="${color.id}"></span>
       </label>
     `
@@ -786,66 +772,70 @@ function renderColors(containerId, name, colors) {
     .join("");
 }
 
+/* ============================================================
+   ELEMENTOS DEL DOM
+============================================================ */
+const sizeContainers = document.querySelectorAll(".size-container");
+const topContainer = sizeContainers[0];
+const bottomContainer = sizeContainers[1];
+const styleContainer = sizeContainers[2];
+const topLabel = topContainer?.querySelector("span");
+
+/* ============================================================
+   LÓGICA POR TIPO DE PRODUCTO
+============================================================ */
 if (isBikini) {
-  // 👙 BIKINI → TOP + BOTTOM + STYLE
   if (topLabel) topLabel.textContent = "TOP";
 
-  renderSizes("topSizes", "top-size");
-  renderSizes("bottomSizes", "bottom-size");
+  renderSizes("topSizes", "top-size", product.sizes);
+  renderSizes("bottomSizes", "bottom-size", product.sizes);
 
   document.getElementById("bottomStyles").innerHTML = product.styles
     .map(
       (style, i) => `
-        <div class="style-rb-div">
-          <img src="${style.img}" class="style-img">
-          <label class="style-btn">
-            <input type="radio" name="bottom-style" value="${style.label}" ${
+      <div class="style-rb-div">
+        <img src="${style.img}" class="style-img">
+        <label class="style-btn">
+          <input type="radio" name="bottom-style" value="${style.label}" ${
         i === 0 ? "checked" : ""
       } hidden>
-            ${style.label}
-          </label>
-        </div>
-      `
+          ${style.label}
+        </label>
+      </div>
+    `
     )
     .join("");
 
-  if (bottomContainer) bottomContainer.style.display = "";
-  if (styleContainer) styleContainer.style.display = "";
-  if (addCartWrap) addCartWrap.style.display = "";
+  bottomContainer.style.display = "";
+  styleContainer.style.display = "";
 } else if (["set", "crochet"].includes(product.productType)) {
   if (topLabel) topLabel.textContent = "TOP";
-  renderSizes("topSizes", "top-size");
+  renderSizes("topSizes", "top-size", product.sizes);
 
-  const bottomLabel = bottomContainer?.querySelector("span");
-  if (bottomLabel) bottomLabel.textContent = "BOTTOM";
-  renderSizes("bottomSizes", "bottom-size");
+  bottomContainer.querySelector("span").textContent = "BOTTOM";
+  renderSizes("bottomSizes", "bottom-size", product.sizes);
 
-  // 🎨 COLORES (reemplaza styles)
-  const styleLabel = styleContainer?.querySelector("span");
-  if (styleLabel) styleLabel.textContent = "COLORES";
+  styleContainer.querySelector("span").textContent = "COLORES";
   renderColors("bottomStyles", "color", COLORS);
 
-  if (bottomContainer) bottomContainer.style.display = "";
-  if (styleContainer) styleContainer.style.display = "";
+  bottomContainer.style.display = "";
+  styleContainer.style.display = "";
 } else {
   if (topLabel) topLabel.textContent = "TALLAS";
   renderSizes("topSizes", "single-size", ["XS", "S", "M", "L"]);
 
-  const bottomLabel = bottomContainer?.querySelector("span");
-  if (bottomLabel) bottomLabel.textContent = "COLORES";
-
-  // 👉 colores van en BOTTOM
+  bottomContainer.querySelector("span").textContent = "COLORES";
   renderColors("bottomSizes", "color", COLORS);
 
-  if (bottomContainer) bottomContainer.style.display = "";
-  if (styleContainer) styleContainer.style.display = "none";
+  bottomContainer.style.display = "";
+  styleContainer.style.display = "none";
 }
 
 /* ============================================================
-   ADD TO CART
+   CONSTRUIR ITEM (UNA SOLA VEZ)
 ============================================================ */
-document.getElementById("addToCartBtn")?.addEventListener("click", () => {
-  const cartItem = {
+function buildCartItem() {
+  const item = {
     id: product.id,
     name: product.name,
     price: product.price,
@@ -854,61 +844,129 @@ document.getElementById("addToCartBtn")?.addEventListener("click", () => {
     quantity: 1,
   };
 
-  // 👙 BIKINI → requiere TOP + BOTTOM + STYLE
   if (isBikini) {
-    cartItem.topSize = document.querySelector(
+    item.topSize = document.querySelector(
       'input[name="top-size"]:checked'
     )?.value;
-
-    cartItem.bottomSize = document.querySelector(
+    item.bottomSize = document.querySelector(
       'input[name="bottom-size"]:checked'
     )?.value;
-
-    cartItem.bottomStyle = document.querySelector(
+    item.bottomStyle = document.querySelector(
       'input[name="bottom-style"]:checked'
     )?.value;
 
-    if (!cartItem.topSize || !cartItem.bottomSize || !cartItem.bottomStyle) {
+    if (!item.topSize || !item.bottomSize || !item.bottomStyle) {
       alert("Selecciona todas las opciones");
-      return;
+      return null;
     }
-  }
-
-  // 👚 SET / CROCHET → TOP + BOTTOM + COLOR
-  else if (hasTopBottom) {
-    cartItem.topSize = document.querySelector(
+  } else if (hasTopBottom) {
+    item.topSize = document.querySelector(
       'input[name="top-size"]:checked'
     )?.value;
-
-    cartItem.bottomSize = document.querySelector(
+    item.bottomSize = document.querySelector(
       'input[name="bottom-size"]:checked'
     )?.value;
+    item.color = document.querySelector('input[name="color"]:checked')?.value;
 
-    cartItem.color = document.querySelector(
-      'input[name="color"]:checked'
-    )?.value;
-
-    if (!cartItem.topSize || !cartItem.bottomSize || !cartItem.color) {
+    if (!item.topSize || !item.bottomSize || !item.color) {
       alert("Selecciona todas las opciones");
-      return;
+      return null;
     }
-  }
-
-  // 👕 PRODUCTO SIMPLE → TALLA + COLOR
-  else {
-    cartItem.size = document.querySelector(
+  } else {
+    item.size = document.querySelector(
       'input[name="single-size"]:checked'
     )?.value;
+    item.color = document.querySelector('input[name="color"]:checked')?.value;
 
-    cartItem.color = document.querySelector(
-      'input[name="color"]:checked'
-    )?.value;
-
-    if (!cartItem.size || !cartItem.color) {
+    if (!item.size || !item.color) {
       alert("Selecciona todas las opciones");
-      return;
+      return null;
     }
   }
 
-  window.addToCart(cartItem);
+  return item;
+}
+
+/* ============================================================
+   ADD TO CART
+============================================================ */
+document.getElementById("addToCartBtn")?.addEventListener("click", () => {
+  const item = buildCartItem();
+  if (!item) return;
+
+  window.addToCart(item);
+});
+
+/* ============================================================
+   BUY NOW → CHECKOUT
+============================================================ */
+document.getElementById("buyNowBtn")?.addEventListener("click", () => {
+  const cart = getCart();
+
+  let checkoutCart = [];
+  let subtotal = 0;
+  let totalQuantity = 0;
+
+  if (cart.length > 0) {
+    checkoutCart = cart.map((item) => {
+      subtotal += item.price * item.quantity;
+      totalQuantity += item.quantity;
+
+      return {
+        ...item,
+        color: COLOR_LABELS[item.color] || item.color,
+      };
+    });
+  } else {
+    const item = buildCartItem();
+    if (!item) return;
+
+    checkoutCart = [item];
+    subtotal = item.price;
+    totalQuantity = item.quantity;
+  }
+
+  /* ================= DESCUENTO ================= */
+
+  let discount = 0;
+  const pairs = Math.floor(totalQuantity / DISCOUNT_MIN_ITEMS);
+
+  if (pairs > 0) {
+    const prices = [];
+
+    checkoutCart.forEach((item) => {
+      for (let i = 0; i < item.quantity; i++) {
+        prices.push(item.price);
+      }
+    });
+
+    prices.sort((a, b) => a - b);
+
+    const discountedSubtotal = prices
+      .slice(0, pairs * DISCOUNT_MIN_ITEMS)
+      .reduce((acc, price) => acc + price, 0);
+
+    discount = Math.round(discountedSubtotal * DISCOUNT_RATE);
+  }
+
+  /* ================= TOTAL ================= */
+
+  const shipping = SHIPPING_COST;
+  const total = subtotal - discount + shipping;
+
+  /* ================= SAVE CHECKOUT ================= */
+
+  localStorage.setItem(
+    "checkoutData",
+    JSON.stringify({
+      cart: checkoutCart,
+      totals: {
+        total,
+        shipping,
+        discount,
+      },
+    })
+  );
+
+  window.location.href = "/checkout";
 });

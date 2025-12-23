@@ -1,114 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>100puntadas checkout</title>
-	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-	<link type="text/css" rel="stylesheet" href="css/checkout.css" />
-	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Checkout · 100Puntadas</title>
+
+	<link rel="stylesheet" href="/css/checkout.css" />
 </head>
 
 <body>
-	<div id="breadcrumb" class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<h3 class="breadcrumb-header">Finalizar compra</h3>
-				</div>
-			</div>
+
+	<!-- ================= HEADER ================= -->
+	<header class="checkout-header">
+		<div class="checkout-brand">
+			100<span>Puntadas</span>
 		</div>
-	</div>
 
-	<!-- SECTION -->
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-7">
-					<div class="billing-details">
-						<div class="section-title">
-							<h3 class="title">Dirección de facturación</h3>
-						</div>
-
-						<div class="form-group">
-							<input class="input" type="text" name="full-name" placeholder="Nombre completo">
-						</div>
-
-						<div class="form-group">
-							<input class="input" type="email" name="email" placeholder="Correo electrónico">
-						</div>
-
-						<div class="form-group">
-							<input class="input" type="text" name="address" placeholder="Dirección">
-						</div>
-
-						<div class="form-group">
-							<input class="input" type="text" name="province" placeholder="Provincia">
-						</div>
-
-						<div class="form-group">
-							<input class="input" type="text" name="canton" placeholder="Cantón">
-						</div>
-
-						<div class="form-group">
-							<input class="input" type="text" name="district" placeholder="Distrito">
-						</div>
-
-						<div class="form-group">
-							<input class="input" type="tel" name="tel" placeholder="Teléfono">
-						</div>
-					</div>
-
-					<div class="shiping-details">
-						<div class="section-title">
-							<h3 class="title">Dirección de envío</h3>
-						</div>
-					</div>
-
-					<div class="order-notes">
-						<textarea class="input" placeholder="Notas del pedido"></textarea>
-					</div>
-				</div>
-
-				<div class="col-md-5 order-details">
-					<div class="section-title text-center">
-						<h3 class="title">Tu pedido</h3>
-					</div>
-
-					<div class="order-summary">
-						<div class="order-col">
-							<div><strong>PRODUCTO</strong></div>
-							<div><strong>TOTAL</strong></div>
-						</div>
-
-						<div class="order-products"></div>
-
-						<div class="order-col">
-							<div>Envío</div>
-							<div><strong>₡2.500</strong></div>
-						</div>
-
-						<div class="order-col">
-							<div><strong>TOTAL</strong></div>
-							<div><strong class="order-total">₡0</strong></div>
-						</div>
-					</div>
-
-					<div class="input-checkbox">
-						<input type="checkbox" id="terms">
-						<label for="terms">
-							<span></span>
-							He leído y acepto los <a href="#">términos y condiciones</a>
-						</label>
-					</div>
-
-					<a href="#" class="primary-btn order-submit">Realizar pedido</a>
-				</div>
+		<nav class="checkout-steps">
+			<div class="step active">
+				<span class="step-index">1</span>
+				<span class="step-label">Entrega</span>
 			</div>
-		</div>
-	</div>
+
+			<div class="step">
+				<span class="step-index">2</span>
+				<span class="step-label">Pago</span>
+			</div>
+
+			<div class="step">
+				<span class="step-index">3</span>
+				<span class="step-label">Confirmación</span>
+			</div>
+		</nav>
+	</header>
+
+	<!-- ================= MAIN ================= -->
+	<main class="checkout-wrapper">
+
+		<!-- ===== LEFT ===== -->
+		<section class="checkout-left">
+			<!-- CONTACT -->
+			<div class="card">
+				<h2>Información de contacto</h2>
+
+				<input class="input" type="email" placeholder="Correo electrónico" />
+				<input class="input" type="tel" placeholder="Teléfono" />
+			</div>
+
+			<!-- SHIPPING -->
+			<div class="card">
+				<h2>Dirección de entrega</h2>
+
+				<div class="row">
+					<input class="input" placeholder="Nombre" />
+					<input class="input" placeholder="Apellidos" />
+				</div>
+
+				<input class="input" placeholder="Dirección exacta" />
+
+				<div class="row">
+					<input class="input" placeholder="Provincia" />
+					<input class="input" placeholder="Cantón" />
+				</div>
+
+				<div class="row">
+					<input class="input" placeholder="Distrito" />
+					<input class="input" placeholder="Código postal" />
+				</div>
+
+				<textarea class="input textarea" placeholder="Notas para el repartidor (opcional)"></textarea>
+			</div>
+
+			<!-- TRUST (SVG) -->
+			<div class="trust">
+
+				<div class="trust-item">
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M12 2l8 4v6c0 5-3.4 9.4-8 10-4.6-.6-8-5-8-10V6l8-4z" />
+					</svg>
+					<span>Pago seguro</span>
+				</div>
+
+				<div class="trust-item">
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<path
+							d="M3 7h13l3 4v6h-2a3 3 0 01-6 0H9a3 3 0 01-6 0H1V7h2zm3 10a1 1 0 100-2 1 1 0 000 2zm9 0a1 1 0 100-2 1 1 0 000 2z" />
+					</svg>
+					<span>Entrega confiable</span>
+				</div>
+
+				<div class="trust-item">
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M2 5h20v14H2zM4 7v2h16V7z" />
+					</svg>
+					<span>Métodos certificados</span>
+				</div>
+
+			</div>
+
+		</section>
+
+		<!-- ===== RIGHT ===== -->
+		<aside class="checkout-right">
+
+			<div class="summary-card">
+				<h3>Resumen del pedido</h3>
+
+				<!-- PRODUCTOS -->
+				<div class="order-products"></div>
+
+				<!-- DESCUENTO -->
+				<div class="totals-row discount-row" id="discountRow" style="display:none;">
+					<span>Descuento (15% x 2 prendas)</span>
+					<span class="red-discount">
+						− ₡<span id="cartDiscount">0</span>
+					</span>
+				</div>
+
+				<!-- ENVÍO -->
+				<div class="totals-row">
+					<span>Envío</span>
+					<span id="cartShipping">₡2.500</span>
+				</div>
+
+				<!-- TOTAL -->
+				<div class="totals-row total">
+					<span>Total</span>
+					<span class="order-total">₡0</span>
+				</div>
+
+				<label class="terms">
+					<input type="checkbox" />
+					Acepto términos y condiciones
+				</label>
+
+				<button class="cta">Continuar al pago</button>
+			</div>
+
+
+		</aside>
+
+	</main>
 
 	<script src="/js/checkout.js"></script>
 </body>
