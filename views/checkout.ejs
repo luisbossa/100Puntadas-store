@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>100puntadas checkout</title>
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="css/checkout.css" />
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+	<div id="breadcrumb" class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h3 class="breadcrumb-header">Finalizar compra</h3>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- SECTION -->
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-7">
+					<div class="billing-details">
+						<div class="section-title">
+							<h3 class="title">Dirección de facturación</h3>
+						</div>
+
+						<div class="form-group">
+							<input class="input" type="text" name="full-name" placeholder="Nombre completo">
+						</div>
+
+						<div class="form-group">
+							<input class="input" type="email" name="email" placeholder="Correo electrónico">
+						</div>
+
+						<div class="form-group">
+							<input class="input" type="text" name="address" placeholder="Dirección">
+						</div>
+
+						<div class="form-group">
+							<input class="input" type="text" name="province" placeholder="Provincia">
+						</div>
+
+						<div class="form-group">
+							<input class="input" type="text" name="canton" placeholder="Cantón">
+						</div>
+
+						<div class="form-group">
+							<input class="input" type="text" name="district" placeholder="Distrito">
+						</div>
+
+						<div class="form-group">
+							<input class="input" type="tel" name="tel" placeholder="Teléfono">
+						</div>
+					</div>
+
+					<div class="shiping-details">
+						<div class="section-title">
+							<h3 class="title">Dirección de envío</h3>
+						</div>
+					</div>
+
+					<div class="order-notes">
+						<textarea class="input" placeholder="Notas del pedido"></textarea>
+					</div>
+				</div>
+
+				<div class="col-md-5 order-details">
+					<div class="section-title text-center">
+						<h3 class="title">Tu pedido</h3>
+					</div>
+
+					<div class="order-summary">
+						<div class="order-col">
+							<div><strong>PRODUCTO</strong></div>
+							<div><strong>TOTAL</strong></div>
+						</div>
+
+						<div class="order-products"></div>
+
+						<div class="order-col">
+							<div>Envío</div>
+							<div><strong>₡2.500</strong></div>
+						</div>
+
+						<div class="order-col">
+							<div><strong>TOTAL</strong></div>
+							<div><strong class="order-total">₡0</strong></div>
+						</div>
+					</div>
+
+					<div class="input-checkbox">
+						<input type="checkbox" id="terms">
+						<label for="terms">
+							<span></span>
+							He leído y acepto los <a href="#">términos y condiciones</a>
+						</label>
+					</div>
+
+					<a href="#" class="primary-btn order-submit">Realizar pedido</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="/js/checkout.js"></script>
+</body>
+
+</html>

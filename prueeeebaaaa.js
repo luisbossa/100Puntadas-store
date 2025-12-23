@@ -284,47 +284,157 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const checkoutBtn = document.getElementById("checkoutBtn");
 
-  checkoutBtn?.addEventListener("click", (e) => {
+  checkoutBtn?.addEventListener("click", async (e) => {
     e.preventDefault();
 
     const cart = getCart();
+
     if (!cart || cart.length === 0) {
-      console.log("El carrito está vacío");
+      alert("El carrito está vacío");
       return;
     }
 
-    // Totales desde el DOM (ya calculados)
-    const total = document.getElementById("cartTotal")?.textContent;
-    const shipping = document.getElementById("cartShipping")?.textContent;
-    const discount =
-      document.getElementById("cartDiscount")?.textContent || "0";
+    // Total desde el DOM (ya con envío y descuento)
+    const totalText = document
+      .getElementById("cartTotal")
+      ?.textContent.replace(/\./g, "");
 
-    // Normalizamos datos (color en español incluido)
-    const checkoutCart = cart.map((item) => ({
-      name: item.name,
-      image: item.image,
+    const totalAmount = parseInt(totalText, 10);
+
+    if (!totalAmount || totalAmount <= 0) {
+      alert("Total inválido");
+      return;
+    }
+
+    // Cliente temporal
+    const customer = {
+      name: "Pendiente",
+      email: "pendiente@checkout.com",
+      address: "Pendiente",
+      phone: null, // Enviar null explícitamente
+    };
+
+    const invalidItem = cart.find((item) => !item.variantId);
+    if (invalidItem) {
+      console.error("❌ Producto sin variantId:", invalidItem);
+      alert("Hay un producto inválido en el carrito");
+      return;
+    }
+
+    // Mapeo para backend: enviar null explícitamente para opcionales
+    const backendCart = cart.map((item) => ({
+      product_name: item.name, // <- aquí agregamos el nombre del producto
       topSize: item.topSize || null,
       bottomSize: item.bottomSize || null,
       bottomStyle: item.bottomStyle || null,
       size: item.size || null,
-      color: COLOR_LABELS[item.color] || item.color,
+      color: item.color || null,
       quantity: item.quantity,
-      price: item.price,
+      unit_price: item.price, // usa unit_price porque así se llama en la tabla
     }));
 
-    const checkoutData = {
-      cart: checkoutCart,
-      totals: {
-        total,
-        shipping,
-        discount,
-      },
-    };
+    try {
+      const response = await fetch("/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          customer,
+          cart: backendCart,
+          totalAmount,
+        }),
+      });
 
-    // Guardamos TODO para el checkout
-    localStorage.setItem("checkoutData", JSON.stringify(checkoutData));
+      const data = await response.json();
 
-    // 👉 Redirección al checkout.ejs
-    window.location.href = "/checkout";
+      if (!data.ok) {
+        console.error("Checkout error:", data);
+        alert("Error creando la orden");
+        return;
+      }
+
+      // Redirección al checkout real
+      window.location.href = `/checkout/${data.orderId}`;
+    } catch (error) {
+      console.error("CHECKOUT FETCH ERROR:", error);
+      alert("Error procesando checkout");
+    }
   });
 });
+
+
+
+
+
+
+
+
+const { insertOrderItems } = require("../services/checkoutService");
+
+exports.createCheckout = async (req, res) => {
+  try {
+    const { cart } = req.body;
+
+    if (!cart || cart.length === 0) {
+      return res.status(400).json({ ok: false, message: "Carrito vacío" });
+    }
+
+    const result = await insertOrderItems({ cart });
+
+    if (!result.ok) {
+      return res.status(500).json({ ok: false, message: result.message });
+    }
+
+    res.json({ ok: true, message: "Items insertados correctamente" });
+  } catch (error) {
+    console.error("CHECKOUT CONTROLLER ERROR:", error);
+    res.status(500).json({ ok: false, message: "Error interno del servidor" });
+  }
+};
+
+
+
+
+
+
+
+
+
+const pool = require("../db/pool");
+
+exports.insertOrderItems = async ({ cart }) => {
+  const client = await pool.connect();
+
+  try {
+    await client.query("BEGIN");
+
+    for (const item of cart) {
+      await client.query(
+        `INSERT INTO order_items
+         (product_name, top_size, bottom_size, bottom_style, size, color, quantity, unit_price)
+         VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`,
+        [
+          item.product_name,
+          item.topSize || null,
+          item.bottomSize || null,
+          item.bottomStyle || null,
+          item.size || null,
+          item.color || null,
+          item.quantity,
+          item.unit_price,
+        ]
+      );
+    }
+
+    await client.query("COMMIT");
+    return { ok: true };
+  } catch (error) {
+    await client.query("ROLLBACK");
+    console.error("INSERT ORDER ITEMS ERROR:", error);
+    return { ok: false, message: error.message };
+  } finally {
+    client.release();
+  }
+};
+
