@@ -317,4 +317,9 @@ h3 {
   .checkout-header {
     padding: 0 1.5rem;
   }
+
+  .card,
+  .summary-card {
+    padding: 1.5rem 1.3rem;
+  }
 }
