@@ -37,14 +37,25 @@
 
 	<!-- ================= MAIN ================= -->
 	<main class="checkout-wrapper">
+
 		<section class="checkout-left">
-			<!-- CONTACT -->
+
+			<!-- CONTACTO -->
 			<div class="card">
 				<h2>Información de contacto</h2>
 
 				<div class="row">
-					<input class="input" type="email" placeholder="Correo electrónico" />
-					<input class="input" type="tel" placeholder="Teléfono de contacto" />
+
+					<div class="field">
+						<input class="input" name="email" type="email" placeholder="Correo electrónico" required />
+						<small class="error-msg"></small>
+					</div>
+
+					<div class="field">
+						<input class="input" name="phone" type="tel" placeholder="Teléfono de contacto" required />
+						<small class="error-msg"></small>
+					</div>
+
 				</div>
 			</div>
 
@@ -53,24 +64,50 @@
 				<h2>Dirección de entrega</h2>
 
 				<div class="row">
-					<input class="input" placeholder="Nombre completo" />
-					<input class="input" placeholder="Cédula" />
+
+					<div class="field">
+						<input class="input" name="full_name" placeholder="Nombre completo" required />
+						<small class="error-msg"></small>
+					</div>
+
+					<div class="field">
+						<input class="input" name="national_id" placeholder="Cédula" required />
+						<small class="error-msg"></small>
+					</div>
+
 				</div>
 
 				<div class="row">
-					<input class="input" placeholder="Provincia" />
-					<input class="input" placeholder="Cantón" />
+
+					<div class="field">
+						<input class="input" name="province" placeholder="Provincia" required />
+						<small class="error-msg"></small>
+					</div>
+
+					<div class="field">
+						<input class="input" name="canton" placeholder="Cantón" required />
+						<small class="error-msg"></small>
+					</div>
+
 				</div>
 
 				<div class="row">
-					<input class="input" placeholder="Distrito" />
-					<input class="input" placeholder="Barrio o comunidad" />
+
+					<div class="field">
+						<input class="input" name="district" placeholder="Distrito" required />
+						<small class="error-msg"></small>
+					</div>
+
+					<div class="field">
+						<input class="input" name="neighborhood" placeholder="Barrio o comunidad" required />
+						<small class="error-msg"></small>
+					</div>
+
 				</div>
 
-				<textarea class="input textarea" placeholder="Información adicional del domicilio"></textarea>
+				<textarea class="input textarea" name="address_details"
+					placeholder="Información adicional del domicilio"></textarea>
 			</div>
-
-
 			<!-- TRUST (SVG) -->
 			<div class="trust">
 
@@ -97,50 +134,42 @@
 				</div>
 
 			</div>
-
 		</section>
 
-		<!-- ===== RIGHT ===== -->
+		<!-- RIGHT -->
 		<aside class="checkout-right">
-
 			<div class="summary-card">
 				<h3>Resumen del pedido</h3>
 
-				<!-- PRODUCTOS -->
 				<div class="order-products"></div>
 
-				<!-- DESCUENTO -->
 				<div class="totals-row discount-row" id="discountRow" style="display:none;">
 					<span>Descuento (15% x 2 prendas)</span>
-					<span class="red-discount">
-						− ₡<span id="cartDiscount">0</span>
-					</span>
+					<span class="red-discount">− ₡<span id="cartDiscount">0</span></span>
 				</div>
 
-				<!-- ENVÍO -->
 				<div class="totals-row">
 					<span>Envío</span>
 					<span id="cartShipping">₡2.500</span>
 				</div>
 
-				<!-- TOTAL -->
 				<div class="totals-row total">
 					<span>Total</span>
 					<span class="order-total">₡0</span>
 				</div>
 
+				<!-- TÉRMINOS -->
 				<label class="terms">
-					<input type="checkbox" />
+					<input type="checkbox" id="terms-checkbox" />
 					Acepto términos y condiciones
 				</label>
 
-				<button class="cta">Continuar al pago</button>
+				<button id="checkout-btn" class="cta">Continuar al pago</button>
 			</div>
-
-
 		</aside>
 
 	</main>
+
 
 	<script src="/js/checkout.js"></script>
 </body>

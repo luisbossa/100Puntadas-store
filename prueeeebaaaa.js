@@ -401,6 +401,27 @@ exports.createCheckout = async (req, res) => {
 
 
 
+
+
+
+TRUNCATE TABLE
+  order_items,
+  orders
+RESTART IDENTITY
+CASCADE;
+
+
+
+
+
+
+
+
+
+
+
+
+
 const pool = require("../db/pool");
 
 exports.insertOrderItems = async ({ cart }) => {
