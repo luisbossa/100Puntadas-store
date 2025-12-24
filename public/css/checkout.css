@@ -18,29 +18,30 @@ textarea::placeholder {
 
 /* ===== CHECKOUT HEADER ===== */
 .checkout-header {
-  background: #fff;
-  border-bottom: 1px solid #e6e6e6;
-  padding: 1.2rem 2rem;
+  padding: 0 3rem;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  background-color: #FFA4DB;
+  border-bottom: 1px solid #e6e6e6;
 }
 
 .checkout-brand {
-  font-size: 1.3rem;
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  color: #161616;
+  width: 100%;
+  max-width: 120px;
+  background-color: #FFA4DB;
+  padding: 10px;
 }
 
 /* 100 */
-.checkout-brand .pink-span {
-  color: #ffa4db;
-  font-weight: 900;
+.checkout-brand .logo-img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 /* Puntadas */
-.checkout-brand span:not(.pink-span) {
+.checkout-brand span:not(.logo-img) {
   font-weight: 600;
 }
 
@@ -55,14 +56,14 @@ textarea::placeholder {
   align-items: center;
   gap: 0.6rem;
   font-size: 0.85rem;
-  color: #aaa;
+  color: #161616;
 }
 
 .step-index {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  border: 1px solid #ccc;
+  border: 1px solid #161616;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,8 +78,8 @@ textarea::placeholder {
 }
 
 .step.active .step-index {
-  background: #161616;
-  color: #fff;
+  background: #fff;
+  color: #161616;
   border-color: #161616;
 }
 
@@ -299,6 +300,9 @@ h3 {
 @media (max-width: 550px) {
   .row {
     flex-direction: column;
+  }
+  .checkout-header {
+    padding: 0 1.5rem;
   }
 }
 
