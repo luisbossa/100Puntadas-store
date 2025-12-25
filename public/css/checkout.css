@@ -148,6 +148,28 @@ h3 {
   border-color: #161616;
 }
 
+select.input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20fill='%23161616'%20height='24'%20viewBox='0%200%2024%2024'%20width='24'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20d='M7%2010l5%205%205-5z'/%3E%3Cpath%20d='M0%200h24v24H0z' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 22px;
+  padding-right: 30px;
+  padding-left: 14px;
+  height: 46px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+select.input:focus {
+  outline: none;
+  border-color: #161616;
+}
+
 .row {
   display: flex;
   gap: 1rem;
