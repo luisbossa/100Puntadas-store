@@ -20,7 +20,7 @@
   display: inline-flex;
   align-items: center;
   color: #fff;
-  font-size: clamp(0.5rem, 2vw, 0.8rem);
+  font-size: clamp(0.6rem, 2vw, 0.8rem);
   font-weight: 600;
   font-family: Lato, sans-serif;
   letter-spacing: clamp(0.08em, 0.4vw, 0.15em);
@@ -40,7 +40,7 @@
   content: "✦";
   color: #fde35c;
   margin: 0 0.4rem;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   opacity: 0.9;
 }
 
