@@ -45,18 +45,19 @@
 				<h2>Información de contacto</h2>
 
 				<div class="row">
-
 					<div class="field">
-						<input class="input" name="email" type="email" placeholder="Correo electrónico" required />
+						<label class="checkout-label" for="email">Correo<span class="checkout-span">*</span></label>
+						<input class="input" name="email" id="email" type="email" placeholder="Correo electrónico"
+							required />
 						<small class="error-msg"></small>
 					</div>
 
 					<div class="field">
-						<input class="input" name="phone" type="tel" inputmode="numeric"
+						<label class="checkout-label" for="phone">Número<span class="checkout-span">*</span></label>
+						<input class="input" name="phone" id="phone" type="tel" inputmode="numeric"
 							placeholder="Teléfono de contacto" required />
 						<small class="error-msg"></small>
 					</div>
-
 				</div>
 			</div>
 
@@ -66,13 +67,15 @@
 
 				<div class="row">
 					<div class="field">
-						<input class="input" name="full_name" placeholder="Nombre completo" required />
+						<label class="checkout-label" for="full_name">Nombre<span class="checkout-span">*</span></label>
+						<input class="input" name="full_name" id="full_name" placeholder="Nombre completo" required />
 						<small class="error-msg"></small>
 					</div>
 
 					<div class="field">
-						<input class="input" name="national_id" placeholder="Cédula de identificación" required
-							maxlength="11" />
+						<label class="checkout-label" for="national_id">Cédula<span class="checkout-span">*</span></label>
+						<input class="input" name="national_id" id="national_id" placeholder="Cédula de identificación"
+							required maxlength="11" />
 						<small class="error-msg"></small>
 					</div>
 				</div>
@@ -80,6 +83,7 @@
 				<div class="row">
 
 					<div class="field">
+						<label class="checkout-label" for="province">Provincia<span class="checkout-span">*</span></label>
 						<select class="input" name="province" id="province" required>
 							<option value="">Provincia</option>
 						</select>
@@ -87,6 +91,7 @@
 					</div>
 
 					<div class="field">
+						<label class="checkout-label" for="canton">Cantón<span class="checkout-span">*</span></label>
 						<select class="input" name="canton" id="canton" required disabled>
 							<option value="">Cantón</option>
 						</select>
@@ -98,6 +103,7 @@
 				<div class="row">
 
 					<div class="field">
+						<label class="checkout-label" for="district">Distrito<span class="checkout-span">*</span></label>
 						<select class="input" name="district" id="district" required disabled>
 							<option value="">Distrito</option>
 						</select>
@@ -105,45 +111,25 @@
 					</div>
 
 					<div class="field">
-						<input class="input" name="neighborhood" placeholder="Barrio o comunidad" required />
+						<label class="checkout-label" for="neighborhood">Barrio<span class="checkout-span">*</span></label>
+						<input class="input" name="neighborhood" id="neighborhood" placeholder="Barrio o comunidad"
+							required />
 						<small class="error-msg"></small>
 					</div>
 
 				</div>
 
 				<div class="field">
-					<input class="input" name="address" placeholder="Dirección" required />
+					<label class="checkout-label" for="address">Dirección<span class="checkout-span">*</span></label>
+					<input class="input" name="address" id="address" placeholder="Dirección" required />
 					<small class="error-msg"></small>
 				</div>
 
-				<textarea class="input textarea" name="address_details"
-					placeholder="Información adicional del domicilio"></textarea>
-			</div>
-			<!-- TRUST (SVG) -->
-			<div class="trust">
-
-				<div class="trust-item">
-					<svg viewBox="0 0 24 24" aria-hidden="true">
-						<path d="M12 2l8 4v6c0 5-3.4 9.4-8 10-4.6-.6-8-5-8-10V6l8-4z" />
-					</svg>
-					<span>Pago seguro</span>
+				<div class="field">
+					<label class="checkout-label" for="address_details">Indicaciones adicionales</label>
+					<textarea class="input textarea" name="address_details" id="address_details"
+						placeholder="Información adicional del domicilio"></textarea>
 				</div>
-
-				<div class="trust-item">
-					<svg viewBox="0 0 24 24" aria-hidden="true">
-						<path
-							d="M3 7h13l3 4v6h-2a3 3 0 01-6 0H9a3 3 0 01-6 0H1V7h2zm3 10a1 1 0 100-2 1 1 0 000 2zm9 0a1 1 0 100-2 1 1 0 000 2z" />
-					</svg>
-					<span>Entrega confiable</span>
-				</div>
-
-				<div class="trust-item">
-					<svg viewBox="0 0 24 24" aria-hidden="true">
-						<path d="M2 5h20v14H2zM4 7v2h16V7z" />
-					</svg>
-					<span>Métodos certificados</span>
-				</div>
-
 			</div>
 		</section>
 
@@ -170,6 +156,32 @@
 				</div>
 
 				<button id="checkout-btn" class="cta">Continuar al pago</button>
+			</div>
+
+			<!-- TRUST (SVG) -->
+			<div class="trust">
+
+				<div class="trust-item">
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M12 2l8 4v6c0 5-3.4 9.4-8 10-4.6-.6-8-5-8-10V6l8-4z" />
+					</svg>
+					<span>Pago seguro</span>
+				</div>
+
+				<div class="trust-item">
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<path
+							d="M3 7h13l3 4v6h-2a3 3 0 01-6 0H9a3 3 0 01-6 0H1V7h2zm3 10a1 1 0 100-2 1 1 0 000 2zm9 0a1 1 0 100-2 1 1 0 000 2z" />
+					</svg>
+					<span>Entrega confiable</span>
+				</div>
+
+				<div class="trust-item">
+					<svg viewBox="0 0 24 24" aria-hidden="true">
+						<path d="M2 5h20v14H2zM4 7v2h16V7z" />
+					</svg>
+					<span>Métodos certificados</span>
+				</div>
 			</div>
 		</aside>
 

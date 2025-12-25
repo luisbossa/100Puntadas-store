@@ -156,7 +156,7 @@
 }
 
 .red-discount {
-  color: #ce4843;
+  color: #d11a2a;
 }
 
 .cart-checkout-btn {
@@ -223,7 +223,7 @@
 }
 
 .delete-btn:hover svg {
-  fill: #e74c3c;
+  fill: #d63341;
 }
 
 .delete-btn:focus {
