@@ -244,16 +244,16 @@ select.input:focus {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
-  margin-left: 25px;
+  margin-left: 4px;
   gap: 1.5rem;
 }
 
 .trust-item {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
   font-size: 0.85rem;
   color: #444;
+  gap: 0.4rem;
 }
 
 .trust-item svg {
