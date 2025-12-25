@@ -109,7 +109,7 @@ textarea::placeholder {
 /* ===== LAYOUT ===== */
 .checkout-wrapper {
   max-width: 1200px;
-  margin: 2rem auto;
+  margin: 2rem auto 0;
   padding: 0 1rem;
   display: grid;
   grid-template-columns: 1.4fr 1fr;

@@ -71,7 +71,11 @@
 					</div>
 
 					<div class="field">
-						<input class="input" name="national_id" placeholder="Cédula" required />
+						<div class="field">
+							<input class="input" name="national_id" placeholder="Cédula" required maxlength="11" />
+							<small class="error-msg"></small>
+						</div>
+
 						<small class="error-msg"></small>
 					</div>
 
@@ -80,12 +84,16 @@
 				<div class="row">
 
 					<div class="field">
-						<input class="input" name="province" placeholder="Provincia" required />
+						<select class="input" name="province" id="province" required>
+							<option value="">Provincia</option>
+						</select>
 						<small class="error-msg"></small>
 					</div>
 
 					<div class="field">
-						<input class="input" name="canton" placeholder="Cantón" required />
+						<select class="input" name="canton" id="canton" required disabled>
+							<option value="">Cantón</option>
+						</select>
 						<small class="error-msg"></small>
 					</div>
 
@@ -94,7 +102,9 @@
 				<div class="row">
 
 					<div class="field">
-						<input class="input" name="district" placeholder="Distrito" required />
+						<select class="input" name="district" id="district" required disabled>
+							<option value="">Distrito</option>
+						</select>
 						<small class="error-msg"></small>
 					</div>
 

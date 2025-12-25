@@ -46,12 +46,9 @@ checkScreenWidth();
 
 window.addEventListener("resize", checkScreenWidth);
 
-// Wait for the document to be ready
 $(document).ready(function () {
-  // Select all elements with class "variant-btn"
   $(".variant-btn").each(function () {
     let text = $(this).text();
-    // Check the text of the element
     if (text === "White") {
       $(this).addClass("is-white");
     } else if (text === "Blue") {

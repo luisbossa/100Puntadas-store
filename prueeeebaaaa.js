@@ -404,11 +404,7 @@ exports.createCheckout = async (req, res) => {
 
 
 
-TRUNCATE TABLE
-  order_items,
-  orders
-RESTART IDENTITY
-CASCADE;
+
 
 
 

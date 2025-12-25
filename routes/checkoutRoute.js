@@ -11,5 +11,9 @@ router.get("/checkout", (req, res) => {
   });
 });
 
+router.get("/api/provinces", checkoutController.getProvinces);
+router.get("/api/cantons/:provinceCode", checkoutController.getCantons);
+router.get("/api/districts/:cantonCode", checkoutController.getDistricts);
+
 
 module.exports = router;
