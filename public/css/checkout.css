@@ -158,7 +158,6 @@ select.input {
   background-size: 22px;
   padding-right: 30px;
   padding-left: 14px;
-  height: 46px;
   color: #161616;
   border-radius: 8px;
   border: 1px solid #ddd;
@@ -293,21 +292,6 @@ select.input:focus {
 
 .cta:hover {
   opacity: 0.9;
-}
-
-/* ===== TERMS ===== */
-.terms {
-  font-size: 0.8rem;
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-.secure-note {
-  margin-top: 1rem;
-  font-size: 0.75rem;
-  color: #777;
-  text-align: center;
 }
 
 /* ===== PRODUCTS LIST ===== */

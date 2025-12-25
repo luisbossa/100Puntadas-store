@@ -52,7 +52,8 @@
 					</div>
 
 					<div class="field">
-						<input class="input" name="phone" type="tel" placeholder="Teléfono de contacto" required />
+						<input class="input" name="phone" type="tel" inputmode="numeric"
+							placeholder="Teléfono de contacto" required />
 						<small class="error-msg"></small>
 					</div>
 
@@ -64,21 +65,16 @@
 				<h2>Dirección de entrega</h2>
 
 				<div class="row">
-
 					<div class="field">
 						<input class="input" name="full_name" placeholder="Nombre completo" required />
 						<small class="error-msg"></small>
 					</div>
 
 					<div class="field">
-						<div class="field">
-							<input class="input" name="national_id" placeholder="Cédula" required maxlength="11" />
-							<small class="error-msg"></small>
-						</div>
-
+						<input class="input" name="national_id" placeholder="Cédula de identificación" required
+							maxlength="11" />
 						<small class="error-msg"></small>
 					</div>
-
 				</div>
 
 				<div class="row">
@@ -113,6 +109,11 @@
 						<small class="error-msg"></small>
 					</div>
 
+				</div>
+
+				<div class="field">
+					<input class="input" name="address" placeholder="Dirección" required />
+					<small class="error-msg"></small>
 				</div>
 
 				<textarea class="input textarea" name="address_details"
@@ -167,12 +168,6 @@
 					<span>Total</span>
 					<span class="order-total">₡0</span>
 				</div>
-
-				<!-- TÉRMINOS -->
-				<label class="terms">
-					<input type="checkbox" id="terms-checkbox" />
-					Acepto términos y condiciones
-				</label>
 
 				<button id="checkout-btn" class="cta">Continuar al pago</button>
 			</div>

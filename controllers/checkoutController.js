@@ -10,20 +10,55 @@ exports.getInfo = async (req, res) => {
       phone,
       full_name,
       national_id,
-      province, // aquí llega el nombre
-      canton, // aquí llega el nombre
-      district, // aquí llega el nombre
+      province,
+      canton,
+      district,
+      address,
       neighborhood,
       address_details,
       cart,
       totals,
     } = req.body;
 
+    /* ================= VALIDACIONES BACKEND ================= */
+
+    if (!address || address.trim().length < 10) {
+      return res.status(400).json({
+        success: false,
+        error: "La dirección es obligatoria y muy corta",
+      });
+    }
+
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+      return res.status(400).json({
+        success: false,
+        error: "Correo inválido",
+      });
+    }
+
+    // Teléfono Costa Rica: 8 dígitos, inicia en 2,4,5,6,7,8 → formato ####-####
+    if (!/^[245678]\d{3}-\d{4}$/.test(phone)) {
+      return res.status(400).json({
+        success: false,
+        error: "Teléfono inválido",
+      });
+    }
+
+    // Cédula Costa Rica: 1-2345-6789
+    if (!/^\d-\d{4}-\d{4}$/.test(national_id)) {
+      return res.status(400).json({
+        success: false,
+        error: "Cédula inválida",
+      });
+    }
+
     if (!cart || !Array.isArray(cart) || cart.length === 0) {
       return res
         .status(400)
         .json({ success: false, error: "Carrito inválido" });
     }
+
+    /* ================= TOTALES ================= */
 
     const subtotal = cart.reduce(
       (acc, item) => acc + normalize(item.price) * item.quantity,
@@ -33,23 +68,25 @@ exports.getInfo = async (req, res) => {
     const shipping = normalize(totals.shipping);
     const total = normalize(totals.total);
 
-    // Crear orden con nombres en lugar de códigos
+    /* ================= INSERT ORDEN ================= */
+
     const orderResult = await db.query(
       `
       INSERT INTO orders
-      (email, phone, full_name, national_id, province_name, canton_name, district_name, neighborhood, address_details, subtotal, discount, shipping, total)
-      VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)
+      (email, phone, full_name, national_id, province_name, canton_name, district_name, address, neighborhood, address_details, subtotal, discount, shipping, total)
+      VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)
       RETURNING id
       `,
       [
-        email,
-        phone,
-        full_name,
-        national_id,
+        email.trim(),
+        phone.trim(),
+        full_name.trim(),
+        national_id.trim(),
         province,
         canton,
         district,
-        neighborhood,
+        address.trim(),
+        neighborhood.trim(),
         address_details,
         subtotal,
         discount,
@@ -60,7 +97,8 @@ exports.getInfo = async (req, res) => {
 
     const orderId = orderResult.rows[0].id;
 
-    // Insertar items de la orden
+    /* ================= INSERT ITEMS ================= */
+
     for (const item of cart) {
       await db.query(
         `
@@ -90,7 +128,8 @@ exports.getInfo = async (req, res) => {
   }
 };
 
-// Obtener provincias
+/* ================= SELECTS ================= */
+
 exports.getProvinces = async (req, res) => {
   try {
     const result = await db.query(
@@ -103,7 +142,6 @@ exports.getProvinces = async (req, res) => {
   }
 };
 
-// Obtener cantones por provincia
 exports.getCantons = async (req, res) => {
   try {
     const { provinceCode } = req.params;
@@ -118,7 +156,6 @@ exports.getCantons = async (req, res) => {
   }
 };
 
-// Obtener distritos por cantón
 exports.getDistricts = async (req, res) => {
   try {
     const { cantonCode } = req.params;

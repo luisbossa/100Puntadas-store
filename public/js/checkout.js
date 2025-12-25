@@ -103,6 +103,23 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
+  /* ================= TELÉFONO COSTA RICA ================= */
+  const phoneInput = document.querySelector('input[name="phone"]');
+
+  phoneInput.addEventListener("input", (e) => {
+    let value = e.target.value.replace(/\D/g, ""); // solo números
+
+    // Máximo 8 dígitos
+    if (value.length > 8) value = value.slice(0, 8);
+
+    // Formato 8888-8888
+    if (value.length > 4) {
+      value = value.replace(/^(\d{4})(\d{0,4})$/, "$1-$2");
+    }
+
+    e.target.value = value;
+  });
+
   /* ================= CÉDULA COSTA RICA ================= */
   const nationalIdInput = document.querySelector('input[name="national_id"]');
 
@@ -131,12 +148,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (!validateField(field)) isValid = false;
       });
 
-    const terms = document.querySelector("#terms-checkbox");
-    if (!terms.checked) {
-      alert("Debes aceptar los términos y condiciones");
-      return;
-    }
-
     if (!isValid) {
       document.querySelector(".field.error")?.scrollIntoView({
         behavior: "smooth",
@@ -153,6 +164,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       province: provinceSelect.options[provinceSelect.selectedIndex].text,
       canton: cantonSelect.options[cantonSelect.selectedIndex].text,
       district: districtSelect.options[districtSelect.selectedIndex].text,
+      address: getVal("address"),
       neighborhood: getVal("neighborhood"),
       address_details: getVal("address_details"),
       cart: checkoutData.cart,
@@ -188,6 +200,12 @@ function validateField(input) {
 
   if (!value) return showError(wrapper, msg, "Este campo es obligatorio");
 
+  if (input.name === "address") {
+    if (value.length < 10) {
+      return showError(wrapper, msg, "La dirección es muy corta");
+    }
+  }
+
   if (input.name === "national_id") {
     if (!/^\d-\d{4}-\d{4}$/.test(value)) {
       return showError(wrapper, msg, "Cédula inválida. Formato: 1-2345-6789");
@@ -197,8 +215,11 @@ function validateField(input) {
   if (input.name === "email" && !/^\S+@\S+\.\S+$/.test(value))
     return showError(wrapper, msg, "Correo inválido");
 
-  if (input.name === "phone" && value.length < 8)
-    return showError(wrapper, msg, "Teléfono inválido");
+  if (input.name === "phone") {
+    if (!/^[245678]\d{3}-\d{4}$/.test(value)) {
+      return showError(wrapper, msg, "Teléfono inválido. Formato: 8888-8888");
+    }
+  }
 
   clearError(wrapper, msg);
   return true;
