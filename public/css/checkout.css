@@ -122,9 +122,12 @@ textarea::placeholder {
   background: #fff;
   border-radius: 14px;
   padding: 2rem;
-  margin-bottom: 1.5rem;
   border: 1px solid #d8d9da;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+.m-bottom {
+  margin-bottom: 1.5rem;
 }
 
 h2,
