@@ -8,7 +8,9 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Este diseño minimalista es un Best Seller. Amamos la combinación de centro negro con borde tejido color arena. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Este diseño minimalista es un Best Seller. Amamos la combinación de centro negro con borde tejido color arena.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-1.webp",
       "/images/products/product-1.1.webp",
@@ -32,7 +34,9 @@ const beachwearProducts = {
     price: 21000,
     currency: "₡",
     description:
-      "Diseño único con estampado de vaca en blanco y negro para un estilo divertido y moderno. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Diseño único con estampado de vaca en blanco y negro para un estilo divertido y moderno.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-2.webp",
       "/images/products/product-2.1.jpg",
@@ -54,7 +58,9 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Diseño color azul/verdoso con contraste perfecto de bordes multicolor elaborados en crochet. Para las amantes de tonos oscuros. Nuestros bikinis reflejan un acabado artesanal de alta calidad.Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Diseño color azul/verdoso con contraste perfecto de bordes multicolor elaborados en crochet.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-3.webp",
       "/images/products/product-3.1.jpg",
@@ -76,7 +82,9 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Amamos el contraste de este bikini, azul rey con bordes a crochet blancos. Es la pieza perfecta para quienes buscan un look veraniego, vibrante y con personalidad. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Amamos el contraste de este bikini, azul rey con bordes a crochet blancos.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-4.webp",
       "/images/products/product-4.1.jpg",
@@ -98,7 +106,9 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Earth Kiini fue inspirado en colores de la naturaleza. Amamos el contraste del verde musgo con bordes hechos en crochet color crema. Dándole un look natural y orgánico (Tipo boho-chic) Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Earth Kiini fue inspirado en colores de la naturaleza. Amamos el contraste del verde musgo con bordes hechos en crochet color crema.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-5.webp",
       "/images/products/product-5.1.jpg",
@@ -120,7 +130,9 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Este kiini es para las amantes de tonos neón. Amamos esta combinación vibrante y energética. MALIBÚ Kiini es un bikini alegre, perfecto para resaltar el bronceado. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Este kiini es para las amantes de tonos neón. Amamos esta combinación vibrante y energética.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-6.webp",
       "/images/products/product-6.1.jpg",
@@ -143,7 +155,9 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Inspirado en los colores del algodón de azúcar. Para las amantes de tonos pasteles. Este bikini resalta muy bien en piel morena. Los detalles hechos a crochet en tonos pasteles, le dan un toque fresco y juveníl. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Inspirado en los colores del algodón de azúcar. Para las amantes de tonos pasteles. Este bikini resalta muy bien en piel morena.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-7.webp",
       "/images/products/product-7.1.jpg",
@@ -164,7 +178,9 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Inspirado en los colores del algodón de azúcar. Para las amantes de tonos pasteles. Este bikini resalta muy bien en piel morena. Los detalles hechos a crochet en tonos pasteles, le dan un toque fresco y juveníl. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Inspirado en los colores del algodón de azúcar. Para las amantes de tonos pasteles. Este bikini resalta muy bien en piel morena.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-8.webp",
       "/images/products/product-8.1.jpg",
@@ -185,7 +201,9 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Inspirado en los colores del algodón de azúcar. Para las amantes de tonos pasteles. Este bikini resalta muy bien en piel morena. Los detalles hechos a crochet en tonos pasteles, le dan un toque fresco y juveníl. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Inspirado en los colores del algodón de azúcar. Para las amantes de tonos pasteles. Este bikini resalta muy bien en piel morena.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-9.webp",
       "/images/products/product-9.1.jpg",
@@ -206,7 +224,9 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Cloudy kiini tiene tela con textura granulada. Para las amantes de tonos pasteles. Este bikini tiene un contraste perfecto de celeste bebé con bordes en crochet color crema. Además tiene un delicado toque color naranja.  Súper femenino y coqueto.   Este modelo destaca por su juego de texturas y colores suaves. Nuestros bikinis reflejan un acabado artesanal de alta calidad.Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Cloudy kiini tiene tela con textura granulada. Para las amantes de tonos pasteles.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-10.webp",
       "/images/products/product-10.1.jpg",
@@ -227,7 +247,9 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Para las amantes de tonos pasteles. Este bikini resalta muy bien en piel morena. Amamos la combinación palo rosa con borde crema y un toque sutil en verde limón le dan un toque fresco y juveníl. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Para las amantes de tonos pasteles. Este bikini resalta muy bien en piel morena.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-11.webp",
       "/images/products/product-11.1.jpg",
@@ -249,7 +271,9 @@ const beachwearProducts = {
     price: 32500,
     currency: "₡",
     description:
-      "Este Kiini tiene un estampado de ensueño en tonos pasteles. La mezcla de colores lila, menta y crema crea un efecto mármoleado irresistible. Para las amantes de tonos pasteles. Este bikini resalta muy bien el bronceado. Sin duda es el bikini más dulce de la colección. Nuestros bikinis reflejan un acabado artesanal de alta calidad.Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Este Kiini tiene un estampado de ensueño en tonos pasteles. La mezcla de colores lila, menta y crema crea un efecto mármoleado irresistible.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-12.webp",
       "/images/products/product-12.1.jpg",
@@ -271,7 +295,9 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Este Kiini es el equilibrio perfecto entre lo dulce y atrevido. Para las amantes de tonos pasteles. Este Kiini restalta muy bien el bronceado.Amamos el contrate de la base palo rosa con detalles multicolor a crochet. Súper femenino y delicado. Nuestros bikinis reflejan un acabado artesanal de alta calidad.Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Este Kiini es el equilibrio perfecto entre lo dulce y atrevido. Para las amantes de tonos pasteles. Este Kiini restalta muy bien el bronceado.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-13.webp",
       "/images/products/product-13.1.jpg",
@@ -292,7 +318,9 @@ const beachwearProducts = {
     price: 32500,
     currency: "₡",
     description:
-      "Cuando la elegancia se junta con lo artesanal, este es el resultado. Amamos el contraste de la base vino tinto con elásticos rosa satinado. Súper femenino y delicado. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Cuando la elegancia se junta con lo artesanal, este es el resultado. Amamos el contraste de la base vino tinto con elásticos rosa satinado.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-14.webp",
       "/images/products/product-14.1.jpg",
@@ -313,7 +341,9 @@ const beachwearProducts = {
     price: 21000,
     currency: "₡",
     description:
-      "Un Kiini salvaje y sensual para las amantes de estampado animal. La tendencia Safari se encuentra con el estilo bohemio creando una pieza llena de personalidad. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Un Kiini salvaje y sensual para las amantes de estampado animal. La tendencia Safari se encuentra con el estilo bohemio creando una pieza llena de personalidad.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-15.webp",
       "/images/products/product-15.1.jpg",
@@ -334,7 +364,9 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Un Kiini único inspirado en los colores del mar. Destaca por su azul intenso combinado con bordes multicolor hechos en crochet. Para las amantes de tonos oscuros. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Un Kiini único inspirado en los colores del mar. Destaca por su azul intenso combinado con bordes multicolor hechos en crochet.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-16.webp",
       "/images/products/product-16.1.jpg",
@@ -356,7 +388,9 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Para las amantes de tonos pasteles. Este Kiini restalta muy bien el bronceado. Amamos el contrate de la base amarillo pastel con bordes multicolor hechos en crochet. Súper femenino y delicado. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Para las amantes de tonos pasteles. Este Kiini restalta muy bien el bronceado. Amamos el contrate de la base amarillo pastel con bordes multicolor hechos en crochet.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-17.jpeg",
       "/images/products/product-17.1.jpeg",
@@ -378,7 +412,9 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Para las amantes de tonos pasteles. Este Kiini restalta muy bien el bronceado. Amamos el contrate de la base celeste con bordes crema. Súper femenino y delicado. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Para las amantes de tonos pasteles. Este Kiini restalta muy bien el bronceado. Amamos el contrate de la base celeste con bordes crema.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-18.jpeg",
       "/images/products/product-18.1.jpeg",
@@ -398,7 +434,9 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Este bikini de la nueva colección resalta muy bien el bronceado. Base color pistacho suave con bordes rosa y crema hechos en crochet crean un contraste armonioso, suave y femenino. Para las amantes de tonos pasteles, nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Este bikini de la nueva colección resalta muy bien el bronceado. Base color pistacho suave con bordes rosa y crema hechos en crochet crean un contraste armonioso y femenino.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-19.jpeg",
       "/images/products/product-19.1.jpeg",
@@ -419,7 +457,9 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Un bikini sofisticado y glamuroso. Amamos la elegancia del contraste vino tinto con bordes blanco y negro en crochet. Para las amantes de tonos oscuros. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Un bikini sofisticado y glamuroso. Amamos la elegancia del contraste vino tinto con bordes blanco y negro en crochet.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-20.jpeg",
       "/images/products/product-20.1.jpeg",
@@ -440,7 +480,9 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Este Kiini es un Must-have, inspirado en la base naval, amamos la combinación del azul escolar en contraste con bordes multicolor en crochet. Para las amantes de tonos oscuros. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Este Kiini es un Must-have, inspirado en la base naval, amamos la combinación del azul escolar en contraste con bordes multicolor en crochet.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-21.jpeg",
       "/images/products/product-21.1.jpeg",
@@ -461,7 +503,9 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Un Kiini salvaje y sensual para las amantes de estampado animal. La tendencia Safari se encuentra con el estilo bohemio creando una pieza llena de personalidad. Nuestros bikinis reflejan un acabado artesanal de alta calidad. Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+      "Un Kiini salvaje y sensual para las amantes de estampado animal. La tendencia Safari se encuentra con el estilo bohemio creando una pieza llena de personalidad.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/swimwears/swimwear-22.jpeg",
       "/images/products/product-22.1.jpeg",
@@ -484,7 +528,8 @@ const beachwearProducts = {
     price: 33500,
     currency: "₡",
     description:
-      "Amamos la versión enterizo de los kiinis. Tienen un toque deportivo y retro. Personalizable en el color que gustes.",
+      "Amamos la versión enterizo de los kiinis. Tienen un toque deportivo y retro.",
+    description2: "Personalizable en el color que gustes.",
     images: [
       "/images/jumpsuits/jumpsuit-1.webp",
       "/images/jumpsuits/jumpsuit-1.1.jpeg",
@@ -505,7 +550,9 @@ const beachwearProducts = {
     price: 33500,
     currency: "₡",
     description:
-      "Estilo Boho-Luxe (sofisticado y artesanal) 100% elaborado a mano en crochet.Esta pieza es la definición de la elegancia bohemia. Es ajustable a los lados haciendo que se amolde muy bien a tu figura.",
+      "Estilo Boho-Luxe 100% elaborado a mano en crochet. Esta pieza es la definición de la elegancia bohemia.",
+    description2:
+      "Es ajustable a los lados haciendo que se amolde muy bien a tu figura.",
     images: [
       "/images/jumpsuits/jumpsuit-2.webp",
       "/images/jumpsuits/jumpsuit-2.1.jpeg",
@@ -527,7 +574,8 @@ const beachwearProducts = {
     price: 33500,
     currency: "₡",
     description:
-      "Una prenda súper femenina de la tendencia Coquette y con un aire vintage. Amamos el contraste crema con flores en relieve celestes.Elaborado en un material de tejido flexible.",
+      "Una prenda súper femenina de la tendencia Coquette y con un aire vintage. Amamos el contraste crema con flores en relieve celestes.",
+    description2: "Elaborado en un material de tejido flexible.",
     images: [
       "/images/jumpsuits/jumpsuit-3.webp",
       "/images/jumpsuits/jumpsuit-3.1.jpeg",
@@ -551,7 +599,8 @@ const beachwearProducts = {
     price: 33500,
     currency: "₡",
     description:
-      "Este diseño es una obra de arte  La creación más original de 100puntadas. Elaborado 100% a crochet con material suave de algodón. Tiene un estilo “Coquette” y destaca por sus delicadas flores pasteles en relieve.  Top posee varillas incorporadas para mayor soporte y bottom es ajustable a los costados. Puedes personalizarlo en diferentes tonos.",
+      "Este diseño es la creación más original de 100puntadas. Elaborado 100% a crochet con material suave de algodón. Destaca por sus delicadas flores pasteles en relieve. Top posee varillas incorporadas para mayor soporte y bottom es ajustable a los costados.",
+    description2: "Puedes personalizarlo en diferentes tonos.",
     images: [
       "/images/crochets/crochet-1.jpeg",
       "/images/crochets/crochet-1.1.jpeg",
@@ -575,7 +624,8 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave. Top strapless y bottom en corte V. Ambos ajustables.",
+      "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave.",
+    description2: "Top strapless y bottom en corte V. Ambos ajustables.",
     images: [
       "/images/crochets/crochet-2.jpeg",
       "/images/crochets/crochet-2.1.jpeg",
@@ -599,7 +649,8 @@ const beachwearProducts = {
     price: 35000,
     currency: "₡",
     description:
-      "Conjunto elaborado en un tipo de tejido flexible que se amolda al cuerpo y resalta tu figura. Perfecto para usarlo como outfit de playa y/o festival.",
+      "Conjunto elaborado en un tipo de tejido flexible que se amolda al cuerpo y resalta tu figura.",
+    description2: "Perfecto para usarlo como outfit de playa y/o festival.",
     images: [
       "/images/sets/set-1.jpg",
       "/images/sets/set-1.1.jpeg",
@@ -623,7 +674,8 @@ const beachwearProducts = {
     price: 35000,
     currency: "₡",
     description:
-      "Conjunto  elaborado 100% a crochet .Top estilo halter con detalle de flores en relieve y falda con volados pronunciados en capas con tejido estilo malla. Perfecta para usarla como outfit de playa y/o festival",
+      "Conjunto  elaborado 100% a crochet .Top estilo halter con detalle de flores en relieve y falda con volados pronunciados en capas con tejido estilo malla.",
+    description2: "Perfecto para usarlo como outfit de playa y/o festival.",
     images: [
       "/images/sets/set-2.jpg",
       "/images/sets/set-2.1.jpeg",
@@ -646,7 +698,8 @@ const beachwearProducts = {
     price: 35000,
     currency: "₡",
     description:
-      "Conjunto  elaborado 100% a crochet. El top es súper versátil, se puede utilizar con tirantes cruzados al cuello o tirantes  amarrados en nudo al frente. Perfecto para usarlo como outfit de playa y/o festival.",
+      "Conjunto  elaborado 100% a crochet. El top es súper versátil, se puede utilizar con tirantes cruzados al cuello o tirantes amarrados en nudo al frente.",
+    description2: "Perfecto para usarlo como outfit de playa y/o festival.",
     images: [
       "/images/sets/set-3.jpg",
       "/images/sets/set-3.1.jpeg",
@@ -667,7 +720,8 @@ const beachwearProducts = {
     price: 35000,
     currency: "₡",
     description:
-      "Salida de playa elaborada 100% a crochet con puntada de malla. El top estilo bolero amarrable al frente y falta ajustable a la medida. Perfeta para usarla como outfit de playa y/o festival.",
+      "Salida de playa elaborada 100% a crochet con puntada de malla. El top estilo bolero amarrable al frente y falta ajustable a la medida.",
+    description2: "Perfecto para usarlo como outfit de playa y/o festival.",
     images: [
       "/images/sets/set-4.jpeg",
       "/images/sets/set-4.1.jpeg",
@@ -708,6 +762,8 @@ document.getElementById("productName").textContent = product.name;
 document.getElementById("productPrice").textContent =
   product.price.toLocaleString("es-CR") + " " + product.currency;
 document.getElementById("productDescription").textContent = product.description;
+document.getElementById("productDescription2").textContent =
+  product.description2;
 
 /* ============================================================
    IMÁGENES
