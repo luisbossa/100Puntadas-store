@@ -1,25 +1,31 @@
 .onvo-body {
   min-height: 100vh;
   font-family: "Arial", sans-serif;
-  background-color: #fff;
+  background-color: #fcfaf6;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  margin: 0;
-  padding: 2rem;
+  padding: 2rem 0;
 }
 
 .onvo-wrapper {
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;
   background-color: #fff;
-  padding: 0 1.5rem 1.5rem;
+  padding: 2rem;
+  margin-top: 2rem;
+  border-radius: 14px;
+  border: 1px solid #d8d9da;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  display: flex;
+  flex-direction: column;
 }
 
 .onvo-heading-div {
   width: 100%;
   padding: 1rem 0;
+  text-align: center;
 }
 
 .onvo-heading {
@@ -27,32 +33,25 @@
   font-size: 2rem;
   color: #333;
   margin: 0;
-  text-align: center;
 }
 
 .onvo-checkout-container {
   width: 100%;
-  margin: 0 auto;
+  margin: 1rem auto 0 auto;
 }
 
+/* ===== RESPONSIVE ===== */
 @media (max-width: 500px) {
-  .onvo-body {
-    padding: 2rem 0;
-  }
-
   .onvo-wrapper {
-    margin-right: 0;
-  }
-
-  .onvo-checkout-container {
-    width: 98%;
-  }
-
-  .onvo-heading-div {
-    border-bottom: 1px solid #d8d9da;
+    max-width: 95%;
+    padding: 1.5rem;
   }
 
   .onvo-heading {
     font-size: 1.5rem;
+  }
+
+  .onvo-checkout-container {
+    width: 100%;
   }
 }

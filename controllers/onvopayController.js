@@ -1,13 +1,14 @@
-// controllers/onvopayController.js
-
-export async function createPaymentIntent(req, res) {
+exports.createPaymentIntent = async (req, res) => {
   try {
-    const { amount } = req.body;
+    const { totals, email, orderId } = req.body;
 
-    console.log("Monto final enviado a Onvo:", amount);
-    console.log("USANDO SECRET KEY:", process.env.ONVOPAY_SECRET_KEY);
+    if (!totals || !totals.total || !email || !orderId) {
+      return res.status(400).json({
+        success: false,
+        error: "Faltan datos para crear el pago",
+      });
+    }
 
-    // Llamada a la API Onvo
     const response = await fetch("https://api.onvopay.com/v1/payment-intents", {
       method: "POST",
       headers: {
@@ -15,32 +16,32 @@ export async function createPaymentIntent(req, res) {
         Authorization: `Bearer ${process.env.ONVOPAY_SECRET_KEY}`,
       },
       body: JSON.stringify({
-        amount,
+        amount: totals.total,
         currency: "CRC",
-        description: "Compra en 100Puntadas",
+        description: `Orden #${orderId} - 100Puntadas`,
+        metadata: {
+          orderId: String(orderId),
+          email: String(email),
+        },
       }),
     });
 
-    // Verifica el estado de la respuesta de Onvo
+    const data = await response.json();
+
     if (!response.ok) {
-      const errorData = await response.json();
-      console.error("Error en Onvo:", errorData);
-      return res.status(response.status).json({ ok: false, error: errorData });
+      console.error("ONVO ERROR:", data);
+      return res.status(response.status).json({ success: false, error: data });
     }
 
-    // Si la respuesta es correcta, obtenemos los datos
-    const data = await response.json();
-    console.log("Respuesta Onvo:", data);
-
-    // Redirige al cliente a la página de pago
-    res.json({
-      ok: true,
-      paymentIntentId: data.id, // Este ID lo usas en el frontend para redirigir a la página de pago
+    return res.json({
+      success: true,
+      paymentIntentId: data.id,
     });
-  } catch (error) {
-    console.error("ERROR:", error);
-    return res
-      .status(500)
-      .json({ ok: false, error: "Error interno del servidor" });
+  } catch (err) {
+    console.error("ONVO INTERNAL ERROR:", err);
+    return res.status(500).json({
+      success: false,
+      error: "Error interno del servidor",
+    });
   }
-}
+};

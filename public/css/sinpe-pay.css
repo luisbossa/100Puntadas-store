@@ -1,0 +1,189 @@
+/* ===== GLOBAL ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: #fcfaf6;
+  color: #111;
+  user-select: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 700;
+  color: #161616;
+}
+
+p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ===== PAGE WRAPPER ===== */
+.page-wrapper {
+  max-width: 950px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 14px;
+  padding: 2rem;
+  border: 1px solid #d8d9da;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+/* ===== PAGE TITLE ===== */
+.page-title {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: #161616;
+}
+
+/* ===== ORDER SUMMARY ===== */
+.order-summary {
+  background: #ecddf0;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.order-summary p {
+  margin-bottom: 0.7rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.order-summary p strong {
+  color: #333; /* neutro oscuro */
+}
+
+/* ===== SECTION TITLES ===== */
+.section-title {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #161616;
+}
+
+/* ===== BANK DETAILS ===== */
+.bank-detail {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* ===== ORDER TABLE ===== */
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  border-radius: 12px;
+  border-bottom: 1px solid #e5e5e5;
+  overflow: hidden;
+}
+
+.order-table th,
+.order-table td {
+  padding: 1rem 1.2rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.order-table th {
+  background: #ecddf0;
+  font-weight: 700;
+  color: #161616;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid #161616;
+}
+
+.order-table tr:nth-child(even) {
+  background: #fdfdfd; /* casi blanco */
+}
+
+/* ===== ORDER PRODUCT ROW ===== */
+.order-product-row td {
+  vertical-align: middle;
+}
+
+.product-name {
+  font-weight: 600;
+}
+
+.product-meta {
+  font-size: 0.78rem;
+  color: #666;
+  margin-top: 3px;
+}
+
+.product-unit-price,
+.product-total-price {
+  font-weight: 700;
+}
+
+/* ===== ORDER TOTAL ROW ===== */
+.order-total-row td {
+  font-weight: 700;
+  border-top: 1px solid #ddd;
+}
+
+.order-total-row td:first-child {
+  text-align: start; /* centramos los totales */
+}
+
+/* ===== PAYMENT BUTTON ===== */
+.button-confirm-payment {
+  display: block;
+  width: 100%;
+  height: 52px;
+  margin-top: 2rem;
+  border-radius: 12px;
+  border: none;
+  text-transform: uppercase;
+  background: #161616; /* gris oscuro */
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.button-confirm-payment:hover {
+  opacity: 0.95;
+}
+
+/* ===== PAYMENT REMINDER ===== */
+.payment-reminder {
+  margin-top: 1rem;
+  font-style: italic;
+  color: #555;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 700px) {
+  .page-wrapper {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .order-table th,
+  .order-table td {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .order-summary p {
+    font-size: 0.9rem;
+  }
+
+  .button-confirm-payment {
+    font-size: 0.95rem;
+  }
+}

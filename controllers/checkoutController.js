@@ -12,13 +12,14 @@ exports.getInfo = async (req, res) => {
       full_name,
       national_id,
       province, // code
-      canton,   // code
+      canton, // code
       district, // code
       address,
       neighborhood,
       address_details,
       cart,
       totals,
+      payment_method, // <-- 'sinpe' o 'card'
     } = req.body;
 
     /* ================= VALIDACIONES ================= */
@@ -27,7 +28,9 @@ exports.getInfo = async (req, res) => {
     }
 
     if (!/^[245678]\d{3}-\d{4}$/.test(phone)) {
-      return res.status(400).json({ success: false, error: "Teléfono inválido" });
+      return res
+        .status(400)
+        .json({ success: false, error: "Teléfono inválido" });
     }
 
     if (!/^\d-\d{4}-\d{4}$/.test(national_id)) {
@@ -42,10 +45,15 @@ exports.getInfo = async (req, res) => {
     }
 
     if (!Array.isArray(cart) || cart.length === 0) {
-      return res.status(400).json({
-        success: false,
-        error: "Carrito inválido",
-      });
+      return res
+        .status(400)
+        .json({ success: false, error: "Carrito inválido" });
+    }
+
+    if (!payment_method || !["sinpe", "card"].includes(payment_method)) {
+      return res
+        .status(400)
+        .json({ success: false, error: "Método de pago inválido" });
     }
 
     /* ================= CAST DE CODES ================= */
@@ -53,11 +61,17 @@ exports.getInfo = async (req, res) => {
     const cantonCode = Number(canton);
     const districtCode = Number(district);
 
-    if (Number.isNaN(provinceCode) || Number.isNaN(cantonCode) || Number.isNaN(districtCode)) {
-      return res.status(400).json({
-        success: false,
-        error: "Provincia, cantón o distrito inválido",
-      });
+    if (
+      Number.isNaN(provinceCode) ||
+      Number.isNaN(cantonCode) ||
+      Number.isNaN(districtCode)
+    ) {
+      return res
+        .status(400)
+        .json({
+          success: false,
+          error: "Provincia, cantón o distrito inválido",
+        });
     }
 
     /* ================= CONVERTIR CODES → NOMBRES ================= */
@@ -74,32 +88,34 @@ exports.getInfo = async (req, res) => {
       [districtCode, cantonCode]
     );
 
-    if (!provinceRes.rows.length || !cantonRes.rows.length || !districtRes.rows.length) {
-      return res.status(400).json({
-        success: false,
-        error: "Provincia, cantón o distrito inválido",
-      });
+    if (
+      !provinceRes.rows.length ||
+      !cantonRes.rows.length ||
+      !districtRes.rows.length
+    ) {
+      return res
+        .status(400)
+        .json({
+          success: false,
+          error: "Provincia, cantón o distrito inválido",
+        });
     }
 
     const provinceName = provinceRes.rows[0].province;
     const cantonName = cantonRes.rows[0].canton;
     const districtName = districtRes.rows[0].district;
 
-    /* ================= TOTALES (BACKEND ES AUTORIDAD) ================= */
+    /* ================= TOTALES ================= */
     const subtotal = cart.reduce(
       (acc, item) => acc + normalize(item.price) * Number(item.quantity || 1),
       0
     );
-
     const discount = normalize(totals?.discount);
     const shipping = normalize(totals?.shipping);
     const total = subtotal - discount + shipping;
 
     if (total <= 0) {
-      return res.status(400).json({
-        success: false,
-        error: "Total inválido",
-      });
+      return res.status(400).json({ success: false, error: "Total inválido" });
     }
 
     /* ================= BLOQUEO DUPLICADOS ================= */
@@ -108,21 +124,27 @@ exports.getInfo = async (req, res) => {
       [email.trim(), total]
     );
 
-    if (existingOrder.rows.length > 0 && existingOrder.rows[0].status === "paid") {
-      return res.status(409).json({
-        success: false,
-        error: "Esta orden ya fue pagada",
-      });
+    if (
+      existingOrder.rows.length > 0 &&
+      existingOrder.rows[0].status === "paid"
+    ) {
+      return res
+        .status(409)
+        .json({ success: false, error: "Esta orden ya fue pagada" });
     }
+
+    /* ================= NÚMERO DE PEDIDO ALEATORIO ================= */
+    const randomOrderNumber = Math.floor(10000 + Math.random() * 90000); // 5 dígitos
 
     /* ================= INSERT ORDER ================= */
     const orderResult = await db.query(
       `INSERT INTO orders
-      (email, phone, full_name, national_id, province_name, canton_name, district_name,
-       address, neighborhood, address_details, subtotal, discount, shipping, total, status)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,'pending')
-       RETURNING id`,
+      (order_number, email, phone, full_name, national_id, province_name, canton_name, district_name,
+       address, neighborhood, address_details, subtotal, discount, shipping, total, status, payment_method)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,'pending',$16)
+       RETURNING id, order_number`,
       [
+        randomOrderNumber,
         email.trim(),
         phone.trim(),
         full_name.trim(),
@@ -137,6 +159,7 @@ exports.getInfo = async (req, res) => {
         discount,
         shipping,
         total,
+        payment_method,
       ]
     );
 
@@ -164,13 +187,17 @@ exports.getInfo = async (req, res) => {
     }
 
     /* ================= RESPUESTA ================= */
-    return res.json({ success: true, orderId });
+    return res.json({
+      success: true,
+      orderId,
+      orderNumber: randomOrderNumber,
+      payment_method,
+    });
   } catch (err) {
     console.error("CHECKOUT ERROR:", err);
-    return res.status(500).json({
-      success: false,
-      error: "Error interno del servidor",
-    });
+    return res
+      .status(500)
+      .json({ success: false, error: "Error interno del servidor" });
   }
 };
 
@@ -196,7 +223,6 @@ exports.getCantons = async (req, res) => {
       "SELECT code, canton FROM cantons WHERE province = $1 ORDER BY canton",
       [provinceCode]
     );
-
     res.json(rows);
   } catch (err) {
     console.error("GET CANTONS ERROR:", err);
@@ -213,7 +239,6 @@ exports.getDistricts = async (req, res) => {
       "SELECT code, district FROM districts WHERE canton = $1 ORDER BY district",
       [cantonCode]
     );
-
     res.json(rows);
   } catch (err) {
     console.error("GET DISTRICTS ERROR:", err);

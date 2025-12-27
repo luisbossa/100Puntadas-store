@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago SINPE Móvil</title>
+    <link href="/css/sinpe-pay.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="page-wrapper">
+
+        <h1 class="page-title">Pedido recibido</h1>
+
+        <!-- ===== ORDER SUMMARY ===== -->
+        <div class="order-summary">
+            <p><strong>Número de pedido:</strong>
+                <%= order.order_number || order.id %>
+            </p>
+            <p><strong>Fecha:</strong>
+                <%= new Date(order.created_at).toLocaleDateString('es-CR', { year: 'numeric' , month: 'long' ,
+                    day: 'numeric' }) %>
+            </p>
+            <p><strong>Total:</strong> ₡<%= order.total.toLocaleString("es-CR") %>
+            </p>
+            <p><strong>Método de pago:</strong>
+                <%= order.payment_method==='sinpe' ? 'SINPE / Transferencia' : 'Tarjeta' %>
+            </p>
+            <p>Usa el número de pedido como referencia de tu pago y envía el comprobante por Whatsapp al 87925172</p>
+        </div>
+
+
+        <!-- ===== BANK DETAILS ===== -->
+        <h2 class="section-title">Nuestros detalles bancarios</h2>
+        <p class="bank-detail bank-account">SINPE 87925172</p>
+        <p class="bank-detail bank-number">Número de cuenta: 958219313</p>
+        <p class="bank-detail bank-iban">IBAN: CR06010200009582193138</p>
+
+        <!-- ===== ORDER TABLE ===== -->
+        <h2 class="section-title">Detalles del pedido</h2>
+        <table class="order-table">
+            <thead>
+                <tr class="order-table-header">
+                    <th>Producto</th>
+                    <th>Talla / Cantidad</th>
+                    <th>Precio Unitario</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% orderItems.forEach(item=> { %>
+                    <tr class="order-product-row">
+                        <td class="product-name">
+                            <%= item.product_name %>
+                        </td>
+                        <td class="product-meta">
+                            <%= item.size ? "Talla: " + item.size : "-" %> × <%= item.quantity %>
+                        </td>
+                        <td class="product-unit-price">₡<%= Number(item.price).toLocaleString("es-CR") %>
+                        </td>
+                        <td class="product-total-price">₡<%= Number(item.price * item.quantity).toLocaleString("es-CR")
+                                %>
+                        </td>
+                    </tr>
+                    <% }) %>
+                        <tr class="order-total-row">
+                            <td colspan="3">Subtotal:</td>
+                            <td>₡<%= Number(order.subtotal).toLocaleString("es-CR") %>
+                            </td>
+                        </tr>
+                        <tr class="order-total-row">
+                            <td colspan="3">Envío:</td>
+                            <td>₡<%= Number(order.shipping).toLocaleString("es-CR") %>
+                            </td>
+                        </tr>
+                        <tr class="order-total-row">
+                            <td colspan="3">Total:</td>
+                            <td>₡<%= Number(order.total).toLocaleString("es-CR") %>
+                            </td>
+                        </tr>
+                        <tr class="order-total-row">
+                            <td colspan="3">Método de pago:</td>
+                            <td>SINPE o Transferencia Bancaria</td>
+                        </tr>
+            </tbody>
+        </table>
+
+        <!-- ===== PAYMENT REMINDER ===== -->
+        <p class="payment-reminder">Recuerda enviar tu comprobante de pago por Whatsapp al 87925172 indicando tu número
+            de pedido.</p>
+
+        <!-- ===== PAYMENT BUTTON ===== -->
+        <button class="button-confirm-payment" onclick="alert('Gracias por completar tu pago!')">He enviado el
+            pago</button>
+    </div>
+</body>
+
+</html>

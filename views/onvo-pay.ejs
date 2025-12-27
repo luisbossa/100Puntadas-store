@@ -5,14 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pago</title>
+    <link rel="stylesheet" href="/css/checkout.css" />
     <link href="/css/onvo-pay.css" rel="stylesheet" type="text/css" />
+    <style>
+        #onvo-checkout-container {
+            width: 100%;
+            min-height: 400px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 
 <body class="onvo-body">
+
+    <header class="header-filler">
+        <div class="checkout-header">
+            <a href="/" class="checkout-brand">
+                <img class="logo-img" src="/images/logo.png" alt="logo">
+            </a>
+
+            <nav class="checkout-steps">
+                <div class="step">
+                    <span class="step-index2">1</span>
+                    <span class="step-label">Entrega</span>
+                </div>
+
+                <div class="step active">
+                    <span class="step-index">2</span>
+                    <span class="step-label">Pago</span>
+                </div>
+
+                <div class="step">
+                    <span class="step-index2">3</span>
+                    <span class="step-label">Confirmación</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
     <div class="onvo-wrapper">
         <div class="onvo-heading-div">
             <h1 class="onvo-heading">Realiza tu pago</h1>
         </div>
+
+        <!-- Contenedor para que el SDK renderice el checkout -->
+        <div id="onvo-checkout-container"></div>
     </div>
 
     <script>
@@ -20,7 +57,43 @@
             // 🔓 Permitir nuevos pagos después de llegar correctamente a payment
             sessionStorage.removeItem("order_completed");
         });
+    </script>
 
+    <script src="https://sdk.onvopay.com/sdk.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 🔓 Permitir nuevos pagos después de llegar correctamente a payment
+            sessionStorage.removeItem("order_completed");
+
+            // Limpiamos posibles sufijos del query string
+            const paymentIntentId = "<%= paymentIntentId.split(':')[0] %>";
+
+            if (!paymentIntentId) {
+                console.error("No se recibió paymentIntentId");
+                return;
+            }
+
+            // Esperamos que el SDK esté cargado
+            const checkSDK = setInterval(() => {
+                if (typeof onvo !== "undefined") {
+                    clearInterval(checkSDK);
+
+                    const onvoInstance = onvo.pay({
+                        publicKey: "<%= ONVO_PUBLIC_KEY %>",
+                        paymentIntentId,
+                        paymentType: "one_time",
+                        onSuccess: () => {
+                            window.location.href = "/gracias";
+                        },
+                        onError: (err) => {
+                            console.error("Error en el pago:", err);
+                        },
+                    });
+
+                    onvoInstance.render("#onvo-checkout-container");
+                }
+            }, 100);
+        });
     </script>
 </body>
 

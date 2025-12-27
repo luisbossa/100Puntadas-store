@@ -134,9 +134,8 @@ textarea::placeholder {
 
 .summary-card .payment-div {
   margin-top: 1.2rem;
-  padding: 1.4rem 1.4rem;
+  padding: 1.4rem 0;
   border-radius: 12px;
-  border: 1px dashed #ccc;
 }
 
 .summary-card .card h2 {

@@ -127,11 +127,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  // 👉 render inicial
   renderOrderProducts(data.cart);
 
   const totalItems = data.cart.reduce((sum, i) => sum + Number(i.quantity), 0);
-
   const discount =
     totalItems >= DISCOUNT_MIN_ITEMS ? Math.round(subtotal * DISCOUNT_RATE) : 0;
 
@@ -255,6 +253,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       if (!valid) return;
 
+      // Capturar datos del formulario
       data.email = getVal("email");
       data.phone = getVal("phone");
       data.full_name = getVal("full_name");
@@ -266,6 +265,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       data.canton = getVal("canton");
       data.district = getVal("district");
 
+      // Capturar el método de pago
+      const paymentMethod = document.querySelector(
+        'input[name="payment_method"]:checked'
+      )?.value;
+      data.payment_method = paymentMethod;
+
       data.totals = {
         subtotal,
         discount,
@@ -273,18 +278,57 @@ document.addEventListener("DOMContentLoaded", async () => {
         total: subtotal - discount + currentShipping,
       };
 
-      const res = await fetch("/api/orders", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      try {
+        // 1️⃣ Crear la orden en tu backend
+        const resOrder = await fetch("/api/orders", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
 
-      const json = await res.json();
-      if (json.success) {
-        sessionStorage.setItem("order_completed", "true");
-        clearCheckoutForm();
-        localStorage.removeItem("checkoutData");
-        location.replace("/payment");
+        const jsonOrder = await resOrder.json();
+        if (!jsonOrder.success) {
+          alert("Error al crear la orden: " + jsonOrder.error);
+          return;
+        }
+
+        const orderId = jsonOrder.orderId;
+
+        if (paymentMethod === "card") {
+          // 2️⃣ Crear PaymentIntent para tarjeta
+          const resPayment = await fetch("/create-intent", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              totals: data.totals,
+              email: data.email,
+              orderId,
+            }),
+          });
+
+          const jsonPayment = await resPayment.json();
+          if (!jsonPayment.success) {
+            alert("Error al crear el pago: " + jsonPayment.error);
+            return;
+          }
+
+          // 3️⃣ Redirigir a OnvoPay
+          sessionStorage.setItem("order_completed", "true");
+          clearCheckoutForm();
+          localStorage.removeItem("checkoutData");
+          location.replace(
+            `/payment?paymentIntentId=${jsonPayment.paymentIntentId}`
+          );
+        } else if (paymentMethod === "sinpe") {
+          // Redirigir a ejs para Sinpe Móvil
+          sessionStorage.setItem("order_completed", "true");
+          clearCheckoutForm();
+          localStorage.removeItem("checkoutData");
+          location.replace(`/payment-sinpe?orderId=${orderId}`);
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Error interno al procesar el pago");
       }
     });
 });
