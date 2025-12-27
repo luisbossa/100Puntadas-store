@@ -274,11 +274,10 @@ select.input:focus {
 }
 
 /* ===== TRUST SVG ===== */
-.trust {
+.trust-div {
   display: flex;
-  justify-content: center;
-  margin-left: 25px;
-  gap: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .trust-item {
@@ -289,13 +288,19 @@ select.input:focus {
   font-size: 0.85rem;
   font-weight: 600;
   color: #444;
-  gap: 0.4rem;
+  gap: 3px;
 }
 
 .trust-img {
   width: 38px;
   height: 38px;
   object-fit: cover;
+}
+
+.trust-item span {
+  width: auto;
+  text-align: center;
+  margin-top: -5px;
 }
 
 /* ===== RADIO FIELD (BASE) ===== */
