@@ -1,8 +1,9 @@
 const db = require("../db/pool");
 
-// Normaliza precios
+/* ================= HELPERS ================= */
 const normalize = (v) => Number(String(v || 0).replace(/[^\d]/g, ""));
 
+/* ================= CREATE ORDER ================= */
 exports.getInfo = async (req, res) => {
   try {
     const {
@@ -10,9 +11,9 @@ exports.getInfo = async (req, res) => {
       phone,
       full_name,
       national_id,
-      province,
-      canton,
-      district,
+      province, // code
+      canton,   // code
+      district, // code
       address,
       neighborhood,
       address_details,
@@ -20,7 +21,19 @@ exports.getInfo = async (req, res) => {
       totals,
     } = req.body;
 
-    /* ================= VALIDACIONES BACKEND ================= */
+    /* ================= VALIDACIONES ================= */
+
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+      return res.status(400).json({ success: false, error: "Correo inválido" });
+    }
+
+    if (!/^[245678]\d{3}-\d{4}$/.test(phone)) {
+      return res.status(400).json({ success: false, error: "Teléfono inválido" });
+    }
+
+    if (!/^\d-\d{4}-\d{4}$/.test(national_id)) {
+      return res.status(400).json({ success: false, error: "Cédula inválida" });
+    }
 
     if (!address || address.trim().length < 10) {
       return res.status(400).json({
@@ -29,52 +42,104 @@ exports.getInfo = async (req, res) => {
       });
     }
 
-    if (!/^\S+@\S+\.\S+$/.test(email)) {
+    if (!Array.isArray(cart) || cart.length === 0) {
       return res.status(400).json({
         success: false,
-        error: "Correo inválido",
+        error: "Carrito inválido",
       });
     }
 
-    // Teléfono Costa Rica: 8 dígitos, inicia en 2,4,5,6,7,8 → formato ####-####
-    if (!/^[245678]\d{3}-\d{4}$/.test(phone)) {
+    /* ================= CAST DE CODES ================= */
+
+    const provinceCode = Number(province);
+    const cantonCode = Number(canton);
+    const districtCode = Number(district);
+
+    if (
+      Number.isNaN(provinceCode) ||
+      Number.isNaN(cantonCode) ||
+      Number.isNaN(districtCode)
+    ) {
       return res.status(400).json({
         success: false,
-        error: "Teléfono inválido",
+        error: "Provincia, cantón o distrito inválido",
       });
     }
 
-    // Cédula Costa Rica: 1-2345-6789
-    if (!/^\d-\d{4}-\d{4}$/.test(national_id)) {
+    /* ================= CONVERTIR CODES → NOMBRES ================= */
+
+    const provinceRes = await db.query(
+      "SELECT province FROM provinces WHERE code = $1",
+      [provinceCode]
+    );
+
+    const cantonRes = await db.query(
+      "SELECT canton FROM cantons WHERE code = $1 AND province = $2",
+      [cantonCode, provinceCode]
+    );
+
+    const districtRes = await db.query(
+      "SELECT district FROM districts WHERE code = $1 AND canton = $2",
+      [districtCode, cantonCode]
+    );
+
+    if (
+      provinceRes.rows.length === 0 ||
+      cantonRes.rows.length === 0 ||
+      districtRes.rows.length === 0
+    ) {
       return res.status(400).json({
         success: false,
-        error: "Cédula inválida",
+        error: "Provincia, cantón o distrito inválido",
       });
     }
 
-    if (!cart || !Array.isArray(cart) || cart.length === 0) {
-      return res
-        .status(400)
-        .json({ success: false, error: "Carrito inválido" });
-    }
+    const provinceName = provinceRes.rows[0].province;
+    const cantonName = cantonRes.rows[0].canton;
+    const districtName = districtRes.rows[0].district;
 
-    /* ================= TOTALES ================= */
+    /* ================= TOTALES (BACKEND ES AUTORIDAD) ================= */
 
     const subtotal = cart.reduce(
-      (acc, item) => acc + normalize(item.price) * item.quantity,
+      (acc, item) =>
+        acc + normalize(item.price) * Number(item.quantity || 1),
       0
     );
-    const discount = normalize(totals.discount);
-    const shipping = normalize(totals.shipping);
-    const total = normalize(totals.total);
 
-    /* ================= INSERT ORDEN ================= */
+    const discount = normalize(totals?.discount);
+    const shipping = normalize(totals?.shipping);
+    const total = subtotal - discount + shipping;
+
+    if (total <= 0) {
+      return res.status(400).json({
+        success: false,
+        error: "Total inválido",
+      });
+    }
+
+    /* ================= INSERT ORDER ================= */
 
     const orderResult = await db.query(
       `
       INSERT INTO orders
-      (email, phone, full_name, national_id, province_name, canton_name, district_name, address, neighborhood, address_details, subtotal, discount, shipping, total)
-      VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)
+      (
+        email,
+        phone,
+        full_name,
+        national_id,
+        province_name,
+        canton_name,
+        district_name,
+        address,
+        neighborhood,
+        address_details,
+        subtotal,
+        discount,
+        shipping,
+        total
+      )
+      VALUES
+      ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)
       RETURNING id
       `,
       [
@@ -82,12 +147,12 @@ exports.getInfo = async (req, res) => {
         phone.trim(),
         full_name.trim(),
         national_id.trim(),
-        province,
-        canton,
-        district,
+        provinceName,
+        cantonName,
+        districtName,
         address.trim(),
-        neighborhood.trim(),
-        address_details,
+        neighborhood?.trim() || "",
+        address_details || null,
         subtotal,
         discount,
         shipping,
@@ -103,7 +168,18 @@ exports.getInfo = async (req, res) => {
       await db.query(
         `
         INSERT INTO order_items
-        (order_id, product_name, image, price, quantity, top_size, bottom_size, bottom_style, size, color)
+        (
+          order_id,
+          product_name,
+          image,
+          price,
+          quantity,
+          top_size,
+          bottom_size,
+          bottom_style,
+          size,
+          color
+        )
         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
         `,
         [
@@ -111,7 +187,7 @@ exports.getInfo = async (req, res) => {
           item.name,
           item.image,
           normalize(item.price),
-          item.quantity,
+          Number(item.quantity || 1),
           item.topSize || null,
           item.bottomSize || null,
           item.bottomStyle || null,
@@ -121,51 +197,60 @@ exports.getInfo = async (req, res) => {
       );
     }
 
-    res.json({ success: true, orderId });
+    return res.json({ success: true, orderId });
   } catch (err) {
     console.error("CHECKOUT ERROR:", err);
-    res.status(500).json({ success: false });
+    return res.status(500).json({
+      success: false,
+      error: "Error interno del servidor",
+    });
   }
 };
 
-/* ================= SELECTS ================= */
+/* ================= SELECTS API ================= */
 
 exports.getProvinces = async (req, res) => {
   try {
-    const result = await db.query(
-      "SELECT code, province AS name FROM provinces ORDER BY province"
+    const { rows } = await db.query(
+      "SELECT code, province FROM provinces ORDER BY province"
     );
-    res.json(result.rows);
+    res.json(rows);
   } catch (err) {
-    console.error(err);
+    console.error("GET PROVINCES ERROR:", err);
     res.status(500).json([]);
   }
 };
 
 exports.getCantons = async (req, res) => {
   try {
-    const { provinceCode } = req.params;
-    const result = await db.query(
-      "SELECT code, canton AS name FROM cantons WHERE province = $1 ORDER BY canton",
+    const provinceCode = Number(req.params.provinceCode);
+    if (Number.isNaN(provinceCode)) return res.json([]);
+
+    const { rows } = await db.query(
+      "SELECT code, canton FROM cantons WHERE province = $1 ORDER BY canton",
       [provinceCode]
     );
-    res.json(result.rows);
+
+    res.json(rows);
   } catch (err) {
-    console.error(err);
+    console.error("GET CANTONS ERROR:", err);
     res.status(500).json([]);
   }
 };
 
 exports.getDistricts = async (req, res) => {
   try {
-    const { cantonCode } = req.params;
-    const result = await db.query(
-      "SELECT code, district AS name FROM districts WHERE canton = $1 ORDER BY district",
+    const cantonCode = Number(req.params.cantonCode);
+    if (Number.isNaN(cantonCode)) return res.json([]);
+
+    const { rows } = await db.query(
+      "SELECT code, district FROM districts WHERE canton = $1 ORDER BY district",
       [cantonCode]
     );
-    res.json(result.rows);
+
+    res.json(rows);
   } catch (err) {
-    console.error(err);
+    console.error("GET DISTRICTS ERROR:", err);
     res.status(500).json([]);
   }
 };
