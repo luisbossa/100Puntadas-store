@@ -65,7 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const cart = getCart();
     const container = document.querySelector(".cart-items");
     const totalBox = document.getElementById("cartTotal");
-    const shippingBox = document.getElementById("cartShipping");
     const emptyMessage = document.getElementById("emptyCartMessage");
     const checkoutBtn = document.querySelector(".cart-checkout-btn");
     const discountRow = document.getElementById("discountRow");
@@ -83,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
       checkoutBtn?.classList.add("disabled");
       discountRow.style.display = "none";
       totalBox.textContent = "0";
-      shippingBox.textContent = "0";
       if (cartCount) cartCount.textContent = "0";
       return;
     }
@@ -167,10 +165,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* ================= TOTAL ================= */
 
-    const shipping = SHIPPING_COST;
-    const total = subtotal - discount + shipping;
+    const total = subtotal - discount;
 
-    shippingBox.textContent = shipping.toLocaleString("es-CR");
     totalBox.textContent = total.toLocaleString("es-CR");
     if (cartCount) cartCount.textContent = totalQuantity;
 
@@ -275,8 +271,7 @@ document.addEventListener("DOMContentLoaded", () => {
       discount = Math.round(discountedSubtotal * DISCOUNT_RATE);
     }
 
-    const shipping = SHIPPING_COST;
-    const total = subtotal - discount + shipping;
+    const total = subtotal - discount;
 
     const checkoutCart = cart.map((item) => ({
       name: item.name,
@@ -294,7 +289,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "checkoutData",
       JSON.stringify({
         cart: checkoutCart,
-        totals: { total, shipping, discount },
+        totals: { total, discount },
       })
     );
 

@@ -1,244 +1,177 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const data = JSON.parse(localStorage.getItem("checkoutData"));
-
-  if (!data || !data.cart || data.cart.length === 0) {
-    console.warn("No hay datos de checkout");
-    return;
-  }
+  const checkoutData = JSON.parse(localStorage.getItem("checkoutData"));
+  if (!checkoutData || !checkoutData.cart?.length) return;
 
   const productsContainer = document.querySelector(".order-products");
   const totalBox = document.querySelector(".order-total");
   const discountRow = document.getElementById("discountRow");
   const discountBox = document.getElementById("cartDiscount");
+  const shippingBox = document.getElementById("shippingCost");
 
-  productsContainer.innerHTML = "";
+  let currentShipping = 2500;
 
   /* ================= PRODUCTOS ================= */
-  data.cart.forEach((item) => {
-    const meta = [];
-    if (item.topSize) meta.push(`Top: ${item.topSize}`);
-    if (item.bottomSize) meta.push(`Bottom: ${item.bottomSize}`);
-    if (item.bottomStyle) meta.push(`Estilo: ${item.bottomStyle}`);
-    if (item.size) meta.push(`Talla: ${item.size}`);
-    if (item.color) meta.push(`Color: ${item.color}`);
-
-    productsContainer.innerHTML += `
+  productsContainer.innerHTML = "";
+  checkoutData.cart.forEach((item) => {
+    productsContainer.insertAdjacentHTML(
+      "beforeend",
+      `
       <div class="product-row">
         <div>
-          <div class="product-name">
-            ${item.quantity}× ${item.name}
-          </div>
-          ${
-            meta.length
-              ? `<div class="product-meta">${meta.join(" · ")}</div>`
-              : ""
-          }
+          <strong>${item.quantity}× ${item.name}</strong>
         </div>
-        <div class="product-price">
+        <div>
           ₡${(item.price * item.quantity).toLocaleString("es-CR")}
         </div>
       </div>
-    `;
+    `
+    );
   });
 
   /* ================= DESCUENTO ================= */
-  const discount = Number(data.totals.discount || 0);
-  if (discount > 0) {
+  if (checkoutData.totals.discount > 0) {
     discountRow.style.display = "flex";
-    discountBox.textContent = discount.toLocaleString("es-CR");
-  } else {
-    discountRow.style.display = "none";
+    discountBox.textContent =
+      checkoutData.totals.discount.toLocaleString("es-CR");
   }
 
-  /* ================= TOTAL ================= */
-  const total = Number(data.totals.total);
-  totalBox.textContent = `₡${total.toLocaleString("es-CR")}`;
+  /* ================= ENVÍO ================= */
+  const updateTotals = () => {
+    const baseTotal = checkoutData.totals.total - checkoutData.totals.shipping;
+    const finalTotal = baseTotal + currentShipping;
 
-  /* ================= SELECTS DINÁMICOS ================= */
+    shippingBox.textContent = currentShipping.toLocaleString("es-CR");
+    totalBox.textContent = `₡${finalTotal.toLocaleString("es-CR")}`;
+  };
+
+  updateTotals();
+
+  /* ================= TIPO DE ENVÍO ================= */
+  document.querySelectorAll('input[name="shipping_type"]').forEach((radio) => {
+    radio.addEventListener("change", () => {
+      currentShipping = radio.value === "correos" ? 2500 : 0;
+      updateTotals();
+    });
+  });
+
+  /* ================= SELECTS PROVINCIA ================= */
   const provinceSelect = document.getElementById("province");
   const cantonSelect = document.getElementById("canton");
   const districtSelect = document.getElementById("district");
 
-  const provinces = await fetch("/api/provinces").then((res) => res.json());
-  provinceSelect.innerHTML = '<option value="">Provincia</option>';
+  const provinces = await fetch("/api/provinces").then((r) => r.json());
   provinces.forEach((p) => {
     provinceSelect.innerHTML += `<option value="${p.code}">${p.name}</option>`;
   });
 
-  provinceSelect.addEventListener("change", async () => {
-    const provinceCode = provinceSelect.value;
-    cantonSelect.disabled = !provinceCode;
+  provinceSelect.onchange = async () => {
+    cantonSelect.disabled = !provinceSelect.value;
+    cantonSelect.innerHTML = "<option value=''>Cantón</option>";
+    districtSelect.innerHTML = "<option value=''>Distrito</option>";
     districtSelect.disabled = true;
-    districtSelect.innerHTML = '<option value="">Distrito</option>';
 
-    if (!provinceCode) {
-      cantonSelect.innerHTML = '<option value="">Cantón</option>';
-      return;
-    }
+    if (!provinceSelect.value) return;
 
-    const cantons = await fetch(`/api/cantons/${provinceCode}`).then((res) =>
-      res.json()
+    const cantons = await fetch(`/api/cantons/${provinceSelect.value}`).then(
+      (r) => r.json()
     );
-    cantonSelect.innerHTML = '<option value="">Cantón</option>';
+
     cantons.forEach((c) => {
       cantonSelect.innerHTML += `<option value="${c.code}">${c.name}</option>`;
     });
-  });
+  };
 
-  cantonSelect.addEventListener("change", async () => {
-    const cantonCode = cantonSelect.value;
-    districtSelect.disabled = !cantonCode;
+  cantonSelect.onchange = async () => {
+    districtSelect.disabled = !cantonSelect.value;
+    districtSelect.innerHTML = "<option value=''>Distrito</option>";
 
-    if (!cantonCode) {
-      districtSelect.innerHTML = '<option value="">Distrito</option>';
-      return;
-    }
+    if (!cantonSelect.value) return;
 
-    const districts = await fetch(`/api/districts/${cantonCode}`).then((res) =>
-      res.json()
+    const districts = await fetch(`/api/districts/${cantonSelect.value}`).then(
+      (r) => r.json()
     );
-    districtSelect.innerHTML = '<option value="">Distrito</option>';
+
     districts.forEach((d) => {
       districtSelect.innerHTML += `<option value="${d.code}">${d.name}</option>`;
     });
-  });
+  };
 
-  /* ================= TELÉFONO COSTA RICA ================= */
-  const phoneInput = document.querySelector('input[name="phone"]');
-
-  phoneInput.addEventListener("input", (e) => {
-    let value = e.target.value.replace(/\D/g, ""); // solo números
-
-    // Máximo 8 dígitos
-    if (value.length > 8) value = value.slice(0, 8);
-
-    // Formato 8888-8888
-    if (value.length > 4) {
-      value = value.replace(/^(\d{4})(\d{0,4})$/, "$1-$2");
-    }
-
-    e.target.value = value;
-  });
-
-  /* ================= CÉDULA COSTA RICA ================= */
-  const nationalIdInput = document.querySelector('input[name="national_id"]');
-
-  nationalIdInput.addEventListener("input", (e) => {
-    let value = e.target.value.replace(/\D/g, ""); // solo números
-    if (value.length > 1 && value.length <= 5) {
-      value = value.replace(/^(\d)(\d{0,4})$/, "$1-$2");
-    } else if (value.length > 5) {
-      value = value.replace(/^(\d)(\d{4})(\d{0,4})$/, "$1-$2-$3");
-    }
-    e.target.value = value;
-  });
-
-  /* ================= ENVÍO DEL FORMULARIO ================= */
-  const checkoutBtn = document.querySelector("#checkout-btn");
-
-  checkoutBtn.addEventListener("click", async () => {
-    const checkoutData = JSON.parse(localStorage.getItem("checkoutData"));
-    if (!checkoutData) return alert("No hay información del pedido");
-
-    let isValid = true;
+  /* ================= SUBMIT ================= */
+  document.getElementById("checkout-btn").onclick = async () => {
+    let valid = true;
 
     document
-      .querySelectorAll("input[required], select[required], textarea[required]")
-      .forEach((field) => {
-        if (!validateField(field)) isValid = false;
+      .querySelectorAll("input[required], select[required]")
+      .forEach((el) => {
+        if (!validateField(el)) valid = false;
       });
 
-    if (!isValid) {
-      document.querySelector(".field.error")?.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
+    if (!document.querySelector('input[name="payment_method"]:checked')) {
+      alert("Selecciona un método de pago");
       return;
     }
 
-    const formData = {
+    if (!valid) return;
+
+    const payload = {
       email: getVal("email"),
       phone: getVal("phone"),
       full_name: getVal("full_name"),
-      national_id: nationalIdInput.value,
+      national_id: getVal("national_id"),
       province: provinceSelect.options[provinceSelect.selectedIndex].text,
       canton: cantonSelect.options[cantonSelect.selectedIndex].text,
       district: districtSelect.options[districtSelect.selectedIndex].text,
-      address: getVal("address"),
       neighborhood: getVal("neighborhood"),
+      address: getVal("address"),
       address_details: getVal("address_details"),
+      shipping_type: document.querySelector(
+        'input[name="shipping_type"]:checked'
+      ).value,
+      payment_method: document.querySelector(
+        'input[name="payment_method"]:checked'
+      ).value,
       cart: checkoutData.cart,
-      totals: checkoutData.totals,
+      totals: {
+        ...checkoutData.totals,
+        shipping: currentShipping,
+        total:
+          checkoutData.totals.total -
+          checkoutData.totals.shipping +
+          currentShipping,
+      },
     };
 
     const res = await fetch("/api/orders", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(payload),
     });
 
     const data = await res.json();
-
     if (data.success) {
-      clearCheckoutForm();
       localStorage.removeItem("checkoutData");
       window.location.href = "/payment";
     }
-  });
+  };
 });
 
-/* ================= FUNCIONES AUXILIARES ================= */
+/* ================= HELPERS ================= */
+
 function getVal(name) {
-  const el = document.querySelector(`[name="${name}"]`);
-  return el ? el.value.trim() : "";
+  return document.querySelector(`[name="${name}"]`)?.value.trim();
 }
 
 function validateField(input) {
-  const value = input.value.trim();
   const wrapper = input.closest(".field");
   const msg = wrapper.querySelector(".error-msg");
 
-  if (!value) return showError(wrapper, msg, "Este campo es obligatorio");
-
-  if (input.name === "address") {
-    if (value.length < 10) {
-      return showError(wrapper, msg, "La dirección es muy corta");
-    }
+  if (!input.value.trim()) {
+    wrapper.classList.add("error");
+    msg.textContent = "Campo obligatorio";
+    return false;
   }
 
-  if (input.name === "national_id") {
-    if (!/^\d-\d{4}-\d{4}$/.test(value)) {
-      return showError(wrapper, msg, "Cédula inválida. Formato: 1-2345-6789");
-    }
-  }
-
-  if (input.name === "email" && !/^\S+@\S+\.\S+$/.test(value))
-    return showError(wrapper, msg, "Correo inválido");
-
-  if (input.name === "phone") {
-    if (!/^[245678]\d{3}-\d{4}$/.test(value)) {
-      return showError(wrapper, msg, "Teléfono inválido. Formato: 8888-8888");
-    }
-  }
-
-  clearError(wrapper, msg);
-  return true;
-}
-
-function showError(wrapper, msg, text) {
-  wrapper.classList.add("error");
-  msg.textContent = text;
-  return false;
-}
-
-function clearError(wrapper, msg) {
   wrapper.classList.remove("error");
   msg.textContent = "";
-}
-
-function clearCheckoutForm() {
-  document.querySelectorAll("input, select, textarea").forEach((el) => {
-    if (el.type === "checkbox") el.checked = false;
-    else el.value = "";
-  });
+  return true;
 }
