@@ -44,14 +44,16 @@
 
 				<div class="row">
 					<div class="field">
-						<label class="checkout-label" for="email">Correo electrónico<span class="checkout-span">*</span></label>
+						<label class="checkout-label" for="email">Correo electrónico<span
+								class="checkout-span">*</span></label>
 						<input class="input" name="email" id="email" type="email" placeholder="Correo electrónico"
 							required />
 						<small class="error-msg"></small>
 					</div>
 
 					<div class="field">
-						<label class="checkout-label" for="phone">Número de teléfono<span class="checkout-span">*</span></label>
+						<label class="checkout-label" for="phone">Número de teléfono<span
+								class="checkout-span">*</span></label>
 						<input class="input" name="phone" id="phone" type="tel" inputmode="numeric"
 							placeholder="Teléfono de contacto" required />
 						<small class="error-msg"></small>
@@ -65,7 +67,8 @@
 
 				<div class="row">
 					<div class="field">
-						<label class="checkout-label" for="full_name">Nombre completo<span class="checkout-span">*</span></label>
+						<label class="checkout-label" for="full_name">Nombre completo<span
+								class="checkout-span">*</span></label>
 						<input class="input" name="full_name" id="full_name" placeholder="Nombre completo" required />
 						<small class="error-msg"></small>
 					</div>
@@ -151,13 +154,14 @@
 					</label>
 
 					<label class="radio-option">
-						<input type="radio" name="shipping_type" value="pickup">
+						<input type="radio" name="shipping_type" value="store">
 						<span>
 							Recoger en tienda
 							<small>L–V 11am–7pm · Sáb 11am–6pm</small>
 						</span>
 					</label>
 				</div>
+
 			</div>
 
 
@@ -171,7 +175,7 @@
 					<span class="red-discount">− ₡<span id="cartDiscount">0</span></span>
 				</div>
 
-				<div class="totals-row">
+				<div id="shippingRow" class="totals-row">
 					<span>Envío</span>
 					<span>₡<span id="shippingCost">0</span></span>
 				</div>

@@ -1,177 +1,184 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const checkoutData = JSON.parse(localStorage.getItem("checkoutData"));
-  if (!checkoutData || !checkoutData.cart?.length) return;
+  const data = JSON.parse(localStorage.getItem("checkoutData"));
 
+  if (!data || !data.cart || data.cart.length === 0) {
+    console.warn("No hay datos de checkout");
+    return;
+  }
+
+  /* ================= CONSTANTES ================= */
+  const SHIPPING_COST = Number(window.SHIPPING_COST || 2500);
+  const DISCOUNT_RATE = Number(window.DISCOUNT_RATE || 0.15);
+  const DISCOUNT_MIN_ITEMS = Number(window.DISCOUNT_MIN_ITEMS || 2);
+
+  /* ================= SUBTOTAL ================= */
+  const subtotal = data.cart.reduce(
+    (sum, item) => sum + Number(item.price) * Number(item.quantity),
+    0
+  );
+
+  const totalItems = data.cart.reduce(
+    (sum, item) => sum + Number(item.quantity),
+    0
+  );
+
+  /* ================= DESCUENTO ================= */
+  const discount =
+    totalItems >= DISCOUNT_MIN_ITEMS ? Math.round(subtotal * DISCOUNT_RATE) : 0;
+
+  let currentShipping = 0;
+
+  /* ================= ELEMENTOS ================= */
   const productsContainer = document.querySelector(".order-products");
   const totalBox = document.querySelector(".order-total");
   const discountRow = document.getElementById("discountRow");
   const discountBox = document.getElementById("cartDiscount");
-  const shippingBox = document.getElementById("shippingCost");
+  const shippingRow = document.getElementById("shippingRow");
+  const shippingCostBox = document.getElementById("shippingCost");
 
-  let currentShipping = 2500;
+  productsContainer.innerHTML = "";
 
   /* ================= PRODUCTOS ================= */
-  productsContainer.innerHTML = "";
-  checkoutData.cart.forEach((item) => {
-    productsContainer.insertAdjacentHTML(
-      "beforeend",
-      `
+  data.cart.forEach((item) => {
+    const meta = [];
+    if (item.topSize) meta.push(`Top: ${item.topSize}`);
+    if (item.bottomSize) meta.push(`Bottom: ${item.bottomSize}`);
+    if (item.bottomStyle) meta.push(`Estilo: ${item.bottomStyle}`);
+    if (item.size) meta.push(`Talla: ${item.size}`);
+    if (item.color) meta.push(`Color: ${item.color}`);
+
+    productsContainer.innerHTML += `
       <div class="product-row">
         <div>
-          <strong>${item.quantity}× ${item.name}</strong>
+          <div class="product-name">${item.quantity}× ${item.name}</div>
+          ${
+            meta.length
+              ? `<div class="product-meta">${meta.join(" · ")}</div>`
+              : ""
+          }
         </div>
-        <div>
+        <div class="product-price">
           ₡${(item.price * item.quantity).toLocaleString("es-CR")}
         </div>
       </div>
-    `
-    );
+    `;
   });
 
-  /* ================= DESCUENTO ================= */
-  if (checkoutData.totals.discount > 0) {
+  /* ================= DESCUENTO UI ================= */
+  if (discount > 0) {
     discountRow.style.display = "flex";
-    discountBox.textContent =
-      checkoutData.totals.discount.toLocaleString("es-CR");
+    discountBox.textContent = discount.toLocaleString("es-CR");
+  } else {
+    discountRow.style.display = "none";
   }
 
-  /* ================= ENVÍO ================= */
-  const updateTotals = () => {
-    const baseTotal = checkoutData.totals.total - checkoutData.totals.shipping;
-    const finalTotal = baseTotal + currentShipping;
+  /* ================= TOTALES ================= */
+  function updateTotals() {
+    const total = subtotal - discount + currentShipping;
 
-    shippingBox.textContent = currentShipping.toLocaleString("es-CR");
-    totalBox.textContent = `₡${finalTotal.toLocaleString("es-CR")}`;
-  };
+    if (currentShipping > 0) {
+      shippingRow.style.display = "flex";
+      shippingCostBox.textContent = currentShipping.toLocaleString("es-CR");
+    } else {
+      shippingRow.style.display = "none";
+      shippingCostBox.textContent = "0";
+    }
 
-  updateTotals();
+    totalBox.textContent = `₡${total.toLocaleString("es-CR")}`;
+  }
 
-  /* ================= TIPO DE ENVÍO ================= */
+  /* ================= ENVÍO (RADIOS) ================= */
+  function updateShipping() {
+    const selected = document.querySelector(
+      'input[name="shipping_type"]:checked'
+    )?.value;
+
+    if (selected === "correos") {
+      currentShipping = SHIPPING_COST;
+    } else {
+      currentShipping = 0;
+    }
+
+    updateTotals();
+  }
+
   document.querySelectorAll('input[name="shipping_type"]').forEach((radio) => {
-    radio.addEventListener("change", () => {
-      currentShipping = radio.value === "correos" ? 2500 : 0;
-      updateTotals();
-    });
+    radio.addEventListener("change", updateShipping);
   });
 
-  /* ================= SELECTS PROVINCIA ================= */
-  const provinceSelect = document.getElementById("province");
-  const cantonSelect = document.getElementById("canton");
-  const districtSelect = document.getElementById("district");
-
-  const provinces = await fetch("/api/provinces").then((r) => r.json());
-  provinces.forEach((p) => {
-    provinceSelect.innerHTML += `<option value="${p.code}">${p.name}</option>`;
-  });
-
-  provinceSelect.onchange = async () => {
-    cantonSelect.disabled = !provinceSelect.value;
-    cantonSelect.innerHTML = "<option value=''>Cantón</option>";
-    districtSelect.innerHTML = "<option value=''>Distrito</option>";
-    districtSelect.disabled = true;
-
-    if (!provinceSelect.value) return;
-
-    const cantons = await fetch(`/api/cantons/${provinceSelect.value}`).then(
-      (r) => r.json()
-    );
-
-    cantons.forEach((c) => {
-      cantonSelect.innerHTML += `<option value="${c.code}">${c.name}</option>`;
-    });
-  };
-
-  cantonSelect.onchange = async () => {
-    districtSelect.disabled = !cantonSelect.value;
-    districtSelect.innerHTML = "<option value=''>Distrito</option>";
-
-    if (!cantonSelect.value) return;
-
-    const districts = await fetch(`/api/districts/${cantonSelect.value}`).then(
-      (r) => r.json()
-    );
-
-    districts.forEach((d) => {
-      districtSelect.innerHTML += `<option value="${d.code}">${d.name}</option>`;
-    });
-  };
+  // Inicial al cargar
+  updateShipping();
 
   /* ================= SUBMIT ================= */
-  document.getElementById("checkout-btn").onclick = async () => {
-    let valid = true;
+  document
+    .querySelector("#checkout-btn")
+    .addEventListener("click", async () => {
+      let valid = true;
 
-    document
-      .querySelectorAll("input[required], select[required]")
-      .forEach((el) => {
-        if (!validateField(el)) valid = false;
+      document
+        .querySelectorAll(
+          "input[required], select[required], textarea[required]"
+        )
+        .forEach((f) => {
+          if (!validateField(f)) valid = false;
+        });
+
+      if (!valid) return;
+
+      data.totals = {
+        subtotal,
+        discount,
+        shipping: currentShipping,
+        total: subtotal - discount + currentShipping,
+      };
+
+      localStorage.setItem("checkoutData", JSON.stringify(data));
+
+      const res = await fetch("/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
 
-    if (!document.querySelector('input[name="payment_method"]:checked')) {
-      alert("Selecciona un método de pago");
-      return;
-    }
-
-    if (!valid) return;
-
-    const payload = {
-      email: getVal("email"),
-      phone: getVal("phone"),
-      full_name: getVal("full_name"),
-      national_id: getVal("national_id"),
-      province: provinceSelect.options[provinceSelect.selectedIndex].text,
-      canton: cantonSelect.options[cantonSelect.selectedIndex].text,
-      district: districtSelect.options[districtSelect.selectedIndex].text,
-      neighborhood: getVal("neighborhood"),
-      address: getVal("address"),
-      address_details: getVal("address_details"),
-      shipping_type: document.querySelector(
-        'input[name="shipping_type"]:checked'
-      ).value,
-      payment_method: document.querySelector(
-        'input[name="payment_method"]:checked'
-      ).value,
-      cart: checkoutData.cart,
-      totals: {
-        ...checkoutData.totals,
-        shipping: currentShipping,
-        total:
-          checkoutData.totals.total -
-          checkoutData.totals.shipping +
-          currentShipping,
-      },
-    };
-
-    const res = await fetch("/api/orders", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
+      const json = await res.json();
+      if (json.success) {
+        localStorage.removeItem("checkoutData");
+        window.location.href = "/payment";
+      }
     });
-
-    const data = await res.json();
-    if (data.success) {
-      localStorage.removeItem("checkoutData");
-      window.location.href = "/payment";
-    }
-  };
 });
 
 /* ================= HELPERS ================= */
-
 function getVal(name) {
-  return document.querySelector(`[name="${name}"]`)?.value.trim();
+  return document.querySelector(`[name="${name}"]`)?.value.trim() || "";
 }
 
 function validateField(input) {
   const wrapper = input.closest(".field");
   const msg = wrapper.querySelector(".error-msg");
+  const value = input.value.trim();
 
-  if (!input.value.trim()) {
-    wrapper.classList.add("error");
-    msg.textContent = "Campo obligatorio";
-    return false;
-  }
+  if (!value) return showError(wrapper, msg, "Campo obligatorio");
+
+  if (input.name === "address" && value.length < 10)
+    return showError(wrapper, msg, "Dirección muy corta");
+
+  if (input.name === "national_id" && !/^\d-\d{4}-\d{4}$/.test(value))
+    return showError(wrapper, msg, "Cédula inválida");
+
+  if (input.name === "email" && !/^\S+@\S+\.\S+$/.test(value))
+    return showError(wrapper, msg, "Correo inválido");
+
+  if (input.name === "phone" && !/^[245678]\d{3}-\d{4}$/.test(value))
+    return showError(wrapper, msg, "Teléfono inválido");
 
   wrapper.classList.remove("error");
   msg.textContent = "";
   return true;
+}
+
+function showError(wrapper, msg, text) {
+  wrapper.classList.add("error");
+  msg.textContent = text;
+  return false;
 }
