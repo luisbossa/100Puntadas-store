@@ -22,7 +22,6 @@ exports.getInfo = async (req, res) => {
     } = req.body;
 
     /* ================= VALIDACIONES ================= */
-
     if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
       return res.status(400).json({ success: false, error: "Correo inválido" });
     }
@@ -50,16 +49,11 @@ exports.getInfo = async (req, res) => {
     }
 
     /* ================= CAST DE CODES ================= */
-
     const provinceCode = Number(province);
     const cantonCode = Number(canton);
     const districtCode = Number(district);
 
-    if (
-      Number.isNaN(provinceCode) ||
-      Number.isNaN(cantonCode) ||
-      Number.isNaN(districtCode)
-    ) {
+    if (Number.isNaN(provinceCode) || Number.isNaN(cantonCode) || Number.isNaN(districtCode)) {
       return res.status(400).json({
         success: false,
         error: "Provincia, cantón o distrito inválido",
@@ -67,27 +61,20 @@ exports.getInfo = async (req, res) => {
     }
 
     /* ================= CONVERTIR CODES → NOMBRES ================= */
-
     const provinceRes = await db.query(
       "SELECT province FROM provinces WHERE code = $1",
       [provinceCode]
     );
-
     const cantonRes = await db.query(
       "SELECT canton FROM cantons WHERE code = $1 AND province = $2",
       [cantonCode, provinceCode]
     );
-
     const districtRes = await db.query(
       "SELECT district FROM districts WHERE code = $1 AND canton = $2",
       [districtCode, cantonCode]
     );
 
-    if (
-      provinceRes.rows.length === 0 ||
-      cantonRes.rows.length === 0 ||
-      districtRes.rows.length === 0
-    ) {
+    if (!provinceRes.rows.length || !cantonRes.rows.length || !districtRes.rows.length) {
       return res.status(400).json({
         success: false,
         error: "Provincia, cantón o distrito inválido",
@@ -99,10 +86,8 @@ exports.getInfo = async (req, res) => {
     const districtName = districtRes.rows[0].district;
 
     /* ================= TOTALES (BACKEND ES AUTORIDAD) ================= */
-
     const subtotal = cart.reduce(
-      (acc, item) =>
-        acc + normalize(item.price) * Number(item.quantity || 1),
+      (acc, item) => acc + normalize(item.price) * Number(item.quantity || 1),
       0
     );
 
@@ -117,31 +102,26 @@ exports.getInfo = async (req, res) => {
       });
     }
 
-    /* ================= INSERT ORDER ================= */
+    /* ================= BLOQUEO DUPLICADOS ================= */
+    const existingOrder = await db.query(
+      "SELECT id, status FROM orders WHERE email = $1 AND total = $2 ORDER BY id DESC LIMIT 1",
+      [email.trim(), total]
+    );
 
+    if (existingOrder.rows.length > 0 && existingOrder.rows[0].status === "paid") {
+      return res.status(409).json({
+        success: false,
+        error: "Esta orden ya fue pagada",
+      });
+    }
+
+    /* ================= INSERT ORDER ================= */
     const orderResult = await db.query(
-      `
-      INSERT INTO orders
-      (
-        email,
-        phone,
-        full_name,
-        national_id,
-        province_name,
-        canton_name,
-        district_name,
-        address,
-        neighborhood,
-        address_details,
-        subtotal,
-        discount,
-        shipping,
-        total
-      )
-      VALUES
-      ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)
-      RETURNING id
-      `,
+      `INSERT INTO orders
+      (email, phone, full_name, national_id, province_name, canton_name, district_name,
+       address, neighborhood, address_details, subtotal, discount, shipping, total, status)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,'pending')
+       RETURNING id`,
       [
         email.trim(),
         phone.trim(),
@@ -163,25 +143,11 @@ exports.getInfo = async (req, res) => {
     const orderId = orderResult.rows[0].id;
 
     /* ================= INSERT ITEMS ================= */
-
     for (const item of cart) {
       await db.query(
-        `
-        INSERT INTO order_items
-        (
-          order_id,
-          product_name,
-          image,
-          price,
-          quantity,
-          top_size,
-          bottom_size,
-          bottom_style,
-          size,
-          color
-        )
-        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
-        `,
+        `INSERT INTO order_items
+        (order_id, product_name, image, price, quantity, top_size, bottom_size, bottom_style, size, color)
+        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`,
         [
           orderId,
           item.name,
@@ -197,6 +163,7 @@ exports.getInfo = async (req, res) => {
       );
     }
 
+    /* ================= RESPUESTA ================= */
     return res.json({ success: true, orderId });
   } catch (err) {
     console.error("CHECKOUT ERROR:", err);
@@ -208,7 +175,6 @@ exports.getInfo = async (req, res) => {
 };
 
 /* ================= SELECTS API ================= */
-
 exports.getProvinces = async (req, res) => {
   try {
     const { rows } = await db.query(

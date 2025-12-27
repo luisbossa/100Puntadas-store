@@ -5,7 +5,7 @@
 
 body {
   font-family: Inter, system-ui, sans-serif;
-  background: #f6f6f6;
+  background: #fcfaf6;
   color: #111;
   user-select: none;
 }
@@ -17,13 +17,20 @@ textarea::placeholder {
 }
 
 /* ===== CHECKOUT HEADER ===== */
+.header-filler {
+  width: 100%;
+  background-color: #ffa4db;
+}
+
 .checkout-header {
-  padding: 0 3rem;
+  padding: 0 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #ffa4db;
   border-bottom: 1px solid #e6e6e6;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .checkout-brand {
