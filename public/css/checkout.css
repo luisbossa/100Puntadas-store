@@ -19,7 +19,7 @@ textarea::placeholder {
 /* ===== CHECKOUT HEADER ===== */
 .header-filler {
   width: 100%;
-  background-color: #ffa4db;
+  background: linear-gradient(to bottom, #ffa4db 15%, #fcfaf6 70%);
 }
 
 .checkout-header {
@@ -27,8 +27,7 @@ textarea::placeholder {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #ffa4db;
-  border-bottom: 1px solid #e6e6e6;
+  background: linear-gradient(to bottom, #ffa4db 15%, #fcfaf6 70%);
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -36,7 +35,7 @@ textarea::placeholder {
 .checkout-brand {
   width: 100%;
   max-width: 120px;
-  background-color: #ffa4db;
+  background: linear-gradient(to bottom, #ffa4db 15%, #fcfaf6 70%);
   padding: 10px;
 }
 
