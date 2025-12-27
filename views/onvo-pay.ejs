@@ -14,6 +14,14 @@
             <h1 class="onvo-heading">Realiza tu pago</h1>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 🔓 Permitir nuevos pagos después de llegar correctamente a payment
+            sessionStorage.removeItem("order_completed");
+        });
+
+    </script>
 </body>
 
 </html>

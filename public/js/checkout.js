@@ -1,7 +1,84 @@
 document.addEventListener("DOMContentLoaded", async () => {
+  /* ================= HELPERS ================= */
+  function getVal(name) {
+    return document.querySelector(`[name="${name}"]`)?.value.trim() || "";
+  }
+
+  function showError(field, msg, text) {
+    field.classList.add("error");
+    msg.textContent = text;
+    return false;
+  }
+
+  function validateField(input) {
+    const field = input.closest(".field");
+    if (!field) return true;
+
+    let msg = field.querySelector(".error-msg");
+    if (!msg) {
+      msg = document.createElement("small");
+      msg.className = "error-msg";
+      field.appendChild(msg);
+    }
+
+    const value = input.value.trim();
+
+    if (!value) {
+      return showError(field, msg, "Campo obligatorio");
+    }
+
+    if (input.name === "phone" && !/^[245678]\d{3}-\d{4}$/.test(value)) {
+      return showError(field, msg, "Teléfono inválido");
+    }
+
+    if (input.name === "national_id" && !/^\d-\d{4}-\d{4}$/.test(value)) {
+      return showError(field, msg, "Cédula inválida");
+    }
+
+    field.classList.remove("error");
+    msg.textContent = "";
+    return true;
+  }
+
+  function clearCheckoutForm() {
+    document
+      .querySelectorAll("input:not([type='radio']), textarea")
+      .forEach((el) => (el.value = ""));
+
+    document.querySelectorAll("select").forEach((select) => {
+      select.selectedIndex = 0;
+      select.disabled = select.id !== "province";
+    });
+
+    const defaultShipping = document.querySelector(
+      'input[name="shipping_type"][value="correos"]'
+    );
+    if (defaultShipping) defaultShipping.checked = true;
+
+    document.querySelectorAll(".field").forEach((field) => {
+      field.classList.remove("error");
+      const msg = field.querySelector(".error-msg");
+      if (msg) msg.textContent = "";
+    });
+  }
+
+  /* ================= BLOQUEO POST-PAGO ================= */
+  if (sessionStorage.getItem("order_completed") === "true") {
+    sessionStorage.removeItem("order_completed");
+    localStorage.removeItem("checkoutData");
+    location.replace("/");
+    return;
+  }
+
   const data = JSON.parse(localStorage.getItem("checkoutData"));
 
-  if (!data || !data.cart?.length) return;
+  if (!data || !data.cart?.length) {
+    location.replace("/");
+    return;
+  }
+
+  history.replaceState(null, "", location.href);
+  window.addEventListener("popstate", () => location.replace("/"));
 
   /* ================= CONSTANTES ================= */
   const SHIPPING_COST = Number(window.SHIPPING_COST || 2500);
@@ -13,6 +90,45 @@ document.addEventListener("DOMContentLoaded", async () => {
     (sum, i) => sum + Number(i.price) * Number(i.quantity),
     0
   );
+
+  /* ================= RESUMEN DE PRODUCTOS ================= */
+  const orderProductsBox = document.querySelector(".order-products");
+
+  function renderOrderProducts(cart) {
+    orderProductsBox.innerHTML = "";
+
+    cart.forEach((item) => {
+      const row = document.createElement("div");
+      row.className = "order-product";
+
+      row.innerHTML = `
+      <div class="order-product-info">
+        <img src="${item.image}" alt="${item.name}" />
+        <div>
+          <strong>${item.name}</strong>
+          <small>
+            ${item.color || ""}
+            ${item.size ? " · Talla: " + item.size : ""}
+            ${item.topSize ? " · Top: " + item.topSize : ""}
+            ${item.bottomSize ? " · Bottom: " + item.bottomSize : ""}
+          </small>
+        </div>
+      </div>
+
+      <div class="order-product-price">
+        <span>x${item.quantity}</span>
+        <strong>₡${(Number(item.price) * Number(item.quantity)).toLocaleString(
+          "es-CR"
+        )}</strong>
+      </div>
+    `;
+
+      orderProductsBox.appendChild(row);
+    });
+  }
+
+  // 👉 render inicial
+  renderOrderProducts(data.cart);
 
   const totalItems = data.cart.reduce((sum, i) => sum + Number(i.quantity), 0);
 
@@ -165,53 +281,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       const json = await res.json();
       if (json.success) {
+        sessionStorage.setItem("order_completed", "true");
+        clearCheckoutForm();
         localStorage.removeItem("checkoutData");
-        location.href = "/payment";
+        location.replace("/payment");
       }
     });
 });
-
-/* ================= HELPERS ================= */
-function getVal(name) {
-  return document.querySelector(`[name="${name}"]`)?.value.trim() || "";
-}
-
-function validateField(input) {
-  const field = input.closest(".field");
-  if (!field) return true;
-
-  let msg = field.querySelector(".error-msg");
-
-  // 👉 si no existe el contenedor de error, lo creamos
-  if (!msg) {
-    msg = document.createElement("small");
-    msg.className = "error-msg";
-    field.appendChild(msg);
-  }
-
-  const value = input.value.trim();
-
-  if (!value) {
-    field.classList.add("error");
-    msg.textContent = "Campo obligatorio";
-    return false;
-  }
-
-  if (input.name === "phone" && !/^[245678]\d{3}-\d{4}$/.test(value)) {
-    return showError(field, msg, "Teléfono inválido");
-  }
-
-  if (input.name === "national_id" && !/^\d-\d{4}-\d{4}$/.test(value)) {
-    return showError(field, msg, "Cédula inválida");
-  }
-
-  field.classList.remove("error");
-  msg.textContent = "";
-  return true;
-}
-
-function showError(field, msg, text) {
-  field.classList.add("error");
-  msg.textContent = text;
-  return false;
-}
