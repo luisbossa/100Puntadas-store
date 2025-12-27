@@ -271,6 +271,19 @@ document.addEventListener("DOMContentLoaded", async () => {
       )?.value;
       data.payment_method = paymentMethod;
 
+      // VALIDAR MÉTODO DE PAGO
+      const rbMsg = document.querySelector(".rb-msg");
+
+      if (!paymentMethod) {
+        rbMsg.textContent =
+          "Debes escoger un método de pago antes de continuar.";
+        rbMsg.classList.add("show");
+        return;
+      }
+
+      // limpiar mensaje si ya eligió método
+      rbMsg.textContent = "";
+
       data.totals = {
         subtotal,
         discount,
@@ -287,10 +300,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         const jsonOrder = await resOrder.json();
+
+        const rbMsg = document.querySelector(".rb-msg");
+
         if (!jsonOrder.success) {
-          alert("Error al crear la orden: " + jsonOrder.error);
+          rbMsg.textContent = "Error al crear la orden: " + jsonOrder.error;
+          rbMsg.classList.add("show");
           return;
         }
+
+        // Si todo sale bien, limpia el mensaje
+        rbMsg.textContent = "";
+        rbMsg.classList.remove("show");
 
         const orderId = jsonOrder.orderId;
 

@@ -191,21 +191,26 @@
 				<div class="payment-div">
 					<h2>Método de pago</h2>
 
-					<div class="field radio-field">
-						<label class="radio-option">
-							<input type="radio" name="payment_method" value="sinpe" required>
-							<span>SINPE Móvil</span>
-						</label>
+					<div class="radio-field">
+						<div class="rb-div">
+							<div class="radio-option-div">
+								<label class="radio-option">
+									<input type="radio" name="payment_method" value="sinpe" required>
+									<span>SINPE Móvil</span>
+								</label>
 
-						<label class="radio-option">
-							<input type="radio" name="payment_method" value="card">
-							<span>Tarjeta de crédito o débito</span>
-						</label>
+								<label class="radio-option">
+									<input type="radio" name="payment_method" value="card">
+									<span>Tarjeta de crédito o débito</span>
+								</label>
+							</div>
+							<small class="rb-msg"></small>
+						</div>
 					</div>
 				</div>
 
 
-				<button id="checkout-btn" class="cta">Continuar al pago</button>
+				<button id="checkout-btn" class="checkout-cta">Continuar al pago</button>
 			</div>
 
 			<!-- TRUST -->
