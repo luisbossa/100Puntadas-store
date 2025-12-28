@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     return document.querySelector(`[name="${name}"]`)?.value.trim() || "";
   }
 
+  function normalizePrice(v) {
+    return Number(String(v || 0).replace(/[^\d]/g, ""));
+  }
+
   function showError(field, msg, text) {
     field.classList.add("error");
     msg.textContent = text;
@@ -87,7 +91,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   /* ================= SUBTOTAL ================= */
   const subtotal = data.cart.reduce(
-    (sum, i) => sum + Number(i.price) * Number(i.quantity),
+    (sum, i) => sum + normalizePrice(i.price) * Number(i.quantity),
     0
   );
 
@@ -102,26 +106,26 @@ document.addEventListener("DOMContentLoaded", async () => {
       row.className = "order-product";
 
       row.innerHTML = `
-      <div class="order-product-info">
-        <img src="${item.image}" alt="${item.name}" />
-        <div>
-          <strong>${item.name}</strong>
-          <small>
-            ${item.color || ""}
-            ${item.size ? " · Talla: " + item.size : ""}
-            ${item.topSize ? " · Top: " + item.topSize : ""}
-            ${item.bottomSize ? " · Bottom: " + item.bottomSize : ""}
-          </small>
+        <div class="order-product-info">
+          <img src="${item.image}" alt="${item.name}" />
+          <div>
+            <strong>${item.name}</strong>
+            <small>
+              ${item.color || ""}
+              ${item.size ? " · Talla: " + item.size : ""}
+              ${item.topSize ? " · Top: " + item.topSize : ""}
+              ${item.bottomSize ? " · Bottom: " + item.bottomSize : ""}
+            </small>
+          </div>
         </div>
-      </div>
 
-      <div class="order-product-price">
-        <span>x${item.quantity}</span>
-        <strong>₡ ${(Number(item.price) * Number(item.quantity)).toLocaleString(
-          "es-CR"
-        )}</strong>
-      </div>
-    `;
+        <div class="order-product-price">
+          <span>x${item.quantity}</span>
+          <strong>₡ ${(
+            normalizePrice(item.price) * Number(item.quantity)
+          ).toLocaleString("es-CR")}</strong>
+        </div>
+      `;
 
       orderProductsBox.appendChild(row);
     });
@@ -253,7 +257,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       if (!valid) return;
 
-      // Capturar datos del formulario
       data.email = getVal("email");
       data.phone = getVal("phone");
       data.full_name = getVal("full_name");
@@ -265,13 +268,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       data.canton = getVal("canton");
       data.district = getVal("district");
 
-      // Capturar el método de pago
       const paymentMethod = document.querySelector(
         'input[name="payment_method"]:checked'
       )?.value;
       data.payment_method = paymentMethod;
 
-      // VALIDAR MÉTODO DE PAGO
       const rbMsg = document.querySelector(".rb-msg");
 
       if (!paymentMethod) {
@@ -281,7 +282,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
       }
 
-      // limpiar mensaje si ya eligió método
       rbMsg.textContent = "";
 
       data.totals = {
@@ -292,7 +292,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       };
 
       try {
-        // 1️⃣ Crear la orden en tu backend
         const resOrder = await fetch("/api/orders", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -301,21 +300,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const jsonOrder = await resOrder.json();
 
-        const rbMsg = document.querySelector(".rb-msg");
-
         if (!jsonOrder.success) {
           rbMsg.textContent = "Error al crear la orden: " + jsonOrder.error;
           rbMsg.classList.add("show");
           return;
         }
 
-        // Si todo sale bien, limpia el mensaje
         rbMsg.textContent = "";
         rbMsg.classList.remove("show");
 
         const orderId = jsonOrder.orderId;
 
         if (paymentMethod === "card") {
+          // 👉 GUARDAR SOLO EL TOTAL PARA CONFIRM
+          localStorage.setItem("confirm_total", String(data.totals.total));
+
           const resPayment = await fetch("/create-intent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -332,17 +331,28 @@ document.addEventListener("DOMContentLoaded", async () => {
             return;
           }
 
-          // 3️⃣ Redirigir a OnvoPay
           sessionStorage.setItem("order_completed", "true");
           clearCheckoutForm();
           localStorage.removeItem("checkoutData");
+          localStorage.setItem("confirm_order", orderId);
+          localStorage.setItem("confirm_total", data.totals.total);
+          localStorage.setItem(
+            "confirm_method",
+            paymentMethod === "card" ? "Tarjeta" : "SINPE Móvil"
+          );
+          localStorage.setItem(
+            "confirm_date",
+            new Date().toLocaleDateString("es-CR", {
+              day: "numeric",
+              month: "long",
+              year: "numeric",
+            })
+          );
+
           location.replace(
             `/payment?paymentIntentId=${jsonPayment.paymentIntentId}`
           );
-
-          
         } else if (paymentMethod === "sinpe") {
-          // Redirigir a ejs para Sinpe Móvil
           sessionStorage.setItem("order_completed", "true");
           clearCheckoutForm();
           localStorage.removeItem("checkoutData");

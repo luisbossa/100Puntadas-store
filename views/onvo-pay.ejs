@@ -54,28 +54,24 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Permitir nuevos pagos después de llegar correctamente a payment
             sessionStorage.removeItem("order_completed");
 
             const paymentIntentId = "<%= paymentIntentId.split(':')[0] %>";
+            if (!paymentIntentId) return;
 
-            if (!paymentIntentId) {
-                console.error("No se recibió paymentIntentId");
-                return;
-            }
-
-            // Esperamos que el SDK esté cargado
             const checkSDK = setInterval(() => {
                 if (typeof onvo !== "undefined") {
                     clearInterval(checkSDK);
 
                     const onvoInstance = onvo.pay({
-                        publicKey: "<%= ONVO_PUBLIC_KEY %>", // llave de prueba
+                        publicKey: "<%= ONVO_PUBLIC_KEY %>",
                         paymentIntentId,
                         paymentType: "one_time",
+
                         onSuccess: () => {
                             window.location.href = "/confirm";
                         },
+
                         onError: (err) => {
                             console.error("Error en el pago:", err);
                         },
@@ -86,6 +82,7 @@
             }, 100);
         });
     </script>
+
 
     <script src="https://sdk.onvopay.com/sdk.js"></script>
 

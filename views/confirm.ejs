@@ -53,22 +53,22 @@
 
             <!-- Recibo - detalle -->
             <div class="confirm-card">
-                <ul>
+                <ul id="order-summary">
                     <li>
                         <span>Pedido</span>
-                        <span>#10234</span>
+                        <span id="confirm-order">—</span>
                     </li>
                     <li>
                         <span>Fecha de compra</span>
-                        <span>4 de julio, 2023</span>
+                        <span id="confirm-date">—</span>
                     </li>
                     <li>
                         <span>Método de pago</span>
-                        <span>Tarjeta</span>
+                       <span id="confirm-method">—</span>
                     </li>
                     <li>
                         <span>Total pagado</span>
-                        <span>₡99.000</span>
+                        <span id="confirm-total">₡0</span>
                     </li>
                 </ul>
             </div>
@@ -81,6 +81,8 @@
             </div>
         </div>
     </div>
+
+    <script src="/js/confirm.js"></script>
 </body>
 
 </html>
