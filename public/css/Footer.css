@@ -35,8 +35,40 @@
   width: clamp(35px, 6vw, 80px);
 }
 
+.left-p-div {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.p-div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  gap: 10px;
+}
+
 .footer-p {
-  margin-bottom: 7px;
+  margin: 8px 0;
+  line-height: 1.1;
+}
+
+.shipping-p-div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 15px;
+}
+
+.logo-correos-div {
+  width: 120px;
+  padding: 10px;
+  margin-top: -1rem;
+}
+
+.correos-logo {
+  width: 100%;
+  display: block;
 }
 
 .footer-link {
@@ -56,6 +88,25 @@
 
 .cart-footer {
   position: static;
+}
+
+.payment-icons-div {
+  display: flex;
+  justify-content: end;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.pay-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 3px;
+}
+
+.pay-icon img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
 }
 
 @media (max-width: 767px) {

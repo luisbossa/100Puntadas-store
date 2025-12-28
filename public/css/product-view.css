@@ -723,7 +723,7 @@ em {
 .bk-color-black {
   z-index: 1;
   color: #161616;
-  background-color: #ffa4db;
+  background: linear-gradient(to top, #ffa4db 15%, #fcfaf6 70%);
   position: relative;
 }
 
@@ -1522,12 +1522,15 @@ em {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  margin-top: 5px;
   gap: 0.5em;
 }
 
 .social-icon {
-  width: 1.5em;
-  height: 1.5em;
+  width: 1.4em;
+  height: 1.4em;
+  color: #fff;
+  overflow: hidden;
 }
 
 .logo-footer-wrapper {
