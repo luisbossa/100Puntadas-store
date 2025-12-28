@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pago SINPE Móvil</title>
+    <link href="/css/global.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/css/checkout.css" />
     <link href="/css/sinpe-pay.css" rel="stylesheet" type="text/css" />
 </head>
@@ -36,7 +37,6 @@
     </header>
 
     <div class="page-wrapper">
-
         <h1 class="page-title">Pedido recibido</h1>
 
         <!-- ===== ORDER SUMMARY ===== -->
@@ -56,21 +56,18 @@
             <p>Usa el número de pedido como referencia de tu pago y envía el comprobante por Whatsapp al 87925172</p>
         </div>
 
-
-        <!-- ===== BANK DETAILS ===== -->
         <h2 class="section-title">Nuestros detalles bancarios</h2>
         <p class="bank-detail bank-account">SINPE 87925172</p>
         <p class="bank-detail bank-number">Número de cuenta: 958219313</p>
         <p class="bank-detail bank-iban">IBAN: CR06010200009582193138</p>
 
-        <!-- ===== ORDER TABLE ===== -->
         <h2 class="section-title">Detalles del pedido</h2>
         <table class="order-table">
             <thead>
                 <tr class="order-table-header">
                     <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Precio Unitario</th>
+                    <th>Detalle</th>
+                    <th>Precio</th>
                     <th>Total</th>
                 </tr>
             </thead>
@@ -112,13 +109,10 @@
             </tbody>
         </table>
 
-        <!-- ===== PAYMENT REMINDER ===== -->
         <p class="payment-reminder">Recuerda enviar tu comprobante de pago por Whatsapp al 87925172 indicando tu número
             de pedido.</p>
 
-        <!-- ===== PAYMENT BUTTON ===== -->
-        <button class="button-confirm-payment" onclick="alert('Gracias por completar tu pago!')">He enviado el
-            pago</button>
+        <a href="/confirm" class="link-confirm-payment">He enviado el pago</a>
     </div>
 </body>
 

@@ -1,3 +1,27 @@
+@font-face {
+  font-family: "Hatton";
+  src: url("/fonts/Hatton-Ultralight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hatton";
+  src: url("/fonts/Hatton-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lato";
+  src: url("/fonts/Lato-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -53,6 +77,9 @@ textarea::placeholder {
 
 /* ===== STEPS ===== */
 .checkout-steps {
+  font-family: Hatton, Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   display: flex;
   gap: 2rem;
 }
@@ -214,12 +241,6 @@ select.input:focus {
 .row {
   display: flex;
   gap: 1rem;
-}
-
-.textarea {
-  height: 90px;
-  padding-top: 12px;
-  resize: none;
 }
 
 .field {
@@ -414,6 +435,7 @@ select.input:focus {
 
 /* ===== TEXTAREA ===== */
 .textarea {
+  font-family: Inter, system-ui, sans-serif;
   height: 90px;
   padding-top: 12px;
   resize: none;
