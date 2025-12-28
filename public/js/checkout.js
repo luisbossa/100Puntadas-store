@@ -316,7 +316,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         const orderId = jsonOrder.orderId;
 
         if (paymentMethod === "card") {
-          // 2️⃣ Crear PaymentIntent para tarjeta
           const resPayment = await fetch("/create-intent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -340,6 +339,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           location.replace(
             `/payment?paymentIntentId=${jsonPayment.paymentIntentId}`
           );
+
+          
         } else if (paymentMethod === "sinpe") {
           // Redirigir a ejs para Sinpe Móvil
           sessionStorage.setItem("order_completed", "true");

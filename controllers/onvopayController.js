@@ -32,11 +32,16 @@ exports.createPaymentIntent = async (req, res) => {
 
     const data = await response.json();
 
+    // Si el pago no se crea correctamente
     if (!response.ok) {
-      console.error("ONVO ERROR:", data);
-      return res.status(response.status).json({ success: false, error: data });
+      console.error("ONVO ERROR:", data); // Ver detalles del error
+      return res.status(response.status).json({ 
+        success: false, 
+        error: data.message || "Error al crear el PaymentIntent"
+      });
     }
 
+    // Si se crea correctamente, devuelve el id del PaymentIntent
     return res.json({
       success: true,
       paymentIntentId: data.id,
@@ -49,3 +54,5 @@ exports.createPaymentIntent = async (req, res) => {
     });
   }
 };
+
+

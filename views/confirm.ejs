@@ -4,18 +4,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmación de Compra</title>
+    <title>Compra confirmada | 100Puntadas</title>
+    <link rel="stylesheet" href="/css/checkout.css" />
     <link href="/css/confirm.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
+    <header class="header-filler">
+        <div class="checkout-header">
+            <a href="/" class="checkout-brand">
+                <img class="logo-img" src="/images/logo.png" alt="100Puntadas logo">
+            </a>
+
+            <nav class="checkout-steps">
+                <div class="step">
+                    <span class="step-index2">1</span>
+                    <span class="step-label">Entrega</span>
+                </div>
+
+                <div class="step">
+                    <span class="step-index2">2</span>
+                    <span class="step-label">Pago</span>
+                </div>
+
+                <div class="step active">
+                    <span class="step-index">3</span>
+                    <span class="step-label">Confirmación</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
     <div class="confirm-wrapper">
-        <div class="confirm-card">
-            <div class="checkmark">✔</div>
-            <h1 class="confirm-heading">¡GRACIAS POR SU COMPRA!</h1>
-            <p class="confirm-subtext">Tu orden ha sido procesada exitosamente. Pronto recibirás un correo con los
-                detalles.</p>
-            <a href="/" class="confirm-btn">Volver al inicio</a>
+        <!-- Recibo - parte superior -->
+        <div id="wrapper">
+            <div class="confirm-card">
+                <div class="icon"></div>
+
+                <h1 class="confirm-heading">
+                    ¡GRACIAS POR TU COMPRA!
+                </h1>
+
+                <p class="confirm-subtext">
+                    Estamos preparando tu pedido y muy pronto recibirás un correo
+                    con todos los detalles.
+                </p>
+            </div>
+
+            <!-- Recibo - detalle -->
+            <div class="confirm-card">
+                <ul>
+                    <li>
+                        <span>Pedido</span>
+                        <span>#10234</span>
+                    </li>
+                    <li>
+                        <span>Fecha de compra</span>
+                        <span>4 de julio, 2023</span>
+                    </li>
+                    <li>
+                        <span>Método de pago</span>
+                        <span>Tarjeta</span>
+                    </li>
+                    <li>
+                        <span>Total pagado</span>
+                        <span>₡99.000</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- CTA -->
+            <div class="confirm-card">
+                <div class="cta-row">
+                    <a href="/" class="confirm-btn">Volver al inicio</a>
+                </div>
+            </div>
         </div>
     </div>
 </body>
