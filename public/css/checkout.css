@@ -480,8 +480,10 @@ select.input:focus {
 }
 
 .order-product-price {
+  display: flex;
   text-align: right;
   white-space: nowrap;
+  gap: 10px;
 }
 
 .product-row {
@@ -538,6 +540,20 @@ select.input:focus {
 .red-discount {
   color: #c0392b;
   font-weight: 800;
+}
+
+#shippingRow {
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  pointer-events: none;
+}
+
+#shippingRow.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 /* ===== RESPONSIVE ===== */

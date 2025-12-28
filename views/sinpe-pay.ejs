@@ -5,10 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pago SINPE Móvil</title>
+    <link rel="stylesheet" href="/css/checkout.css" />
     <link href="/css/sinpe-pay.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
+    <header class="header-filler">
+        <div class="checkout-header">
+            <a href="/" class="checkout-brand">
+                <img class="logo-img" src="/images/logo.png" alt="logo">
+            </a>
+
+            <nav class="checkout-steps">
+                <div class="step">
+                    <span class="step-index2">1</span>
+                    <span class="step-label">Entrega</span>
+                </div>
+
+                <div class="step active">
+                    <span class="step-index">2</span>
+                    <span class="step-label">Pago</span>
+                </div>
+
+                <div class="step">
+                    <span class="step-index2">3</span>
+                    <span class="step-label">Confirmación</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
     <div class="page-wrapper">
 
         <h1 class="page-title">Pedido recibido</h1>
@@ -43,7 +69,7 @@
             <thead>
                 <tr class="order-table-header">
                     <th>Producto</th>
-                    <th>Talla / Cantidad</th>
+                    <th>Cantidad</th>
                     <th>Precio Unitario</th>
                     <th>Total</th>
                 </tr>
@@ -55,7 +81,7 @@
                             <%= item.product_name %>
                         </td>
                         <td class="product-meta">
-                            <%= item.size ? "Talla: " + item.size : "-" %> × <%= item.quantity %>
+                            <%= item.size ? "Talla: " + item.size : "" %> × <%= item.quantity %>
                         </td>
                         <td class="product-unit-price">₡<%= Number(item.price).toLocaleString("es-CR") %>
                         </td>

@@ -1,3 +1,7 @@
+exports.confirm = (req, res) => {
+  res.render("confirm", { layout: false });
+};
+
 exports.createPaymentIntent = async (req, res) => {
   try {
     const { totals, email, orderId } = req.body;
@@ -16,7 +20,7 @@ exports.createPaymentIntent = async (req, res) => {
         Authorization: `Bearer ${process.env.ONVOPAY_SECRET_KEY}`,
       },
       body: JSON.stringify({
-        amount: totals.total,
+        amount: Math.round(totals.total * 100),
         currency: "CRC",
         description: `Orden #${orderId} - 100Puntadas`,
         metadata: {

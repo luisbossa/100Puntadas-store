@@ -11,15 +11,15 @@ exports.getInfo = async (req, res) => {
       phone,
       full_name,
       national_id,
-      province, // code
-      canton, // code
-      district, // code
+      province, 
+      canton, 
+      district, 
       address,
       neighborhood,
       address_details,
       cart,
       totals,
-      payment_method, // <-- 'sinpe' o 'card'
+      payment_method, 
     } = req.body;
 
     /* ================= VALIDACIONES ================= */

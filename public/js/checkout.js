@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       <div class="order-product-price">
         <span>x${item.quantity}</span>
-        <strong>₡${(Number(item.price) * Number(item.quantity)).toLocaleString(
+        <strong>₡ ${(Number(item.price) * Number(item.quantity)).toLocaleString(
           "es-CR"
         )}</strong>
       </div>
@@ -218,10 +218,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     discountRow.style.display = discount ? "flex" : "none";
     discountBox.textContent = discount.toLocaleString("es-CR");
 
-    shippingRow.style.display = currentShipping ? "flex" : "none";
+    shippingRow.classList.toggle("show", !!currentShipping);
     shippingCostBox.textContent = currentShipping.toLocaleString("es-CR");
 
-    totalBox.textContent = `₡${total.toLocaleString("es-CR")}`;
+    totalBox.textContent = `₡ ${total.toLocaleString("es-CR")}`;
   }
 
   function updateShipping() {

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pago</title>
+    <title>Pago de prueba - ONVO</title>
     <link rel="stylesheet" href="/css/checkout.css" />
     <link href="/css/onvo-pay.css" rel="stylesheet" type="text/css" />
     <style>
@@ -45,27 +45,18 @@
 
     <div class="onvo-wrapper">
         <div class="onvo-heading-div">
-            <h1 class="onvo-heading">Realiza tu pago</h1>
+            <h1 class="onvo-heading">Realiza tu pago (Modo prueba)</h1>
         </div>
 
-        <!-- Contenedor para que el SDK renderice el checkout -->
+        <!-- Contenedor donde el SDK renderizará el checkout -->
         <div id="onvo-checkout-container"></div>
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // 🔓 Permitir nuevos pagos después de llegar correctamente a payment
-            sessionStorage.removeItem("order_completed");
-        });
-    </script>
-
-    <script src="https://sdk.onvopay.com/sdk.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            // 🔓 Permitir nuevos pagos después de llegar correctamente a payment
+            // Permitir nuevos pagos después de llegar correctamente a payment
             sessionStorage.removeItem("order_completed");
 
-            // Limpiamos posibles sufijos del query string
             const paymentIntentId = "<%= paymentIntentId.split(':')[0] %>";
 
             if (!paymentIntentId) {
@@ -79,11 +70,11 @@
                     clearInterval(checkSDK);
 
                     const onvoInstance = onvo.pay({
-                        publicKey: "<%= ONVO_PUBLIC_KEY %>",
+                        publicKey: "<%= ONVO_PUBLIC_KEY %>", // llave de prueba
                         paymentIntentId,
                         paymentType: "one_time",
                         onSuccess: () => {
-                            window.location.href = "/gracias";
+                            window.location.href = "/confirm";
                         },
                         onError: (err) => {
                             console.error("Error en el pago:", err);
@@ -95,6 +86,9 @@
             }, 100);
         });
     </script>
+
+    <script src="https://sdk.onvopay.com/sdk.js"></script>
+
 </body>
 
 </html>

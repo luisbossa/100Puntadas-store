@@ -3,6 +3,8 @@ const router = express.Router();
 const onvoController = require("../controllers/onvopayController");
 const db = require("../db/pool");
 
+router.get("/confirm", onvoController.confirm);
+
 router.post("/create-intent", onvoController.createPaymentIntent);
 
 router.get("/payment", (req, res) => {
