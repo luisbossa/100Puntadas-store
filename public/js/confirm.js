@@ -1,24 +1,35 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const order = localStorage.getItem("confirm_order");
-  const total = localStorage.getItem("confirm_total");
-  const method = localStorage.getItem("confirm_method");
-  const date = localStorage.getItem("confirm_date");
+  const data =
+    sessionStorage.getItem("order_completed") ||
+    localStorage.getItem("order_completed");
 
-  // seguridad mínima
-  if (!order || !total) {
+  // seguridad REAL
+  if (!data) {
     location.replace("/");
     return;
   }
 
-  document.getElementById("confirm-order").textContent = `#${order}`;
-  document.getElementById("confirm-date").textContent = date;
-  document.getElementById("confirm-method").textContent = method;
-  document.getElementById("confirm-total").textContent =
-    "₡ " + Number(total).toLocaleString("es-CR");
+  const order = JSON.parse(data);
 
-  // limpieza (opcional)
-  localStorage.removeItem("confirm_order");
-  localStorage.removeItem("confirm_total");
-  localStorage.removeItem("confirm_method");
-  localStorage.removeItem("confirm_date");
+  // pintar datos
+  document.getElementById("confirm-order").textContent =
+    order.orderNumber || `#${order.orderId}`;
+
+  document.getElementById("confirm-date").textContent = new Date(
+    order.createdAt
+  ).toLocaleDateString("es-CR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  document.getElementById("confirm-method").textContent =
+    order.paymentMethod;
+
+  document.getElementById("confirm-total").textContent =
+    "₡ " + Number(order.total).toLocaleString("es-CR");
+
+  // limpieza
+  sessionStorage.removeItem("order_completed");
+  localStorage.removeItem("order_completed");
 });

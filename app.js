@@ -51,6 +51,7 @@ app.use(require("./routes/homeRoute"));
 app.use(require("./routes/productRoute"));
 app.use(require("./routes/checkoutRoute"));
 app.use(require("./routes/onvopayRoute"));
+app.use(require("./routes/sinpepayRoute"));
 
 // ✅ Middleware de error de Sentry (solo si está activo)
 if (process.env.NODE_ENV === "production") {

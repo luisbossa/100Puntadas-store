@@ -309,11 +309,21 @@ document.addEventListener("DOMContentLoaded", async () => {
         rbMsg.textContent = "";
         rbMsg.classList.remove("show");
 
-        const orderId = jsonOrder.orderId;
+        const { orderId, orderNumber } = jsonOrder;
 
         if (paymentMethod === "card") {
-          // 👉 GUARDAR SOLO EL TOTAL PARA CONFIRM
-          localStorage.setItem("confirm_total", String(data.totals.total));
+          const orderData = {
+            orderId,
+            orderNumber, // ✅ CORRECTO (5 dígitos)
+            total: data.totals.total,
+            paymentMethod: "Tarjeta",
+            createdAt: new Date().toISOString(),
+          };
+
+          sessionStorage.setItem("order_completed", JSON.stringify(orderData));
+
+          clearCheckoutForm();
+          localStorage.removeItem("checkoutData");
 
           const resPayment = await fetch("/create-intent", {
             method: "POST",
@@ -326,36 +336,29 @@ document.addEventListener("DOMContentLoaded", async () => {
           });
 
           const jsonPayment = await resPayment.json();
+
           if (!jsonPayment.success) {
             alert("Error al crear el pago: " + jsonPayment.error);
             return;
           }
 
-          sessionStorage.setItem("order_completed", "true");
-          clearCheckoutForm();
-          localStorage.removeItem("checkoutData");
-          localStorage.setItem("confirm_order", orderId);
-          localStorage.setItem("confirm_total", data.totals.total);
-          localStorage.setItem(
-            "confirm_method",
-            paymentMethod === "card" ? "Tarjeta" : "SINPE Móvil"
-          );
-          localStorage.setItem(
-            "confirm_date",
-            new Date().toLocaleDateString("es-CR", {
-              day: "numeric",
-              month: "long",
-              year: "numeric",
-            })
-          );
-
           location.replace(
-            `/payment?paymentIntentId=${jsonPayment.paymentIntentId}`
+            `/payment?paymentIntentId=${jsonPayment.paymentIntentId}&orderNumber=${orderNumber}`
           );
         } else if (paymentMethod === "sinpe") {
-          sessionStorage.setItem("order_completed", "true");
+          const orderData = {
+            orderId,
+            orderNumber: orderId,
+            total: data.totals.total,
+            paymentMethod: "SINPE Móvil",
+            createdAt: new Date().toISOString(),
+          };
+
+          sessionStorage.setItem("order_completed", JSON.stringify(orderData));
+
           clearCheckoutForm();
           localStorage.removeItem("checkoutData");
+
           location.replace(`/payment-sinpe?orderId=${orderId}`);
         }
       } catch (err) {

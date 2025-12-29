@@ -54,8 +54,6 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            sessionStorage.removeItem("order_completed");
-
             const paymentIntentId = "<%= paymentIntentId.split(':')[0] %>";
             if (!paymentIntentId) return;
 
@@ -76,13 +74,11 @@
                             console.error("Error en el pago:", err);
                         },
                     });
-
                     onvoInstance.render("#onvo-checkout-container");
                 }
             }, 100);
         });
     </script>
-
 
     <script src="https://sdk.onvopay.com/sdk.js"></script>
 
