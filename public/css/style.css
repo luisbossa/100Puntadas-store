@@ -2730,7 +2730,7 @@
 .collection {
   width: 100%;
   height: auto;
-  padding: 10rem 8rem 1%;
+  padding: 10rem 8rem 4%;
 }
 
 .collection-list-shirts {
@@ -2740,7 +2740,7 @@
   margin-right: auto;
   margin-left: auto;
   grid-auto-columns: auto;
-  grid-column-gap: 5px;
+  grid-column-gap: 12px;
   grid-row-gap: 0;
   -ms-grid-columns: repeat(5, 1fr);
   grid-template-columns: repeat(5, 1fr);
@@ -2801,7 +2801,7 @@
 
 .image-wrapper {
   width: 100%;
-  max-width: 280px;
+  max-width: 400px;
   position: relative;
   border-radius: 10px;
   border: 1px solid #d8d9da;
@@ -3518,7 +3518,7 @@
   width: auto;
   height: auto;
   margin-top: 10%;
-  scroll-margin-top: 6rem;
+  scroll-margin-top: 9rem;
 }
 
 .collection-sets {
@@ -3526,7 +3526,7 @@
   width: auto;
   height: auto;
   margin-top: 10%;
-  scroll-margin-top: 7rem;
+  scroll-margin-top: 9rem;
 }
 
 .list {
@@ -3631,7 +3631,7 @@
   display: grid;
   margin: 0 auto;
   grid-auto-columns: auto;
-  grid-column-gap: 5px;
+  grid-column-gap: 12px;
   grid-row-gap: 0;
   -ms-grid-columns: repeat(5, 1fr);
   grid-template-columns: repeat(5, 1fr);
@@ -3708,7 +3708,7 @@
   margin-right: auto;
   margin-left: auto;
   grid-auto-columns: auto;
-  grid-column-gap: 5px;
+  grid-column-gap: 12px;
   grid-row-gap: 0;
   -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -3855,14 +3855,14 @@
   display: block;
   width: auto;
   margin-top: 1rem;
-  margin-bottom: clamp(3.5rem, 8%, 4rem);
+  margin-bottom: clamp(4rem, 8%, 4rem);
   font-family: Hatton, Arial, sans-serif;
   color: #272727;
   font-size: clamp(2.2rem, 2.8vw, 3rem);
   line-height: clamp(2.5rem, 8vh, 4.5rem);
   font-weight: 400;
   text-align: center;
-  letter-spacing: clamp(0.1rem, 0.3vw, 0.3rem);
+  letter-spacing: 1px;
   text-transform: uppercase;
   white-space: normal;
 }
@@ -3981,7 +3981,7 @@
 
 @media screen and (max-width: 991px) {
   .collection-list-shirts {
-    grid-template-columns: repeat(auto-fit, 33vw) 33vw 33vw;
+    grid-template-columns: repeat(auto-fit, 31.3vw) 31.3vw 31.3vw;
   }
 
   .cart-quantity {
@@ -4016,15 +4016,15 @@
   }
 
   .collection-list-jean {
-    grid-template-columns: repeat(auto-fit, 33vw) 33vw 33vw;
+    grid-template-columns: repeat(auto-fit, 31.3vw) 31.3vw 31.3vw;
   }
 
   .collection-list-associate {
-    grid-template-columns: repeat(auto-fit, 33vw) 33vw 33vw;
+    grid-template-columns: repeat(auto-fit, 31.3vw) 31.3vw 31.3vw;
   }
 
   .collection-list-sacs {
-    grid-template-columns: repeat(auto-fit, 33vw) 33vw 33vw;
+    grid-template-columns: repeat(auto-fit, 31.3vw) 31.3vw 31.3vw;
   }
 
   .div-block-7 {
@@ -4115,13 +4115,13 @@
   }
 }
 
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 770px) {
   .collection {
     padding-top: 6rem;
   }
 
   .collection-list-shirts {
-    grid-column-gap: 0px;
+    grid-column-gap: 15px;
     grid-row-gap: 0px;
     -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
@@ -4129,8 +4129,12 @@
     grid-template-rows: auto auto auto;
   }
 
+  .image-wrapper {
+    max-width: 340px;
+}
+
   .item-image {
-    width: 180px;
+    width: 100%;
   }
 
   .cart-quantity {
@@ -4320,7 +4324,7 @@
   }
 
   .collection-list-jean {
-    grid-column-gap: 0px;
+    grid-column-gap: 15px;
     grid-row-gap: 0px;
     -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
@@ -4333,7 +4337,7 @@
   }
 
   .collection-list-associate {
-    grid-column-gap: 0px;
+    grid-column-gap: 15px;
     grid-row-gap: 0px;
     -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
@@ -4342,7 +4346,7 @@
   }
 
   .collection-list-sacs {
-    grid-column-gap: 0px;
+    grid-column-gap: 15px;
     grid-row-gap: 0px;
     -ms-grid-columns: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
@@ -4446,10 +4450,10 @@
 }
 
 .h3-titles {
-  margin: 0 0 0.7rem 2.3%;
+  margin: 0 0 1rem 15px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: clamp(1.2rem, 2.5vw, 1.9rem);
+  font-size: clamp(1.2rem, 2.5vw, 2.5rem);
 }
 
 .cursor {

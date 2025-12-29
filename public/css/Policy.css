@@ -2,14 +2,14 @@
   width: 100%;
   height: auto;
   background-color: #fcfaf6;
-  padding: 9rem clamp(1rem, 7vw, 8rem) 1%;
+  padding: 10rem 8rem 6%;
 }
 
 .policy-div {
   font-family: Hatton, Arial, sans-serif;
   font-size: clamp(0.9rem, 1.1vw, 1.1rem);
   line-height: clamp(2rem, 4vh, 4vh);
-  text-align: justify;
+  text-align: left;
   letter-spacing: clamp(0.05rem, 0.1vw, 0.1vw);
 }
 
@@ -25,9 +25,12 @@
 }
 
 .terms-title {
-  font-size: clamp(1rem, 1.6vw, 1.6rem);
-  margin-top: 2.4rem;
+  font-size: clamp(1rem, 1.8vw, 1.8rem);
+  margin-top: 4rem;
+  margin-bottom: 10px;
   font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   text-align: left;
 }
 
@@ -39,8 +42,9 @@
 }
 
 .terms-list {
+  width: 90%;
   padding-left: 1.4rem;
-  margin: 10px 0 1.5rem;
+  margin: 15px 0 1.5rem 1rem;
   list-style-type: disc;
   font-family: inherit;
 }
@@ -61,4 +65,10 @@
 .terms a {
   color: #444;
   text-decoration: underline;
+}
+
+@media screen and (max-width: 1500px) {
+  .policy-section {
+    padding: 6rem 1.5rem 1rem;
+  }
 }

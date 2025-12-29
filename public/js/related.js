@@ -170,7 +170,7 @@ const relatedProducts = [
   // ===== SETS =====
   {
     nombre: "Rosé set",
-    precio: "35,000 ₡",
+    precio: "35.000 ₡",
     imagen: "/images/sets/set-1.jpg",
     link: "/product/rose",
   },

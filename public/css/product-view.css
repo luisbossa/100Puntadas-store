@@ -1044,13 +1044,24 @@ em {
 }
 
 .padding-top-bottom-l {
-  z-index: 2;
   width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding-top: 7rem;
   padding-bottom: 6em;
+  display: flex;
+  position: relative;
+  z-index: 2;
+}
+
+.related-div {
+  z-index: 2;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
   display: flex;
   position: relative;
 }
@@ -1231,7 +1242,6 @@ em {
 
 .content-wrapper {
   width: 100%;
-  max-width: 1800px;
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 0;
@@ -1284,24 +1294,19 @@ em {
   flex-direction: column;
   align-items: stretch;
   position: relative;
-  padding-left: 3em;
-  padding-right: 3em;
+  padding: 3rem 3rem 4%;
+}
+
+.page-view {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 3rem 8rem 4%;
 }
 
 .page-padding.overflow-none {
   overflow: hidden;
-}
-
-.page-padding.is-sticky {
-  display: flex;
-}
-
-.page-padding.in-menu {
-  align-items: flex-start;
-}
-
-.page-padding.is-store-inv {
-  flex: none;
 }
 
 .padding-1column {
@@ -1655,12 +1660,6 @@ em {
 
 .wrapper {
   width: 100%;
-}
-
-.page-padding-2 {
-  flex: 1;
-  padding-left: 3.5em;
-  padding-right: 3.5em;
 }
 
 .horizontal-item {
@@ -3246,7 +3245,7 @@ em {
 }
 
 .bk-shop.border-top {
-  border-top: 1px solid #999;
+  border-top: 1px dashed #d7dad7;
 }
 
 .hero-switch {
@@ -3681,7 +3680,7 @@ em {
 .style-div {
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
 }
@@ -4397,10 +4396,6 @@ em {
     padding-top: 4em;
   }
 
-  .padding-top-bottom-l.is-related-m {
-    padding-top: 1.5em;
-  }
-
   .grid-4-columns {
     grid-template-columns: 1fr 1fr;
   }
@@ -4423,8 +4418,7 @@ em {
   }
 
   .page-padding {
-    padding-left: 2em;
-    padding-right: 2em;
+    padding: 4% 2em;
   }
 
   .btn-after {
@@ -4738,12 +4732,8 @@ em {
   }
 
   .page-padding {
-    padding-left: 1.5em;
-    padding-right: 1.5em;
-  }
-
-  .page-padding.in-menu {
-    align-items: flex-start;
+    padding-left: 1.8em;
+    padding-right: 1.8em;
   }
 
   .font-raster {
@@ -5120,6 +5110,12 @@ em {
 
 #w-node-f08a4f3a-2d8d-384c-97f1-d4b8aa613a2c-43e5365b {
   grid-area: span 1 / span 1 / span 1 / span 1;
+}
+
+@media screen and (max-width: 1500px) {
+  .page-view {
+    padding: 3rem 1.5rem 1rem;
+  }
 }
 
 @media screen and (max-width: 479px) {

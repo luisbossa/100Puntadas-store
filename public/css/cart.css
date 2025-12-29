@@ -50,6 +50,8 @@
   font-family: Hatton, Arial, sans-serif;
   font-size: 20px;
   font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   margin: 0;
 }
 
@@ -57,7 +59,7 @@
 .cart-close-btn {
   position: absolute;
   right: 0;
-  top: 0;
+  top: -4px;
   background: none;
   border: none;
   font-size: 22px;
@@ -152,6 +154,8 @@
 .total-row {
   font-size: 18px;
   font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   font-family: Hatton, Arial, sans-serif;
 }
 
@@ -161,7 +165,7 @@
 
 .cart-checkout-btn {
   width: 100%;
-  padding: 12px;
+  padding: 15px 12px 10px 12px;
   font-size: 1rem;
   border: none;
   font-family: Hatton, Arial, sans-serif;
@@ -181,8 +185,7 @@
 
 .cart-checkout-btn.disabled {
   pointer-events: none;
-  opacity: 0.45;
-  background: #5e5e5e;
+  opacity: 0.8;
   cursor: not-allowed;
   color: #fff;
 }
@@ -245,10 +248,16 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  transition: opacity 0.25s ease, transform 0.15s ease;
 }
 
 .quantity-btn:focus {
   outline: none;
+}
+
+.quantity-btn.disabled {
+  opacity: 0.8;
+  pointer-events: none;
 }
 
 .quantity-input {

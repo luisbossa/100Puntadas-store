@@ -1,7 +1,7 @@
 .onvo-body {
   min-height: 100vh;
   font-family: "Arial", sans-serif;
-  background-color: #fcfaf6;
+      background: linear-gradient(to top, #ffa4db 15%, #fcfaf6 70%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,7 +13,7 @@
   max-width: 600px;
   background-color: #fff;
   padding: 2rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
   border-radius: 14px;
   border: 1px solid #d8d9da;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
