@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   type="number"
                   class="quantity-input"
                   value="${item.quantity}"
-                  min="1"
+                  min="1" max="20"
                 >
                 <button class="quantity-btn increase">+</button>
               </div>

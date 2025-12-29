@@ -1049,7 +1049,7 @@ em {
   justify-content: center;
   align-items: center;
   padding-top: 7rem;
-  padding-bottom: 6em;
+  padding-bottom: 1rem;
   display: flex;
   position: relative;
   z-index: 2;
@@ -3604,7 +3604,7 @@ em {
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid #161616;
   border-radius: 12px;
-  padding: 0.7em 0.7em 0.5em;
+  padding: 15px 12px 9px 12px;
   text-transform: uppercase;
   font-family: Hatton, Arial, sans-serif;
   font-size: clamp(1rem, 2.5vw, 1.3rem);

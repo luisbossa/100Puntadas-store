@@ -96,6 +96,8 @@ textarea::placeholder {
   width: 22px;
   height: 22px;
   border-radius: 50%;
+  padding-top: 2px;
+  margin-top: -4px;
   border: 2px solid #d8d9da;
   display: flex;
   align-items: center;
@@ -107,6 +109,8 @@ textarea::placeholder {
 .step-index2 {
   width: 22px;
   height: 22px;
+  padding-top: 2px;
+  margin-top: -4px;
   border-radius: 50%;
   display: flex;
   background: #fff;
