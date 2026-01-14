@@ -21,4 +21,6 @@ router.get("/payment", (req, res) => {
   });
 });
 
+router.post("/onvo", onvoController.handleWebhook);
+
 module.exports = router;

@@ -1,3 +1,5 @@
+const db = require("../db/pool");
+
 exports.confirm = (req, res) => {
   res.render("confirm", { layout: false });
 };
@@ -35,9 +37,9 @@ exports.createPaymentIntent = async (req, res) => {
     // Si el pago no se crea correctamente
     if (!response.ok) {
       console.error("ONVO ERROR:", data); // Ver detalles del error
-      return res.status(response.status).json({ 
-        success: false, 
-        error: data.message || "Error al crear el PaymentIntent"
+      return res.status(response.status).json({
+        success: false,
+        error: data.message || "Error al crear el PaymentIntent",
       });
     }
 
@@ -55,4 +57,32 @@ exports.createPaymentIntent = async (req, res) => {
   }
 };
 
+exports.handleWebhook = async (req, res) => {
+  try {
+    const event = req.body;
+    if (event.type === "payment-intent.succeeded") {
+      const paymentIntent = event.data;
+      const orderId = Number(paymentIntent.metadata?.orderId);
 
+      if (!orderId) {
+        return res.sendStatus(400); 
+      }
+
+      const result = await db.query(
+        `UPDATE orders
+         SET status = 'paid',
+             paid_at = NOW()
+         WHERE id = $1`,
+        [orderId]
+      );
+
+      if (result.rowCount === 0) {
+        return res.sendStatus(404);
+      }
+    }
+
+    res.sendStatus(200);
+  } catch (err) {
+    res.sendStatus(500);
+  }
+};
