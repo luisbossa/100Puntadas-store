@@ -92,7 +92,7 @@ const relatedProducts = [
   {
     nombre: "HEART OF OCEAN",
     precio: "30.000 ₡",
-    imagen: "/images/swimwears/swimwear-16.webp",
+    imagen: "/images/swimwears/swimwear-16.jpeg",
     link: "/product/heartOfOcean",
   },
   {

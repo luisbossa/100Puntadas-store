@@ -2752,7 +2752,7 @@
   display: block;
   width: auto;
   height: auto;
-  margin-top: 0%;
+  margin-top: 3rem;
   scroll-margin-top: 8rem;
 }
 
@@ -3849,29 +3849,6 @@
   text-transform: uppercase;
   text-shadow: 0 0 0 #161616;
   white-space: normal;
-}
-
-.maintitle-div {
-  display: block;
-  width: auto;
-  margin-top: 1rem;
-  margin-bottom: clamp(4rem, 8%, 4rem);
-  font-family: Hatton, Arial, sans-serif;
-  color: #272727;
-  font-size: clamp(2.2rem, 2.8vw, 3rem);
-  line-height: clamp(2.5rem, 8vh, 4.5rem);
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  white-space: normal;
-}
-
-.maintitle-text {
-  margin-bottom: 10px;
-  font-size: clamp(1.2rem, 3vw, 3rem);
-  font-weight: 600;
-  line-height: 1.1;
 }
 
 .div-block-9 {

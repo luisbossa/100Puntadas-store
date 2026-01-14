@@ -48,7 +48,6 @@ const beachwearProducts = {
       { label: "HILO", img: "/images/thong.png" },
     ],
   },
-
   turquoise: {
     id: "turquoise",
     slug: "turquoise",
@@ -368,7 +367,7 @@ const beachwearProducts = {
     description2:
       "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
-      "/images/swimwears/swimwear-16.webp",
+      "/images/swimwears/swimwear-16.jpeg",
       "/images/products/product-16.1.jpg",
       "/images/products/product-16.2.jpg",
       "/images/products/product-16.3.jpg",
