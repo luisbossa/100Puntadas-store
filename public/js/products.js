@@ -747,6 +747,18 @@ function getCart() {
 const slug = window.PRODUCT_SLUG;
 const product = beachwearProducts[slug];
 
+const hideFirstAccordionFor = ["one-piece", "crochet", "set"];
+
+if (hideFirstAccordionFor.includes(product.productType)) {
+  const firstAccordionItem = document.querySelector(
+    ".accordion-section .accordion-item:first-child"
+  );
+
+  if (firstAccordionItem) {
+    firstAccordionItem.remove();
+  }
+}
+
 if (!product) {
   console.error("Producto no encontrado:", slug);
 }

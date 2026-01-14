@@ -23,13 +23,18 @@ document.addEventListener("DOMContentLoaded", () => {
     year: "numeric",
   });
 
-  document.getElementById("confirm-method").textContent =
-    order.paymentMethod;
+  document.getElementById("confirm-method").textContent = order.paymentMethod;
 
   document.getElementById("confirm-total").textContent =
     "₡ " + Number(order.total).toLocaleString("es-CR");
 
-  // limpieza
+  /* ================= LIMPIEZA DEFINITIVA ================= */
+
+  // carrito
+  localStorage.removeItem("cartItems");
+  localStorage.removeItem("checkoutData");
+
+  // sesión de confirmación
   sessionStorage.removeItem("order_completed");
   localStorage.removeItem("order_completed");
 });
