@@ -636,6 +636,175 @@ const beachwearProducts = {
       { label: "HILO", img: "/images/thong.png" },
     ],
   },
+  sorbetLime: {
+    id: "sorbet-lime",
+    slug: "sorbet-lime",
+    productType: "crochet",
+    link: "#",
+    name: "SORBET LIME",
+    price: 30000,
+    currency: "₡",
+    description:
+      "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave.",
+    description2: "Top strapless y bottom en corte V. Ambos ajustables.",
+    images: [
+      "/images/crochets/crochet-3.jpeg",
+      "/images/crochets/crochet-3.1.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  sorbetPink: {
+    id: "sorbet-pink",
+    slug: "sorbet-pink",
+    productType: "crochet",
+    link: "#",
+    name: "SORBET PINK",
+    price: 30000,
+    currency: "₡",
+    description:
+      "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave.",
+    description2: "Top strapless y bottom en corte V. Ambos ajustables.",
+    images: [
+      "/images/crochets/crochet-4.jpeg",
+      "/images/crochets/crochet-4.1.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  sorbetBubblegum: {
+    id: "sorbet-bubblegum",
+    slug: "sorbet-bubblegum",
+    productType: "crochet",
+    link: "#",
+    name: "SORBET BUBBLEGUM",
+    price: 30000,
+    currency: "₡",
+    description:
+      "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave.",
+    description2: "Top strapless y bottom en corte V. Ambos ajustables.",
+    images: [
+      "/images/crochets/crochet-5.jpeg",
+      "/images/crochets/crochet-5.1.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  cookie: {
+    id: "cookie",
+    slug: "cookie",
+    productType: "crochet",
+    link: "#",
+    name: "COOKIE",
+    price: 30000,
+    currency: "₡",
+    description:
+      "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave.",
+    description2: "Top strapless y bottom en corte V. Ambos ajustables.",
+    images: [
+      "/images/crochets/crochet-6.jpeg",
+      "/images/crochets/crochet-6.1.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  santorini: {
+    id: "santorini",
+    slug: "santorini",
+    productType: "crochet",
+    link: "#",
+    name: "SANTORINI",
+    price: 30000,
+    currency: "₡",
+    description:
+      "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave.",
+    description2: "Top strapless y bottom en corte V. Ambos ajustables.",
+    images: [
+      "/images/crochets/crochet-7.jpeg",
+      "/images/crochets/crochet-7.1.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  aphrodite: {
+    id: "aphrodite",
+    slug: "aphrodite",
+    productType: "crochet",
+    link: "#",
+    name: "APHRODITE",
+    price: 33500,
+    currency: "₡",
+    description:
+      "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave.",
+    description2: "Top strapless y bottom en corte V. Ambos ajustables.",
+    images: [
+      "/images/crochets/crochet-8.jpeg",
+      "/images/crochets/crochet-8.1.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  cherry: {
+    id: "cherry",
+    slug: "cherry",
+    productType: "crochet",
+    link: "#",
+    name: "CHERRY",
+    price: 30000,
+    currency: "₡",
+    description:
+      "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave.",
+    description2: "Top strapless y bottom en corte V. Ambos ajustables.",
+    images: [
+      "/images/crochets/crochet-9.jpeg",
+      "/images/crochets/crochet-9.1.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  bdayCake: {
+    id: "bday-cake",
+    slug: "bday-cake",
+    productType: "crochet",
+    link: "#",
+    name: "BDAY CAKE",
+    price: 30000,
+    currency: "₡",
+    description:
+      "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave.",
+    description2: "Top strapless y bottom en corte V. Ambos ajustables.",
+    images: [
+      "/images/crochets/crochet-10.jpeg",
+      "/images/crochets/crochet-10.1.jpeg",
+      "/images/crochets/crochet-10.2.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
 
   // ===== SETS =====
 

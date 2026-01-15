@@ -166,6 +166,54 @@ const relatedProducts = [
     imagen: "/images/crochets/crochet-2.jpeg",
     link: "/product/scarlettBikini",
   },
+  {
+    nombre: "SORBET LIME",
+    precio: "30.000 ₡",
+    imagen: "/images/crochets/crochet-3.jpeg",
+    link: "/product/sorbetLime",
+  },
+  {
+    nombre: "SORBET PINK",
+    precio: "30.000 ₡",
+    imagen: "/images/crochets/crochet-4.jpeg",
+    link: "/product/sorbetPink",
+  },
+  {
+    nombre: "SORBET BUBBLEGUM",
+    precio: "30.000 ₡",
+    imagen: "/images/crochets/crochet-5.jpeg",
+    link: "/product/sorbetBubblegum",
+  },
+  {
+    nombre: "COOKIE",
+    precio: "30.000 ₡",
+    imagen: "/images/crochets/crochet-6.jpeg",
+    link: "/product/cookie",
+  },
+  {
+    nombre: "SANTORINI",
+    precio: "30.000 ₡",
+    imagen: "/images/crochets/crochet-7.jpeg",
+    link: "/product/santorini",
+  },
+  {
+    nombre: "APHRODITE",
+    precio: "33.500 ₡",
+    imagen: "/images/crochets/crochet-8.jpeg",
+    link: "/product/aphrodite",
+  },
+  {
+    nombre: "CHERRY",
+    precio: "30.000 ₡",
+    imagen: "/images/crochets/crochet-9.jpeg",
+    link: "/product/cherry",
+  },
+  {
+    nombre: "BDAY CAKE",
+    precio: "30.000 ₡",
+    imagen: "/images/crochets/crochet-10.jpeg",
+    link: "/product/bdayCake",
+  },
 
   // ===== SETS =====
   {
