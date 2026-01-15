@@ -645,11 +645,12 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave.",
-    description2: "Top strapless y bottom en corte V. Ambos ajustables.",
+      "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
+    description2: "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/crochets/crochet-3.jpeg",
       "/images/crochets/crochet-3.1.jpeg",
+      "/images/crochets/crochet-all.jpeg",
     ],
     sizes: ["XS", "S", "M", "L"],
     styles: [
@@ -666,11 +667,12 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave.",
-    description2: "Top strapless y bottom en corte V. Ambos ajustables.",
+      "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
+    description2: "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/crochets/crochet-4.jpeg",
       "/images/crochets/crochet-4.1.jpeg",
+      "/images/crochets/crochet-all.jpeg",
     ],
     sizes: ["XS", "S", "M", "L"],
     styles: [
@@ -687,11 +689,12 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave.",
-    description2: "Top strapless y bottom en corte V. Ambos ajustables.",
+      "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
+    description2: "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/crochets/crochet-5.jpeg",
       "/images/crochets/crochet-5.1.jpeg",
+      "/images/crochets/crochet-all.jpeg",
     ],
     sizes: ["XS", "S", "M", "L"],
     styles: [
@@ -708,8 +711,8 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave.",
-    description2: "Top strapless y bottom en corte V. Ambos ajustables.",
+      "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
+    description2: "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/crochets/crochet-6.jpeg",
       "/images/crochets/crochet-6.1.jpeg",
@@ -729,8 +732,8 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave.",
-    description2: "Top strapless y bottom en corte V. Ambos ajustables.",
+      "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
+    description2: "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/crochets/crochet-7.jpeg",
       "/images/crochets/crochet-7.1.jpeg",
@@ -750,8 +753,8 @@ const beachwearProducts = {
     price: 33500,
     currency: "₡",
     description:
-      "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave.",
-    description2: "Top strapless y bottom en corte V. Ambos ajustables.",
+      "Amamos la combinación negro con dorado, le dá un acabado de lujo.",
+    description2: "Elaborado 100% a mano en crochet con elásticos flexibles que se ajustan muy bien a tu figura.",
     images: [
       "/images/crochets/crochet-8.jpeg",
       "/images/crochets/crochet-8.1.jpeg",
@@ -771,8 +774,8 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave.",
-    description2: "Top strapless y bottom en corte V. Ambos ajustables.",
+      "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
+    description2: "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/crochets/crochet-9.jpeg",
       "/images/crochets/crochet-9.1.jpeg",
@@ -792,8 +795,8 @@ const beachwearProducts = {
     price: 30000,
     currency: "₡",
     description:
-      "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave.",
-    description2: "Top strapless y bottom en corte V. Ambos ajustables.",
+      "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
+    description2: "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/crochets/crochet-10.jpeg",
       "/images/crochets/crochet-10.1.jpeg",
