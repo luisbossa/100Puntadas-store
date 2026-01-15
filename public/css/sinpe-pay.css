@@ -165,11 +165,39 @@ p {
   opacity: 0.95;
 }
 
+/* ===== BUTTON DISABLED STATE ===== */
+.link-confirm-payment:disabled {
+  background: #cfcfcf;       
+  color: #7a7a7a;              
+  cursor: not-allowed;       
+  opacity: 0.7;
+  pointer-events: none;      
+}
+
+/* evita hover cuando está disabled */
+.link-confirm-payment:disabled:hover {
+  opacity: 0.7;
+}
+
 /* ===== PAYMENT REMINDER ===== */
 .payment-reminder {
   margin-top: 1rem;
   font-style: italic;
   color: #555;
+}
+
+.pending-msg {
+  display: block;
+  min-height: auto;
+  text-align: center;
+  padding: 1.5rem;
+  margin: 1.5rem auto 0;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #9a3412;
 }
 
 /* ===== RESPONSIVE ===== */

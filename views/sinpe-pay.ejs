@@ -114,11 +114,14 @@
 
         <button id="btn-sinpe-confirm" class="link-confirm-payment" data-order-id="<%= order.id %>"
             data-order-number="<%= order.order_number || order.id %>" data-total="<%= order.total %>"
-            data-created-at="<%= order.created_at %>">
+            data-created-at="<%= order.created_at %>" disabled>
             He enviado el pago
         </button>
 
-
+        <div class="pending-msg">
+            Tu pago SINPE está en proceso de verificación. El botón <strong>“He enviado el pago”</strong> se habilitará
+            automáticamente una vez que confirmemos el comprobante.
+        </div>
     </div>
 
     <script>
@@ -146,9 +149,11 @@
         });
     </script>
 
+    <script>
+        window.SINPE_ORDER_ID = "<%= order.id %>";
+    </script>
 
-
-
+    <script src="/js/sinpe-pay.js"></script>
 </body>
 
 </html>

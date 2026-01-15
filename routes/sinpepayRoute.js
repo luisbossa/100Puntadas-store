@@ -35,4 +35,26 @@ router.get("/payment-sinpe", async (req, res) => {
   }
 });
 
-module.exports = router; 
+router.get("/payment-sinpe/:id/status", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const { rows } = await db.query("SELECT status FROM orders WHERE id = $1", [
+      id,
+    ]);
+
+    if (!rows.length) {
+      return res.json({ ok: false });
+    }
+
+    res.json({
+      ok: true,
+      status: rows[0].status,
+    });
+  } catch (err) {
+    console.error(err);
+    res.json({ ok: false });
+  }
+});
+
+module.exports = router;
