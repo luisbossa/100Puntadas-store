@@ -639,7 +639,7 @@ const beachwearProducts = {
   sorbetLime: {
     id: "sorbet-lime",
     slug: "sorbet-lime",
-    productType: "crochet",
+    productType: "bikini",
     link: "#",
     name: "SORBET LIME",
     price: 30000,
@@ -660,7 +660,7 @@ const beachwearProducts = {
   sorbetPink: {
     id: "sorbet-pink",
     slug: "sorbet-pink",
-    productType: "crochet",
+    productType: "bikini",
     link: "#",
     name: "SORBET PINK",
     price: 30000,
@@ -681,7 +681,7 @@ const beachwearProducts = {
   sorbetBubblegum: {
     id: "sorbet-bubblegum",
     slug: "sorbet-bubblegum",
-    productType: "crochet",
+    productType: "bikini",
     link: "#",
     name: "SORBET BUBBLEGUM",
     price: 30000,
@@ -702,7 +702,7 @@ const beachwearProducts = {
   cookie: {
     id: "cookie",
     slug: "cookie",
-    productType: "crochet",
+    productType: "bikini",
     link: "#",
     name: "COOKIE",
     price: 30000,
@@ -723,7 +723,7 @@ const beachwearProducts = {
   santorini: {
     id: "santorini",
     slug: "santorini",
-    productType: "crochet",
+    productType: "bikini",
     link: "#",
     name: "SANTORINI",
     price: 30000,
@@ -744,7 +744,7 @@ const beachwearProducts = {
   aphrodite: {
     id: "aphrodite",
     slug: "aphrodite",
-    productType: "crochet",
+    productType: "bikini",
     link: "#",
     name: "APHRODITE",
     price: 33500,
@@ -765,7 +765,7 @@ const beachwearProducts = {
   cherry: {
     id: "cherry",
     slug: "cherry",
-    productType: "crochet",
+    productType: "bikini",
     link: "#",
     name: "CHERRY",
     price: 30000,
@@ -786,7 +786,7 @@ const beachwearProducts = {
   bdayCake: {
     id: "bday-cake",
     slug: "bday-cake",
-    productType: "crochet",
+    productType: "bikini",
     link: "#",
     name: "BDAY CAKE",
     price: 30000,

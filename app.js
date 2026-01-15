@@ -7,13 +7,13 @@ const expressLayout = require("express-ejs-layouts");
 
 const app = express();
 
-// ✅ Inicializar Sentry solo en producción
+// Inicializar Sentry solo en producción
 if (process.env.NODE_ENV === "production") {
   const Sentry = require("@sentry/node");
   const Tracing = require("@sentry/tracing");
 
   Sentry.init({
-    dsn: process.env.SENTRY_DSN, // Tu DSN de Sentry
+    dsn: process.env.SENTRY_DSN, 
     integrations: [
       new Sentry.Integrations.Http({ tracing: true }),
       new Tracing.Integrations.Express({ app }),
@@ -36,14 +36,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(expressLayout);
 
-// EJS config
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-// Static files
 app.use(express.static(path.join(__dirname, "public")));
 
-// Pasar la clave pública al frontend
 app.locals.ONVO_PUBLIC_KEY = process.env.ONVOPAY_PUBLIC_KEY;
 
 // Routes
@@ -53,7 +50,6 @@ app.use(require("./routes/checkoutRoute"));
 app.use(require("./routes/onvopayRoute"));
 app.use(require("./routes/sinpepayRoute"));
 
-// ✅ Middleware de error de Sentry (solo si está activo)
 if (process.env.NODE_ENV === "production") {
   const Sentry = require("@sentry/node");
   app.use(Sentry.Handlers.errorHandler());
