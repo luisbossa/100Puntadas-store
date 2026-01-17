@@ -1,5 +1,4 @@
 .testimonials-section {
-  overflow: hidden;
   padding: 8rem 5rem 7rem;
 }
 
@@ -99,13 +98,13 @@
 
 .profile-wrap.is-2 {
   top: 18rem;
-  left: -3rem;
+  left: -4rem;
 }
 
 .profile-wrap.is-3 {
   top: 7rem;
   left: auto;
-  right: -1rem;
+  right: -2.3rem;
 }
 
 .profile-wrap.is-5 {
@@ -253,18 +252,15 @@
   top: -7px;
   left: -9px;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(60% + 18px); 
   padding: 10px 15px;
   background-color: #fff;
   border-radius: 10px;
   border: 1px solid #d8d9da;
   border-bottom: 0;
   border-right: 0;
-  gap: 2rem;
-}
-
-.testimonial-stars img {
-  width: 90px;
-  margin-top: -7px;
 }
 
 .testimonial-user {
@@ -273,6 +269,12 @@
   letter-spacing: 1px;
   font-size: 0.9rem;
   color: #222;
+  white-space: nowrap;
+}
+
+.testimonial-stars img {
+  width: 80px;
+  display: block;
 }
 
 .testimonial-media {

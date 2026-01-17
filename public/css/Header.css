@@ -175,6 +175,9 @@
 .mobile-menu.active .mobile-link:nth-of-type(6) {
   transition-delay: 0.65s;
 }
+.mobile-menu.active .mobile-link:nth-of-type(7) {
+  transition-delay: 0.75s;
+}
 
 .navsize-button {
   background-color: rgba(0, 0, 0, 0);
