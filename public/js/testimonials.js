@@ -15,8 +15,7 @@ const testimonials = [
   { user: "@tali_a", image: "/images/chats/chat-14.jpeg" },
   { user: "@marimarr", image: "/images/chats/chat-15.jpeg" },
   { user: "@clauuuv", image: "/images/chats/chat-16.jpeg" },
-  { user: "@ochetlab", image: "/images/chats/chat-17.jpeg" },
-  { user: "@lizroch", image: "/images/chats/chat-18.jpeg" },
+  { user: "@lizroch", image: "/images/chats/chat-17.jpeg" },
 ];
 
 const marqueeList = document.getElementById("marqueeList");
