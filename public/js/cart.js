@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <p>₡${item.price.toLocaleString("es-CR")}</p>
 
               <div class="quantity-controls">
-                <button class="quantity-btn decrease">-</button>
+                <button class="quantity-btn decrease">–</button> 
                 <input
                   type="number"
                   class="quantity-input"

@@ -140,7 +140,7 @@
 .totals {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .totals-row {
@@ -203,7 +203,9 @@
 .cart-item.fade-out {
   opacity: 0;
   transform: scale(0.95);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 }
 
 .delete-btn {
@@ -248,7 +250,10 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  transition: opacity 0.25s ease, transform 0.15s ease;
+  font-weight: 600;
+  transition:
+    opacity 0.25s ease,
+    transform 0.15s ease;
 }
 
 .quantity-btn:focus {
@@ -299,9 +304,6 @@
   margin: 5rem auto 0;
 }
 
-/* ==========================
-   MOBILE
-========================== */
 @media (max-width: 480px) {
   .cart-panel {
     width: 100%;
