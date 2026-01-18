@@ -44,6 +44,20 @@ document.addEventListener("DOMContentLoaded", async () => {
     return true;
   }
 
+  function scrollToFirstError() {
+    const firstErrorField = document.querySelector(".field.error");
+
+    if (!firstErrorField) return;
+
+    firstErrorField.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+
+    const input = firstErrorField.querySelector("input, select, textarea");
+    input?.focus({ preventScroll: true });
+  }
+
   function clearCheckoutForm() {
     document
       .querySelectorAll("input:not([type='radio']), textarea")
@@ -51,11 +65,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     document.querySelectorAll("select").forEach((select) => {
       select.selectedIndex = 0;
-      select.disabled = select.id !== "province";
     });
 
     const defaultShipping = document.querySelector(
-      'input[name="shipping_type"][value="correos"]'
+      'input[name="shipping_type"][value="correos"]',
     );
     if (defaultShipping) defaultShipping.checked = true;
 
@@ -92,7 +105,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   /* ================= SUBTOTAL ================= */
   const subtotal = data.cart.reduce(
     (sum, i) => sum + normalizePrice(i.price) * Number(i.quantity),
-    0
+    0,
   );
 
   /* ================= RESUMEN DE PRODUCTOS ================= */
@@ -150,6 +163,41 @@ document.addEventListener("DOMContentLoaded", async () => {
   const cantonSelect = document.getElementById("canton");
   const districtSelect = document.getElementById("district");
 
+  cantonSelect.dataset.locked = "true";
+  districtSelect.dataset.locked = "true";
+
+  cantonSelect.addEventListener("mousedown", (e) => {
+    if (cantonSelect.dataset.locked === "true") {
+      e.preventDefault();
+      showFieldError(provinceSelect, "Primero debes seleccionar una provincia");
+    }
+  });
+
+  districtSelect.addEventListener("mousedown", (e) => {
+    if (districtSelect.dataset.locked === "true") {
+      e.preventDefault();
+      showFieldError(cantonSelect, "Primero debes seleccionar un cantón");
+    }
+  });
+
+  provinceSelect.addEventListener("change", () => {
+    const field = provinceSelect.closest(".field");
+    if (!field) return;
+
+    field.classList.remove("error");
+    const msg = field.querySelector(".error-msg");
+    if (msg) msg.textContent = "";
+  });
+
+  cantonSelect.addEventListener("change", () => {
+    const field = cantonSelect.closest(".field");
+    if (!field) return;
+
+    field.classList.remove("error");
+    const msg = field.querySelector(".error-msg");
+    if (msg) msg.textContent = "";
+  });
+
   /* ================= FORMATOS INPUT ================= */
   const phoneInput = document.querySelector('[name="phone"]');
   const idInput = document.querySelector('[name="national_id"]');
@@ -182,8 +230,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   provinceSelect.addEventListener("change", async () => {
     cantonSelect.innerHTML = `<option value="">Cantón</option>`;
     districtSelect.innerHTML = `<option value="">Distrito</option>`;
-    cantonSelect.disabled = true;
-    districtSelect.disabled = true;
 
     if (!provinceSelect.value) return;
 
@@ -194,12 +240,11 @@ document.addEventListener("DOMContentLoaded", async () => {
       .map((c) => `<option value="${c.code}">${c.canton}</option>`)
       .join("");
 
-    cantonSelect.disabled = false;
+    cantonSelect.dataset.locked = "false";
   });
 
   cantonSelect.addEventListener("change", async () => {
     districtSelect.innerHTML = `<option value="">Distrito</option>`;
-    districtSelect.disabled = true;
 
     if (!cantonSelect.value) return;
 
@@ -210,7 +255,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       .map((d) => `<option value="${d.code}">${d.district}</option>`)
       .join("");
 
-    districtSelect.disabled = false;
+    districtSelect.dataset.locked = "false";
   });
 
   loadProvinces();
@@ -230,7 +275,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   function updateShipping() {
     const type = document.querySelector(
-      'input[name="shipping_type"]:checked'
+      'input[name="shipping_type"]:checked',
     )?.value;
 
     currentShipping = type === "correos" ? SHIPPING_COST : 0;
@@ -255,7 +300,10 @@ document.addEventListener("DOMContentLoaded", async () => {
           if (!validateField(f)) valid = false;
         });
 
-      if (!valid) return;
+      if (!valid) {
+        scrollToFirstError();
+        return;
+      }
 
       data.email = getVal("email");
       data.phone = getVal("phone");
@@ -269,7 +317,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       data.district = getVal("district");
 
       const paymentMethod = document.querySelector(
-        'input[name="payment_method"]:checked'
+        'input[name="payment_method"]:checked',
       )?.value;
       data.payment_method = paymentMethod;
 
@@ -314,7 +362,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (paymentMethod === "card") {
           const orderData = {
             orderId,
-            orderNumber, // ✅ CORRECTO (5 dígitos)
+            orderNumber,
             total: data.totals.total,
             paymentMethod: "Tarjeta",
             createdAt: new Date().toISOString(),
@@ -343,7 +391,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           }
 
           location.replace(
-            `/payment?paymentIntentId=${jsonPayment.paymentIntentId}&orderNumber=${orderNumber}`
+            `/payment?paymentIntentId=${jsonPayment.paymentIntentId}&orderNumber=${orderNumber}`,
           );
         } else if (paymentMethod === "sinpe") {
           const orderData = {
@@ -366,4 +414,21 @@ document.addEventListener("DOMContentLoaded", async () => {
         alert("Error interno al procesar el pago");
       }
     });
+
+  function showFieldError(input, text) {
+    const field = input.closest(".field");
+    if (!field) return;
+
+    let msg = field.querySelector(".error-msg");
+    if (!msg) {
+      msg = document.createElement("small");
+      msg.className = "error-msg";
+      field.appendChild(msg);
+    }
+
+    field.classList.add("error");
+    msg.textContent = text;
+
+    field.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
 });
