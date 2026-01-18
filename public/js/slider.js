@@ -26,7 +26,7 @@ function checkScreenWidth() {
         const swiper = new Swiper(this, {
           slidesPerView: 1,
           slidesPerGroup: 1,
-          spaceBetween: 0, // 🔥 CLAVE
+          spaceBetween: 24, 
           grabCursor: true,
           centeredSlides: false,
           pagination: {
