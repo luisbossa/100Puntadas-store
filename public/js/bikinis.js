@@ -208,21 +208,21 @@ const bikinis = [
   },
   {
     nombre: "EMERALD",
-    precio: "31.000 ₡",
+    precio: "29.000 ₡",
     imagen: "/images/swimwears/swimwear-24.jpeg",
     link: "/product/emerald",
     stock: 1,
     discount: 0,
-    oldPrice: "32.500 ₡",
+    oldPrice: "30.000 ₡",
   },
   {
     nombre: "RED MOSAIC",
-    precio: "29.000 ₡",
+    precio: "31.000 ₡",
     imagen: "/images/swimwears/swimwear-25.jpeg",
     link: "/product/redMosaic",
     stock: 1,
     discount: 0,
-    oldPrice: "30.000 ₡",
+    oldPrice: "32.000 ₡",
   },
 ];
 

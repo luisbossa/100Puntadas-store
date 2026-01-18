@@ -543,7 +543,7 @@ const beachwearProducts = {
     productType: "bikini",
     link: "#",
     name: "EMERALD",
-    price: 31000,
+    price: 29000,
     currency: "₡",
     description:
       "Un verde profundo que conecta con la naturaleza. Emerald es una pieza limpia y poderosa.",
@@ -565,7 +565,7 @@ const beachwearProducts = {
     productType: "bikini",
     link: "#",
     name: "RED MOSAIC",
-    price: 29000,
+    price: 31000,
     currency: "₡",
     description:
       "Vibrante y lleno de energía. Su contraste audaz entre el rojo intenso y los bordes bordados en blanco, forman un patrón geométrico que evoca arte.",

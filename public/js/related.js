@@ -139,13 +139,13 @@ const relatedProducts = [
   },
   {
     nombre: "EMERALD",
-    precio: "31.000 ₡",
+    precio: "29.000 ₡",
     imagen: "/images/swimwears/swimwear-24.jpeg",
     link: "/product/emerald",
   },
   {
     nombre: "RED MOSAIC",
-    precio: "29.000 ₡",
+    precio: "31.000 ₡",
     imagen: "/images/swimwears/swimwear-25.jpeg",
     link: "/product/redMosaic",
   },
