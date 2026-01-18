@@ -23,4 +23,3 @@ app.use(require("./routes/onvopayRoute"));
 app.use(require("./routes/sinpepayRoute"));
 
 module.exports = app;
-
