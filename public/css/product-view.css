@@ -1304,6 +1304,14 @@ em {
   padding: 9rem 8rem 4%;
 }
 
+.related-div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 5rem 8rem 4%;
+}
+
 .page-padding.overflow-none {
   overflow: hidden;
 }
@@ -5115,6 +5123,10 @@ em {
 @media screen and (max-width: 1500px) {
   .page-view {
     padding: 7rem 1.5rem 1rem;
+  }
+
+  .related-div {
+    padding: 4rem 1.5rem 1rem;
   }
 }
 

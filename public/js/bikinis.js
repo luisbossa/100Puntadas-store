@@ -217,7 +217,7 @@ const bikinis = [
   },
   {
     nombre: "RED MOSAIC",
-    precio: "27.000 ₡",
+    precio: "29.000 ₡",
     imagen: "/images/swimwears/swimwear-25.jpeg",
     link: "/product/redMosaic",
     stock: 1,
