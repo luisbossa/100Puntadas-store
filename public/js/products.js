@@ -515,6 +515,72 @@ const beachwearProducts = {
       { label: "HILO", img: "/images/thong.png" },
     ],
   },
+  flora: {
+    id: "flora",
+    slug: "flora",
+    productType: "bikini",
+    link: "#",
+    name: "FLORA",
+    price: 32500,
+    currency: "₡",
+    description:
+      "Un diseño que florece sobre la piel. Realza el cuerpo con un encanto natural y estilo propio.",
+    description2: "Bikini de licra clásico. Posee varillas incorporadas para mayor soporte.",
+    images: [
+      "/images/swimwears/swimwear-23.jpeg",
+      "/images/products/product-23.1.jpeg",
+      "/images/products/product-23.2.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  emerald: {
+    id: "emerald",
+    slug: "emerald",
+    productType: "bikini",
+    link: "#",
+    name: "EMERALD",
+    price: 31000,
+    currency: "₡",
+    description:
+      "Un verde profundo que conecta con la naturaleza. Emerald es una pieza limpia y poderosa.",
+    description2:
+      "Bikini de licra clásico. Posee varillas incorporadas para mayor soporte.",
+    images: [
+      "/images/swimwears/swimwear-24.jpeg",
+      "/images/products/product-24.1.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
+  redMosaic: {
+    id: "red-mosaic",
+    slug: "red-mosaic",
+    productType: "bikini",
+    link: "#",
+    name: "RED MOSAIC",
+    price: 27000,
+    currency: "₡",
+    description:
+      "Vibrante y lleno de energía. Su contraste audaz entre el rojo intenso y los bordes bordados en blanco, forman un patrón geométrico que evoca arte.",
+    description2:
+      "Bikini de licra clásico. Posee varillas incorporadas para mayor soporte.",
+    images: [
+      "/images/swimwears/swimwear-25.jpeg",
+      "/images/products/product-25.1.jpeg",
+    ],
+    sizes: ["XS", "S", "M", "L"],
+    styles: [
+      { label: "REGULAR", img: "/images/regular.png" },
+      { label: "HILO", img: "/images/thong.png" },
+    ],
+  },
 
   // ===== JUMPSUITS =====
 
@@ -646,7 +712,8 @@ const beachwearProducts = {
     currency: "₡",
     description:
       "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
-    description2: "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/crochets/crochet-3.jpeg",
       "/images/crochets/crochet-3.1.jpeg",
@@ -668,7 +735,8 @@ const beachwearProducts = {
     currency: "₡",
     description:
       "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
-    description2: "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/crochets/crochet-4.jpeg",
       "/images/crochets/crochet-4.1.jpeg",
@@ -690,7 +758,8 @@ const beachwearProducts = {
     currency: "₡",
     description:
       "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
-    description2: "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/crochets/crochet-5.jpeg",
       "/images/crochets/crochet-5.1.jpeg",
@@ -712,7 +781,8 @@ const beachwearProducts = {
     currency: "₡",
     description:
       "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
-    description2: "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/crochets/crochet-6.jpeg",
       "/images/crochets/crochet-6.1.jpeg",
@@ -733,7 +803,8 @@ const beachwearProducts = {
     currency: "₡",
     description:
       "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
-    description2: "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/crochets/crochet-7.jpeg",
       "/images/crochets/crochet-7.1.jpeg",
@@ -754,7 +825,8 @@ const beachwearProducts = {
     currency: "₡",
     description:
       "Amamos la combinación negro con dorado, le dá un acabado de lujo.",
-    description2: "Elaborado 100% a mano en crochet con elásticos flexibles que se ajustan muy bien a tu figura.",
+    description2:
+      "Elaborado 100% a mano en crochet con elásticos flexibles que se ajustan muy bien a tu figura.",
     images: [
       "/images/crochets/crochet-8.jpeg",
       "/images/crochets/crochet-8.1.jpeg",
@@ -775,7 +847,8 @@ const beachwearProducts = {
     currency: "₡",
     description:
       "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
-    description2: "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/crochets/crochet-9.jpeg",
       "/images/crochets/crochet-9.1.jpeg",
@@ -796,7 +869,8 @@ const beachwearProducts = {
     currency: "₡",
     description:
       "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
-    description2: "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
+    description2:
+      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
       "/images/crochets/crochet-10.jpeg",
       "/images/crochets/crochet-10.1.jpeg",
@@ -923,7 +997,7 @@ const hideFirstAccordionFor = ["one-piece", "crochet", "set"];
 
 if (hideFirstAccordionFor.includes(product.productType)) {
   const firstAccordionItem = document.querySelector(
-    ".accordion-section .accordion-item:first-child"
+    ".accordion-section .accordion-item:first-child",
   );
 
   if (firstAccordionItem) {
@@ -959,7 +1033,7 @@ if (imagesWrap) {
       <div class="product-img-wrap swiper-slide">
         <img src="${img}" alt="${product.name} ${i + 1}" class="product-img">
       </div>
-    `
+    `,
     )
     .join("");
 }
@@ -976,11 +1050,11 @@ function renderSizes(containerId, name, sizes) {
       (size, i) => `
       <label class="variant-btn">
         <input type="radio" name="${name}" value="${size}" ${
-        i === 0 ? "checked" : ""
-      } hidden>
+          i === 0 ? "checked" : ""
+        } hidden>
         ${size}
       </label>
-    `
+    `,
     )
     .join("");
 }
@@ -1002,11 +1076,11 @@ function renderColors(containerId, name, colors) {
       (color, i) => `
       <label class="color-swatch">
         <input type="radio" name="${name}" value="${color.id}" ${
-        i === 0 ? "checked" : ""
-      } hidden>
+          i === 0 ? "checked" : ""
+        } hidden>
         <span class="color-circle" data-color="${color.id}"></span>
       </label>
-    `
+    `,
     )
     .join("");
 }
@@ -1036,12 +1110,12 @@ if (isBikini) {
         <img src="${style.img}" class="style-img">
         <label class="style-btn">
           <input type="radio" name="bottom-style" value="${style.label}" ${
-        i === 0 ? "checked" : ""
-      } hidden>
+            i === 0 ? "checked" : ""
+          } hidden>
           ${style.label}
         </label>
       </div>
-    `
+    `,
     )
     .join("");
 
@@ -1085,13 +1159,13 @@ function buildCartItem() {
 
   if (isBikini) {
     item.topSize = document.querySelector(
-      'input[name="top-size"]:checked'
+      'input[name="top-size"]:checked',
     )?.value;
     item.bottomSize = document.querySelector(
-      'input[name="bottom-size"]:checked'
+      'input[name="bottom-size"]:checked',
     )?.value;
     item.bottomStyle = document.querySelector(
-      'input[name="bottom-style"]:checked'
+      'input[name="bottom-style"]:checked',
     )?.value;
 
     if (!item.topSize || !item.bottomSize || !item.bottomStyle) {
@@ -1100,10 +1174,10 @@ function buildCartItem() {
     }
   } else if (hasTopBottom) {
     item.topSize = document.querySelector(
-      'input[name="top-size"]:checked'
+      'input[name="top-size"]:checked',
     )?.value;
     item.bottomSize = document.querySelector(
-      'input[name="bottom-size"]:checked'
+      'input[name="bottom-size"]:checked',
     )?.value;
     item.color = document.querySelector('input[name="color"]:checked')?.value;
 
@@ -1113,7 +1187,7 @@ function buildCartItem() {
     }
   } else {
     item.size = document.querySelector(
-      'input[name="single-size"]:checked'
+      'input[name="single-size"]:checked',
     )?.value;
     item.color = document.querySelector('input[name="color"]:checked')?.value;
 
@@ -1204,7 +1278,7 @@ document.getElementById("buyNowBtn")?.addEventListener("click", () => {
         shipping,
         discount,
       },
-    })
+    }),
   );
 
   window.location.href = "/checkout";

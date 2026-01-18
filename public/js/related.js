@@ -131,6 +131,24 @@ const relatedProducts = [
     imagen: "/images/swimwears/swimwear-22.jpeg",
     link: "/product/leopard",
   },
+  {
+    nombre: "FLORA",
+    precio: "32.500 ₡",
+    imagen: "/images/swimwears/swimwear-23.jpeg",
+    link: "/product/flora",
+  },
+  {
+    nombre: "EMERALD",
+    precio: "31.000 ₡",
+    imagen: "/images/swimwears/swimwear-24.jpeg",
+    link: "/product/emerald",
+  },
+  {
+    nombre: "RED MOSAIC",
+    precio: "27.000 ₡",
+    imagen: "/images/swimwears/swimwear-25.jpeg",
+    link: "/product/redMosaic",
+  },
 
   // ===== JUMPSUITS =====
   {
@@ -257,7 +275,7 @@ function generateProducts() {
   const currentPath = window.location.pathname;
 
   const filteredProducts = relatedProducts.filter(
-    (product) => product.link !== currentPath
+    (product) => product.link !== currentPath,
   );
 
   // Mezclar y tomar los primeros N productos
