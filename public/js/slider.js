@@ -15,30 +15,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
 var mySwiper;
 
+let swipers = [];
+
 function checkScreenWidth() {
   if (window.innerWidth < 768) {
-    if (!mySwiper) {
-      $(".shop-swiper").each(function (index, element) {
-        let nav = $(this).find(".swiper-pagination")[0];
-        mySwiper = new Swiper($(this)[0], {
-          // Your options here
-          // loop: true,
-          grabCursor: true,
+    if (swipers.length === 0) {
+      $(".shop-swiper").each(function () {
+        const nav = $(this).find(".swiper-pagination")[0];
+
+        const swiper = new Swiper(this, {
           slidesPerView: 1,
           slidesPerGroup: 1,
-          spaceBetween: 20,
+          spaceBetween: 0, // 🔥 CLAVE
+          grabCursor: true,
+          centeredSlides: false,
           pagination: {
             el: nav,
             clickable: true,
           },
         });
+
+        swipers.push(swiper);
       });
     }
   } else {
-    if (mySwiper) {
-      mySwiper.destroy(true, true);
-      mySwiper = null;
-    }
+    swipers.forEach((swiper) => swiper.destroy(true, true));
+    swipers = [];
   }
 }
 

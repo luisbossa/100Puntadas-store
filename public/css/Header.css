@@ -20,27 +20,37 @@
 
 .links-div {
   width: 100%;
+  max-width: 1930px;
   height: 85px;
+
   display: flex;
-  font-size: 1rem;
   align-items: center;
-  justify-content: space-between;
-  outline: none;
+
+  position: relative;
 }
+
 
 .nav-links {
+  flex: 1;
   display: flex;
   align-items: center;
-  gap: 3rem;
+  justify-content: flex-start;
+
+  gap: clamp(1.2rem, 2.5vw, 3rem);
 }
 
+
 .navsize-link {
+  font-family: Hatton, Arial, sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-family: Hatton, Arial, sans-serif;
-  letter-spacing: 1px;
+
+  font-size: clamp(0.7rem, 0.85vw, 1rem);
+
   transition: color 0.3s ease;
+  white-space: nowrap;
 }
+
 
 .navsize-link:hover {
   color: #3d3d3d;
@@ -68,10 +78,14 @@
 }
 
 .cart-rightdiv {
+  flex: 1;
   display: flex;
   align-items: center;
-  gap: 25px;
+  justify-content: flex-end;
+
+  gap: clamp(0.8rem, 2vw, 1.6rem);
 }
+
 
 .hamburger.hide {
   opacity: 0;
@@ -123,12 +137,12 @@
   position: fixed;
   top: 0;
   left: -100%;
-  background: #ffa4db;
   display: flex;
   flex-direction: column;
   padding: 7rem 2rem 2rem 2rem;
-  gap: 2.5rem;
+  background: linear-gradient(to top, #ffa4db 15%, #fcfaf6 45%);
   transition: left 0.4s ease;
+  gap: 2.5rem;
   z-index: 200;
 }
 
@@ -205,9 +219,10 @@
 
 .cart-button {
   position: relative;
-  margin-left: auto;
+  margin-left: 25px;
   display: flex;
   align-items: center;
+  font-size: clamp(0.7rem, 0.8vw, 0.9rem);
   text-transform: uppercase;
   letter-spacing: 1px;
   border: 1px none #161616;

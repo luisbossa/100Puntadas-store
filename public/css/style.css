@@ -2730,7 +2730,7 @@
 .collection {
   width: 100%;
   height: auto;
-  padding: 10rem 8rem 4%;
+  padding: 7rem 8rem 4%;
 }
 
 .collection-list-shirts {
@@ -4094,7 +4094,7 @@
 
 @media screen and (max-width: 770px) {
   .collection {
-    padding-top: 6rem;
+    padding-top: 4rem;
   }
 
   .collection-list-shirts {

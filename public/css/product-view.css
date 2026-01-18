@@ -1048,7 +1048,6 @@ em {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 7rem;
   padding-bottom: 1rem;
   display: flex;
   position: relative;
@@ -1302,7 +1301,7 @@ em {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding: 3rem 8rem 4%;
+  padding: 9rem 8rem 4%;
 }
 
 .page-padding.overflow-none {
@@ -3441,8 +3440,8 @@ em {
   max-height: 25em;
   max-width: 25em;
   flex-direction: column;
-  margin-right: 1em;
   transition: margin 0.5s;
+  border-radius: 10px;
   display: flex;
   position: relative;
 }
@@ -4634,6 +4633,7 @@ em {
   }
 
   .product-img-wrap.swiper-slide {
+    width: 690px;
     height: auto;
     max-height: none;
     max-width: none;
@@ -5114,7 +5114,7 @@ em {
 
 @media screen and (max-width: 1500px) {
   .page-view {
-    padding: 3rem 1.5rem 1rem;
+    padding: 7rem 1.5rem 1rem;
   }
 }
 
@@ -5211,3 +5211,8 @@ em {
   height: auto;
   margin-bottom: 0vh;
 }
+
+.shop-swiper {
+  overflow: hidden;
+}
+

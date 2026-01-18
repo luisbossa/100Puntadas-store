@@ -12,7 +12,7 @@
   width: max-content;
   display: flex;
   align-items: center;
-  animation: marquee 18s linear infinite;
+  animation: marquee 30s linear infinite;
   gap: 5rem;
 }
 

@@ -40,7 +40,7 @@
 
 
             <div class="cart-rightdiv">
-                <a href="#testimonials" class="navsize-link">Testimonios</a>
+                <a href="<%= isHome ? '#testimonials' : '/#testimonials' %>" class="navsize-link">Testimonios</a>
                 <a href="/sizes" class="navsize-link">Tallas</a>
                 <button id="openCartBtn" class="cart-button">
                     <span class="cart-text">Carrito</span>
@@ -76,6 +76,6 @@
     <a href="<%= isHome ? '#jumpsuits' : '/#jumpsuits' %>" class="mobile-link">Enterizos</a>
     <a href="<%= isHome ? '#crochets' : '/#crochets' %>" class="mobile-link">Bikinis tejidos</a>
     <a href="<%= isHome ? '#sets' : '/#sets' %>" class="mobile-link">Sets de playa</a>
-    <a href="#testimonials" class="mobile-link">Testimonios</a>
+    <a href="<%= isHome ? '#testimonials' : '/#testimonials' %>" class="mobile-link">Testimonios</a>
     <a href="/sizes" class="mobile-link">Tallas</a>
 </header>
