@@ -264,7 +264,9 @@ select.input:focus {
   opacity: 0;
   margin-left: 5px;
   transform: translateY(-4px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
 .rb-msg {
@@ -276,7 +278,9 @@ select.input:focus {
   font-size: 0.85rem;
   opacity: 0;
   transform: translateY(-4px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
 .rb-msg.show {
@@ -380,7 +384,9 @@ select.input:focus {
   border: 1.5px solid #ddd;
   border-radius: 12px;
   cursor: pointer;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease,
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
     background 0.25s ease;
   background: #fff;
 }
@@ -573,7 +579,9 @@ select.input:focus {
   opacity: 0;
   overflow: hidden;
   transform: translateY(-4px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
   pointer-events: none;
 }
 
@@ -601,5 +609,14 @@ select.input:focus {
   .card,
   .summary-card {
     padding: 1.5rem 1.3rem;
+  }
+
+  .trust-item span {
+    font-size: 12px;
+  }
+
+  .trust-img {
+    width: 35px;
+    height: 35px;
   }
 }
