@@ -26,7 +26,6 @@
 
 .terms-title {
   font-size: clamp(1rem, 1.8vw, 1.8rem);
-  margin-top: 4rem;
   margin-bottom: 10px;
   font-weight: 600;
   text-transform: uppercase;
