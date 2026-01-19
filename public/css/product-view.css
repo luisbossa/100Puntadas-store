@@ -2948,8 +2948,7 @@ em {
 }
 
 .shop-thumb-wrap {
-  height: 277.33px;
-  padding-bottom: 100%;
+  height: 237px;
   position: relative;
 }
 
@@ -4996,8 +4995,8 @@ em {
   }
 
   .store-coll-list {
-    grid-column-gap: 2em;
-    grid-row-gap: 2em;
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
   }
 
   .cart-container {
