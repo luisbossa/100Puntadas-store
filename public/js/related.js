@@ -261,7 +261,7 @@ const relatedProducts = [
 ];
 
 const container = document.getElementById("macy-container");
-const RELATED_LIMIT = 3;
+const RELATED_LIMIT = 4;
 
 function shuffleArray(array) {
   return [...array].sort(() => Math.random() - 0.5);
@@ -278,7 +278,6 @@ function generateProducts() {
     (product) => product.link !== currentPath,
   );
 
-  // Mezclar y tomar los primeros N productos
   const randomProducts = shuffleArray(filteredProducts).slice(0, RELATED_LIMIT);
 
   randomProducts.forEach((product) => {

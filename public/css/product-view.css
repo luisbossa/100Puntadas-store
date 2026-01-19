@@ -2925,7 +2925,7 @@ em {
 .store-coll-list {
   display: grid;
   grid-template-rows: auto;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-auto-columns: 1fr;
   grid-column-gap: 2em;
   grid-row-gap: 4em;
@@ -2957,35 +2957,23 @@ em {
 }
 
 .shop-thumb-wrap {
-  height: 237px;
-  position: relative;
-}
-
-@media (min-width: 768px) {
-  .shop-thumb-wrap {
-    height: 640px;
-  }
-}
-
-.shop-item-link {
   width: 100%;
+  overflow: hidden;
 }
 
 .shop-thumb-img {
   width: 100%;
-  height: 100%;
   object-fit: cover;
-  position: absolute;
   border-radius: 10px;
   border: 1px solid #d8d9da;
-  top: 0%;
-  bottom: 0%;
-  left: 0%;
-  right: 0%;
 }
 
 .shop-thumb-img.is-hover {
   opacity: 0;
+}
+
+.shop-item-link {
+  width: 100%;
 }
 
 .shop-nav {
