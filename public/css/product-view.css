@@ -1115,7 +1115,12 @@ em {
 }
 
 .text-font-variant {
-  font-family: Times New Roman, TimesNewRoman, Times, Baskerville, Georgia,
+  font-family:
+    Times New Roman,
+    TimesNewRoman,
+    Times,
+    Baskerville,
+    Georgia,
     serif;
 }
 
@@ -1364,7 +1369,9 @@ em {
 
 .font-raster {
   letter-spacing: -0.01em;
-  font-family: Fkrastergrotesktrial blended, sans-serif;
+  font-family:
+    Fkrastergrotesktrial blended,
+    sans-serif;
   font-size: 0.9em;
   line-height: 1;
 }
@@ -2467,7 +2474,9 @@ em {
 }
 
 .nav__line.transitions {
-  transition: transform 0.2s, width 0.2s;
+  transition:
+    transform 0.2s,
+    width 0.2s;
 }
 
 .img-news {
@@ -2950,6 +2959,12 @@ em {
 .shop-thumb-wrap {
   height: 237px;
   position: relative;
+}
+
+@media (min-width: 768px) {
+  .shop-thumb-wrap {
+    height: 336px;
+  }
 }
 
 .shop-item-link {
@@ -3615,7 +3630,9 @@ em {
   font-family: Hatton, Arial, sans-serif;
   font-size: clamp(1rem, 2.5vw, 1.3rem);
   font-weight: 400;
-  transition: background-color 0.3s ease, color 0.3s ease,
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
     border-color 0.3s ease;
 }
 
@@ -3721,7 +3738,10 @@ em {
   font-family: Hatton, Arial, sans-serif;
   font-size: clamp(0.9rem, 1.5vw + 0.5rem, 1.3rem);
   font-weight: 400;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
   text-align: center;
   cursor: pointer;
   box-sizing: border-box;
@@ -3747,7 +3767,10 @@ em {
   font-family: Hatton, Arial, sans-serif;
   font-size: clamp(0.8rem, 1.2vw, 1.2rem);
   font-weight: 400;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
   text-align: center;
   cursor: pointer;
   box-sizing: border-box;
@@ -4048,7 +4071,9 @@ em {
   cursor: pointer;
   background-color: #b6b6b6;
   border-radius: 5rem;
-  transition: width 0.2s, opacity 0.2s;
+  transition:
+    width 0.2s,
+    opacity 0.2s;
 }
 
 .div-block-18 {
@@ -4206,7 +4231,10 @@ em {
   cursor: pointer;
   box-sizing: border-box;
   user-select: none;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
   gap: 0.2rem;
 }
 
@@ -5161,7 +5189,9 @@ em {
   background-size: cover;
   background-position: center;
   border: 1px solid #dcdcdc;
-  transition: transform 0.25s ease, border 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    border 0.25s ease;
 }
 
 /* Hover */
@@ -5222,5 +5252,3 @@ em {
   height: auto;
   margin-bottom: 0vh;
 }
-
-
