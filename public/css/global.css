@@ -29,7 +29,7 @@ html {
 }
 
 body {
-  height: 100dvh;
+  height: auto;
   background-color: #FCFAF6;
   font-family: sans-serif;
   font-size: 14px;
