@@ -35,12 +35,11 @@ body {
   font-size: 14px;
   line-height: 20px;
   color: #161616;
-  overflow-x: hidden;
   user-select: none;
 }
 
 .no-scroll {
-  touch-action: none;
+  overflow: hidden;
 }
 
 article,
