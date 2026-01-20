@@ -12,7 +12,7 @@ closeMenuBtn.addEventListener("click", () => {
   document.body.classList.remove("no-scroll");
 });
 
-document.querySelectorAll(".mobile-link").forEach((link) => {
+document.querySelectorAll(".mobile-link").forEach(link => {
   link.addEventListener("click", () => {
     mobileMenu.classList.remove("active");
     document.body.classList.remove("no-scroll");
