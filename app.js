@@ -9,6 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(expressLayout);
+app.use("/onvo", express.json({ type: "*/*" }));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -21,5 +22,6 @@ app.use(require("./routes/productRoute"));
 app.use(require("./routes/checkoutRoute"));
 app.use(require("./routes/onvopayRoute"));
 app.use(require("./routes/sinpepayRoute"));
+app.use("/webhooks", require("./routes/webhookRoute"));
 
 module.exports = app;

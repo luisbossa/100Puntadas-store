@@ -12,6 +12,7 @@
     "ejs": "^3.1.10",
     "express": "^5.2.1",
     "express-ejs-layouts": "^2.5.1",
+    "nodemailer": "^7.0.12",
     "pg": "^8.16.3"
   },
   "devDependencies": {
