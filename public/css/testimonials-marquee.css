@@ -18,6 +18,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 32px;
+  overflow-x: hidden;
 }
 
 .circle-wrap {
