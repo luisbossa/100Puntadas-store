@@ -28,6 +28,7 @@
   font-size: clamp(1rem, 1.8vw, 1.8rem);
   margin-bottom: 10px;
   font-weight: 600;
+  line-height: 1.3rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   text-align: left;
