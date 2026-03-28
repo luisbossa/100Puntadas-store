@@ -1,0 +1,137 @@
+# 100puntadas Ecommerce
+
+Ecommerce desarrollado para **100puntadas**, una tienda online especializada en beachwear, bikinis, crochet, sets y piezas artesanales. El proyecto fue construido con una arquitectura full-stack basada en **Node.js + Express**, vistas renderizadas en servidor, base de datos relacional con **PostgreSQL**, integración de **pasarela de pago**, y automatización de correos transaccionales mediante **Gmail SMTP**.
+
+## Descripción
+
+Este proyecto permite a los usuarios explorar el catálogo de productos, seleccionar variantes como talla, estilo y color, agregar artículos al carrito, aplicar promociones automáticas y completar el proceso de compra mediante checkout con pago en línea.
+
+Además, incluye persistencia de carrito, cálculo de envío, descuentos por promociones, almacenamiento de órdenes y notificaciones por correo.
+
+## Tecnologías utilizadas
+
+### Backend
+
+- Node.js
+- Express.js
+- PostgreSQL
+- Gmail SMTP (Nodemailer)
+- Pasarela de pago
+
+### Frontend
+
+- HTML5
+- CSS3
+- JavaScript
+- EJS para renderizado dinámico
+
+### Base de datos
+
+- PostgreSQL
+- Modelado relacional para:
+  - productos
+  - variantes
+  - órdenes
+  - usuarios
+  - carrito
+  - descuentos
+
+## Funcionalidades principales
+
+- Catálogo dinámico por categorías
+  - bikinis
+  - one pieces
+  - crochet
+  - sets
+
+- Vista individual de producto
+- Selector de tallas
+- Selector de estilos
+- Selector de colores
+- Carrito persistente con localStorage
+- Compra directa con “Buy Now”
+- Checkout con resumen de compra
+- Cálculo automático de:
+  - subtotal
+  - envío
+  - descuentos
+  - total final
+
+- Sistema de promociones
+- Exclusión de productos en descuento especial
+- Integración con pasarela de pago
+- Envío de correos de confirmación
+- Diseño responsive
+- Optimización de imágenes WebP/JPEG
+
+## Instalación
+
+Clona el repositorio:
+
+```bash
+git clone https://github.com/luisbossa/100Puntadas-store
+cd 100puntadas
+```
+
+## Ejecución en desarrollo
+
+```bash
+npm run dev
+```
+
+## Ejecución en producción
+
+```bash
+npm start
+```
+
+## Flujo de compra
+
+1. Usuario entra al catálogo.
+2. Selecciona producto.
+3. Escoge talla, bottom y color.
+4. Agrega al carrito o compra directa.
+5. Checkout calcula promociones.
+6. Usuario completa pago.
+7. Orden se guarda en PostgreSQL.
+8. Se envía correo de confirmación con Gmail.
+
+## Integración de correo
+
+Se utiliza **Nodemailer con Gmail SMTP** para:
+
+- confirmación de compra
+- resumen de pedido
+- notificaciones internas
+- seguimiento de orden
+
+## Pasarela de pago
+
+El checkout está preparado para integrarse con una pasarela de pago externa.
+
+Incluye:
+
+- validación de monto
+- resumen de compra
+- persistencia de orden
+- redirección post-pago
+- confirmación por correo
+
+## Responsive Design
+
+El sitio fue diseñado mobile-first con adaptación para:
+
+- smartphones
+- tablets
+- laptops
+- desktop
+
+## Autor
+
+Desarrollado por Bstudio.
+
+Proyecto ecommerce personalizado para la marca **100puntadas**.
+
+## Licencia
+
+Este proyecto fue desarrollado para uso comercial privado de la marca 100puntadas.
