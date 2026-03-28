@@ -1,7 +1,3 @@
-/* ============================================================
-   CART GLOBAL
-============================================================ */
-
 function getCart() {
   return JSON.parse(localStorage.getItem("cartItems")) || [];
 }
@@ -29,7 +25,7 @@ window.addToCart = function (item) {
   const variantId = `${item.id}-${btoa(variantKey)}`;
 
   const existing = cart.find(
-    (p) => p.id === item.id && p.variantId === variantId
+    (p) => p.id === item.id && p.variantId === variantId,
   );
 
   if (existing) {
@@ -46,20 +42,12 @@ window.addToCart = function (item) {
   openCart();
 };
 
-/* ============================================================
-   DOM READY
-============================================================ */
-
 document.addEventListener("DOMContentLoaded", () => {
   const panel = document.getElementById("cartPanel");
   const overlay = document.getElementById("cartOverlay");
   const closeBtn = document.getElementById("closeCartBtn");
   const openCartBtn = document.getElementById("openCartBtn");
   const cartCount = document.querySelector(".cart-count");
-
-  /* ============================================================
-     RENDER CART
-  ============================================================ */
 
   window.renderCart = function () {
     const cart = getCart();
@@ -156,7 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    /* ================= DESCUENTO ================= */
+    /* ================= DISCOUNT ================= */
 
     let discount = 0;
     const pairs = Math.floor(totalQuantity / DISCOUNT_MIN_ITEMS);
@@ -165,23 +153,34 @@ document.addEventListener("DOMContentLoaded", () => {
       const prices = [];
 
       cart.forEach((item) => {
+        if (item.discount === 1) return;
+
         for (let i = 0; i < item.quantity; i++) {
           prices.push(item.price);
         }
       });
 
-      prices.sort((a, b) => a - b);
+      if (prices.length > 0) {
+        prices.sort((a, b) => a - b);
 
-      const discountedItemsCount = pairs * DISCOUNT_MIN_ITEMS;
+        const discountedItemsCount = Math.min(
+          prices.length,
+          pairs * DISCOUNT_MIN_ITEMS,
+        );
 
-      const discountedSubtotal = prices
-        .slice(0, discountedItemsCount)
-        .reduce((acc, price) => acc + price, 0);
+        const discountedSubtotal = prices
+          .slice(0, discountedItemsCount)
+          .reduce((acc, price) => acc + price, 0);
 
-      discount = Math.round(discountedSubtotal * DISCOUNT_RATE);
+        discount = Math.round(discountedSubtotal * DISCOUNT_RATE);
+      }
 
-      discountRow.style.display = "flex";
-      discountBox.textContent = discount.toLocaleString("es-CR");
+      if (discount > 0) {
+        discountRow.style.display = "flex";
+        discountBox.textContent = discount.toLocaleString("es-CR");
+      } else {
+        discountRow.style.display = "none";
+      }
     } else {
       discountRow.style.display = "none";
     }
@@ -241,9 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  /* ============================================================
-     OPEN / CLOSE CART
-  ============================================================ */
+  /* =========== OPEN / CLOSE CART ============ */
 
   window.openCart = function () {
     panel?.classList.add("open");
@@ -265,9 +262,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderCart();
 
-  /* ============================================================
-     CHECKOUT (NUMÉRICO, SIN DOM)
-  ============================================================ */
+  /* ========== CHECKOUT ============ */
 
   const checkoutBtn = document.getElementById("checkoutBtn");
 
@@ -290,16 +285,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (pairs > 0) {
       const prices = [];
+
       cart.forEach((item) => {
-        for (let i = 0; i < item.quantity; i++) prices.push(item.price);
+        // si ya tiene 30% OFF
+        if (item.discount === 1) return;
+
+        for (let i = 0; i < item.quantity; i++) {
+          prices.push(item.price);
+        }
       });
-      prices.sort((a, b) => a - b);
 
-      const discountedSubtotal = prices
-        .slice(0, pairs * DISCOUNT_MIN_ITEMS)
-        .reduce((a, b) => a + b, 0);
+      if (prices.length > 0) {
+        prices.sort((a, b) => a - b);
 
-      discount = Math.round(discountedSubtotal * DISCOUNT_RATE);
+        const discountedItemsCount = Math.min(
+          prices.length,
+          pairs * DISCOUNT_MIN_ITEMS,
+        );
+
+        const discountedSubtotal = prices
+          .slice(0, discountedItemsCount)
+          .reduce((a, b) => a + b, 0);
+
+        discount = Math.round(discountedSubtotal * DISCOUNT_RATE);
+      }
     }
 
     const total = subtotal - discount;
@@ -321,7 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
       JSON.stringify({
         cart: checkoutCart,
         totals: { total, discount },
-      })
+      }),
     );
 
     window.location.href = "/checkout";

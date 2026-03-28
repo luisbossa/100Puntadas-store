@@ -13,7 +13,7 @@ const bikinis = [
     precio: "21.000 ₡",
     imagen: "/images/swimwears/swimwear-2.webp",
     link: "/product/cow-print",
-    stock: 1,
+    stock: 0,
     discount: 1,
     oldPrice: "30.000 ₡",
   },
@@ -230,8 +230,9 @@ const container = document.getElementById("bikinis-list");
 
 bikinis.forEach((bikini) => {
   const item = `
-    <div class="collection-item w-dyn-item">
-    
+    <div class="collection-item w-dyn-item ${
+      bikini.stock === 0 ? "out-of-stock" : ""
+    }">
        <a href="${bikini.link}" class="link-block w-inline-block w-clearfix">
           ${
             bikini.discount === 1

@@ -6,6 +6,7 @@ const beachwearProducts = {
     link: "/product/black-coffee",
     name: "BLACK COFFEE",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Este diseño minimalista es un Best Seller. Amamos la combinación de centro negro con borde tejido color arena.",
@@ -32,6 +33,7 @@ const beachwearProducts = {
     link: "/product/cow-print",
     name: "COW PRINT",
     price: 21000,
+    discount: 0,
     currency: "₡",
     description:
       "Diseño único con estampado de vaca en blanco y negro para un estilo divertido y moderno.",
@@ -55,6 +57,7 @@ const beachwearProducts = {
     link: "/product/turquoise",
     name: "TURQUOISE",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Diseño color azul/verdoso con contraste perfecto de bordes multicolor elaborados en crochet.",
@@ -79,6 +82,7 @@ const beachwearProducts = {
     link: "/product/blue-capitan",
     name: "BLUE CAPITAN",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Amamos el contraste de este bikini, azul rey con bordes a crochet blancos.",
@@ -103,6 +107,7 @@ const beachwearProducts = {
     link: "#",
     name: "EARTH",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Earth Kiini fue inspirado en colores de la naturaleza. Amamos el contraste del verde musgo con bordes hechos en crochet color crema.",
@@ -127,6 +132,7 @@ const beachwearProducts = {
     link: "#",
     name: "MALIBU",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Este kiini es para las amantes de tonos neón. Amamos esta combinación vibrante y energética.",
@@ -152,6 +158,7 @@ const beachwearProducts = {
     link: "#",
     name: "AQUA",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Inspirado en los colores del algodón de azúcar. Para las amantes de tonos pasteles. Este bikini resalta muy bien en piel morena.",
@@ -175,6 +182,7 @@ const beachwearProducts = {
     link: "#",
     name: "LILAC",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Inspirado en los colores del algodón de azúcar. Para las amantes de tonos pasteles. Este bikini resalta muy bien en piel morena.",
@@ -198,6 +206,7 @@ const beachwearProducts = {
     link: "#",
     name: "FAIRY FLOSS",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Inspirado en los colores del algodón de azúcar. Para las amantes de tonos pasteles. Este bikini resalta muy bien en piel morena.",
@@ -221,6 +230,7 @@ const beachwearProducts = {
     link: "#",
     name: "CLOUDY",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Cloudy kiini tiene tela con textura granulada. Para las amantes de tonos pasteles.",
@@ -244,6 +254,7 @@ const beachwearProducts = {
     link: "#",
     name: "BLUSH",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Para las amantes de tonos pasteles. Este bikini resalta muy bien en piel morena.",
@@ -268,6 +279,7 @@ const beachwearProducts = {
     link: "#",
     name: "CANDY",
     price: 32500,
+    discount: 0,
     currency: "₡",
     description:
       "Este Kiini tiene un estampado de ensueño en tonos pasteles. La mezcla de colores lila, menta y crema crea un efecto mármoleado irresistible.",
@@ -292,6 +304,7 @@ const beachwearProducts = {
     link: "#",
     name: "LOLLIE",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Este Kiini es el equilibrio perfecto entre lo dulce y atrevido. Para las amantes de tonos pasteles. Este Kiini restalta muy bien el bronceado.",
@@ -315,6 +328,7 @@ const beachwearProducts = {
     link: "#",
     name: "RED WINE",
     price: 32500,
+    discount: 0,
     currency: "₡",
     description:
       "Cuando la elegancia se junta con lo artesanal, este es el resultado. Amamos el contraste de la base vino tinto con elásticos rosa satinado.",
@@ -338,6 +352,7 @@ const beachwearProducts = {
     link: "#",
     name: "SNAKE PRINT",
     price: 21000,
+    discount: 1,
     currency: "₡",
     description:
       "Un Kiini salvaje y sensual para las amantes de estampado animal. La tendencia Safari se encuentra con el estilo bohemio creando una pieza llena de personalidad.",
@@ -361,6 +376,7 @@ const beachwearProducts = {
     link: "#",
     name: "HEART OF OCEAN",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Un Kiini único inspirado en los colores del mar. Destaca por su azul intenso combinado con bordes multicolor hechos en crochet.",
@@ -385,6 +401,7 @@ const beachwearProducts = {
     link: "#",
     name: "BUBBLE GUM KIINI",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Para las amantes de tonos pasteles. Este Kiini restalta muy bien el bronceado. Amamos el contrate de la base amarillo pastel con bordes multicolor hechos en crochet.",
@@ -409,6 +426,7 @@ const beachwearProducts = {
     link: "#",
     name: "MARSHMALLOW",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Para las amantes de tonos pasteles. Este Kiini restalta muy bien el bronceado. Amamos el contrate de la base celeste con bordes crema.",
@@ -431,6 +449,7 @@ const beachwearProducts = {
     link: "#",
     name: "VINTAGE SUMMER",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Este bikini de la nueva colección resalta muy bien el bronceado. Base color pistacho suave con bordes rosa y crema hechos en crochet crean un contraste armonioso y femenino.",
@@ -454,6 +473,7 @@ const beachwearProducts = {
     link: "#",
     name: "CHERRY",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Un bikini sofisticado y glamuroso. Amamos la elegancia del contraste vino tinto con bordes blanco y negro en crochet.",
@@ -477,6 +497,7 @@ const beachwearProducts = {
     link: "#",
     name: "NAVY BLUE",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Este Kiini es un Must-have, inspirado en la base naval, amamos la combinación del azul escolar en contraste con bordes multicolor en crochet.",
@@ -500,6 +521,7 @@ const beachwearProducts = {
     link: "#",
     name: "LEOPARD KIINI",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Un Kiini salvaje y sensual para las amantes de estampado animal. La tendencia Safari se encuentra con el estilo bohemio creando una pieza llena de personalidad.",
@@ -522,10 +544,12 @@ const beachwearProducts = {
     link: "#",
     name: "FLORA",
     price: 32500,
+    discount: 0,
     currency: "₡",
     description:
       "Un diseño que florece sobre la piel. Realza el cuerpo con un encanto natural y estilo propio.",
-    description2: "Bikini de licra clásico. Posee varillas incorporadas para mayor soporte.",
+    description2:
+      "Bikini de licra clásico. Posee varillas incorporadas para mayor soporte.",
     images: [
       "/images/swimwears/swimwear-23.jpeg",
       "/images/products/product-23.1.jpeg",
@@ -544,6 +568,7 @@ const beachwearProducts = {
     link: "#",
     name: "EMERALD",
     price: 29000,
+    discount: 0,
     currency: "₡",
     description:
       "Un verde profundo que conecta con la naturaleza. Emerald es una pieza limpia y poderosa.",
@@ -566,6 +591,7 @@ const beachwearProducts = {
     link: "#",
     name: "RED MOSAIC",
     price: 31000,
+    discount: 0,
     currency: "₡",
     description:
       "Vibrante y lleno de energía. Su contraste audaz entre el rojo intenso y los bordes bordados en blanco, forman un patrón geométrico que evoca arte.",
@@ -591,6 +617,7 @@ const beachwearProducts = {
     link: "#",
     name: "KIINI ONE PIECE",
     price: 33500,
+    discount: 0,
     currency: "₡",
     description:
       "Amamos la versión enterizo de los kiinis. Tienen un toque deportivo y retro.",
@@ -613,6 +640,7 @@ const beachwearProducts = {
     link: "#",
     name: "TULUM",
     price: 33500,
+    discount: 0,
     currency: "₡",
     description:
       "Estilo Boho-Luxe 100% elaborado a mano en crochet. Esta pieza es la definición de la elegancia bohemia.",
@@ -637,6 +665,7 @@ const beachwearProducts = {
     link: "#",
     name: "BLOOM",
     price: 33500,
+    discount: 0,
     currency: "₡",
     description:
       "Una prenda súper femenina de la tendencia Coquette y con un aire vintage. Amamos el contraste crema con flores en relieve celestes.",
@@ -662,6 +691,7 @@ const beachwearProducts = {
     link: "#",
     name: "DAISY BIKINI",
     price: 33500,
+    discount: 0,
     currency: "₡",
     description:
       "Este diseño es la creación más original de 100puntadas. Elaborado 100% a crochet con material suave de algodón. Destaca por sus delicadas flores pasteles en relieve. Top posee varillas incorporadas para mayor soporte y bottom es ajustable a los costados.",
@@ -687,6 +717,7 @@ const beachwearProducts = {
     link: "#",
     name: "SCARLETT BIKINI",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Diseño sexy y atrevido, elaborado 100% a crochet con material de algodón suave.",
@@ -709,6 +740,7 @@ const beachwearProducts = {
     link: "#",
     name: "SORBET LIME",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
@@ -732,6 +764,7 @@ const beachwearProducts = {
     link: "#",
     name: "SORBET PINK",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
@@ -755,6 +788,7 @@ const beachwearProducts = {
     link: "#",
     name: "SORBET BUBBLEGUM",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
@@ -778,6 +812,7 @@ const beachwearProducts = {
     link: "#",
     name: "COOKIE",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
@@ -800,6 +835,7 @@ const beachwearProducts = {
     link: "#",
     name: "SANTORINI",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
@@ -822,6 +858,7 @@ const beachwearProducts = {
     link: "#",
     name: "APHRODITE",
     price: 33500,
+    discount: 0,
     currency: "₡",
     description:
       "Amamos la combinación negro con dorado, le dá un acabado de lujo.",
@@ -844,6 +881,7 @@ const beachwearProducts = {
     link: "#",
     name: "CHERRY",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
@@ -866,6 +904,7 @@ const beachwearProducts = {
     link: "#",
     name: "BDAY CAKE",
     price: 30000,
+    discount: 0,
     currency: "₡",
     description:
       "Bikini elaborado 100% a mano con con elásticos flexibles que se amoldan muy bien a tu figura.",
@@ -892,6 +931,7 @@ const beachwearProducts = {
     link: "#",
     name: "ROSÉ SET",
     price: 35000,
+    discount: 0,
     currency: "₡",
     description:
       "Conjunto elaborado en un tipo de tejido flexible que se amolda al cuerpo y resalta tu figura.",
@@ -917,6 +957,7 @@ const beachwearProducts = {
     link: "#",
     name: "CATALINA SET",
     price: 35000,
+    discount: 0,
     currency: "₡",
     description:
       "Conjunto  elaborado 100% a crochet .Top estilo halter con detalle de flores en relieve y falda con volados pronunciados en capas con tejido estilo malla.",
@@ -941,6 +982,7 @@ const beachwearProducts = {
     link: "#",
     name: "ISLA BLANCA",
     price: 35000,
+    discount: 0,
     currency: "₡",
     description:
       "Conjunto  elaborado 100% a crochet. El top es súper versátil, se puede utilizar con tirantes cruzados al cuello o tirantes amarrados en nudo al frente.",
@@ -963,6 +1005,7 @@ const beachwearProducts = {
     link: "#",
     name: "SELENA SET",
     price: 35000,
+    discount: 0,
     currency: "₡",
     description:
       "Salida de playa elaborada 100% a crochet con puntada de malla. El top estilo bolero amarrable al frente y falta ajustable a la medida.",
@@ -1144,9 +1187,8 @@ if (isBikini) {
   styleContainer.style.display = "none";
 }
 
-/* ============================================================
-   CONSTRUIR ITEM (UNA SOLA VEZ)
-============================================================ */
+/* ============ CONSTRUIR ITEM (UNA SOLA VEZ) =============== */
+
 function buildCartItem() {
   const item = {
     id: product.id,
@@ -1155,6 +1197,7 @@ function buildCartItem() {
     currency: product.currency,
     image: product.images[0],
     quantity: 1,
+    discount: product.discount,
   };
 
   if (isBikini) {
@@ -1200,9 +1243,8 @@ function buildCartItem() {
   return item;
 }
 
-/* ============================================================
-   ADD TO CART
-============================================================ */
+/* ============= ADD TO CART ================ */
+
 document.getElementById("addToCartBtn")?.addEventListener("click", () => {
   const item = buildCartItem();
   if (!item) return;
@@ -1210,9 +1252,8 @@ document.getElementById("addToCartBtn")?.addEventListener("click", () => {
   window.addToCart(item);
 });
 
-/* ============================================================
-   BUY NOW → CHECKOUT
-============================================================ */
+/* ============ BUY NOW → CHECKOUT ============= */
+
 document.getElementById("buyNowBtn")?.addEventListener("click", () => {
   const cart = getCart();
 
@@ -1239,27 +1280,44 @@ document.getElementById("buyNowBtn")?.addEventListener("click", () => {
     totalQuantity = item.quantity;
   }
 
-  /* ================= DESCUENTO ================= */
+  /* ================= DISCOUNT ================= */
 
   let discount = 0;
-  const pairs = Math.floor(totalQuantity / DISCOUNT_MIN_ITEMS);
+
+  // solo contar productos SIN descuento especial
+  const eligibleQuantity = checkoutCart.reduce((acc, item) => {
+    if (item.discount === 1) return acc;
+    return acc + item.quantity;
+  }, 0);
+
+  const pairs = Math.floor(eligibleQuantity / DISCOUNT_MIN_ITEMS);
 
   if (pairs > 0) {
     const prices = [];
 
     checkoutCart.forEach((item) => {
+      // excluir promos 30% OFF
+      if (item.discount === 1) return;
+
       for (let i = 0; i < item.quantity; i++) {
         prices.push(item.price);
       }
     });
 
-    prices.sort((a, b) => a - b);
+    if (prices.length > 0) {
+      prices.sort((a, b) => a - b);
 
-    const discountedSubtotal = prices
-      .slice(0, pairs * DISCOUNT_MIN_ITEMS)
-      .reduce((acc, price) => acc + price, 0);
+      const discountedItemsCount = Math.min(
+        prices.length,
+        pairs * DISCOUNT_MIN_ITEMS,
+      );
 
-    discount = Math.round(discountedSubtotal * DISCOUNT_RATE);
+      const discountedSubtotal = prices
+        .slice(0, discountedItemsCount)
+        .reduce((acc, price) => acc + price, 0);
+
+      discount = Math.round(discountedSubtotal * DISCOUNT_RATE);
+    }
   }
 
   /* ================= TOTAL ================= */
