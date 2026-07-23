@@ -81,13 +81,13 @@ const bikinis = [
     oldPrice: "30.000 ₡",
   },
   {
-    nombre: "CLOUDY",
-    precio: "30.000 ₡",
-    imagen: "/images/swimwears/swimwear-10.webp",
-    link: "/product/cloudy",
+    nombre: "WILD RASPBERRY",
+    precio: "32.500 ₡",
+    imagen: "/images/swimwears/swimwear-10.jpeg",
+    link: "/product/wildRaspberry",
     stock: 1,
     discount: 0,
-    oldPrice: "30.000 ₡",
+    oldPrice: "32.500 ₡",
   },
   {
     nombre: "BLUSH",

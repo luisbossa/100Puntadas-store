@@ -223,23 +223,25 @@ const beachwearProducts = {
       { label: "HILO", img: "/images/thong.png" },
     ],
   },
-  cloudy: {
-    id: "cloudy",
-    slug: "cloudy",
+  wildRaspberry: {
+    id: "wild-raspberry",
+    slug: "wild-raspberry",
     productType: "bikini",
     link: "#",
-    name: "CLOUDY",
-    price: 30000,
+    name: "WILD RASPBERRY",
+    price: 32500,
     discount: 0,
     currency: "₡",
     description:
-      "Cloudy kiini tiene tela con textura granulada. Para las amantes de tonos pasteles.",
+      "Kiini con textura de Flores grabadas, le dan un toque elegante y sofisticado.",
     description2:
       "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
     images: [
-      "/images/swimwears/swimwear-10.webp",
-      "/images/products/product-10.1.jpg",
-      "/images/products/product-10.2.jpg",
+      "/images/swimwears/swimwear-10.jpeg",
+      "/images/products/product-10.1.jpeg",
+      "/images/products/product-10.2.jpeg",
+      "/images/products/product-10.3.jpeg",
+      "/images/products/product-10.4.jpeg",
     ],
     sizes: ["XS", "S", "M", "L"],
     styles: [

@@ -54,10 +54,10 @@ const relatedProducts = [
     link: "/product/fairyFloss",
   },
   {
-    nombre: "CLOUDY",
-    precio: "30.000 ₡",
-    imagen: "/images/swimwears/swimwear-10.webp",
-    link: "/product/cloudy",
+    nombre: "WILD RASPBERRY",
+    precio: "32.500 ₡",
+    imagen: "/images/swimwears/swimwear-10.jpeg",
+    link: "/product/wildRaspberry",
   },
   {
     nombre: "BLUSH",
