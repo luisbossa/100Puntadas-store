@@ -468,30 +468,6 @@ const beachwearProducts = {
       { label: "HILO", img: "/images/thong.png" },
     ],
   },
-  cherry: {
-    id: "cherry",
-    slug: "cherry",
-    productType: "bikini",
-    link: "#",
-    name: "CHERRY",
-    price: 30000,
-    discount: 0,
-    currency: "₡",
-    description:
-      "Un bikini sofisticado y glamuroso. Amamos la elegancia del contraste vino tinto con bordes blanco y negro en crochet.",
-    description2:
-      "Cada borde tiene elásticos decorativos que brindan soporte, flexibilidad y comodidad.",
-    images: [
-      "/images/swimwears/swimwear-20.jpeg",
-      "/images/products/product-20.1.jpeg",
-      "/images/products/product-20.2.jpeg",
-    ],
-    sizes: ["XS", "S", "M", "L"],
-    styles: [
-      { label: "REGULAR", img: "/images/regular.png" },
-      { label: "HILO", img: "/images/thong.png" },
-    ],
-  },
   navyBlue: {
     id: "navy-blue",
     slug: "navy-blue",
