@@ -37,9 +37,9 @@ body {
   flex-direction: column;
   align-items: center;
   letter-spacing: 0.02rem;
-  font-family: Lato, sans-serif;
-  background: linear-gradient(to top, #ffa4db 15%, #fcfaf6 70%);
-  color: #161616;
+  font-family: var(--font-body);
+  background: var(--gradient-footer);
+  color: var(--color-ink);
 }
 
 /* ================= WRAPPER ================= */
@@ -54,28 +54,6 @@ body {
 }
 
 /* ================= TEXTURE ================= */
-#texture {
-  position: fixed;
-  inset: 0;
-  opacity: 0.08;
-  pointer-events: none;
-  z-index: 100;
-  filter: contrast(200%);
-}
-
-#signature {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  font-size: 12px;
-  color: #60655f;
-  text-decoration: none;
-  transition: color 180ms ease;
-}
-
-#signature:hover {
-  color: #1d211c;
-}
 
 /* ================= TEXT ================= */
 h1,
@@ -85,7 +63,7 @@ p {
 }
 
 .confirm-heading {
-  font-family: Hatton, Arial, sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(20px, 4.5vw, 28px);
   margin-bottom: clamp(8px, 2vw, 13px);
   text-transform: uppercase;
@@ -110,15 +88,15 @@ p {
 }
 
 .confirm-btn {
-  font-family: Hatton, Arial, sans-serif;
+  font-family: var(--font-display);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: clamp(10px, 2.8vw, 14px) clamp(12px, 3.2vw, 16px)
     clamp(7px, 2vw, 9px) clamp(12px, 3.2vw, 16px);
   border-radius: clamp(5px, 1.2vw, 6px);
-  background-color: #161616;
-  color: #ffffff;
+  background-color: var(--color-ink);
+  color: var(--color-white);
   text-decoration: none;
   font-size: clamp(13px, 3.2vw, 15px);
   font-weight: 600;
@@ -136,13 +114,13 @@ p {
   position: relative;
   width: 448px;
   padding: 32px;
-  background-color: #ffffff;
+  background-color: var(--color-white);
   border-radius: 7px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-left: 1px solid #d8d9da;
-  border-right: 1px solid #d8d9da;
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
 }
 
 .confirm-card:before {
@@ -156,13 +134,13 @@ p {
 
 .confirm-card:nth-of-type(3):before {
   clip-path: inset(0px -15px -15px -15px);
-  border-bottom: 1px solid #d8d9da;
+  border-bottom: 1px solid var(--color-border);
 }
 
 /* ================= FIRST CARD ================= */
 .confirm-card:first-of-type {
   opacity: 0;
-  border-top: 1px solid #d8d9da;
+  border-top: 1px solid var(--color-border);
   animation: translate-y-100 380ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
   animation-delay: 140ms;
 }
@@ -183,7 +161,7 @@ p {
   width: 56px;
   height: 56px;
   border-radius: 9999px;
-  background: #ffffff;
+  background: var(--color-white);
   display: grid;
   place-items: center;
   font-size: 32px;

@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pago SINPE Móvil</title>
-    <link href="/css/global.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/css/tokens.css" />
+    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/css/checkout.css" />
     <link href="/css/sinpe-pay.css" rel="stylesheet" type="text/css" />
 </head>
@@ -48,7 +49,7 @@
                 <%= new Date(order.created_at).toLocaleDateString('es-CR', { year: 'numeric' , month: 'long' ,
                     day: 'numeric' }) %>
             </p>
-            <p><strong>Total:</strong> ₡<%= order.total.toLocaleString("es-CR") %>
+            <p><strong>Total:</strong> <%= formatPrice(order.total) %>
             </p>
             <p><strong>Método de pago:</strong>
                 <%= order.payment_method==='sinpe' ? 'SINPE / Transferencia' : 'Tarjeta' %>
@@ -80,26 +81,26 @@
                         <td class="product-meta">
                             <%= item.size ? "Talla: " + item.size : "" %> × <%= item.quantity %>
                         </td>
-                        <td class="product-unit-price">₡<%= Number(item.price).toLocaleString("es-CR") %>
+                        <td class="product-unit-price"><%= formatPrice(item.price) %>
                         </td>
-                        <td class="product-total-price">₡<%= Number(item.price * item.quantity).toLocaleString("es-CR")
+                        <td class="product-total-price"><%= formatPrice(item.price * item.quantity)
                                 %>
                         </td>
                     </tr>
                     <% }) %>
                         <tr class="order-total-row">
                             <td colspan="3">Subtotal:</td>
-                            <td>₡<%= Number(order.subtotal).toLocaleString("es-CR") %>
+                            <td><%= formatPrice(order.subtotal) %>
                             </td>
                         </tr>
                         <tr class="order-total-row">
                             <td colspan="3">Envío:</td>
-                            <td>₡<%= Number(order.shipping).toLocaleString("es-CR") %>
+                            <td><%= formatPrice(order.shipping) %>
                             </td>
                         </tr>
                         <tr class="order-total-row">
                             <td colspan="3">Total:</td>
-                            <td>₡<%= Number(order.total).toLocaleString("es-CR") %>
+                            <td><%= formatPrice(order.total) %>
                             </td>
                         </tr>
                         <tr class="order-total-row">
@@ -150,7 +151,7 @@
     </script>
 
     <script>
-        window.SINPE_ORDER_ID = "<%= order.id %>";
+        window.SINPE_ORDER_TOKEN = "<%= orderToken %>";
     </script>
 
     <script src="/js/sinpe-pay.js"></script>

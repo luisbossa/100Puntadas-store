@@ -1,39 +1,31 @@
+/* ============================================================
+   FOOTER — efecto "reveal" al llegar al final (solo escritorio).
+============================================================ */
 gsap.registerPlugin(ScrollTrigger);
 
-let mm = gsap.matchMedia();
+gsap.matchMedia().add(
+  "(min-width: 992px) and (prefers-reduced-motion: no-preference)",
+  () => {
+    const fixedFooter = document.querySelector(".footer-wrapper");
 
-mm.add("(min-width: 992px)", () => {
-  $(".footer-anim-wrapper").each(function (index) {
-    const targets = $(this).add($(".footer-wrapper"));
+    document.querySelectorAll(".footer-anim-wrapper").forEach((wrapper, index) => {
+      const targets = [wrapper, fixedFooter].filter(Boolean);
+      const find = (selector) =>
+        targets.flatMap((el) => [...el.querySelectorAll(selector)]);
 
-    let tl = gsap.timeline({
-      scrollTrigger: {
-        id: "navScrolltrigger-" + index,
-        trigger: $(this),
-        start: "top bottom",
-        end: "bottom 70%",
-        scrub: true,
-      },
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          id: "navScrolltrigger-" + index,
+          trigger: wrapper,
+          start: "top bottom",
+          end: "bottom 70%",
+          scrub: true,
+        },
+      });
+
+      tl.from(find(".footer__inner"), { yPercent: 50 });
+      tl.from(find(".footer__logo"), { yPercent: 20 }, "<");
+      tl.from(find(".footer__inner"), { opacity: 0 }, "<0.1");
     });
-
-    tl.from(targets.find(".page-padding"), {
-      yPercent: 50,
-    });
-
-    tl.from(
-      targets.find(".logo-footer-wrapper img"),
-      {
-        yPercent: 20,
-      },
-      "<",
-    );
-
-    tl.from(
-      targets.find(".page-padding"),
-      {
-        opacity: 0,
-      },
-      "<0.1",
-    );
-  });
-});
+  },
+);

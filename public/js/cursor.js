@@ -1,46 +1,49 @@
-let tricksCursor = document.querySelector(".cursor");
+/* ============================================================
+   CURSOR "COMPRAR" — solo en dispositivos con mouse.
+   Sigue al puntero y se centra sobre los enlaces de producto.
+============================================================ */
+(function () {
+  const cursorEl = document.querySelector(".cursor");
+  if (!cursorEl) return;
 
-// Detectar móvil (iOS / Android / tablets)
-const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(
-  navigator.userAgent
-);
-
-// Si es móvil → desactivar todo
-if (isMobile) {
-  tricksCursor.style.display = "none"; // esconder cursor
-} else {
-  // --- SOLO DESKTOP: Cursor activo ---
-  window.addEventListener("mousemove", cursor);
-
-  function cursor(e) {
-    // Si estamos dentro de una zona prohibida → ocultar cursor
-    if (e.target.closest(".no-cursor-zone")) {
-      tricksCursor.style.opacity = "0";
-      return;
-    }
-
-    // Si estamos fuera → mostrar y mover
-    tricksCursor.style.opacity = "1";
-    tricksCursor.style.top = e.pageY + "px";
-    tricksCursor.style.left = e.pageX + "px";
+  const hasMouse = window.matchMedia("(hover: hover) and (pointer: fine)");
+  if (!hasMouse.matches) {
+    cursorEl.style.display = "none";
+    return;
   }
 
-  $(document).on("mouseenter", "a", function () {
-    // SI el link está dentro de una zona sin cursor → ignorar
-    if ($(this).closest(".no-cursor-zone").length > 0) {
-      window.addEventListener("mousemove", cursor); // seguir el mouse normal
+  let snappedTo = null;
+
+  function follow(e) {
+    if (snappedTo) return;
+
+    if (e.target.closest(".no-cursor-zone")) {
+      cursorEl.style.opacity = "0";
       return;
     }
 
-    // Links normales → activar cursor centrado
-    window.removeEventListener("mousemove", cursor);
+    cursorEl.style.opacity = "1";
+    cursorEl.style.top = e.pageY + "px";
+    cursorEl.style.left = e.pageX + "px";
+  }
 
-    let width = $(this).outerWidth() / 2;
-    let height = $(this).outerHeight() / 2;
-    let top = $(this).offset().top;
-    let left = $(this).offset().left;
+  // Al pasar por un enlace (fuera de zonas sin cursor) se centra sobre él.
+  function snap(e) {
+    const link = e.target.closest("a");
+    if (!link || link === snappedTo || link.closest(".no-cursor-zone")) return;
 
-    tricksCursor.style.top = top + height + "px";
-    tricksCursor.style.left = left + width + "px";
-  });
-}
+    snappedTo = link;
+    const rect = link.getBoundingClientRect();
+    cursorEl.style.opacity = "1";
+    cursorEl.style.top = rect.top + window.scrollY + rect.height / 2 + "px";
+    cursorEl.style.left = rect.left + window.scrollX + rect.width / 2 + "px";
+  }
+
+  function release(e) {
+    if (snappedTo && !snappedTo.contains(e.relatedTarget)) snappedTo = null;
+  }
+
+  window.addEventListener("mousemove", follow);
+  document.addEventListener("mouseover", snap);
+  document.addEventListener("mouseout", release);
+})();

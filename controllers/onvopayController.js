@@ -1,4 +1,5 @@
 const db = require("../db/pool");
+const orderToken = require("../utils/orderToken");
 const sendOrderConfirmationEmail = require("../utils/sendOrderConfirmationEmail");
 
 exports.confirm = (req, res) => {
@@ -7,13 +8,32 @@ exports.confirm = (req, res) => {
 
 exports.createPaymentIntent = async (req, res) => {
   try {
-    const { totals, email, orderId } = req.body;
+    const orderId = orderToken.verify(req.body?.orderToken);
 
-    if (!totals || !totals.total || !email || !orderId) {
+    if (!orderId) {
       return res.status(400).json({
         success: false,
-        error: "Faltan datos para crear el pago",
+        error: "Orden inválida",
       });
+    }
+
+    // El monto sale de la orden guardada, nunca del navegador.
+    const { rows } = await db.query(
+      "SELECT id, total, email, status, payment_method FROM orders WHERE id = $1",
+      [orderId],
+    );
+    const order = rows[0];
+
+    if (!order || order.payment_method !== "card") {
+      return res
+        .status(404)
+        .json({ success: false, error: "Orden no encontrada" });
+    }
+
+    if (order.status === "paid") {
+      return res
+        .status(409)
+        .json({ success: false, error: "Esta orden ya fue pagada" });
     }
 
     const response = await fetch("https://api.onvopay.com/v1/payment-intents", {
@@ -23,12 +43,11 @@ exports.createPaymentIntent = async (req, res) => {
         Authorization: `Bearer ${process.env.ONVOPAY_SECRET_KEY}`,
       },
       body: JSON.stringify({
-        amount: Math.round(totals.total * 100),
+        amount: Math.round(Number(order.total) * 100),
         currency: "CRC",
-        description: `Orden #${orderId} - 100Puntadas`,
+        description: `Orden #${order.id} - 100Puntadas`,
         metadata: {
-          orderId: String(orderId),
-          email: String(email),
+          orderId: String(order.id),
         },
       }),
     });
@@ -57,23 +76,51 @@ exports.createPaymentIntent = async (req, res) => {
 };
 
 exports.handleWebhook = async (req, res) => {
+  // ONVO envía el secreto del webhook en este header (empieza con "webhook_secret_").
+  const expectedSecret = process.env.ONVOPAY_WEBHOOK_SECRET;
+
+  if (!expectedSecret) {
+    console.error("ONVO WEBHOOK: falta ONVOPAY_WEBHOOK_SECRET");
+    return res.sendStatus(500);
+  }
+
+  if (!orderToken.safeEqual(req.get("X-Webhook-Secret"), expectedSecret)) {
+    return res.sendStatus(401);
+  }
+
   try {
     const event = req.body;
 
-    if (event.type === "payment-intent.succeeded") {
+    if (event?.type === "payment-intent.succeeded") {
       const paymentIntent = event.data;
-      const { orderId, email } = paymentIntent.metadata;
+      const orderId = Number(paymentIntent?.metadata?.orderId);
 
-      await db.query(
-        "UPDATE orders SET status='paid', paid_at=NOW() WHERE id=$1",
-        [orderId],
+      // Solo se marca pagada si el monto cobrado coincide con la orden,
+      // y solo una vez (evita correos duplicados si ONVO reintenta).
+      const { rows } = await db.query(
+        `UPDATE orders SET status='paid', paid_at=NOW()
+         WHERE id=$1 AND status <> 'paid' AND ROUND(total * 100) = $2
+         RETURNING email`,
+        [orderId, Number(paymentIntent?.amount)],
       );
 
-      await sendOrderConfirmationEmail(email, orderId);
+      if (!rows.length) {
+        console.warn("ONVO WEBHOOK: orden ya pagada o monto distinto", {
+          orderId,
+          amount: paymentIntent?.amount,
+        });
+      } else {
+        // Si el correo falla no se devuelve error: ONVO reintentaría,
+        // pero la orden ya quedó pagada y no se reenviaría.
+        await sendOrderConfirmationEmail(rows[0].email, orderId).catch((err) =>
+          console.error("ONVO WEBHOOK: error enviando correo", err),
+        );
+      }
     }
 
     res.sendStatus(200);
-  } catch {
+  } catch (err) {
+    console.error("ONVO WEBHOOK ERROR:", err);
     res.sendStatus(500);
   }
 };

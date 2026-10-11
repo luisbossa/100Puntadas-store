@@ -1,3 +1,4 @@
+/* Carrusel de testimonios (capturas de mensajes de clientes). */
 const testimonials = [
   { user: "@pilarr", image: "/images/chats/chat-1.jpeg" },
   { user: "@monicacubillo", image: "/images/chats/chat-2.jpeg" },
@@ -20,26 +21,32 @@ const testimonials = [
 
 const marqueeList = document.getElementById("marqueeList");
 
-/* duplicamos para efecto infinito */
-[...testimonials, ...testimonials].forEach(({ user, image }) => {
+// La lista se duplica para el desplazamiento infinito; la copia se oculta a lectores de pantalla.
+const fragment = document.createDocumentFragment();
+
+[...testimonials, ...testimonials].forEach(({ user, image }, i) => {
+  const isCopy = i >= testimonials.length;
   const item = document.createElement("div");
   item.className = "marquee-item";
   item.setAttribute("role", "listitem");
+  if (isCopy) item.setAttribute("aria-hidden", "true");
 
   item.innerHTML = `
     <article class="testimonial-card">
       <header class="testimonial-header">
         <span class="testimonial-user">${user}</span>
         <div class="testimonial-stars">
-          <img src="/images/stars.svg" alt="5 estrellas">
+          <img src="/images/stars.svg" alt="5 de 5 estrellas">
         </div>
       </header>
 
       <figure class="testimonial-media">
-        <img class="testimonial-image" src="${image}" alt="${user}">
+        <img class="testimonial-image" src="${image}" alt="Mensaje de ${user} sobre su compra" decoding="async">
       </figure>
     </article>
   `;
 
-  marqueeList.appendChild(item);
+  fragment.appendChild(item);
 });
+
+marqueeList.appendChild(fragment);

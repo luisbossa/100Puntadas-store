@@ -1,0 +1,31 @@
+<li class="product-card<%= product.soldOut ? ' product-card--soldout' : '' %>">
+    <a href="<%= product.url %>" class="product-card__link" <%- product.soldOut ? 'aria-disabled="true" tabindex="-1"' : '' %>>
+        <% if (product.onSale) { %>
+            <span class="product-card__badge">30% OFF</span>
+        <% } %>
+        <% if (product.soldOut) { %>
+            <span class="product-card__overlay" aria-hidden="true"></span>
+        <% } %>
+        <span class="product-card__media">
+            <img class="product-card__image" src="<%= product.image %>" alt="<%= product.name %>"
+                width="1200" height="1600" loading="<%= eager ? 'eager' : 'lazy' %>" decoding="async" />
+        </span>
+    </a>
+
+    <% if (product.soldOut) { %>
+        <div class="product-card__soldout">
+            <h3 class="product-card__name"><%= product.name %></h3>
+            Agotado
+        </div>
+    <% } else { %>
+        <div class="product-card__info">
+            <h3 class="product-card__name"><%= product.name %></h3>
+            <p class="product-card__price">
+                <% if (product.onSale && product.oldPrice) { %>
+                    <s class="product-card__old-price"><%= product.oldPrice %></s>
+                <% } %>
+                <span><%= product.price %></span>
+            </p>
+        </div>
+    <% } %>
+</li>

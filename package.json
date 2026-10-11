@@ -3,15 +3,16 @@
   "version": "1.0.0",
   "main": "api/index.js",
   "scripts": {
-    "dev": "nodemon app.js",
+    "dev": "nodemon server.js --ext js,ejs --ignore public/",
     "start": "node api/index.js"
   },
   "dependencies": {
-    "cors": "^2.8.5",
     "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
     "express": "^5.2.1",
     "express-ejs-layouts": "^2.5.1",
+    "express-rate-limit": "^8.7.1",
+    "helmet": "^8.3.0",
     "nodemailer": "^7.0.12",
     "pg": "^8.16.3"
   },

@@ -1,15 +1,15 @@
-const orderId = window.SINPE_ORDER_ID;
+const orderToken = window.SINPE_ORDER_TOKEN;
 const btn = document.getElementById("btn-sinpe-confirm");
 const pendingMsg = document.querySelector(".pending-msg");
 
-if (!orderId || !btn) {
-  console.warn("SINPE polling detenido: orderId o botón no disponible");
+if (!orderToken || !btn) {
+  console.warn("SINPE polling detenido: orden o botón no disponible");
 } else {
   const polling = setInterval(checkPaymentStatus, 5000);
 
   async function checkPaymentStatus() {
     try {
-      const res = await fetch(`/payment-sinpe/${orderId}/status`);
+      const res = await fetch(`/payment-sinpe/${encodeURIComponent(orderToken)}/status`);
       const data = await res.json();
 
       if (!data?.ok) return;

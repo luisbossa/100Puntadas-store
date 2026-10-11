@@ -1,9 +1,16 @@
-const modalWindow = document.querySelector("#window-send-suggestion");
+/* ============================================================
+   GUÍA DE TALLAS — modal que "crece" desde el botón (GSAP Flip).
+============================================================ */
+const modalWindow = document.querySelector("#size-guide-modal");
 const modal = modalWindow.querySelector(".sizechart-modal");
-const btn = document.querySelector("#btn-sizeChart");
+const btn = document.querySelector("#size-guide-btn");
+const closeBtn = modalWindow.querySelector("[data-close-size-guide]");
+
+const isOpen = () => modalWindow.style.display === "flex";
 
 window.openSizeChart = function () {
   modalWindow.style.display = "flex";
+  btn.setAttribute("aria-expanded", "true");
 
   gsap.set(modal, { clearProps: "all" });
 
@@ -36,23 +43,25 @@ window.openSizeChart = function () {
   gsap.fromTo(
     modalWindow,
     { opacity: 0 },
-    { opacity: 1, duration: 0.35, ease: "power1.out" }
+    { opacity: 1, duration: 0.35, ease: "power1.out" },
   );
 
   Flip.from(state, {
     duration: 0.65,
     ease: CustomEase.create(
       "easeModal",
-      "M0,0 C0.308,0.19 0.107,0.633 0.288,0.866 0.382,0.987 0.656,1 1,1"
+      "M0,0 C0.308,0.19 0.107,0.633 0.288,0.866 0.382,0.987 0.656,1 1,1",
     ),
     absolute: true,
     onComplete: () => {
       modal.style.overflowY = "auto";
+      closeBtn.focus();
     },
   });
 };
 
 window.closeSizeChart = function () {
+  btn.setAttribute("aria-expanded", "false");
   modal.style.overflow = "hidden";
 
   const btnRect = btn.getBoundingClientRect();
@@ -81,12 +90,19 @@ window.closeSizeChart = function () {
     onComplete: () => {
       modalWindow.style.display = "none";
       gsap.set(modal, { clearProps: "all" });
+      btn.focus();
     },
   });
 };
 
-modalWindow.addEventListener("click", function (event) {
-  if (event.target === modalWindow) {
-    closeSizeChart();
-  }
+btn.addEventListener("click", openSizeChart);
+closeBtn.addEventListener("click", closeSizeChart);
+
+// Cerrar al hacer clic fuera del recuadro o con la tecla Escape
+modalWindow.addEventListener("click", (event) => {
+  if (event.target === modalWindow) closeSizeChart();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && isOpen()) closeSizeChart();
 });

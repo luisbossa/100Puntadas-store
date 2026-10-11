@@ -1,58 +1,57 @@
+<%
+  // En la home los enlaces van a las anclas directamente; en otras páginas, a la home + ancla.
+  const anchor = (id) => (isHome ? "#" : "/#") + id;
+%>
 <header class="header <%= noCursorZone ? 'no-cursor-zone' : '' %>">
 
-    <div class="nav-wrapper">
-        <div class="promo-marquee">
-            <div class="promo-track">
-                <span class="promo-highlight">PROMOCIÓN DE VERANO</span>
-                <span>LLEVA DOS PRENDAS Y AHORRA UN <span class="maquee-off">15%</span></span>
-                <span>DESCUENTO AUTOMÁTICO</span>
-                <span class="promo-highlight">PROMOCIÓN DE VERANO</span>
-                <span>LLEVA DOS PRENDAS Y AHORRA UN <span class="maquee-off">15%</span></span>
-                <span>DESCUENTO AUTOMÁTICO</span>
-                <span class="promo-highlight">PROMOCIÓN DE VERANO</span>
-                <span>LLEVA DOS PRENDAS Y AHORRA UN <span class="maquee-off">15%</span></span>
-                <span>DESCUENTO AUTOMÁTICO</span>
-                <span class="promo-highlight">PROMOCIÓN DE VERANO</span>
-                <span>LLEVA DOS PRENDAS Y AHORRA UN <span class="maquee-off">15%</span></span>
-                <span>DESCUENTO AUTOMÁTICO</span>
+    <div class="header__inner">
+        <!-- Barra de promoción (el contenido se repite para el desplazamiento infinito) -->
+        <div class="promo-marquee" role="region" aria-label="Promoción">
+            <div class="promo-marquee__track">
+                <% for (let i = 0; i < 4; i++) { %>
+                    <span class="promo-marquee__highlight" <%- i ? 'aria-hidden="true"' : '' %>>PROMOCIÓN DE VERANO</span>
+                    <span <%- i ? 'aria-hidden="true"' : '' %>>LLEVA DOS PRENDAS Y AHORRA UN <span class="promo-marquee__accent">15%</span></span>
+                    <span <%- i ? 'aria-hidden="true"' : '' %>>DESCUENTO AUTOMÁTICO</span>
+                <% } %>
             </div>
         </div>
 
-        <div class="links-div">
-            <div class="nav-links">
-                <a href="<%= isHome ? '#bikinis' : '/#bikinis' %>" class="navsize-link">Bikinis</a>
-                <a href="<%= isHome ? '#jumpsuits' : '/#jumpsuits' %>" class="navsize-link">Enterizos</a>
-                <a href="<%= isHome ? '#crochets' : '/#crochets' %>" class="navsize-link">Bikinis tejidos</a>
-                <a href="<%= isHome ? '#sets' : '/#sets' %>" class="navsize-link">Sets de playa</a>
-            </div>
+        <div class="header__bar">
+            <nav class="header__nav" aria-label="Colecciones">
+                <a href="<%= anchor('bikinis') %>" class="nav-link">Bikinis</a>
+                <a href="<%= anchor('jumpsuits') %>" class="nav-link">Enterizos</a>
+                <a href="<%= anchor('crochets') %>" class="nav-link">Bikinis tejidos</a>
+                <a href="<%= anchor('sets') %>" class="nav-link">Sets de playa</a>
+            </nav>
 
-            <div class="logo-container">
-                <a href="/" aria-current="page" class="w-inline-block">
-                    <img src="/images/logo.png" loading="lazy" alt="logo 100Puntadas" class="main-logo" />
+            <div class="header__logo">
+                <a href="/" class="header__logo-link" <%- isHome ? 'aria-current="page"' : '' %>>
+                    <img src="/images/logo.png" alt="100 Puntadas — inicio" class="header__logo-img" />
                 </a>
             </div>
 
-            <button class="hamburger" id="hamburger">
+            <button type="button" class="hamburger" id="hamburger" aria-label="Abrir menú"
+                aria-expanded="false" aria-controls="mobileMenu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
-
-            <div class="cart-rightdiv">
-                <a href="<%= isHome ? '#testimonials' : '/#testimonials' %>" class="navsize-link">Testimonios</a>
-                <a href="/sizes" class="navsize-link">Tallas</a>
-                <button id="openCartBtn" class="cart-button">
+            <div class="header__actions">
+                <a href="<%= anchor('testimonials') %>" class="nav-link">Testimonios</a>
+                <a href="/sizes" class="nav-link">Tallas</a>
+                <button type="button" id="openCartBtn" class="cart-button" aria-controls="cartPanel"
+                    aria-haspopup="dialog">
                     <span class="cart-text">Carrito</span>
 
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                        viewBox="0 0 16 16" class="cart-icon">
+                        viewBox="0 0 16 16" class="cart-icon" aria-hidden="true">
                         <path
                             d="M0 1a1 1 0 0 1 1-1h1.5a1 1 0 0 1 .96.73L3.89 3H14a1 1 0 0 1 .98 1.2l-1.5 6A1 1 0 0 1 12.5 11H4a1 1 0 0 1-.96-.73L1.61 2H1a1 1 0 0 1-1-1z" />
                         <circle cx="6" cy="13.5" r="1" />
                         <circle cx="11" cy="13.5" r="1" />
                     </svg>
-                    <span class="cart-count">0</span>
+                    <span class="cart-count" aria-label="productos en el carrito">0</span>
                 </button>
             </div>
         </div>
@@ -60,22 +59,18 @@
 
 </header>
 
+<nav class="mobile-menu <%= noCursorZone ? 'no-cursor-zone' : '' %>" id="mobileMenu" aria-label="Menú principal">
 
-
-
-
-<header class="mobile-menu <%= noCursorZone ? 'no-cursor-zone' : '' %>" id="mobileMenu">
-
-    <button class="close-button" id="closeMenuBtn">
+    <button type="button" class="mobile-menu__close" id="closeMenuBtn" aria-label="Cerrar menú">
         <span></span>
         <span></span>
     </button>
 
-    <a href="/" class="mobile-link">Inicio</a>
-    <a href="<%= isHome ? '#bikinis' : '/#bikinis' %>" class="mobile-link">Bikinis</a>
-    <a href="<%= isHome ? '#jumpsuits' : '/#jumpsuits' %>" class="mobile-link">Enterizos</a>
-    <a href="<%= isHome ? '#crochets' : '/#crochets' %>" class="mobile-link">Bikinis tejidos</a>
-    <a href="<%= isHome ? '#sets' : '/#sets' %>" class="mobile-link">Sets de playa</a>
-    <a href="<%= isHome ? '#testimonials' : '/#testimonials' %>" class="mobile-link">Testimonios</a>
-    <a href="/sizes" class="mobile-link">Tallas</a>
-</header>
+    <a href="/" class="mobile-menu__link">Inicio</a>
+    <a href="<%= anchor('bikinis') %>" class="mobile-menu__link">Bikinis</a>
+    <a href="<%= anchor('jumpsuits') %>" class="mobile-menu__link">Enterizos</a>
+    <a href="<%= anchor('crochets') %>" class="mobile-menu__link">Bikinis tejidos</a>
+    <a href="<%= anchor('sets') %>" class="mobile-menu__link">Sets de playa</a>
+    <a href="<%= anchor('testimonials') %>" class="mobile-menu__link">Testimonios</a>
+    <a href="/sizes" class="mobile-menu__link">Tallas</a>
+</nav>

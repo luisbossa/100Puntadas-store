@@ -76,8 +76,44 @@ cd 100puntadas
 ## Ejecución en desarrollo
 
 ```bash
-npm run dev
+npm install
+npm run dev   # http://localhost:3000 (se reinicia solo al guardar)
 ```
+
+### Variables de entorno (`.env`)
+
+| Variable | Uso |
+| --- | --- |
+| `DATABASE_URL` | Conexión a PostgreSQL |
+| `MAIL_USER`, `MAIL_PASS` | Cuenta de Gmail para los correos |
+| `ONVOPAY_PUBLIC_KEY`, `ONVOPAY_SECRET_KEY` | Claves de ONVO Pay |
+| `ONVOPAY_WEBHOOK_SECRET` | Secreto del webhook de ONVO (empieza con `webhook_secret_`) |
+| `SINPE_WEBHOOK_SECRET` | Secreto que debe enviar quien llame a `/webhooks/sinpe-paid` (header `X-Webhook-Secret`) |
+| `ORDER_TOKEN_SECRET` | Firma los enlaces de pago de cada orden |
+
+## Estructura del proyecto
+
+```
+data/
+  catalog.js        Productos (precio, fotos, tallas). Fuente única: la usan las vistas y el checkout.
+  collections.js    Secciones de la tienda y el orden de los productos en la home.
+views/
+  layout.ejs        Estructura común (head, header, footer, carrito).
+  partials/         header, footer y tarjeta de producto reutilizables.
+public/css/
+  tokens.css        Colores, tipografías y medidas de la marca (variables CSS).
+  reset.css         Normalización del navegador.
+  base.css          Tipografía base, contenedores y utilidades de accesibilidad.
+  header.css · footer.css · cart.css    Componentes presentes en todas las páginas.
+  home.css · product.css · sizes.css · policy.css    Una hoja por página.
+public/js/
+  pricing.js        Reglas de descuento y envío (las usa el navegador y el servidor).
+utils/shop.js       Arma los datos de la home, la página de producto y los relacionados.
+```
+
+Cada vista declara sus propios `<link>` y `<script>`; el layout los coloca en el `<head>` y al final del `<body>`.
+
+**Para agregar un producto:** añadirlo en `data/catalog.js` y poner su clave en la colección correspondiente de `data/collections.js`. Para marcarlo agotado: `stock: 0`. Para oferta: `discount: 1` y `oldPrice`.
 
 ## Ejecución en producción
 

@@ -1,14 +1,42 @@
 function getCart() {
-  return JSON.parse(localStorage.getItem("cartItems")) || [];
+  try {
+    return JSON.parse(localStorage.getItem("cartItems")) || [];
+  } catch {
+    return [];
+  }
 }
 
 function saveCart(cart) {
   localStorage.setItem("cartItems", JSON.stringify(cart));
 }
 
-function calculateTotalQuantity(cart) {
-  return cart.reduce((acc, item) => acc + item.quantity, 0);
+// Escapa texto antes de insertarlo con innerHTML (el carrito vive en localStorage).
+function escapeHTML(value) {
+  return String(value ?? "").replace(
+    /[&<>"']/g,
+    (c) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
+        c
+      ],
+  );
 }
+
+// Lo que se envía al checkout: el servidor solo confía en id, cantidad y variantes.
+window.toCheckoutItem = function (item) {
+  return {
+    id: item.id,
+    name: item.name,
+    image: item.image,
+    quantity: item.quantity,
+    price: item.price,
+    discount: item.discount,
+    color: COLOR_LABELS[item.color] || item.color || null,
+    topSize: item.topSize || null,
+    bottomSize: item.bottomSize || null,
+    bottomStyle: item.bottomStyle || null,
+    size: item.size || null,
+  };
+};
 
 window.addToCart = function (item) {
   const cart = getCart();
@@ -29,7 +57,10 @@ window.addToCart = function (item) {
   );
 
   if (existing) {
-    existing.quantity += item.quantity;
+    existing.quantity = Math.min(
+      existing.quantity + item.quantity,
+      Pricing.MAX_QUANTITY,
+    );
   } else {
     cart.push({
       ...item,
@@ -48,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeBtn = document.getElementById("closeCartBtn");
   const openCartBtn = document.getElementById("openCartBtn");
   const cartCount = document.querySelector(".cart-count");
+  const MAX = Pricing.MAX_QUANTITY;
 
   window.renderCart = function () {
     const cart = getCart();
@@ -57,56 +89,52 @@ document.addEventListener("DOMContentLoaded", () => {
     const checkoutBtn = document.querySelector(".cart-checkout-btn");
     const discountRow = document.getElementById("discountRow");
     const discountBox = document.getElementById("cartDiscount");
+    const promo = document.getElementById("cartPromo");
 
     if (!container) return;
 
-    container.innerHTML = "";
-
-    let subtotal = 0;
-    let totalQuantity = 0;
-
     if (cart.length === 0) {
+      container.innerHTML = "";
       emptyMessage.style.display = "block";
       checkoutBtn?.classList.add("disabled");
       discountRow.style.display = "none";
-      totalBox.textContent = "0";
-      if (cartCount) cartCount.textContent = "0";
+      if (promo) promo.hidden = true;
+      totalBox.textContent = Pricing.formatPrice(0);
+      updateCount(0);
       return;
     }
 
     emptyMessage.style.display = "none";
     checkoutBtn?.classList.remove("disabled");
 
-    cart.forEach((item, index) => {
-      subtotal += item.price * item.quantity;
-      totalQuantity += item.quantity;
+    container.innerHTML = cart
+      .map((item, index) => {
+        const name = escapeHTML(item.name);
+        const color = COLOR_LABELS[item.color] || item.color;
 
-      container.innerHTML += `
+        return `
         <div class="cart-item" data-index="${index}">
-            <img src="${item.image}" loading="eager" alt="${item.name}">
-            
+            <img src="${escapeHTML(item.image)}" loading="eager" alt="${name}">
+
             <div class="cart-info-div">
-              <h3 class="cart-heading">${item.name}</h3>
-              ${item.topSize ? `<p>Top: ${item.topSize}</p>` : ""}
-              ${item.bottomSize ? `<p>Bottom: ${item.bottomSize}</p>` : ""}
-              ${item.bottomStyle ? `<p>Estilo: ${item.bottomStyle}</p>` : ""}
-              ${item.size ? `<p>Talla: ${item.size}</p>` : ""}
-              ${
-                item.color
-                  ? `<p>Color: ${COLOR_LABELS[item.color] || item.color}</p>`
-                  : ""
-              }
-              <p>₡${item.price.toLocaleString("es-CR")}</p>
+              <h3 class="cart-heading">${name}</h3>
+              ${item.topSize ? `<p>Top: ${escapeHTML(item.topSize)}</p>` : ""}
+              ${item.bottomSize ? `<p>Bottom: ${escapeHTML(item.bottomSize)}</p>` : ""}
+              ${item.bottomStyle ? `<p>Estilo: ${escapeHTML(item.bottomStyle)}</p>` : ""}
+              ${item.size ? `<p>Talla: ${escapeHTML(item.size)}</p>` : ""}
+              ${color ? `<p>Color: ${escapeHTML(color)}</p>` : ""}
+              <p>${Pricing.formatPrice(item.price)}</p>
 
               <div class="quantity-controls">
-                <button class="quantity-btn decrease">–</button> 
+                <button class="quantity-btn decrease ${item.quantity <= 1 ? "disabled" : ""}" aria-label="Restar uno">–</button>
                 <input
                   type="number"
                   class="quantity-input"
-                  value="${item.quantity}"
-                  min="1" max="20"
+                  value="${Number(item.quantity)}"
+                  min="1" max="${MAX}"
+                  aria-label="Cantidad"
                 >
-                <button class="quantity-btn increase">+</button>
+                <button class="quantity-btn increase ${item.quantity >= MAX ? "disabled" : ""}" aria-label="Sumar uno">+</button>
               </div>
             </div>
 
@@ -119,146 +147,121 @@ document.addEventListener("DOMContentLoaded", () => {
             </button>
           </div>
       `;
-    });
+      })
+      .join("");
 
-    document.querySelectorAll(".cart-item").forEach((itemEl) => {
-      const index = itemEl.dataset.index;
-      const cart = getCart();
-      const item = cart[index];
+    /* ================= TOTALES ================= */
 
-      const decreaseBtn = itemEl.querySelector(".quantity-btn.decrease");
-      const increaseBtn = itemEl.querySelector(".quantity-btn.increase");
+    const { discount, total, totalQuantity } = Pricing.calculateTotals(cart);
 
-      // mínimo
-      if (item.quantity <= 1) {
-        decreaseBtn.classList.add("disabled");
-      } else {
-        decreaseBtn.classList.remove("disabled");
-      }
+    // Aviso de la promo: con un número impar de prendas elegibles falta 1 para el 15%
+    const eligible = cart
+      .filter((item) => item.discount !== 1)
+      .reduce((acc, item) => acc + item.quantity, 0);
+    if (promo) {
+      const rate = `${Pricing.DISCOUNT_RATE * 100}%`;
+      promo.hidden = eligible % Pricing.DISCOUNT_MIN_ITEMS === 0;
+      promo.textContent =
+        discount > 0
+          ? `Agrega 1 prenda más y también tendrá ${rate} de descuento.`
+          : `Agrega 1 prenda más y obtén ${rate} de descuento.`;
+    }
 
-      // máximo
-      if (item.quantity >= 20) {
-        increaseBtn.classList.add("disabled");
-      } else {
-        increaseBtn.classList.remove("disabled");
-      }
-    });
-
-    /* ================= DISCOUNT ================= */
-
-    let discount = 0;
-    const pairs = Math.floor(totalQuantity / DISCOUNT_MIN_ITEMS);
-
-    if (pairs > 0) {
-      const prices = [];
-
-      cart.forEach((item) => {
-        if (item.discount === 1) return;
-
-        for (let i = 0; i < item.quantity; i++) {
-          prices.push(item.price);
-        }
-      });
-
-      if (prices.length > 0) {
-        prices.sort((a, b) => a - b);
-
-        const discountedItemsCount = Math.min(
-          prices.length,
-          pairs * DISCOUNT_MIN_ITEMS,
-        );
-
-        const discountedSubtotal = prices
-          .slice(0, discountedItemsCount)
-          .reduce((acc, price) => acc + price, 0);
-
-        discount = Math.round(discountedSubtotal * DISCOUNT_RATE);
-      }
-
-      if (discount > 0) {
-        discountRow.style.display = "flex";
-        discountBox.textContent = discount.toLocaleString("es-CR");
-      } else {
-        discountRow.style.display = "none";
-      }
+    if (discount > 0) {
+      discountRow.style.display = "flex";
+      discountBox.textContent = Pricing.formatPrice(discount);
     } else {
       discountRow.style.display = "none";
     }
 
-    /* ================= TOTAL ================= */
-
-    const total = subtotal - discount;
-
-    totalBox.textContent = total.toLocaleString("es-CR");
-    if (cartCount) cartCount.textContent = totalQuantity;
-
-    /* ================= DELETE ================= */
-
-    document.querySelectorAll(".delete-btn").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        const index = e.target.closest(".cart-item").dataset.index;
-        const cart = getCart();
-        cart.splice(index, 1);
-        saveCart(cart);
-        renderCart();
-      });
-    });
-
-    /* ================= QUANTITY ================= */
-
-    document.querySelectorAll(".quantity-btn").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        const index = e.target.closest(".cart-item").dataset.index;
-        const cart = getCart();
-
-        if (btn.classList.contains("increase") && cart[index].quantity < 20) {
-          cart[index].quantity++;
-        }
-
-        if (btn.classList.contains("decrease") && cart[index].quantity > 1) {
-          cart[index].quantity--;
-        }
-
-        saveCart(cart);
-        renderCart();
-      });
-    });
-
-    document.querySelectorAll(".quantity-input").forEach((input) => {
-      input.addEventListener("change", (e) => {
-        const index = e.target.closest(".cart-item").dataset.index;
-        const cart = getCart();
-        let value = parseInt(e.target.value, 10);
-
-        if (isNaN(value) || value < 1) value = 1;
-        if (value > 20) value = 20;
-
-        cart[index].quantity = value;
-        saveCart(cart);
-        renderCart();
-      });
-    });
+    totalBox.textContent = Pricing.formatPrice(total);
+    updateCount(totalQuantity);
   };
+
+  // Actualiza el número del ícono y lo hace "rebotar" si aumentó
+  let lastCount = null;
+  function updateCount(count) {
+    if (!cartCount) return;
+    cartCount.textContent = count;
+    if (lastCount !== null && count > lastCount) {
+      cartCount.classList.remove("is-bumped");
+      void cartCount.offsetWidth; // reinicia la animación
+      cartCount.classList.add("is-bumped");
+    }
+    lastCount = count;
+  }
+
+  /* ============ ACCIONES DEL CARRITO (delegación) ============ */
+
+  const itemsContainer = document.querySelector(".cart-items");
+
+  function updateItem(target, change) {
+    const index = target.closest(".cart-item")?.dataset.index;
+    if (index === undefined) return;
+
+    const cart = getCart();
+    if (!cart[index]) return;
+
+    change(cart, Number(index));
+    saveCart(cart);
+    renderCart();
+  }
+
+  itemsContainer?.addEventListener("click", (e) => {
+    if (e.target.closest(".delete-btn")) {
+      updateItem(e.target, (cart, i) => cart.splice(i, 1));
+      return;
+    }
+
+    const btn = e.target.closest(".quantity-btn");
+    if (!btn) return;
+
+    updateItem(btn, (cart, i) => {
+      if (btn.classList.contains("increase") && cart[i].quantity < MAX) {
+        cart[i].quantity++;
+      }
+      if (btn.classList.contains("decrease") && cart[i].quantity > 1) {
+        cart[i].quantity--;
+      }
+    });
+  });
+
+  itemsContainer?.addEventListener("change", (e) => {
+    if (!e.target.classList.contains("quantity-input")) return;
+
+    updateItem(e.target, (cart, i) => {
+      let value = parseInt(e.target.value, 10);
+      if (isNaN(value) || value < 1) value = 1;
+      if (value > MAX) value = MAX;
+      cart[i].quantity = value;
+    });
+  });
 
   /* =========== OPEN / CLOSE CART ============ */
 
+  function closeCart() {
+    if (!panel?.classList.contains("open")) return;
+    panel.classList.remove("open");
+    panel.setAttribute("aria-hidden", "true");
+    overlay?.classList.remove("show");
+    openCartBtn?.focus();
+  }
+
   window.openCart = function () {
     panel?.classList.add("open");
+    panel?.setAttribute("aria-hidden", "false");
     overlay?.classList.add("show");
     renderCart();
+    closeBtn?.focus();
   };
 
-  closeBtn?.addEventListener("click", () => {
-    panel?.classList.remove("open");
-    overlay?.classList.remove("show");
-  });
-
-  overlay?.addEventListener("click", () => {
-    panel?.classList.remove("open");
-    overlay?.classList.remove("show");
-  });
-
+  closeBtn?.addEventListener("click", closeCart);
+  overlay?.addEventListener("click", closeCart);
   openCartBtn?.addEventListener("click", openCart);
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && panel?.classList.contains("open")) closeCart();
+  });
 
   renderCart();
 
@@ -272,65 +275,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const cart = getCart();
     if (!cart.length) return;
 
-    let subtotal = 0;
-    let totalQuantity = 0;
-
-    cart.forEach((item) => {
-      subtotal += item.price * item.quantity;
-      totalQuantity += item.quantity;
-    });
-
-    let discount = 0;
-    const pairs = Math.floor(totalQuantity / DISCOUNT_MIN_ITEMS);
-
-    if (pairs > 0) {
-      const prices = [];
-
-      cart.forEach((item) => {
-        // si ya tiene 30% OFF
-        if (item.discount === 1) return;
-
-        for (let i = 0; i < item.quantity; i++) {
-          prices.push(item.price);
-        }
-      });
-
-      if (prices.length > 0) {
-        prices.sort((a, b) => a - b);
-
-        const discountedItemsCount = Math.min(
-          prices.length,
-          pairs * DISCOUNT_MIN_ITEMS,
-        );
-
-        const discountedSubtotal = prices
-          .slice(0, discountedItemsCount)
-          .reduce((a, b) => a + b, 0);
-
-        discount = Math.round(discountedSubtotal * DISCOUNT_RATE);
-      }
-    }
-
-    const total = subtotal - discount;
-
-    const checkoutCart = cart.map((item) => ({
-      name: item.name,
-      image: item.image,
-      quantity: item.quantity,
-      price: item.price,
-      color: COLOR_LABELS[item.color] || item.color,
-      topSize: item.topSize || null,
-      bottomSize: item.bottomSize || null,
-      bottomStyle: item.bottomStyle || null,
-      size: item.size || null,
-    }));
-
     localStorage.setItem(
       "checkoutData",
-      JSON.stringify({
-        cart: checkoutCart,
-        totals: { total, discount },
-      }),
+      JSON.stringify({ cart: cart.map(toCheckoutItem) }),
     );
 
     window.location.href = "/checkout";

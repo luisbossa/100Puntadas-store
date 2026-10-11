@@ -29,7 +29,7 @@
 
 body {
   font-family: Inter, system-ui, sans-serif;
-  background: #fcfaf6;
+  background: var(--color-cream);
   color: #111;
   user-select: none;
 }
@@ -43,7 +43,7 @@ textarea::placeholder {
 /* ===== CHECKOUT HEADER ===== */
 .header-filler {
   width: 100%;
-  background: linear-gradient(to bottom, #ffa4db 15%, #fcfaf6 70%);
+  background: var(--gradient-header);
 }
 
 .checkout-header {
@@ -51,7 +51,7 @@ textarea::placeholder {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(to bottom, #ffa4db 15%, #fcfaf6 70%);
+  background: var(--gradient-header);
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -59,7 +59,7 @@ textarea::placeholder {
 .checkout-brand {
   width: 100%;
   max-width: 120px;
-  background: linear-gradient(to bottom, #ffa4db 15%, #fcfaf6 70%);
+  background: var(--gradient-header);
   padding: 10px;
 }
 
@@ -77,7 +77,7 @@ textarea::placeholder {
 
 /* ===== STEPS ===== */
 .checkout-steps {
-  font-family: Hatton, Arial, sans-serif;
+  font-family: var(--font-display);
   text-transform: uppercase;
   letter-spacing: 1px;
   display: flex;
@@ -89,7 +89,7 @@ textarea::placeholder {
   align-items: center;
   gap: 0.6rem;
   font-size: 0.85rem;
-  color: #161616;
+  color: var(--color-ink);
 }
 
 .step-index {
@@ -98,7 +98,7 @@ textarea::placeholder {
   border-radius: 50%;
   padding-top: 2px;
   margin-top: -4px;
-  border: 2px solid #d8d9da;
+  border: 2px solid var(--color-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -113,7 +113,7 @@ textarea::placeholder {
   margin-top: -4px;
   border-radius: 50%;
   display: flex;
-  background: #fff;
+  background: var(--color-white);
   align-items: center;
   justify-content: center;
   font-size: 0.75rem;
@@ -122,14 +122,14 @@ textarea::placeholder {
 
 /* ACTIVO */
 .step.active {
-  color: #161616;
+  color: var(--color-ink);
   font-weight: 600;
 }
 
 .step.active .step-index {
-  background: #fff;
-  color: #161616;
-  border-color: #161616;
+  background: var(--color-white);
+  color: var(--color-ink);
+  border-color: var(--color-ink);
 }
 
 /* ===== RESPONSIVE ===== */
@@ -156,10 +156,10 @@ textarea::placeholder {
 /* ===== CARDS ===== */
 .card,
 .summary-card {
-  background: #fff;
+  background: var(--color-white);
   border-radius: 14px;
   padding: 2rem;
-  border: 1px solid #d8d9da;
+  border: 1px solid var(--color-border);
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
@@ -202,7 +202,7 @@ h3 {
 }
 
 .checkout-span {
-  color: #d11a2a;
+  color: var(--color-danger);
 }
 
 /* ===== INPUTS ===== */
@@ -217,7 +217,7 @@ h3 {
 
 .input:focus {
   outline: none;
-  border-color: #161616;
+  border-color: var(--color-ink);
 }
 
 select.input {
@@ -230,7 +230,7 @@ select.input {
   background-size: 22px;
   padding-right: 30px;
   padding-left: 14px;
-  color: #161616;
+  color: var(--color-ink);
   border-radius: 5px;
   border: 1px solid #ddd;
   font-size: 0.9rem;
@@ -239,7 +239,7 @@ select.input {
 
 select.input:focus {
   outline: none;
-  border-color: #161616;
+  border-color: var(--color-ink);
 }
 
 .row {
@@ -260,7 +260,7 @@ select.input:focus {
   width: auto;
   height: 10px;
   font-size: 0.75rem;
-  color: #d11a2a;
+  color: var(--color-danger);
   opacity: 0;
   margin-left: 5px;
   transform: translateY(-4px);
@@ -273,7 +273,7 @@ select.input:focus {
   width: 100%;
   height: 15px;
   display: block;
-  color: #d11a2a;
+  color: var(--color-danger);
   margin-left: 8px;
   font-size: 0.85rem;
   opacity: 0;
@@ -294,7 +294,7 @@ select.input:focus {
 }
 
 .field.error .input {
-  border-color: #d11a2a;
+  border-color: var(--color-danger);
   box-shadow: 0 0 0 2px rgba(209, 26, 42, 0.15);
   animation: shake 0.25s ease;
 }
@@ -388,7 +388,7 @@ select.input:focus {
     border-color 0.25s ease,
     box-shadow 0.25s ease,
     background 0.25s ease;
-  background: #fff;
+  background: var(--color-white);
 }
 
 .radio-option span {
@@ -425,12 +425,12 @@ select.input:focus {
   border-radius: 50%;
   transform: scale(0);
   transition: transform 0.2s ease;
-  background: #161616;
+  background: var(--color-ink);
 }
 
 /* CHECKED */
 .radio-option input[type="radio"]:checked {
-  border-color: #161616;
+  border-color: var(--color-ink);
 }
 
 .radio-option input[type="radio"]:checked::before {
@@ -439,7 +439,7 @@ select.input:focus {
 
 /* CARD ACTIVA */
 .radio-option:has(input:checked) {
-  border-color: #161616;
+  border-color: var(--color-ink);
   box-shadow: 0 0 0 2px rgba(22, 22, 22, 0.08);
 }
 
@@ -452,13 +452,6 @@ select.input:focus {
 }
 
 /* ===== SUMMARY ===== */
-.line {
-  display: flex;
-  justify-content: space-between;
-  padding: 0.6rem 0;
-  font-size: 0.9rem;
-  border-bottom: 1px solid #eee;
-}
 
 .total {
   font-size: 1.2rem;
@@ -473,8 +466,8 @@ select.input:focus {
   border-radius: 10px;
   border: none;
   text-transform: uppercase;
-  background: #161616;
-  color: #fff;
+  background: var(--color-ink);
+  color: var(--color-white);
   font-weight: 700;
   letter-spacing: 0.8px;
   cursor: pointer;
@@ -519,14 +512,6 @@ select.input:focus {
   gap: 10px;
 }
 
-.product-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid #eee;
-}
-
 .product-name {
   font-weight: 600;
   font-size: 0.95rem;
@@ -537,12 +522,6 @@ select.input:focus {
   font-size: 0.78rem;
   color: #666;
   line-height: 1.4;
-}
-
-.product-price {
-  font-weight: 700;
-  font-size: 0.95rem;
-  white-space: nowrap;
 }
 
 /* ===== TOTALS ===== */
@@ -557,7 +536,7 @@ select.input:focus {
 .totals-row.total {
   font-size: 1.15rem;
   font-weight: 800;
-  border-top: 2px solid #161616;
+  border-top: 2px solid var(--color-ink);
   margin-top: 1rem;
   padding-top: 1rem;
 }

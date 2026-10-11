@@ -1,7 +1,15 @@
 const sendOrderConfirmationEmail = require("../utils/sendOrderConfirmationEmail");
+const { safeEqual } = require("../utils/orderToken");
 const db = require("../db/pool");
 
 exports.sinpePaid = async (req, res) => {
+  // Endpoint interno: requiere el header X-Webhook-Secret = SINPE_WEBHOOK_SECRET.
+  const expectedSecret = process.env.SINPE_WEBHOOK_SECRET;
+
+  if (!expectedSecret || !safeEqual(req.get("X-Webhook-Secret"), expectedSecret)) {
+    return res.status(401).json({ ok: false, message: "No autorizado" });
+  }
+
   try {
     const { orderId } = req.body;
 
@@ -22,6 +30,7 @@ exports.sinpePaid = async (req, res) => {
 
     res.json({ ok: true });
   } catch (err) {
+    console.error("SINPE WEBHOOK ERROR:", err);
     res.status(500).json({ ok: false, message: "Error interno" });
   }
 };

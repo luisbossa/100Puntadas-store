@@ -5,7 +5,3 @@ window.COLOR_LABELS = {
   red: "Rojo",
   black: "Negro",
 };
-
-window.DISCOUNT_RATE = 0.15;
-window.DISCOUNT_MIN_ITEMS = 2;
-window.SHIPPING_COST = 2500;

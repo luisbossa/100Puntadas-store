@@ -1,0 +1,56 @@
+/* ============================================================
+   TOKENS DE DISEÑO — 100puntadas
+   Colores, tipografías y medidas de la marca en un solo lugar.
+   Cambiar un valor aquí lo cambia en todo el sitio.
+============================================================ */
+:root {
+  /* Colores de marca */
+  --color-ink: #161616; /* texto y botones */
+  --color-cream: #fcfaf6; /* fondo general */
+  --color-white: #fff;
+  --color-pink: #ffa4db; /* rosa 100puntadas */
+  --color-accent: #fde35c; /* amarillo de la promo */
+
+  /* Colores de interfaz */
+  --color-muted: #5e5e5e; /* precios y texto secundario */
+  --color-border: #d8d9da; /* bordes de imágenes y tarjetas */
+  --color-danger: #d11a2a; /* descuentos y errores */
+  --color-sale: #d41935; /* etiqueta de oferta */
+  --color-soldout: #ff3131;
+
+  /* Degradados de marca */
+  --gradient-header: linear-gradient(
+    to bottom,
+    var(--color-pink) 15%,
+    var(--color-cream) 70%
+  );
+  --gradient-footer: linear-gradient(
+    to top,
+    var(--color-pink) 15%,
+    var(--color-cream) 70%
+  );
+
+  /* Tipografías */
+  --font-display: Hatton, Arial, sans-serif;
+  --font-body: Lato, sans-serif;
+
+  /* Formas */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+
+  /* Movimiento */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --duration-fast: 0.2s;
+  --duration-base: 0.3s;
+
+  /* Capas */
+  --z-header: 20;
+  --z-overlay: 999;
+  --z-drawer: 1000;
+
+  /* Foco visible (navegación con teclado) */
+  --focus-ring: 2px solid var(--color-ink);
+  --focus-offset: 3px;
+}

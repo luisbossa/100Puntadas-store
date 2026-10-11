@@ -1,196 +1,221 @@
-<%- include("partials/header", { isHome: false, noCursorZone: false }) %>
+            <section class="page-section" aria-labelledby="product-title">
+                <div class="product-page">
+                    <article class="product">
 
-    <!-- MODAL -->
-    <div id="window-send-suggestion" class="sizechart-modal-window">
-        <div class="sizechart-modal">
-            <button class="close-modal-btn" onclick="closeSizeChart()">✕</button>
+                        <!-- GALERÍA (en móvil se convierte en carrusel) -->
+                        <div class="product__gallery swiper-wrapper">
+                            <% product.images.forEach((image, i) => { %>
+                                <div class="product__slide swiper-slide">
+                                    <img class="product__image" src="<%= image %>"
+                                        alt="<%= product.name %> — foto <%= i + 1 %> de <%= product.images.length %>"
+                                        loading="<%= i === 0 ? 'eager' : 'lazy' %>" decoding="async">
+                                </div>
+                            <% }) %>
+                        </div>
 
-            <h2>Guía de Tallas</h2>
-            <img src="/images/size-chart.jpg" alt="Size Chart">
+                        <div class="product__pagination">
+                            <div class="swiper-pagination"></div>
+                        </div>
+
+                        <!-- INFORMACIÓN -->
+                        <div class="product__details">
+                            <div class="product__info">
+                                <div class="product__summary">
+                                    <div class="product__heading">
+                                        <h1 id="product-title" class="product__title"><%= product.name %></h1>
+                                        <div class="product__price-wrap">
+                                            <p class="product__price"><%= price %></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="product__description">
+                                        <p class="product__text"><%= product.description %></p>
+                                        <p class="product__text"><%= product.description2 %></p>
+                                    </div>
+                                </div>
+
+                                <div class="product__size-guide">
+                                    <button type="button" id="size-guide-btn" class="size-guide-btn"
+                                        aria-haspopup="dialog" aria-controls="size-guide-modal">
+                                        Tallas
+                                    </button>
+                                </div>
+
+                                <!-- OPCIONES -->
+                                <div class="product__options-wrap">
+                                    <form id="productForm" class="product__options" aria-label="Opciones del producto">
+                                        <% optionGroups.forEach((group) => { %>
+                                            <div class="option-group" role="radiogroup" aria-labelledby="label-<%= group.name %>">
+                                                <span id="label-<%= group.name %>" class="option-group__label"><%= group.label %></span>
+
+                                                <% if (group.type === "size") { %>
+                                                    <div class="option-group__choices">
+                                                        <% group.options.forEach((size, i) => { %>
+                                                            <label class="option-pill">
+                                                                <input class="visually-hidden" type="radio" name="<%= group.name %>" value="<%= size %>" <%= i === 0 ? "checked" : "" %>>
+                                                                <%= size %>
+                                                            </label>
+                                                        <% }) %>
+                                                    </div>
+                                                <% } else if (group.type === "style") { %>
+                                                    <div class="option-group__choices option-group__choices--wrap">
+                                                        <% group.options.forEach((style, i) => { %>
+                                                            <div class="style-option">
+                                                                <img class="style-option__img" src="<%= style.img %>" alt="" aria-hidden="true">
+                                                                <label class="style-option__btn">
+                                                                    <input class="visually-hidden" type="radio" name="<%= group.name %>" value="<%= style.label %>" <%= i === 0 ? "checked" : "" %>>
+                                                                    <%= style.label %>
+                                                                </label>
+                                                            </div>
+                                                        <% }) %>
+                                                    </div>
+                                                <% } else { %>
+                                                    <div class="option-group__choices<%= group.wrap ? ' option-group__choices--wrap' : '' %>">
+                                                        <% group.options.forEach((color, i) => { %>
+                                                            <label class="color-swatch">
+                                                                <input class="visually-hidden" type="radio" name="<%= group.name %>" value="<%= color.id %>" <%= i === 0 ? "checked" : "" %>>
+                                                                <span class="color-circle" data-color="<%= color.id %>"></span>
+                                                                <span class="visually-hidden"><%= color.label %></span>
+                                                            </label>
+                                                        <% }) %>
+                                                    </div>
+                                                <% } %>
+                                            </div>
+                                        <% }) %>
+                                    </form>
+                                </div>
+
+                                <!-- ACCIONES -->
+                                <div class="product__actions">
+                                    <% if (soldOut) { %>
+                                        <p class="product__soldout">Agotado</p>
+                                    <% } else { %>
+                                        <button type="button" id="buyNowBtn" class="btn-outline">Comprar ahora</button>
+                                        <button type="button" id="addToCartBtn" class="btn-outline">Agregar al carrito</button>
+                                    <% } %>
+                                </div>
+                                <p class="product__message" id="productMessage" role="status" aria-live="polite"></p>
+
+                                <!-- DETALLES -->
+                                <section class="accordion-section" aria-label="Más información">
+                                    <% if (showFitNotes) { %>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-heading">
+                                                <button type="button" class="accordion-header" aria-expanded="false" aria-controls="acc-fit">
+                                                    <span>Lo que necesitas saber</span>
+                                                    <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                                                        <path d="M5 7l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+                                                    </svg>
+                                                </button>
+                                            </h2>
+                                            <div class="accordion-content" id="acc-fit">
+                                                <ul class="accordion-list">
+                                                    <li>Precio incluye las dos piezas: Top y bottom (las puedes combinar).</li>
+                                                    <li>Posee bandas elásticas que se ajustan a tu figura.</li>
+                                                    <li>Incluye forro.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    <% } %>
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-heading">
+                                            <button type="button" class="accordion-header" aria-expanded="false" aria-controls="acc-care">
+                                                <span>Instrucciones de cuidado</span>
+                                                <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                                                    <path d="M5 7l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+                                                </svg>
+                                            </button>
+                                        </h2>
+                                        <div class="accordion-content" id="acc-care">
+                                            <ul class="accordion-list">
+                                                <li>Lavado a mano.</li>
+                                                <li>No meter en lavadora ni secadora.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-heading">
+                                            <button type="button" class="accordion-header" aria-expanded="false" aria-controls="acc-shipping">
+                                                <span>Envíos</span>
+                                                <svg class="accordion-icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+                                                    <path d="M5 7l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" />
+                                                </svg>
+                                            </button>
+                                        </h2>
+                                        <div class="accordion-content" id="acc-shipping">
+                                            <p class="accordion-text">Envíos rápidos y seguros por medio de correos de Costa Rica.</p>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- PRODUCTOS RELACIONADOS -->
+            <section class="page-section page-section--divided" aria-labelledby="related-title">
+                <div class="related">
+                    <h2 id="related-title" class="related__title">Productos relacionados</h2>
+                    <ul class="related__grid" role="list">
+                        <% related.forEach((item) => { %>
+                            <li class="related-card">
+                                <a href="<%= item.url %>" class="related-card__link">
+                                    <span class="related-card__media">
+                                        <img class="related-card__image" src="<%= item.image %>" alt="" width="1200" height="1600" loading="lazy" decoding="async">
+                                    </span>
+                                    <span class="related-card__info">
+                                        <span class="related-card__name"><%= item.name %></span>
+                                        <span class="related-card__price"><%= item.price %></span>
+                                    </span>
+                                </a>
+                            </li>
+                        <% }) %>
+                    </ul>
+                </div>
+            </section>
+
+            <link rel="stylesheet" href="/css/product.css" />
+
+            <script>
+                window.PRODUCT = <%- JSON.stringify(cartData).replace(/</g, "\\u003c") %>;
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+            <script src="/js/products.js"></script>
+            <script src="/js/accordion.js"></script>
+            <script src="/js/slider.js"></script>
+            <script src="/js/modal.js"></script>
+
+<%- contentFor("modals") %>
+    <!-- GUÍA DE TALLAS (modal) -->
+    <div id="size-guide-modal" class="sizechart-modal-window">
+        <div class="sizechart-modal" role="dialog" aria-modal="true" aria-labelledby="size-guide-title">
+            <button type="button" class="close-modal-btn" data-close-size-guide aria-label="Cerrar guía de tallas">✕</button>
+
+            <h2 id="size-guide-title">Guía de Tallas</h2>
+            <img src="/images/size-chart.jpg" alt="Tabla de tallas con medidas de busto, cintura y cadera" loading="lazy">
         </div>
     </div>
 
-    <!-- PRODUCTS -->
-    <div id="smooth-wrapper" class="smooth-wrapper">
-        <div id="smooth-content" class="page-wrapper overflow-none">
-
-            <section class="bk-shop">
-                <div class="page-view">
-                    <div class="padding-top-bottom-l no-bottom">
-                        <div class="content-wrapper">
-                            <!-- PRODUCT PAGE -->
-                            <div class="grid-split-screen is-shop shop-swiper" id="product-page">
-
-                                <!-- IMAGES -->
-                                <div class="shop-imgs-product-wrap swiper-wrapper" id="productImages">
-                                    <!-- JS injects slides -->
-                                </div>
-
-                                <div class="swiper-pagination-wrap">
-                                    <div class="swiper-pagination"></div>
-                                </div>
-
-                                <!-- INFO -->
-                                <div class="div-block-18">
-                                    <div class="shop-item-infos-wrap">
-                                        <div class="product-topdiv">
-                                            <div class="product-title-wrap">
-                                                <h2 id="productName" class="text-style-h3 is-title">
-                                                    <!-- DINAMIC CONTENT -->
-                                                </h2>
-                                                <div class="prices-wrap is-product">
-                                                    <p id="productPrice" class="text-color-neutral-2">
-                                                        <!-- DINAMIC CONTENT -->
-                                                    </p>
-                                                </div>
-                                            </div>
-
-                                            <div class="product-desc-wrap is-top">
-                                                <p id="productDescription" class="financier"><!-- DINAMIC CONTENT -->
-                                                </p>
-                                                <br>
-                                                <br>
-                                                <p id="productDescription2" class="financier"><!-- DINAMIC CONTENT -->
-                                                </p>
-                                            </div>
-                                        </div>
-
-                                        <!-- SIZE CHART -->
-                                        <div class="mini-sizeChart-div">
-                                            <button id="btn-sizeChart" class="mini-sizeChart-btn"
-                                                onclick="openSizeChart()">
-                                                Tallas
-                                            </button>
-                                        </div>
-
-                                        <!-- OPTIONS -->
-                                        <div class="add-cart-btn-wrap">
-                                            <form id="productForm" class="add-to-cart">
-                                                <!-- TOP -->
-                                                <div class="size-container">
-                                                    <span>TOP</span>
-                                                    <div class="size-btn-div" id="topSizes"><!-- DINAMIC CONTENT -->
-                                                    </div>
-                                                </div>
-
-                                                <!-- BOTTOM -->
-                                                <div class="size-container">
-                                                    <span>BOTTOM</span>
-                                                    <div class="size-btn-div" id="bottomSizes"><!-- DINAMIC CONTENT -->
-                                                    </div>
-                                                </div>
-
-                                                <!-- STYLE -->
-                                                <div class="size-container">
-                                                    <span>COBERTURA</span>
-                                                    <div class="style-div" id="bottomStyles"><!-- DINAMIC CONTENT -->
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-
-                                        <!-- BUTTONS -->
-                                        <div class="btns-wrapper">
-                                            <button id="buyNowBtn" class="add-cart-btn">Comprar ahora</button>
-                                            <button id="addToCartBtn" class="add-cart-btn">Agregar ahora</button>
-                                        </div>
-
-
-                                        <section class="accordion-section">
-                                            <!-- ITEM 1 -->
-                                            <div class="accordion-item">
-                                                <button class="accordion-header">
-                                                    <span>Lo Que necesitas saber</span>
-                                                    <svg class="accordion-icon" width="20" height="20"
-                                                        viewBox="0 0 20 20">
-                                                        <path d="M5 7l5 5 5-5" stroke="#000" stroke-width="2"
-                                                            fill="none" stroke-linecap="round" />
-                                                    </svg>
-                                                </button>
-                                                <div class="accordion-content">
-                                                    <ul class="acordion-p features-list">
-                                                        <li class="features-item">Precio incluye las dos piezas: Top y
-                                                            bottom (las puedes combinar).</li>
-                                                        <li class="features-item">Posee bandas elásticas que se ajustan
-                                                            a tu figura.</li>
-                                                        <li class="features-item">Incluye forro.</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-
-                                            <!-- ITEM 2 -->
-                                            <div class="accordion-item">
-                                                <button class="accordion-header">
-                                                    <span>Instrucciones de cuidado</span>
-                                                    <svg class="accordion-icon" width="20" height="20"
-                                                        viewBox="0 0 20 20">
-                                                        <path d="M5 7l5 5 5-5" stroke="#000" stroke-width="2"
-                                                            fill="none" stroke-linecap="round" />
-                                                    </svg>
-                                                </button>
-                                                <div class="accordion-content">
-                                                    <ul class="acordion-p features-list">
-                                                        <li class="features-item">Lavado a mano.</li>
-                                                        <li class="features-item">No meter en lavadora ni secadora.</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-
-                                            <!-- ITEM 3 -->
-                                            <div class="accordion-item">
-                                                <button class="accordion-header">
-                                                    <span>Envíos</span>
-                                                    <svg class="accordion-icon" width="20" height="20"
-                                                        viewBox="0 0 20 20">
-                                                        <path d="M5 7l5 5 5-5" stroke="#000" stroke-width="2"
-                                                            fill="none" stroke-linecap="round" />
-                                                    </svg>
-                                                </button>
-                                                <div class="accordion-content">
-                                                    <p class="acordion-p">Envíos rápidos y seguros por medio de correos
-                                                        de Costa Rica.</p>
-                                                </div>
-                                            </div>
-                                        </section>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-            <section class="bk-shop border-top">
-                <div class="related-div">
-                        <div class="content-wrapper">
-                            <div class="margin-top-s">
-                                <h3>PRODUCTOS RELACIONADOS</h3>
-                            </div>
-                            <div class="margin-top-s">
-                                <div class="coll-list-wrapper w-dyn-list">
-                                    <div id="macy-container" role="list" class="store-coll-list w-dyn-items">
-                                        <!-- DINAMIC CONTENT -->
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                </div>
-            </section>
-
-            <script>
-                window.PRODUCT_SLUG = "<%= slug %>";
-            </script>
-
-            <script src="/js/product-view.js" type="text/javascript"></script>
-            <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-
-            <script src="/js/accordion.js" type="text/javascript"></script>
-            <script src="/js/related.js" type="text/javascript"></script>
-            <script src="/js/slider.js" type="text/javascript"></script>
-            <script src="/js/products.js" type="text/javascript"></script>
-
-            <script src="/gsap/gsap.min.js" type="text/javascript"></script>
-            <script src="/gsap/Flip.min.js" type="text/javascript"></script>
-            <script src="/gsap/CustomEase.min.js" type="text/javascript"></script>
-            <script src="/js/modal.js" type="text/javascript"></script>
+<%- contentFor("head") %>
+    <script type="application/ld+json">
+    <%- JSON.stringify({
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      name: product.name,
+      description: product.description,
+      image: product.images.map((src) => "https://100puntadas.vercel.app" + src),
+      brand: { "@type": "Brand", name: "100 Puntadas" },
+      offers: {
+        "@type": "Offer",
+        priceCurrency: "CRC",
+        price: product.price,
+        availability: soldOut ? "https://schema.org/OutOfStock" : "https://schema.org/InStock",
+        url: "https://100puntadas.vercel.app/product/" + slug,
+      },
+    }).replace(/</g, "\u003c") %>
+    </script>

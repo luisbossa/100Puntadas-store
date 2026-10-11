@@ -1,0 +1,59 @@
+<%
+  // El footer se pinta dos veces para el efecto "reveal" en escritorio:
+  //  - "fixed": queda fijo detrás de la página (solo escritorio).
+  //  - "placeholder": ocupa su lugar al final del contenido; en móvil es el footer visible.
+  const isFixed = variant === "fixed";
+%>
+<footer class="footer <%= isFixed ? 'footer--fixed' : 'footer--placeholder' %>">
+    <div class="footer__inner">
+        <div class="footer__body">
+            <div class="footer__content">
+                <div class="footer__grid">
+                    <div class="footer__col footer__col--start">
+                        <div class="footer__info">
+                            <address class="footer__address">
+                                <p>DIRECCIÓN: SAN RAMÓN, ALAJUELA</p>
+                                <p>COSTA RICA.</p>
+                            </address>
+                            <div class="footer__shipping">
+                                <p class="footer__text">ENVÍOS POR:</p>
+                                <div class="footer__carrier">
+                                    <img class="footer__carrier-logo" src="/images/correos.png" alt="Correos de Costa Rica" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                        <p class="footer__text">© 100PUNTADAS, <%= new Date().getFullYear() %></p>
+                    </div>
+
+                    <div class="footer__col footer__col--end">
+                        <p class="footer__text footer__legal">
+                            <a href="/policy" class="footer-link">CONDICIONES DE VENTA</a>
+                        </p>
+
+                        <div class="footer__social">
+                            <p>SIGUENOS EN:</p>
+                            <a href="https://www.instagram.com/100puntadas_au?igsh=czZrYzJhampnMjVl" target="_blank"
+                                rel="noopener" class="footer-link" aria-label="Instagram de 100 Puntadas">
+                                <img src="/images/insta.svg" loading="lazy" alt="" class="footer__social-icon" />
+                            </a>
+                            <a href="https://www.pinterest.com/100Puntadas/?invite_code=2211715059af433bb26a09e07743d2e9&sender=663366357521380688"
+                                target="_blank" rel="noopener" class="footer-link" aria-label="Pinterest de 100 Puntadas">
+                                <img src="/images/pinterest.svg" loading="lazy" alt="" class="footer__social-icon" />
+                            </a>
+                        </div>
+
+                        <ul class="footer__payments" aria-label="Medios de pago aceptados">
+                            <li class="footer__payment"><img src="/images/amex.svg" alt="American Express" loading="lazy"></li>
+                            <li class="footer__payment"><img src="/images/maestro.svg" alt="Maestro" loading="lazy"></li>
+                            <li class="footer__payment"><img src="/images/mastercard.svg" alt="Mastercard" loading="lazy"></li>
+                            <li class="footer__payment"><img src="/images/visa.svg" alt="Visa" loading="lazy"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__logo-wrap">
+                <img src="/images/footer-logo.webp" loading="lazy" alt="100 Puntadas" class="footer__logo" />
+            </div>
+        </div>
+    </div>
+</footer>

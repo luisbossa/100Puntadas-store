@@ -1,12 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const sinpeController = require("../controllers/sinpepayController");
+const orderToken = require("../utils/orderToken");
 const db = require("../db/pool");
 
 router.get("/confirm", sinpeController.sinpeConfirm);
 
+// La orden se identifica con un token firmado (no con el id),
+// para que nadie pueda ver los datos de otra persona cambiando el número.
 router.get("/payment-sinpe", async (req, res) => {
-  const { orderId } = req.query;
+  const orderId = orderToken.verify(req.query.order);
   if (!orderId) return res.redirect("/");
 
   try {
@@ -28,6 +31,7 @@ router.get("/payment-sinpe", async (req, res) => {
       layout: false,
       order,
       orderItems,
+      orderToken: req.query.order,
     });
   } catch (err) {
     console.error(err);
@@ -35,12 +39,13 @@ router.get("/payment-sinpe", async (req, res) => {
   }
 });
 
-router.get("/payment-sinpe/:id/status", async (req, res) => {
-  const { id } = req.params;
+router.get("/payment-sinpe/:token/status", async (req, res) => {
+  const orderId = orderToken.verify(req.params.token);
+  if (!orderId) return res.status(404).json({ ok: false });
 
   try {
     const { rows } = await db.query("SELECT status FROM orders WHERE id = $1", [
-      id,
+      orderId,
     ]);
 
     if (!rows.length) {

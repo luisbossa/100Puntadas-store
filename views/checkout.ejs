@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>Checkout · 100Puntadas</title>
 
+	<link rel="stylesheet" href="/css/tokens.css" />
 	<link rel="stylesheet" href="/css/checkout.css" />
 </head>
 
@@ -148,7 +149,7 @@
 						<input type="radio" name="shipping_type" value="correos" checked>
 						<span>
 							Correos de Costa Rica:
-							<small><b>₡2.500</b></small>
+							<small><b><%= formatPrice(2500) %></b></small>
 						</span>
 					</label>
 
@@ -171,17 +172,17 @@
 
 				<div class="totals-row discount-row" id="discountRow" style="display:none;">
 					<span>Descuento (15% x 2 prendas)</span>
-					<span class="red-discount">− ₡ <span id="cartDiscount">0</span></span>
+					<span class="red-discount">− <span id="cartDiscount">0 ₡</span></span>
 				</div>
 
 				<div id="shippingRow" class="totals-row">
 					<span>Envío</span>
-					<span>₡ <span id="shippingCost">0</span></span>
+					<span id="shippingCost">0 ₡</span>
 				</div>
 
 				<div class="totals-row total">
 					<span>Total</span>
-					<span class="order-total">₡0</span>
+					<span class="order-total">0 ₡</span>
 				</div>
 
 
@@ -232,6 +233,7 @@
 	</main>
 
 
+	<script src="/js/pricing.js"></script>
 	<script src="/js/checkout.js"></script>
 </body>
 

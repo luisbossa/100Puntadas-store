@@ -1,5 +1,15 @@
 document.addEventListener("DOMContentLoaded", async () => {
   /* ================= HELPERS ================= */
+  function escapeHTML(value) {
+    return String(value ?? "").replace(
+      /[&<>"']/g,
+      (c) =>
+        ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
+          c
+        ],
+    );
+  }
+
   function getVal(name) {
     return document.querySelector(`[name="${name}"]`)?.value.trim() || "";
   }
@@ -87,9 +97,16 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  const data = JSON.parse(localStorage.getItem("checkoutData"));
+  let data;
+  try {
+    data = JSON.parse(localStorage.getItem("checkoutData"));
+  } catch {
+    data = null;
+  }
 
-  if (!data || !data.cart?.length) {
+  // Carritos guardados antes de este cambio no traen id: se vuelve a la tienda.
+  if (!data?.cart?.length || data.cart.some((item) => !item.id)) {
+    localStorage.removeItem("checkoutData");
     location.replace("/");
     return;
   }
@@ -97,16 +114,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   history.replaceState(null, "", location.href);
   window.addEventListener("popstate", () => location.replace("/"));
 
-  /* ================= CONSTANTES ================= */
-  const SHIPPING_COST = Number(window.SHIPPING_COST || 2500);
-  const DISCOUNT_RATE = Number(window.DISCOUNT_RATE || 0.15);
-  const DISCOUNT_MIN_ITEMS = Number(window.DISCOUNT_MIN_ITEMS || 2);
-
-  /* ================= SUBTOTAL ================= */
-  const subtotal = data.cart.reduce(
-    (sum, i) => sum + normalizePrice(i.price) * Number(i.quantity),
-    0,
-  );
+  /* ================= ÍTEMS PARA CALCULAR ================= */
+  // El total que se muestra es una vista previa: el servidor lo recalcula.
+  const pricingItems = data.cart.map((item) => ({
+    price: normalizePrice(item.price),
+    quantity: Number(item.quantity),
+    discount: item.discount,
+  }));
 
   /* ================= RESUMEN DE PRODUCTOS ================= */
   const orderProductsBox = document.querySelector(".order-products");
@@ -118,25 +132,29 @@ document.addEventListener("DOMContentLoaded", async () => {
       const row = document.createElement("div");
       row.className = "order-product";
 
+      const details = [
+        item.color,
+        item.size && "Talla: " + item.size,
+        item.topSize && "Top: " + item.topSize,
+        item.bottomSize && "Bottom: " + item.bottomSize,
+      ]
+        .filter(Boolean)
+        .join(" · ");
+
       row.innerHTML = `
         <div class="order-product-info">
-          <img src="${item.image}" alt="${item.name}" />
+          <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" />
           <div>
-            <strong>${item.name}</strong>
-            <small>
-              ${item.color || ""}
-              ${item.size ? " · Talla: " + item.size : ""}
-              ${item.topSize ? " · Top: " + item.topSize : ""}
-              ${item.bottomSize ? " · Bottom: " + item.bottomSize : ""}
-            </small>
+            <strong>${escapeHTML(item.name)}</strong>
+            <small>${escapeHTML(details)}</small>
           </div>
         </div>
 
         <div class="order-product-price">
           <span>x${item.quantity}</span>
-          <strong>₡ ${(
-            normalizePrice(item.price) * Number(item.quantity)
-          ).toLocaleString("es-CR")}</strong>
+          <strong>${Pricing.formatPrice(
+            normalizePrice(item.price) * Number(item.quantity),
+          )}</strong>
         </div>
       `;
 
@@ -146,11 +164,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   renderOrderProducts(data.cart);
 
-  const totalItems = data.cart.reduce((sum, i) => sum + Number(i.quantity), 0);
-  const discount =
-    totalItems >= DISCOUNT_MIN_ITEMS ? Math.round(subtotal * DISCOUNT_RATE) : 0;
-
-  let currentShipping = 0;
+  let shippingType = "correos";
 
   /* ================= ELEMENTOS ================= */
   const totalBox = document.querySelector(".order-total");
@@ -262,23 +276,25 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   /* ================= TOTALES ================= */
   function updateTotals() {
-    const total = subtotal - discount + currentShipping;
+    const { discount, shipping, total } = Pricing.calculateTotals(
+      pricingItems,
+      shippingType,
+    );
 
     discountRow.style.display = discount ? "flex" : "none";
-    discountBox.textContent = discount.toLocaleString("es-CR");
+    discountBox.textContent = Pricing.formatPrice(discount);
 
-    shippingRow.classList.toggle("show", !!currentShipping);
-    shippingCostBox.textContent = currentShipping.toLocaleString("es-CR");
+    shippingRow.classList.toggle("show", !!shipping);
+    shippingCostBox.textContent = Pricing.formatPrice(shipping);
 
-    totalBox.textContent = `₡ ${total.toLocaleString("es-CR")}`;
+    totalBox.textContent = Pricing.formatPrice(total);
   }
 
   function updateShipping() {
-    const type = document.querySelector(
+    shippingType = document.querySelector(
       'input[name="shipping_type"]:checked',
     )?.value;
 
-    currentShipping = type === "correos" ? SHIPPING_COST : 0;
     updateTotals();
   }
 
@@ -332,12 +348,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       rbMsg.textContent = "";
 
-      data.totals = {
-        subtotal,
-        discount,
-        shipping: currentShipping,
-        total: subtotal - discount + currentShipping,
-      };
+      data.shipping_type = shippingType;
 
       try {
         const resOrder = await fetch("/api/orders", {
@@ -357,13 +368,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         rbMsg.textContent = "";
         rbMsg.classList.remove("show");
 
-        const { orderId, orderNumber } = jsonOrder;
+        const { orderToken, orderNumber, totals } = jsonOrder;
 
         if (paymentMethod === "card") {
           const orderData = {
-            orderId,
             orderNumber,
-            total: data.totals.total,
+            total: totals.total,
             paymentMethod: "Tarjeta",
             createdAt: new Date().toISOString(),
           };
@@ -376,11 +386,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           const resPayment = await fetch("/create-intent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              totals: data.totals,
-              email: data.email,
-              orderId,
-            }),
+            body: JSON.stringify({ orderToken }),
           });
 
           const jsonPayment = await resPayment.json();
@@ -395,9 +401,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           );
         } else if (paymentMethod === "sinpe") {
           const orderData = {
-            orderId,
-            orderNumber: orderId,
-            total: data.totals.total,
+            orderNumber,
+            total: totals.total,
             paymentMethod: "SINPE Móvil",
             createdAt: new Date().toISOString(),
           };
@@ -407,7 +412,9 @@ document.addEventListener("DOMContentLoaded", async () => {
           clearCheckoutForm();
           localStorage.removeItem("checkoutData");
 
-          location.replace(`/payment-sinpe?orderId=${orderId}`);
+          location.replace(
+            `/payment-sinpe?order=${encodeURIComponent(orderToken)}`,
+          );
         }
       } catch (err) {
         console.error(err);

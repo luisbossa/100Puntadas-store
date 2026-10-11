@@ -1,29 +1,19 @@
+.margin-t {
+  margin-top: 20px;
+}
 .policy-section {
   width: 100%;
   height: auto;
-  background-color: #fcfaf6;
+  background-color: var(--color-cream);
   padding: 10rem 8rem 6%;
 }
-
 .policy-div {
-  font-family: Hatton, Arial, sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(0.9rem, 1.1vw, 1.1rem);
   line-height: clamp(2rem, 4vh, 4vh);
   text-align: left;
   letter-spacing: clamp(0.05rem, 0.1vw, 0.1vw);
 }
-
-.main-policy-title {
-  margin-bottom: clamp(2rem, 8%, 3rem);
-  font-family: Hatton, Arial, sans-serif;
-  color: #272727;
-  font-size: clamp(2rem, 4vw, 4rem);
-  line-height: clamp(3rem, 8vh, 8vh);
-  font-weight: 400;
-  text-align: center;
-  letter-spacing: clamp(0.1rem, 0.3vw, 0.3vw);
-}
-
 .terms-title {
   font-size: clamp(1rem, 1.8vw, 1.8rem);
   margin-bottom: 10px;
@@ -33,18 +23,15 @@
   letter-spacing: 1px;
   text-align: left;
 }
-
-.margin-t{
+.margin-t {
   margin-top: 4rem;
 }
-
 .terms-text {
-  font-family: Lato, sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(1rem, 1.3vw, 1.15rem);
   margin-bottom: 1rem;
   font-weight: 300;
 }
-
 .terms-list {
   width: 90%;
   padding-left: 1.4rem;
@@ -52,25 +39,17 @@
   list-style-type: disc;
   font-family: inherit;
 }
-
 .terms-list li {
-  font-family: Lato, sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(1rem, 1.3vw, 1.15rem);
   margin-bottom: 0.8rem;
 }
-
 .terms-item {
   margin-bottom: 6px;
   line-height: 1.4;
   color: #333;
   font-size: 15px;
 }
-
-.terms a {
-  color: #444;
-  text-decoration: underline;
-}
-
 @media screen and (max-width: 1500px) {
   .policy-section {
     padding: 6rem 1.5rem 1rem;

@@ -1,6 +1,40 @@
-/* ==========================
-   OVERLAY OSCURO
-========================== */
+.cart-item {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.checkout-btn {
+  background-color: var(--color-ink);
+  border-radius: 4em;
+  padding-top: 0.6em;
+  padding-bottom: 0.6em;
+  font-family: var(--font-display);
+  font-size: 2.4em;
+  font-weight: 300;
+}
+
+.cart-item {
+  margin-bottom: 1em;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-family: var(--font-display);
+}
+
+.cart-img {
+  width: 8em;
+}
+
+.cart-footer {
+  border-top-style: none;
+  padding-top: 0;
+}
+
+.cart-header {
+  border-bottom-style: none;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
 .cart-overlay {
   position: fixed;
   inset: 0;
@@ -16,16 +50,13 @@
   pointer-events: auto;
 }
 
-/* ==========================
-   PANEL DEL CARRITO
-========================== */
 .cart-panel {
   width: 360px;
   height: 100dvh;
   position: fixed;
   right: -400px;
   top: 0;
-  background: #fcfaf6;
+  background: var(--color-cream);
   box-shadow: -3px 0 12px rgba(0, 0, 0, 0.18);
   transition: right 0.35s ease;
   z-index: 1000;
@@ -38,16 +69,13 @@
   right: 0;
 }
 
-/* ==========================
-   HEADER DEL CARRITO
-========================== */
 .cart-header {
   position: relative;
   margin-bottom: 22px;
 }
 
 .cart-header h2 {
-  font-family: Hatton, Arial, sans-serif;
+  font-family: var(--font-display);
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -55,7 +83,6 @@
   margin: 0;
 }
 
-/* Botón de cerrar */
 .cart-close-btn {
   position: absolute;
   right: 0;
@@ -69,9 +96,6 @@
   cursor: pointer;
 }
 
-/* ==========================
-   LISTA DE PRODUCTOS
-========================== */
 .cart-items {
   flex: 1;
   overflow-y: auto;
@@ -108,12 +132,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: Lato, sans-serif;
+  font-family: var(--font-body);
   gap: 4px;
 }
 
 .cart-heading {
-  font-family: Hatton, Arial, sans-serif;
+  font-family: var(--font-display);
   font-size: 15px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -126,9 +150,6 @@
   color: #444;
 }
 
-/* ==========================
-   TOTAL Y FOOTER
-========================== */
 .cart-footer {
   border-top: 1px solid #eee;
   padding-top: 15px;
@@ -147,8 +168,8 @@
   display: flex;
   justify-content: space-between;
   font-size: 16px;
-  color: #161616;
-  font-family: Lato, sans-serif;
+  color: var(--color-ink);
+  font-family: var(--font-body);
 }
 
 .total-row {
@@ -156,11 +177,11 @@
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
-  font-family: Hatton, Arial, sans-serif;
+  font-family: var(--font-display);
 }
 
 .red-discount {
-  color: #d11a2a;
+  color: var(--color-danger);
 }
 
 .cart-checkout-btn {
@@ -168,10 +189,10 @@
   padding: 15px 12px 10px 12px;
   font-size: 1rem;
   border: none;
-  font-family: Hatton, Arial, sans-serif;
+  font-family: var(--font-display);
   text-transform: uppercase;
-  background: #161616;
-  color: #fff;
+  background: var(--color-ink);
+  color: var(--color-white);
   letter-spacing: 1px;
   border-radius: 6px;
   text-align: center;
@@ -187,25 +208,7 @@
   pointer-events: none;
   opacity: 0.8;
   cursor: not-allowed;
-  color: #fff;
-}
-
-.disable-text {
-  pointer-events: none;
-  opacity: 0.95;
-  cursor: not-allowed;
-  color: #5e5e5e;
-}
-
-/* ==========================
-   CANTIDAD Y BOTÓN ELIMINAR
-========================== */
-.cart-item.fade-out {
-  opacity: 0;
-  transform: scale(0.95);
-  transition:
-    opacity 0.3s ease,
-    transform 0.3s ease;
+  color: var(--color-white);
 }
 
 .delete-btn {
@@ -224,7 +227,7 @@
 .delete-btn svg {
   width: 24px;
   height: 24px;
-  fill: #fff;
+  fill: var(--color-white);
 }
 
 .delete-btn:hover svg {
@@ -245,8 +248,8 @@
 .quantity-btn {
   width: 27px;
   height: 27px;
-  background-color: #161616;
-  color: #fff;
+  background-color: var(--color-ink);
+  color: var(--color-white);
   border: none;
   cursor: pointer;
   border-radius: 5px;
@@ -274,19 +277,6 @@
   border-radius: 5px;
 }
 
-.fade-out {
-  animation: fadeOut 0.3s forwards;
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-}
-
 .emptyCartMessage {
   display: none;
   color: #666;
@@ -294,7 +284,7 @@
   font-size: 1.1rem;
   line-height: 1.3rem;
   padding: 0 10px;
-  font-family: Lato, sans-serif;
+  font-family: var(--font-body);
   margin: 3rem 0;
 }
 
@@ -309,4 +299,25 @@
     width: 100%;
     right: -100%;
   }
+}
+
+.cart-footer {
+  position: static;
+}
+
+/* Aviso de la promoción "lleva dos y ahorra" */
+.cart-promo {
+  margin: 0;
+  padding: 0.65rem 0.8rem 0.55rem;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--color-pink) 35%, transparent);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.cart-promo[hidden] {
+  display: none;
 }

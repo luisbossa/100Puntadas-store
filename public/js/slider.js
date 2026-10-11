@@ -1,41 +1,35 @@
-document.addEventListener("DOMContentLoaded", function () {
-  $(".product-img-wrap img")
-    .on("load", function () {
-      gsap.to(this, 1, {
-        opacity: 1,
-        ease: "power2.out",
-      });
-    })
-    .each(function () {
-      if (this.complete) {
-        $(this).trigger("load");
-      }
-    });
-});
+/* ============================================================
+   GALERÍA DE PRODUCTO
+   - Aparición suave de cada imagen al cargar.
+   - En pantallas < 768px la galería se vuelve un carrusel (Swiper).
+============================================================ */
+document.querySelectorAll(".product__image").forEach((img) => {
+  const show = () =>
+    gsap.to(img, { duration: 1, opacity: 1, ease: "power2.out" });
 
-var mySwiper;
+  if (img.complete) show();
+  else img.addEventListener("load", show, { once: true });
+});
 
 let swipers = [];
 
 function checkScreenWidth() {
   if (window.innerWidth < 768) {
     if (swipers.length === 0) {
-      $(".shop-swiper").each(function () {
-        const nav = $(this).find(".swiper-pagination")[0];
-
-        const swiper = new Swiper(this, {
-          slidesPerView: 1,
-          slidesPerGroup: 1,
-          spaceBetween: 24, 
-          grabCursor: true,
-          centeredSlides: false,
-          pagination: {
-            el: nav,
-            clickable: true,
-          },
-        });
-
-        swipers.push(swiper);
+      document.querySelectorAll(".product").forEach((el) => {
+        swipers.push(
+          new Swiper(el, {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: 24,
+            grabCursor: true,
+            centeredSlides: false,
+            pagination: {
+              el: el.querySelector(".swiper-pagination"),
+              clickable: true,
+            },
+          }),
+        );
       });
     }
   } else {
@@ -47,14 +41,3 @@ function checkScreenWidth() {
 checkScreenWidth();
 
 window.addEventListener("resize", checkScreenWidth);
-
-$(document).ready(function () {
-  $(".variant-btn").each(function () {
-    let text = $(this).text();
-    if (text === "White") {
-      $(this).addClass("is-white");
-    } else if (text === "Blue") {
-      $(this).addClass("is-blue");
-    }
-  });
-});

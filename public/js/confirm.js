@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("confirm-method").textContent = order.paymentMethod;
 
   document.getElementById("confirm-total").textContent =
-    "₡ " + Number(order.total).toLocaleString("es-CR");
+    String(Math.round(Number(order.total) || 0)).replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " ₡";
 
   /* ================= LIMPIEZA DEFINITIVA ================= */
 

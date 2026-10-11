@@ -1,127 +1,198 @@
 const db = require("../db/pool");
+const catalog = require("../data/catalog");
+const Pricing = require("../public/js/pricing");
+const orderToken = require("../utils/orderToken");
 
 /* ================= HELPERS ================= */
-const normalize = (v) => Number(String(v || 0).replace(/[^\d]/g, ""));
+const productsById = Object.fromEntries(
+  Object.values(catalog).map((product) => [product.id, product]),
+);
+
+const DEFAULT_SIZES = ["XS", "S", "M", "L"];
+
+const cleanText = (v, max = 40) =>
+  typeof v === "string" && v.trim() ? v.trim().slice(0, max) : null;
+
+// Reconstruye cada ítem del carrito con los datos reales del catálogo.
+// Del cliente solo se toman id, cantidad y variantes; nunca precio ni nombre.
+function buildOrderItems(cart) {
+  return cart.map((raw) => {
+    const product = productsById[raw?.id];
+    if (!product) throw new Error("Producto no disponible");
+    if (product.stock === 0) throw new Error(`${product.name} está agotado`);
+
+    const quantity = Number(raw.quantity);
+    if (
+      !Number.isInteger(quantity) ||
+      quantity < 1 ||
+      quantity > Pricing.MAX_QUANTITY
+    ) {
+      throw new Error("Cantidad inválida");
+    }
+
+    const sizes = product.sizes || DEFAULT_SIZES;
+    const styles = (product.styles || []).map((s) => s.label);
+
+    const topSize = cleanText(raw.topSize);
+    const bottomSize = cleanText(raw.bottomSize);
+    const size = cleanText(raw.size);
+    const bottomStyle = cleanText(raw.bottomStyle);
+
+    if ([topSize, bottomSize, size].some((s) => s && !sizes.includes(s))) {
+      throw new Error(`Talla inválida para ${product.name}`);
+    }
+    if (bottomStyle && !styles.includes(bottomStyle)) {
+      throw new Error(`Estilo inválido para ${product.name}`);
+    }
+
+    return {
+      name: product.name,
+      image: product.images[0],
+      price: product.price,
+      discount: product.discount,
+      quantity,
+      topSize,
+      bottomSize,
+      bottomStyle,
+      size,
+      color: cleanText(raw.color, 30),
+    };
+  });
+}
+
+async function generateOrderNumber(client) {
+  for (let attempt = 0; attempt < 5; attempt++) {
+    const candidate = Math.floor(10000 + Math.random() * 90000); // 5 dígitos
+    const { rows } = await client.query(
+      "SELECT 1 FROM orders WHERE order_number = $1",
+      [candidate],
+    );
+    if (!rows.length) return candidate;
+  }
+  throw new Error("No se pudo generar un número de pedido único");
+}
 
 /* ================= CREATE ORDER ================= */
 exports.getInfo = async (req, res) => {
+  const {
+    email,
+    phone,
+    full_name,
+    national_id,
+    province,
+    canton,
+    district,
+    address,
+    neighborhood,
+    address_details,
+    cart,
+    shipping_type,
+    payment_method,
+  } = req.body;
+
+  /* ================= VALIDACIONES ================= */
+  if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+    return res.status(400).json({ success: false, error: "Correo inválido" });
+  }
+
+  if (!/^[245678]\d{3}-\d{4}$/.test(phone)) {
+    return res.status(400).json({ success: false, error: "Teléfono inválido" });
+  }
+
+  if (!/^\d-\d{4}-\d{4}$/.test(national_id)) {
+    return res.status(400).json({ success: false, error: "Cédula inválida" });
+  }
+
+  if (typeof full_name !== "string" || full_name.trim().length < 3) {
+    return res.status(400).json({ success: false, error: "Nombre inválido" });
+  }
+
+  if (typeof address !== "string" || address.trim().length < 10) {
+    return res.status(400).json({
+      success: false,
+      error: "La dirección es obligatoria y muy corta",
+    });
+  }
+
+  if (!Array.isArray(cart) || cart.length === 0) {
+    return res.status(400).json({ success: false, error: "Carrito inválido" });
+  }
+
+  if (!["sinpe", "card"].includes(payment_method)) {
+    return res
+      .status(400)
+      .json({ success: false, error: "Método de pago inválido" });
+  }
+
+  if (!Object.hasOwn(Pricing.SHIPPING_OPTIONS, shipping_type)) {
+    return res
+      .status(400)
+      .json({ success: false, error: "Método de envío inválido" });
+  }
+
+  let items;
   try {
-    const {
-      email,
-      phone,
-      full_name,
-      national_id,
-      province, 
-      canton, 
-      district, 
-      address,
-      neighborhood,
-      address_details,
-      cart,
-      totals,
-      payment_method, 
-    } = req.body;
+    items = buildOrderItems(cart);
+  } catch (err) {
+    return res.status(400).json({ success: false, error: err.message });
+  }
 
-    /* ================= VALIDACIONES ================= */
-    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
-      return res.status(400).json({ success: false, error: "Correo inválido" });
-    }
+  /* ================= CAST DE CODES ================= */
+  const provinceCode = Number(province);
+  const cantonCode = Number(canton);
+  const districtCode = Number(district);
 
-    if (!/^[245678]\d{3}-\d{4}$/.test(phone)) {
-      return res
-        .status(400)
-        .json({ success: false, error: "Teléfono inválido" });
-    }
+  if (
+    Number.isNaN(provinceCode) ||
+    Number.isNaN(cantonCode) ||
+    Number.isNaN(districtCode)
+  ) {
+    return res.status(400).json({
+      success: false,
+      error: "Provincia, cantón o distrito inválido",
+    });
+  }
 
-    if (!/^\d-\d{4}-\d{4}$/.test(national_id)) {
-      return res.status(400).json({ success: false, error: "Cédula inválida" });
-    }
+  const client = await db.connect();
 
-    if (!address || address.trim().length < 10) {
-      return res.status(400).json({
-        success: false,
-        error: "La dirección es obligatoria y muy corta",
-      });
-    }
-
-    if (!Array.isArray(cart) || cart.length === 0) {
-      return res
-        .status(400)
-        .json({ success: false, error: "Carrito inválido" });
-    }
-
-    if (!payment_method || !["sinpe", "card"].includes(payment_method)) {
-      return res
-        .status(400)
-        .json({ success: false, error: "Método de pago inválido" });
-    }
-
-    /* ================= CAST DE CODES ================= */
-    const provinceCode = Number(province);
-    const cantonCode = Number(canton);
-    const districtCode = Number(district);
-
-    if (
-      Number.isNaN(provinceCode) ||
-      Number.isNaN(cantonCode) ||
-      Number.isNaN(districtCode)
-    ) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          error: "Provincia, cantón o distrito inválido",
-        });
-    }
-
+  try {
     /* ================= CONVERTIR CODES → NOMBRES ================= */
-    const provinceRes = await db.query(
-      "SELECT province FROM provinces WHERE code = $1",
-      [provinceCode]
-    );
-    const cantonRes = await db.query(
-      "SELECT canton FROM cantons WHERE code = $1 AND province = $2",
-      [cantonCode, provinceCode]
-    );
-    const districtRes = await db.query(
-      "SELECT district FROM districts WHERE code = $1 AND canton = $2",
-      [districtCode, cantonCode]
-    );
+    const [provinceRes, cantonRes, districtRes] = await Promise.all([
+      client.query("SELECT province FROM provinces WHERE code = $1", [
+        provinceCode,
+      ]),
+      client.query(
+        "SELECT canton FROM cantons WHERE code = $1 AND province = $2",
+        [cantonCode, provinceCode],
+      ),
+      client.query(
+        "SELECT district FROM districts WHERE code = $1 AND canton = $2",
+        [districtCode, cantonCode],
+      ),
+    ]);
 
     if (
       !provinceRes.rows.length ||
       !cantonRes.rows.length ||
       !districtRes.rows.length
     ) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          error: "Provincia, cantón o distrito inválido",
-        });
+      return res.status(400).json({
+        success: false,
+        error: "Provincia, cantón o distrito inválido",
+      });
     }
 
-    const provinceName = provinceRes.rows[0].province;
-    const cantonName = cantonRes.rows[0].canton;
-    const districtName = districtRes.rows[0].district;
+    /* ================= TOTALES (calculados en servidor) ================= */
+    const totals = Pricing.calculateTotals(items, shipping_type);
 
-    /* ================= TOTALES ================= */
-    const subtotal = cart.reduce(
-      (acc, item) => acc + normalize(item.price) * Number(item.quantity || 1),
-      0
-    );
-    const discount = normalize(totals?.discount);
-    const shipping = normalize(totals?.shipping);
-    const total = subtotal - discount + shipping;
-
-    if (total <= 0) {
+    if (totals.total <= 0) {
       return res.status(400).json({ success: false, error: "Total inválido" });
     }
 
     /* ================= BLOQUEO DUPLICADOS ================= */
-    const existingOrder = await db.query(
+    const existingOrder = await client.query(
       "SELECT id, status FROM orders WHERE email = $1 AND total = $2 ORDER BY id DESC LIMIT 1",
-      [email.trim(), total]
+      [email.trim(), totals.total],
     );
 
     if (
@@ -133,41 +204,42 @@ exports.getInfo = async (req, res) => {
         .json({ success: false, error: "Esta orden ya fue pagada" });
     }
 
-    /* ================= NÚMERO DE PEDIDO ALEATORIO ================= */
-    const randomOrderNumber = Math.floor(10000 + Math.random() * 90000); // 5 dígitos
+    await client.query("BEGIN");
+
+    const orderNumber = await generateOrderNumber(client);
 
     /* ================= INSERT ORDER ================= */
-    const orderResult = await db.query(
+    const orderResult = await client.query(
       `INSERT INTO orders
       (order_number, email, phone, full_name, national_id, province_name, canton_name, district_name,
        address, neighborhood, address_details, subtotal, discount, shipping, total, status, payment_method)
        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,'pending',$16)
-       RETURNING id, order_number`,
+       RETURNING id`,
       [
-        randomOrderNumber,
+        orderNumber,
         email.trim(),
         phone.trim(),
         full_name.trim(),
         national_id.trim(),
-        provinceName,
-        cantonName,
-        districtName,
+        provinceRes.rows[0].province,
+        cantonRes.rows[0].canton,
+        districtRes.rows[0].district,
         address.trim(),
-        neighborhood?.trim() || "",
-        address_details || null,
-        subtotal,
-        discount,
-        shipping,
-        total,
+        cleanText(neighborhood, 120) || "",
+        cleanText(address_details, 500),
+        totals.subtotal,
+        totals.discount,
+        totals.shipping,
+        totals.total,
         payment_method,
-      ]
+      ],
     );
 
     const orderId = orderResult.rows[0].id;
 
     /* ================= INSERT ITEMS ================= */
-    for (const item of cart) {
-      await db.query(
+    for (const item of items) {
+      await client.query(
         `INSERT INTO order_items
         (order_id, product_name, image, price, quantity, top_size, bottom_size, bottom_style, size, color)
         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`,
@@ -175,29 +247,35 @@ exports.getInfo = async (req, res) => {
           orderId,
           item.name,
           item.image,
-          normalize(item.price),
-          Number(item.quantity || 1),
-          item.topSize || null,
-          item.bottomSize || null,
-          item.bottomStyle || null,
-          item.size || null,
-          item.color || null,
-        ]
+          item.price,
+          item.quantity,
+          item.topSize,
+          item.bottomSize,
+          item.bottomStyle,
+          item.size,
+          item.color,
+        ],
       );
     }
+
+    await client.query("COMMIT");
 
     /* ================= RESPUESTA ================= */
     return res.json({
       success: true,
-      orderId,
-      orderNumber: randomOrderNumber,
+      orderToken: orderToken.create(orderId),
+      orderNumber,
       payment_method,
+      totals,
     });
   } catch (err) {
+    await client.query("ROLLBACK").catch(() => {});
     console.error("CHECKOUT ERROR:", err);
     return res
       .status(500)
       .json({ success: false, error: "Error interno del servidor" });
+  } finally {
+    client.release();
   }
 };
 
