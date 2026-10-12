@@ -1,47 +1,54 @@
-.onvo-body {
-  min-height: 100vh;
-  font-family: "Arial", sans-serif;
-  background: var(--gradient-footer);
+/* ============================================================
+   PAGO CON TARJETA — paso 2: formulario seguro de ONVO
+============================================================ */
+
+body.page-onvo {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  min-height: 100vh;
+  background: var(--gradient-footer);
+  font-family: Arial, sans-serif;
 }
 
 .onvo-wrapper {
-  width: 100%;
-  max-width: 600px;
-  background-color: var(--color-white);
-  padding: 2rem;
-  margin-top: 3rem;
-  border-radius: 14px;
-  border: 1px solid var(--color-border);
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   display: flex;
   flex-direction: column;
-}
-
-.onvo-heading-div {
   width: 100%;
-  padding: 1rem 0;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  max-width: 600px;
+  margin-top: 3rem;
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background-color: var(--color-white);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .onvo-heading {
+  margin: 0;
+  padding: 1rem 0;
+  color: #333;
   font-family: var(--font-display);
   font-size: 2rem;
-  color: #333;
-  margin: 0;
+  letter-spacing: 1px;
+  text-align: center;
+  text-transform: uppercase;
 }
 
-.onvo-checkout-container {
+.onvo-checkout {
   width: 100%;
-  margin: 1rem auto 0 auto;
+  min-height: 400px;
+  margin: 0 auto;
 }
 
-/* ===== RESPONSIVE ===== */
+.onvo-loading {
+  padding: 2rem 0;
+  color: #666;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
 @media (max-width: 500px) {
   .onvo-wrapper {
     max-width: 95%;
@@ -50,9 +57,5 @@
 
   .onvo-heading {
     font-size: 1.5rem;
-  }
-
-  .onvo-checkout-container {
-    width: 100%;
   }
 }

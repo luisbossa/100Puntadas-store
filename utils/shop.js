@@ -52,14 +52,7 @@ exports.getRelated = (currentSlug, limit = 4) => {
 ============================================================ */
 const DEFAULT_SIZES = ["XS", "S", "M", "L"];
 
-// Colores disponibles para sets, tejidos y enterizos (imagen en /images/colors).
-const COLORS = [
-  { id: "white", label: "Blanco" },
-  { id: "coffe", label: "Café" },
-  { id: "pink", label: "Rosado" },
-  { id: "red", label: "Rojo" },
-  { id: "black", label: "Negro" },
-];
+const COLORS = require("../data/colors");
 
 // Grupos de opciones según el tipo de prenda.
 function getOptionGroups(product) {

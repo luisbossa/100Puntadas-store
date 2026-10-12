@@ -1,8 +1,10 @@
 const { getCollections } = require("../utils/shop");
+const testimonials = require("../data/testimonials");
 
 exports.home = (req, res) => {
   res.render("index", {
     collections: getCollections(),
+    testimonials,
     isHome: true,
     noCursorZone: true,
   });

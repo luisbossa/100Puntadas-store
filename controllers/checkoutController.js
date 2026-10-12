@@ -72,6 +72,24 @@ async function generateOrderNumber(client) {
   throw new Error("No se pudo generar un número de pedido único");
 }
 
+/* ================= PÁGINAS ================= */
+exports.checkoutPage = (req, res) => {
+  res.render("checkout", {
+    layout: "checkout-layout",
+    pageTitle: "Finalizar compra",
+    step: 1,
+  });
+};
+
+exports.confirmPage = (req, res) => {
+  res.render("confirm", {
+    layout: "checkout-layout",
+    pageTitle: "Pedido confirmado",
+    step: 3,
+    bodyClass: "page-confirm",
+  });
+};
+
 /* ================= CREATE ORDER ================= */
 exports.getInfo = async (req, res) => {
   const {

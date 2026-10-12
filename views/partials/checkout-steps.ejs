@@ -1,0 +1,19 @@
+<% const steps = ["Entrega", "Pago", "Confirmación"]; %>
+<header class="checkout-topbar">
+    <div class="checkout-header">
+        <a href="/" class="checkout-brand">
+            <%- img("/images/logo.png", { class: "checkout-brand__logo", alt: "100 Puntadas — volver a la tienda", sizes: "100px", loading: "eager" }) %>
+        </a>
+
+        <nav class="checkout-steps" aria-label="Pasos de la compra">
+            <ol class="checkout-steps__list">
+                <% steps.forEach((label, i) => { const n = i + 1; %>
+                    <li class="step<%= n === step ? ' step--active' : '' %>" <%- n === step ? 'aria-current="step"' : '' %>>
+                        <span class="step__index"><%= n %></span>
+                        <span class="step__label"><%= label %></span>
+                    </li>
+                <% }) %>
+            </ol>
+        </nav>
+    </div>
+</header>

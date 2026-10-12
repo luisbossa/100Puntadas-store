@@ -6,9 +6,13 @@
                         <div class="product__gallery swiper-wrapper">
                             <% product.images.forEach((image, i) => { %>
                                 <div class="product__slide swiper-slide">
-                                    <img class="product__image" src="<%= image %>"
-                                        alt="<%= product.name %> — foto <%= i + 1 %> de <%= product.images.length %>"
-                                        loading="<%= i === 0 ? 'eager' : 'lazy' %>" decoding="async">
+                                    <%- img(image, {
+                                        alt: product.name + " — foto " + (i + 1) + " de " + product.images.length,
+                                        class: "product__image",
+                                        sizes: "(max-width: 767px) 100vw, (max-width: 1500px) 54vw, 46vw",
+                                        loading: i === 0 ? "eager" : "lazy",
+                                        fetchpriority: i === 0 ? "high" : undefined,
+                                    }) %>
                                 </div>
                             <% }) %>
                         </div>
@@ -61,7 +65,7 @@
                                                     <div class="option-group__choices option-group__choices--wrap">
                                                         <% group.options.forEach((style, i) => { %>
                                                             <div class="style-option">
-                                                                <img class="style-option__img" src="<%= style.img %>" alt="" aria-hidden="true">
+                                                                <%- img(style.img, { class: "style-option__img", alt: "", sizes: "80px", "aria-hidden": "true" }) %>
                                                                 <label class="style-option__btn">
                                                                     <input class="visually-hidden" type="radio" name="<%= group.name %>" value="<%= style.label %>" <%= i === 0 ? "checked" : "" %>>
                                                                     <%= style.label %>
@@ -164,7 +168,7 @@
                             <li class="related-card">
                                 <a href="<%= item.url %>" class="related-card__link">
                                     <span class="related-card__media">
-                                        <img class="related-card__image" src="<%= item.image %>" alt="" width="1200" height="1600" loading="lazy" decoding="async">
+                                        <%- img(item.image, { class: "related-card__image", alt: "", sizes: "(max-width: 991px) 46vw, 23vw" }) %>
                                     </span>
                                     <span class="related-card__info">
                                         <span class="related-card__name"><%= item.name %></span>
@@ -177,7 +181,7 @@
                 </div>
             </section>
 
-            <link rel="stylesheet" href="/css/product.css" />
+            <link rel="stylesheet" href="<%= asset('/css/product.css') %>" />
 
             <script>
                 window.PRODUCT = <%- JSON.stringify(cartData).replace(/</g, "\\u003c") %>;
@@ -185,10 +189,10 @@
             <script src="https://cdn.jsdelivr.net/npm/swiper@8.4.7/swiper-bundle.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
-            <script src="/js/products.js"></script>
-            <script src="/js/accordion.js"></script>
-            <script src="/js/slider.js"></script>
-            <script src="/js/modal.js"></script>
+            <script src="<%= asset('/js/products.js') %>"></script>
+            <script src="<%= asset('/js/accordion.js') %>"></script>
+            <script src="<%= asset('/js/slider.js') %>"></script>
+            <script src="<%= asset('/js/modal.js') %>"></script>
 
 <%- contentFor("modals") %>
     <!-- GUÍA DE TALLAS (modal) -->
@@ -197,7 +201,7 @@
             <button type="button" class="close-modal-btn" data-close-size-guide aria-label="Cerrar guía de tallas">✕</button>
 
             <h2 id="size-guide-title">Guía de Tallas</h2>
-            <img src="/images/size-chart.jpg" alt="Tabla de tallas con medidas de busto, cintura y cadera" loading="lazy">
+            <%- img("/images/size-chart.jpg", { alt: "Tabla de tallas con medidas de busto, cintura y cadera", sizes: "(max-width: 830px) 100vw, 800px" }) %>
         </div>
     </div>
 

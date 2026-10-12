@@ -55,3 +55,8 @@
     padding: 6rem 1.5rem 1rem;
   }
 }
+
+/* Al llegar desde un enlace (#envios) el título no queda debajo del header fijo */
+.terms-title[id] {
+  scroll-margin-top: 9rem;
+}

@@ -1,3 +1,6 @@
+/* ============================================================
+   CARRITO — se guarda en localStorage y se muestra en el panel lateral.
+============================================================ */
 function getCart() {
   try {
     return JSON.parse(localStorage.getItem("cartItems")) || [];
@@ -14,10 +17,7 @@ function saveCart(cart) {
 function escapeHTML(value) {
   return String(value ?? "").replace(
     /[&<>"']/g,
-    (c) =>
-      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
-        c
-      ],
+    (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c],
   );
 }
 
@@ -52,21 +52,12 @@ window.addToCart = function (item) {
   const variantKey = JSON.stringify(variantData);
   const variantId = `${item.id}-${btoa(variantKey)}`;
 
-  const existing = cart.find(
-    (p) => p.id === item.id && p.variantId === variantId,
-  );
+  const existing = cart.find((p) => p.id === item.id && p.variantId === variantId);
 
   if (existing) {
-    existing.quantity = Math.min(
-      existing.quantity + item.quantity,
-      Pricing.MAX_QUANTITY,
-    );
+    existing.quantity = Math.min(existing.quantity + item.quantity, Pricing.MAX_QUANTITY);
   } else {
-    cart.push({
-      ...item,
-      variantKey,
-      variantId,
-    });
+    cart.push({ ...item, variantKey, variantId });
   }
 
   saveCart(cart);
@@ -79,110 +70,102 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeBtn = document.getElementById("closeCartBtn");
   const openCartBtn = document.getElementById("openCartBtn");
   const cartCount = document.querySelector(".cart-count");
+  const list = panel?.querySelector(".cart-items");
   const MAX = Pricing.MAX_QUANTITY;
+  const $ = (id) => document.getElementById(id);
 
+  if (!panel || !list) return;
+
+  /* ================= PRODUCTO ================= */
+
+  // "Top S · Bottom M · Hilo" / "Talla M · Rosado"
+  function variantText(item) {
+    return [
+      item.size && `Talla ${item.size}`,
+      item.topSize && `Top ${item.topSize}`,
+      item.bottomSize && `Bottom ${item.bottomSize}`,
+      item.bottomStyle && item.bottomStyle.charAt(0) + item.bottomStyle.slice(1).toLowerCase(),
+      item.color && (COLOR_LABELS[item.color] || item.color),
+    ]
+      .filter(Boolean)
+      .join(" · ");
+  }
+
+  function itemHTML(item, index) {
+    const name = escapeHTML(item.name);
+    const url = item.url ? escapeHTML(item.url) : null;
+    const image = `<img src="${escapeHTML(thumbnail(item.image))}" width="76" height="101" alt="${name}" loading="lazy">`;
+    const qty = Number(item.quantity);
+
+    return `
+      <li class="cart-item" data-index="${index}">
+        ${url ? `<a class="cart-item__media" href="${url}" tabindex="-1">${image}</a>` : `<div class="cart-item__media">${image}</div>`}
+
+        <div class="cart-item__body">
+          <div class="cart-item__top">
+            <h3 class="cart-item__name">${url ? `<a href="${url}">${name}</a>` : name}</h3>
+            <span class="cart-item__price">${Pricing.formatPrice(item.price * qty)}</span>
+          </div>
+          <p class="cart-item__variant">${escapeHTML(variantText(item))}</p>
+          ${qty > 1 ? `<p class="cart-item__unit">${Pricing.formatPrice(item.price)} c/u</p>` : ""}
+
+          <div class="cart-item__actions">
+            <div class="qty" role="group" aria-label="Cantidad de ${name}">
+              <button type="button" class="qty__btn" data-action="decrease" aria-label="Quitar uno" ${qty <= 1 ? "disabled" : ""}>−</button>
+              <span class="qty__value" aria-live="polite">${qty}</span>
+              <button type="button" class="qty__btn" data-action="increase" aria-label="Agregar uno" ${qty >= MAX ? "disabled" : ""}>+</button>
+            </div>
+            <button type="button" class="cart-item__remove" data-action="remove">Eliminar</button>
+          </div>
+        </div>
+      </li>`;
+  }
+
+  /* ================= PROMO "LLEVA DOS Y AHORRA" ================= */
+  function renderPromo(cart, discount) {
+    const promo = $("cartPromo");
+    const eligible = cart.filter((i) => i.discount !== 1).reduce((acc, i) => acc + i.quantity, 0);
+    const rate = `${Pricing.DISCOUNT_RATE * 100}%`;
+    const pairComplete = eligible > 0 && eligible % Pricing.DISCOUNT_MIN_ITEMS === 0;
+
+    promo.hidden = eligible === 0;
+    promo.classList.toggle("is-complete", pairComplete);
+    $("cartPromoFill").style.width = pairComplete ? "100%" : "50%";
+    $("cartPromoText").innerHTML = pairComplete
+      ? `✦ ¡Listo! Tienes <strong>${rate} de descuento</strong> aplicado.`
+      : discount > 0
+        ? `Agrega <strong>1 prenda más</strong> y también tendrá ${rate} de descuento.`
+        : `Agrega <strong>1 prenda más</strong> y obtén <strong>${rate} de descuento</strong>.`;
+  }
+
+  /* ================= RENDER ================= */
   window.renderCart = function () {
     const cart = getCart();
-    const container = document.querySelector(".cart-items");
-    const totalBox = document.getElementById("cartTotal");
-    const emptyMessage = document.getElementById("emptyCartMessage");
-    const checkoutBtn = document.querySelector(".cart-checkout-btn");
-    const discountRow = document.getElementById("discountRow");
-    const discountBox = document.getElementById("cartDiscount");
-    const promo = document.getElementById("cartPromo");
+    const { subtotal, discount, total, totalQuantity } = Pricing.calculateTotals(cart);
 
-    if (!container) return;
+    panel.classList.toggle("is-empty", cart.length === 0);
+    $("cartTitleCount").textContent = totalQuantity ? `(${totalQuantity})` : "";
+    list.innerHTML = cart.map(itemHTML).join("");
 
-    if (cart.length === 0) {
-      container.innerHTML = "";
-      emptyMessage.style.display = "block";
-      checkoutBtn?.classList.add("disabled");
-      discountRow.style.display = "none";
-      if (promo) promo.hidden = true;
-      totalBox.textContent = Pricing.formatPrice(0);
-      updateCount(0);
-      return;
-    }
+    renderPromo(cart, discount);
+    $("cartSubtotal").textContent = Pricing.formatPrice(subtotal);
+    $("discountRow").hidden = !discount;
+    $("cartDiscount").textContent = Pricing.formatPrice(discount);
+    $("cartTotal").textContent = Pricing.formatPrice(total);
 
-    emptyMessage.style.display = "none";
-    checkoutBtn?.classList.remove("disabled");
-
-    container.innerHTML = cart
-      .map((item, index) => {
-        const name = escapeHTML(item.name);
-        const color = COLOR_LABELS[item.color] || item.color;
-
-        return `
-        <div class="cart-item" data-index="${index}">
-            <img src="${escapeHTML(item.image)}" loading="eager" alt="${name}">
-
-            <div class="cart-info-div">
-              <h3 class="cart-heading">${name}</h3>
-              ${item.topSize ? `<p>Top: ${escapeHTML(item.topSize)}</p>` : ""}
-              ${item.bottomSize ? `<p>Bottom: ${escapeHTML(item.bottomSize)}</p>` : ""}
-              ${item.bottomStyle ? `<p>Estilo: ${escapeHTML(item.bottomStyle)}</p>` : ""}
-              ${item.size ? `<p>Talla: ${escapeHTML(item.size)}</p>` : ""}
-              ${color ? `<p>Color: ${escapeHTML(color)}</p>` : ""}
-              <p>${Pricing.formatPrice(item.price)}</p>
-
-              <div class="quantity-controls">
-                <button class="quantity-btn decrease ${item.quantity <= 1 ? "disabled" : ""}" aria-label="Restar uno">–</button>
-                <input
-                  type="number"
-                  class="quantity-input"
-                  value="${Number(item.quantity)}"
-                  min="1" max="${MAX}"
-                  aria-label="Cantidad"
-                >
-                <button class="quantity-btn increase ${item.quantity >= MAX ? "disabled" : ""}" aria-label="Sumar uno">+</button>
-              </div>
-            </div>
-
-            <button class="delete-btn" aria-label="Eliminar producto">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 6h18M19 6l-1 14H6L5 6H4M8 10v6M12 10v6M16 10v6"></path>
-              </svg>
-            </button>
-          </div>
-      `;
-      })
-      .join("");
-
-    /* ================= TOTALES ================= */
-
-    const { discount, total, totalQuantity } = Pricing.calculateTotals(cart);
-
-    // Aviso de la promo: con un número impar de prendas elegibles falta 1 para el 15%
-    const eligible = cart
-      .filter((item) => item.discount !== 1)
-      .reduce((acc, item) => acc + item.quantity, 0);
-    if (promo) {
-      const rate = `${Pricing.DISCOUNT_RATE * 100}%`;
-      promo.hidden = eligible % Pricing.DISCOUNT_MIN_ITEMS === 0;
-      promo.textContent =
-        discount > 0
-          ? `Agrega 1 prenda más y también tendrá ${rate} de descuento.`
-          : `Agrega 1 prenda más y obtén ${rate} de descuento.`;
-    }
-
-    if (discount > 0) {
-      discountRow.style.display = "flex";
-      discountBox.textContent = Pricing.formatPrice(discount);
-    } else {
-      discountRow.style.display = "none";
-    }
-
-    totalBox.textContent = Pricing.formatPrice(total);
     updateCount(totalQuantity);
   };
 
-  // Actualiza el número del ícono y lo hace "rebotar" si aumentó
+  // Número del ícono del header: rebota si aumentó
   let lastCount = null;
   function updateCount(count) {
     if (!cartCount) return;
     cartCount.textContent = count;
+    cartCount.dataset.count = count; // con 0 la burbuja se oculta (CSS)
+    openCartBtn?.setAttribute(
+      "aria-label",
+      count ? `Abrir carrito, ${count} ${count === 1 ? "producto" : "productos"}` : "Abrir carrito, vacío",
+    );
     if (lastCount !== null && count > lastCount) {
       cartCount.classList.remove("is-bumped");
       void cartCount.offsetWidth; // reinicia la animación
@@ -191,95 +174,70 @@ document.addEventListener("DOMContentLoaded", () => {
     lastCount = count;
   }
 
-  /* ============ ACCIONES DEL CARRITO (delegación) ============ */
-
-  const itemsContainer = document.querySelector(".cart-items");
-
-  function updateItem(target, change) {
-    const index = target.closest(".cart-item")?.dataset.index;
-    if (index === undefined) return;
+  /* ================= ACCIONES ================= */
+  list.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-action]");
+    const index = Number(btn?.closest(".cart-item")?.dataset.index);
+    if (!btn || Number.isNaN(index)) return;
 
     const cart = getCart();
-    if (!cart[index]) return;
+    const item = cart[index];
+    if (!item) return;
 
-    change(cart, Number(index));
+    const action = btn.dataset.action;
+    if (action === "remove") cart.splice(index, 1);
+    if (action === "increase" && item.quantity < MAX) item.quantity++;
+    if (action === "decrease" && item.quantity > 1) item.quantity--;
+
     saveCart(cart);
     renderCart();
-  }
 
-  itemsContainer?.addEventListener("click", (e) => {
-    if (e.target.closest(".delete-btn")) {
-      updateItem(e.target, (cart, i) => cart.splice(i, 1));
-      return;
-    }
-
-    const btn = e.target.closest(".quantity-btn");
-    if (!btn) return;
-
-    updateItem(btn, (cart, i) => {
-      if (btn.classList.contains("increase") && cart[i].quantity < MAX) {
-        cart[i].quantity++;
-      }
-      if (btn.classList.contains("decrease") && cart[i].quantity > 1) {
-        cart[i].quantity--;
-      }
-    });
+    // Mantener el foco en el mismo control para quien usa teclado
+    const focusTarget =
+      action === "remove"
+        ? list.querySelector(".cart-item__remove") || $("closeCartBtn")
+        : list.querySelector(`.cart-item[data-index="${index}"] [data-action="${action}"]:not(:disabled)`);
+    focusTarget?.focus();
   });
 
-  itemsContainer?.addEventListener("change", (e) => {
-    if (!e.target.classList.contains("quantity-input")) return;
-
-    updateItem(e.target, (cart, i) => {
-      let value = parseInt(e.target.value, 10);
-      if (isNaN(value) || value < 1) value = 1;
-      if (value > MAX) value = MAX;
-      cart[i].quantity = value;
-    });
-  });
-
-  /* =========== OPEN / CLOSE CART ============ */
-
+  /* ================= ABRIR / CERRAR ================= */
   function closeCart() {
-    if (!panel?.classList.contains("open")) return;
+    if (!panel.classList.contains("open")) return;
     panel.classList.remove("open");
     panel.setAttribute("aria-hidden", "true");
     overlay?.classList.remove("show");
+    document.body.classList.remove("no-scroll");
     openCartBtn?.focus();
   }
 
   window.openCart = function () {
-    panel?.classList.add("open");
-    panel?.setAttribute("aria-hidden", "false");
-    overlay?.classList.add("show");
     renderCart();
+    panel.classList.add("open");
+    panel.setAttribute("aria-hidden", "false");
+    overlay?.classList.add("show");
+    document.body.classList.add("no-scroll");
     closeBtn?.focus();
   };
 
   closeBtn?.addEventListener("click", closeCart);
   overlay?.addEventListener("click", closeCart);
   openCartBtn?.addEventListener("click", openCart);
+  panel.querySelectorAll("[data-close-cart]").forEach((el) => el.addEventListener("click", closeCart));
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && panel?.classList.contains("open")) closeCart();
+    if (e.key === "Escape" && panel.classList.contains("open")) closeCart();
   });
 
   renderCart();
 
-  /* ========== CHECKOUT ============ */
-
-  const checkoutBtn = document.getElementById("checkoutBtn");
-
-  checkoutBtn?.addEventListener("click", (e) => {
+  /* ================= IR AL CHECKOUT ================= */
+  $("checkoutBtn")?.addEventListener("click", (e) => {
     e.preventDefault();
 
     const cart = getCart();
     if (!cart.length) return;
 
-    localStorage.setItem(
-      "checkoutData",
-      JSON.stringify({ cart: cart.map(toCheckoutItem) }),
-    );
-
+    localStorage.setItem("checkoutData", JSON.stringify({ cart: cart.map(toCheckoutItem) }));
     window.location.href = "/checkout";
   });
 });

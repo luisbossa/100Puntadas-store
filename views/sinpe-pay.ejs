@@ -1,160 +1,102 @@
-<!DOCTYPE html>
-<html lang="es">
+<%
+  const createdAt = new Date(order.created_at).toLocaleDateString("es-CR", { year: "numeric", month: "long", day: "numeric" });
+  // Detalle de variantes de cada prenda (bikinis: top/bottom/estilo; sets: color; enterizos: talla)
+  const variants = (item) => [
+    item.size && "Talla: " + item.size,
+    item.top_size && "Top: " + item.top_size,
+    item.bottom_size && "Bottom: " + item.bottom_size,
+    item.bottom_style && item.bottom_style,
+    item.color && item.color,
+  ].filter(Boolean).join(" · ");
+%>
+<main class="sinpe-page">
+    <h1 class="sinpe-page__title">Pedido recibido</h1>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pago SINPE Móvil</title>
-    <link rel="stylesheet" href="/css/tokens.css" />
-    <link href="/css/reset.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="/css/checkout.css" />
-    <link href="/css/sinpe-pay.css" rel="stylesheet" type="text/css" />
-</head>
+    <!-- RESUMEN -->
+    <section class="sinpe-summary" aria-label="Resumen del pedido">
+        <p><strong>Número de pedido:</strong> <%= order.order_number || order.id %></p>
+        <p><strong>Fecha:</strong> <%= createdAt %></p>
+        <p><strong>Total:</strong> <%= formatPrice(order.total) %></p>
+        <p><strong>Método de pago:</strong> <%= order.payment_method === 'sinpe' ? 'SINPE / Transferencia' : 'Tarjeta' %></p>
+        <p>Usa el número de pedido como referencia de tu pago y envía el comprobante por Whatsapp al 8792-5172</p>
+    </section>
 
-<body>
-    <header class="header-filler">
-        <div class="checkout-header">
-            <a href="/" class="checkout-brand">
-                <img class="logo-img" src="/images/logo.png" alt="logo">
-            </a>
+    <!-- DATOS BANCARIOS -->
+    <section aria-labelledby="bank-title">
+        <h2 id="bank-title" class="sinpe-page__subtitle">Nuestros detalles bancarios</h2>
+        <p class="bank-detail">SINPE 8792-5172</p>
+        <p class="bank-detail">Cuenta IBAN BN: CR02015100320010439147</p>
+        <p class="bank-detail">Carmen Medina Puerta</p>
+    </section>
 
-            <nav class="checkout-steps">
-                <div class="step">
-                    <span class="step-index2">1</span>
-                    <span class="step-label">Entrega</span>
-                </div>
-
-                <div class="step active">
-                    <span class="step-index">2</span>
-                    <span class="step-label">Pago</span>
-                </div>
-
-                <div class="step">
-                    <span class="step-index2">3</span>
-                    <span class="step-label">Confirmación</span>
-                </div>
-            </nav>
-        </div>
-    </header>
-
-    <div class="page-wrapper">
-        <h1 class="page-title">Pedido recibido</h1>
-
-        <!-- ===== ORDER SUMMARY ===== -->
-        <div class="order-summary">
-            <p><strong>Número de pedido:</strong>
-                <%= order.order_number || order.id %>
-            </p>
-            <p><strong>Fecha:</strong>
-                <%= new Date(order.created_at).toLocaleDateString('es-CR', { year: 'numeric' , month: 'long' ,
-                    day: 'numeric' }) %>
-            </p>
-            <p><strong>Total:</strong> <%= formatPrice(order.total) %>
-            </p>
-            <p><strong>Método de pago:</strong>
-                <%= order.payment_method==='sinpe' ? 'SINPE / Transferencia' : 'Tarjeta' %>
-            </p>
-            <p>Usa el número de pedido como referencia de tu pago y envía el comprobante por Whatsapp al 8792-5172</p>
-        </div>
-
-        <h2 class="section-title">Nuestros detalles bancarios</h2>
-        <p class="bank-detail bank-account">SINPE 8792-5172</p>
-        <p class="bank-detail bank-number">Cuenta IBAN BN: CR02015100320010439147</p>
-        <p class="bank-detail bank-iban">Carmen Medina Puerta</p>
-
-        <h2 class="section-title">Detalles del pedido</h2>
-        <table class="order-table">
-            <thead>
-                <tr class="order-table-header">
-                    <th>Producto</th>
-                    <th>Detalle</th>
-                    <th>Precio</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% orderItems.forEach(item=> { %>
-                    <tr class="order-product-row">
-                        <td class="product-name">
-                            <%= item.product_name %>
-                        </td>
-                        <td class="product-meta">
-                            <%= item.size ? "Talla: " + item.size : "" %> × <%= item.quantity %>
-                        </td>
-                        <td class="product-unit-price"><%= formatPrice(item.price) %>
-                        </td>
-                        <td class="product-total-price"><%= formatPrice(item.price * item.quantity)
-                                %>
-                        </td>
+    <!-- DETALLE -->
+    <section aria-labelledby="detail-title">
+        <h2 id="detail-title" class="sinpe-page__subtitle">Detalles del pedido</h2>
+        <div class="order-table-wrap">
+            <table class="order-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Detalle</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Total</th>
                     </tr>
+                </thead>
+                <tbody>
+                    <% orderItems.forEach((item) => { %>
+                        <tr>
+                            <td class="order-table__name"><%= item.product_name %></td>
+                            <td class="order-table__meta"><%= variants(item) %> × <%= item.quantity %></td>
+                            <td class="order-table__price"><%= formatPrice(item.price) %></td>
+                            <td class="order-table__price"><%= formatPrice(item.price * item.quantity) %></td>
+                        </tr>
                     <% }) %>
-                        <tr class="order-total-row">
-                            <td colspan="3">Subtotal:</td>
-                            <td><%= formatPrice(order.subtotal) %>
-                            </td>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="row" colspan="3">Subtotal:</th>
+                        <td><%= formatPrice(order.subtotal) %></td>
+                    </tr>
+                    <% if (Number(order.discount) > 0) { %>
+                        <tr>
+                            <th scope="row" colspan="3">Descuento:</th>
+                            <td>−<%= formatPrice(order.discount) %></td>
                         </tr>
-                        <tr class="order-total-row">
-                            <td colspan="3">Envío:</td>
-                            <td><%= formatPrice(order.shipping) %>
-                            </td>
-                        </tr>
-                        <tr class="order-total-row">
-                            <td colspan="3">Total:</td>
-                            <td><%= formatPrice(order.total) %>
-                            </td>
-                        </tr>
-                        <tr class="order-total-row">
-                            <td colspan="3">Método de pago:</td>
-                            <td>SINPE o Transferencia Bancaria</td>
-                        </tr>
-            </tbody>
-        </table>
-
-        <p class="payment-reminder">Recuerda enviar tu comprobante de pago por Whatsapp al 87925172 indicando tu número
-            de pedido.</p>
-
-        <button id="btn-sinpe-confirm" class="link-confirm-payment" data-order-id="<%= order.id %>"
-            data-order-number="<%= order.order_number || order.id %>" data-total="<%= order.total %>"
-            data-created-at="<%= order.created_at %>" disabled>
-            He enviado el pago
-        </button>
-
-        <div class="pending-msg">
-            Tu pago SINPE está en proceso de verificación. El botón <strong>“He enviado el pago”</strong> se habilitará
-            automáticamente una vez que confirmemos el comprobante.
+                    <% } %>
+                    <tr>
+                        <th scope="row" colspan="3">Envío:</th>
+                        <td><%= formatPrice(order.shipping) %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" colspan="3">Total:</th>
+                        <td><%= formatPrice(order.total) %></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" colspan="3">Método de pago:</th>
+                        <td>SINPE o Transferencia Bancaria</td>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
+    </section>
+
+    <p class="payment-reminder">Recuerda enviar tu comprobante de pago por Whatsapp al 87925172 indicando tu número
+        de pedido.</p>
+
+    <button type="button" id="sinpeConfirmBtn" class="sinpe-confirm-btn" disabled
+        data-order-token="<%= orderToken %>"
+        data-order-number="<%= order.order_number || order.id %>"
+        data-total="<%= order.total %>"
+        data-created-at="<%= new Date(order.created_at).toISOString() %>">
+        He enviado el pago
+    </button>
+
+    <div class="pending-msg" id="sinpeStatus" role="status" aria-live="polite">
+        Tu pago SINPE está en proceso de verificación. El botón <strong>“He enviado el pago”</strong> se habilitará
+        automáticamente una vez que confirmemos el comprobante.
     </div>
+</main>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const btn = document.getElementById("btn-sinpe-confirm");
+<link rel="stylesheet" href="<%= asset('/css/sinpe-pay.css') %>" />
 
-            if (!btn) return;
-
-            btn.addEventListener("click", () => {
-                const orderData = {
-                    orderId: btn.dataset.orderId,
-                    orderNumber: btn.dataset.orderNumber,
-                    total: Number(btn.dataset.total),
-                    paymentMethod: "SINPE Móvil",
-                    createdAt: btn.dataset.createdAt,
-                };
-
-                sessionStorage.setItem(
-                    "order_completed",
-                    JSON.stringify(orderData)
-                );
-
-                window.location.href = "/confirm";
-            });
-        });
-    </script>
-
-    <script>
-        window.SINPE_ORDER_TOKEN = "<%= orderToken %>";
-    </script>
-
-    <script src="/js/sinpe-pay.js"></script>
-</body>
-
-</html>
+<script src="<%= asset('/js/sinpe-pay.js') %>"></script>

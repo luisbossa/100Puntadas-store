@@ -91,9 +91,11 @@
   position: relative;
 }
 
+/* Columna fija al hacer scroll. Si es más alta que la pantalla, products.js
+   ajusta --sticky-top para que se pueda leer completa (incluido el acordeón). */
 .product__info {
   position: sticky;
-  top: 6em;
+  top: var(--sticky-top, 6em);
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -2,8 +2,21 @@ const db = require("../db/pool");
 const orderToken = require("../utils/orderToken");
 const sendOrderConfirmationEmail = require("../utils/sendOrderConfirmationEmail");
 
-exports.confirm = (req, res) => {
-  res.render("confirm", { layout: false });
+exports.paymentPage = (req, res) => {
+  const { paymentIntentId, orderNumber } = req.query;
+
+  if (!paymentIntentId || !orderNumber) {
+    return res.redirect("/");
+  }
+
+  res.render("onvo-pay", {
+    layout: "checkout-layout",
+    pageTitle: "Pago con tarjeta",
+    step: 2,
+    bodyClass: "page-onvo",
+    paymentIntentId,
+    orderNumber,
+  });
 };
 
 exports.createPaymentIntent = async (req, res) => {

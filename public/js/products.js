@@ -27,6 +27,7 @@ function buildCartItem() {
     price: product.price,
     currency: product.currency,
     image: product.image,
+    url: location.pathname, // para volver al producto desde el carrito
     quantity: 1,
     discount: product.discount,
   };
@@ -75,3 +76,23 @@ document.getElementById("buyNowBtn")?.addEventListener("click", () => {
 
   window.location.href = "/checkout";
 });
+
+/* ============ COLUMNA FIJA EN PANTALLAS BAJAS ============= */
+// Si la información no entra en la pantalla, la columna se pega por abajo
+// (top negativo): primero se desplaza hasta mostrar su final y luego queda fija.
+const info = document.querySelector(".product__info");
+
+function updateStickyTop() {
+  if (!info) return;
+  const preferred = parseFloat(getComputedStyle(document.body).fontSize) * 6; // 6em
+  const fits = info.offsetHeight + preferred <= window.innerHeight;
+  info.style.setProperty(
+    "--sticky-top",
+    fits ? "" : `${window.innerHeight - info.offsetHeight - 16}px`,
+  );
+}
+
+updateStickyTop();
+window.addEventListener("resize", updateStickyTop);
+// El acordeón cambia el alto de la columna
+new ResizeObserver(updateStickyTop).observe(info);

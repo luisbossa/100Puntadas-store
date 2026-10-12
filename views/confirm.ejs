@@ -1,89 +1,48 @@
-<!DOCTYPE html>
-<html lang="es">
+<main class="confirm-wrapper">
+    <div class="confirm-receipt">
+        <!-- Recibo: encabezado -->
+        <section class="confirm-card" aria-labelledby="confirm-title">
+            <div class="confirm-card__icon" aria-hidden="true"></div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compra confirmada | 100Puntadas</title>
-    <link rel="stylesheet" href="/css/tokens.css" />
-    <link rel="stylesheet" href="/css/checkout.css" />
-    <link href="/css/confirm.css" rel="stylesheet" type="text/css" />
-</head>
+            <h1 id="confirm-title" class="confirm-heading">¡GRACIAS POR TU COMPRA!</h1>
 
-<body>
-    <header class="header-filler">
-        <div class="checkout-header">
-            <a href="/" class="checkout-brand">
-                <img class="logo-img" src="/images/logo.png" alt="100Puntadas logo">
-            </a>
+            <p class="confirm-subtext">
+                Has realizado tu compra con éxito. Tu pedido será entregado en un plazo de 2 a 3
+                días hábiles.
+            </p>
+        </section>
 
-            <nav class="checkout-steps">
-                <div class="step">
-                    <span class="step-index2">1</span>
-                    <span class="step-label">Entrega</span>
+        <!-- Recibo: detalle -->
+        <section class="confirm-card" aria-label="Detalle del pedido">
+            <dl class="confirm-summary">
+                <div>
+                    <dt>Pedido</dt>
+                    <dd id="confirm-order">—</dd>
                 </div>
-
-                <div class="step">
-                    <span class="step-index2">2</span>
-                    <span class="step-label">Pago</span>
+                <div>
+                    <dt>Fecha de compra</dt>
+                    <dd id="confirm-date">—</dd>
                 </div>
-
-                <div class="step active">
-                    <span class="step-index">3</span>
-                    <span class="step-label">Confirmación</span>
+                <div>
+                    <dt>Método de pago</dt>
+                    <dd id="confirm-method">—</dd>
                 </div>
-            </nav>
-        </div>
-    </header>
+                <div>
+                    <dt>Total pagado</dt>
+                    <dd id="confirm-total">0 ₡</dd>
+                </div>
+            </dl>
+        </section>
 
-    <div class="confirm-wrapper">
-        <!-- Recibo - parte superior -->
-        <div id="wrapper">
-            <div class="confirm-card">
-                <div class="icon"></div>
-
-                <h1 class="confirm-heading">
-                    ¡GRACIAS POR TU COMPRA!
-                </h1>
-
-                <p class="confirm-subtext">
-                    Has realizado tu compra con éxito. Tu pedido será entregado en un plazo de 2 a 3
-                    días hábiles.
-                </p>
+        <!-- Acción -->
+        <section class="confirm-card">
+            <div class="confirm-actions">
+                <a href="/" class="confirm-btn">Volver al inicio</a>
             </div>
-
-            <!-- Recibo - detalle -->
-            <div class="confirm-card">
-                <ul id="order-summary">
-                    <li>
-                        <span>Pedido</span>
-                        <span id="confirm-order">—</span>
-                    </li>
-                    <li>
-                        <span>Fecha de compra</span>
-                        <span id="confirm-date">—</span>
-                    </li>
-                    <li>
-                        <span>Método de pago</span>
-                        <span id="confirm-method">—</span>
-                    </li>
-                    <li>
-                        <span>Total pagado</span>
-                        <span id="confirm-total">0 ₡</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- CTA -->
-            <div class="confirm-card">
-                <div class="cta-row">
-                    <a href="/" class="confirm-btn">Volver al inicio</a>
-                </div>
-            </div>
-        </div>
+        </section>
     </div>
+</main>
 
-    <script src="/js/confirm.js"></script>
-</body>
+<link rel="stylesheet" href="<%= asset('/css/confirm.css') %>" />
 
-</html>
+<script src="<%= asset('/js/confirm.js') %>"></script>

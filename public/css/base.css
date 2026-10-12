@@ -132,7 +132,8 @@ em {
 
 /* ---------- Contenedores ---------- */
 
-/* Envuelve el contenido de todas las páginas (queda por encima del footer fijo) */
+/* Envuelve el contenido de todas las páginas (queda por encima del footer fijo).
+   Deja pasar los clics: al final de la página, debajo está el footer fijo. */
 .page-wrapper {
   position: relative;
   z-index: 10;
@@ -140,6 +141,11 @@ em {
   flex-direction: column;
   align-items: stretch;
   width: 100%;
+  pointer-events: none;
+}
+
+.page-wrapper > main {
+  pointer-events: auto;
 }
 
 /* Bloque de contenido con fondo crema (tapa el footer fijo al hacer scroll) */

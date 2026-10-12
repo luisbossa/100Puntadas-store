@@ -1,0 +1,2050 @@
+{
+  "/images/avatar-1.jpeg": {
+    "width": 1018,
+    "height": 1035,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1768628848862.0862,
+    "size": 91090
+  },
+  "/images/avatar-2.jpeg": {
+    "width": 1169,
+    "height": 1309,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1768628891788.9668,
+    "size": 246594
+  },
+  "/images/avatar-4.jpeg": {
+    "width": 1169,
+    "height": 1008,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1768682045919.7625,
+    "size": 120327
+  },
+  "/images/avatar-5.jpeg": {
+    "width": 1169,
+    "height": 1463,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1768682054781.156,
+    "size": 198768
+  },
+  "/images/avatar-6.jpeg": {
+    "width": 1169,
+    "height": 1404,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1768628908044.9092,
+    "size": 305675
+  },
+  "/images/bn.png": {
+    "width": 200,
+    "height": 90,
+    "widths": [
+      160
+    ],
+    "mtime": 1766951380918.3955,
+    "size": 5166
+  },
+  "/images/chats/chat-1.jpeg": {
+    "width": 1125,
+    "height": 1069,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1768630672369.051,
+    "size": 103238
+  },
+  "/images/chats/chat-10.jpeg": {
+    "width": 750,
+    "height": 319,
+    "widths": [
+      160,
+      400
+    ],
+    "mtime": 1768631198632.2617,
+    "size": 37751
+  },
+  "/images/chats/chat-11.jpeg": {
+    "width": 1125,
+    "height": 502,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1768630651772.3743,
+    "size": 84344
+  },
+  "/images/chats/chat-12.jpeg": {
+    "width": 750,
+    "height": 299,
+    "widths": [
+      160,
+      400
+    ],
+    "mtime": 1768636803786.7751,
+    "size": 48955
+  },
+  "/images/chats/chat-13.jpeg": {
+    "width": 750,
+    "height": 344,
+    "widths": [
+      160,
+      400
+    ],
+    "mtime": 1768635578933.9717,
+    "size": 44365
+  },
+  "/images/chats/chat-14.jpeg": {
+    "width": 1125,
+    "height": 340,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1768635629268.987,
+    "size": 62905
+  },
+  "/images/chats/chat-15.jpeg": {
+    "width": 750,
+    "height": 184,
+    "widths": [
+      160,
+      400
+    ],
+    "mtime": 1768635597905.3835,
+    "size": 29846
+  },
+  "/images/chats/chat-16.jpeg": {
+    "width": 1170,
+    "height": 325,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1768630697319.5186,
+    "size": 43666
+  },
+  "/images/chats/chat-17.jpeg": {
+    "width": 1125,
+    "height": 297,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1768635608220.1729,
+    "size": 47012
+  },
+  "/images/chats/chat-2.jpeg": {
+    "width": 1125,
+    "height": 996,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1768637542434.8352,
+    "size": 137353
+  },
+  "/images/chats/chat-3.jpeg": {
+    "width": 1125,
+    "height": 939,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1768637688880.4646,
+    "size": 107844
+  },
+  "/images/chats/chat-4.jpeg": {
+    "width": 750,
+    "height": 683,
+    "widths": [
+      160,
+      400
+    ],
+    "mtime": 1768635654728.8013,
+    "size": 75930
+  },
+  "/images/chats/chat-5.jpeg": {
+    "width": 1125,
+    "height": 955,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1768631696723.5818,
+    "size": 135366
+  },
+  "/images/chats/chat-6.jpeg": {
+    "width": 1016,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1768630294000,
+    "size": 139135
+  },
+  "/images/chats/chat-7.jpeg": {
+    "width": 750,
+    "height": 769,
+    "widths": [
+      160,
+      400
+    ],
+    "mtime": 1768631302166.7925,
+    "size": 75273
+  },
+  "/images/chats/chat-8.jpeg": {
+    "width": 739,
+    "height": 925,
+    "widths": [
+      160,
+      400
+    ],
+    "mtime": 1768637445470.5715,
+    "size": 90370
+  },
+  "/images/chats/chat-9.jpeg": {
+    "width": 1125,
+    "height": 393,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1768635640618.8882,
+    "size": 70653
+  },
+  "/images/colors/black.jpeg": {
+    "width": 800,
+    "height": 973,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1766363242236.426,
+    "size": 129477
+  },
+  "/images/colors/coffe.jpeg": {
+    "width": 500,
+    "height": 500,
+    "widths": [
+      160,
+      400
+    ],
+    "mtime": 1766363248849.3513,
+    "size": 54278
+  },
+  "/images/colors/pink.jpeg": {
+    "width": 1024,
+    "height": 1024,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1766363255997.3813,
+    "size": 60525
+  },
+  "/images/colors/red.jpeg": {
+    "width": 1000,
+    "height": 1000,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1766363270083.8452,
+    "size": 222745
+  },
+  "/images/colors/white.jpeg": {
+    "width": 800,
+    "height": 800,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1766363238310.12,
+    "size": 39629
+  },
+  "/images/correos.png": {
+    "width": 300,
+    "height": 84,
+    "widths": [
+      160
+    ],
+    "mtime": 1766949320956.3525,
+    "size": 6159
+  },
+  "/images/crochets/crochet-1.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766237360000,
+    "size": 506910
+  },
+  "/images/crochets/crochet-1.2.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766237360000,
+    "size": 341367
+  },
+  "/images/crochets/crochet-1.3.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766237360000,
+    "size": 162660
+  },
+  "/images/crochets/crochet-1.4.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766237360000,
+    "size": 277714
+  },
+  "/images/crochets/crochet-1.5.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766237360000,
+    "size": 202463
+  },
+  "/images/crochets/crochet-1.jpeg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766237360000,
+    "size": 130294
+  },
+  "/images/crochets/crochet-10.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768461086000,
+    "size": 264136
+  },
+  "/images/crochets/crochet-10.2.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768461086000,
+    "size": 176690
+  },
+  "/images/crochets/crochet-10.jpeg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768461086000,
+    "size": 153631
+  },
+  "/images/crochets/crochet-2.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766237368000,
+    "size": 105166
+  },
+  "/images/crochets/crochet-2.2.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766237368000,
+    "size": 130329
+  },
+  "/images/crochets/crochet-2.jpeg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766362333754.6377,
+    "size": 148602
+  },
+  "/images/crochets/crochet-3.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768460530000,
+    "size": 194186
+  },
+  "/images/crochets/crochet-3.jpeg": {
+    "width": 1512,
+    "height": 2016,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768460530000,
+    "size": 190182
+  },
+  "/images/crochets/crochet-4.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768460536000,
+    "size": 214604
+  },
+  "/images/crochets/crochet-4.jpeg": {
+    "width": 1512,
+    "height": 2016,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768460536000,
+    "size": 182835
+  },
+  "/images/crochets/crochet-5.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768461046000,
+    "size": 209658
+  },
+  "/images/crochets/crochet-5.jpeg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768461046000,
+    "size": 151159
+  },
+  "/images/crochets/crochet-6.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768461054000,
+    "size": 311774
+  },
+  "/images/crochets/crochet-6.jpeg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768461054000,
+    "size": 129772
+  },
+  "/images/crochets/crochet-7.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768461062000,
+    "size": 162814
+  },
+  "/images/crochets/crochet-7.jpeg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768461062000,
+    "size": 174356
+  },
+  "/images/crochets/crochet-8.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768461074000,
+    "size": 207652
+  },
+  "/images/crochets/crochet-8.jpeg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768461074000,
+    "size": 146760
+  },
+  "/images/crochets/crochet-9.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768461080000,
+    "size": 204735
+  },
+  "/images/crochets/crochet-9.jpeg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768461080000,
+    "size": 136637
+  },
+  "/images/crochets/crochet-all.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768721693213.078,
+    "size": 148419
+  },
+  "/images/footer-logo.webp": {
+    "width": 1536,
+    "height": 254,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764771981832.368,
+    "size": 75940
+  },
+  "/images/jumpsuits/jumpsuit-1.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766235074000,
+    "size": 153027
+  },
+  "/images/jumpsuits/jumpsuit-1.2.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766235074000,
+    "size": 238090
+  },
+  "/images/jumpsuits/jumpsuit-1.webp": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764792916000,
+    "size": 137742
+  },
+  "/images/jumpsuits/jumpsuit-2.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766235084000,
+    "size": 102837
+  },
+  "/images/jumpsuits/jumpsuit-2.2.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766235084000,
+    "size": 237334
+  },
+  "/images/jumpsuits/jumpsuit-2.3.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766235084000,
+    "size": 238858
+  },
+  "/images/jumpsuits/jumpsuit-2.webp": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764792916000,
+    "size": 155336
+  },
+  "/images/jumpsuits/jumpsuit-3.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766235048000,
+    "size": 234718
+  },
+  "/images/jumpsuits/jumpsuit-3.2.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766235048000,
+    "size": 140256
+  },
+  "/images/jumpsuits/jumpsuit-3.webp": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764792916000,
+    "size": 157264
+  },
+  "/images/logo.png": {
+    "width": 1024,
+    "height": 508,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1764453232266.2915,
+    "size": 277717
+  },
+  "/images/og-image.png": {
+    "width": 1465,
+    "height": 442,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768700859731.9968,
+    "size": 256871
+  },
+  "/images/products/product-1.1.webp": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764793128000,
+    "size": 300878
+  },
+  "/images/products/product-1.2.webp": {
+    "width": 1280,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764793128000,
+    "size": 373034
+  },
+  "/images/products/product-1.3.webp": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764793128000,
+    "size": 226188
+  },
+  "/images/products/product-1.4.webp": {
+    "width": 1125,
+    "height": 1385,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1764793128000,
+    "size": 86198
+  },
+  "/images/products/product-10.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1784776367561.121,
+    "size": 548946
+  },
+  "/images/products/product-10.2.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1784776402221.0671,
+    "size": 156892
+  },
+  "/images/products/product-10.3.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1784776382624.1565,
+    "size": 199481
+  },
+  "/images/products/product-10.4.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1784776392557.832,
+    "size": 208854
+  },
+  "/images/products/product-11.1.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770771550.5374,
+    "size": 209449
+  },
+  "/images/products/product-11.2.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770771758.5483,
+    "size": 122018
+  },
+  "/images/products/product-11.3.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770771953.5374,
+    "size": 158845
+  },
+  "/images/products/product-12.1.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770769520.5525,
+    "size": 213928
+  },
+  "/images/products/product-12.2.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770770640.5422,
+    "size": 255114
+  },
+  "/images/products/product-12.3.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770770413.535,
+    "size": 171488
+  },
+  "/images/products/product-13.1.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770772137.5447,
+    "size": 126827
+  },
+  "/images/products/product-13.2.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770772369.5469,
+    "size": 151100
+  },
+  "/images/products/product-14.1.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770774439.5305,
+    "size": 155636
+  },
+  "/images/products/product-14.2.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770774612.5557,
+    "size": 136501
+  },
+  "/images/products/product-15.1.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770772773.5483,
+    "size": 536678
+  },
+  "/images/products/product-15.2.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770772960.547,
+    "size": 217284
+  },
+  "/images/products/product-16.1.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770773619.5398,
+    "size": 211733
+  },
+  "/images/products/product-16.2.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770773834.5286,
+    "size": 301976
+  },
+  "/images/products/product-16.3.jpg": {
+    "width": 1260,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765775767804.307,
+    "size": 230939
+  },
+  "/images/products/product-17.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766233034000,
+    "size": 233843
+  },
+  "/images/products/product-17.2.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766233034000,
+    "size": 421578
+  },
+  "/images/products/product-17.3.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766233034000,
+    "size": 151895
+  },
+  "/images/products/product-18.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766233418000,
+    "size": 179319
+  },
+  "/images/products/product-19.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766233898000,
+    "size": 221723
+  },
+  "/images/products/product-19.2.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766233898000,
+    "size": 259589
+  },
+  "/images/products/product-2.1.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765738302579.8496,
+    "size": 146979
+  },
+  "/images/products/product-2.2.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765754864009.2551,
+    "size": 277164
+  },
+  "/images/products/product-20.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766235754000,
+    "size": 586577
+  },
+  "/images/products/product-20.2.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766235754000,
+    "size": 152227
+  },
+  "/images/products/product-21.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766235762000,
+    "size": 213116
+  },
+  "/images/products/product-21.2.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766235762000,
+    "size": 198600
+  },
+  "/images/products/product-22.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766236366000,
+    "size": 255913
+  },
+  "/images/products/product-23.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768729844000,
+    "size": 275548
+  },
+  "/images/products/product-23.2.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768729844000,
+    "size": 249632
+  },
+  "/images/products/product-24.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768729808000,
+    "size": 226657
+  },
+  "/images/products/product-25.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768729828000,
+    "size": 284702
+  },
+  "/images/products/product-3.1.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770765288.6082,
+    "size": 227000
+  },
+  "/images/products/product-3.2.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770765288.6082,
+    "size": 189844
+  },
+  "/images/products/product-4.1.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765763924792.1995,
+    "size": 174358
+  },
+  "/images/products/product-4.2.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765763924681.8623,
+    "size": 130354
+  },
+  "/images/products/product-4.3.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765763924892.116,
+    "size": 128944
+  },
+  "/images/products/product-5.1.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770765288.6082,
+    "size": 290790
+  },
+  "/images/products/product-5.2.jpg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764631904759.795,
+    "size": 109017
+  },
+  "/images/products/product-6.1.jpg": {
+    "width": 1308,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764631905237.9172,
+    "size": 248516
+  },
+  "/images/products/product-6.2.jpg": {
+    "width": 683,
+    "height": 1024,
+    "widths": [
+      160,
+      400
+    ],
+    "mtime": 1764631905354.3538,
+    "size": 67959
+  },
+  "/images/products/product-6.3.jpg": {
+    "width": 683,
+    "height": 1024,
+    "widths": [
+      160,
+      400
+    ],
+    "mtime": 1764631905451.3257,
+    "size": 55353
+  },
+  "/images/products/product-7.1.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770765288.6082,
+    "size": 242486
+  },
+  "/images/products/product-7.2.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770764986.9907,
+    "size": 126341
+  },
+  "/images/products/product-8.1.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770766595.5603,
+    "size": 227854
+  },
+  "/images/products/product-8.2.jpg": {
+    "width": 1280,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764631906461.465,
+    "size": 307868
+  },
+  "/images/products/product-9.1.jpg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765770768151.5393,
+    "size": 198571
+  },
+  "/images/products/product-9.2.jpg": {
+    "width": 1170,
+    "height": 1332,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1765770768388.5378,
+    "size": 418124
+  },
+  "/images/regular.png": {
+    "width": 130,
+    "height": 130,
+    "widths": [
+      160
+    ],
+    "mtime": 1765061789171.2607,
+    "size": 15666
+  },
+  "/images/sets/set-1.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766264732000,
+    "size": 268978
+  },
+  "/images/sets/set-1.2.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766264732000,
+    "size": 308652
+  },
+  "/images/sets/set-1.3.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766264732000,
+    "size": 275658
+  },
+  "/images/sets/set-1.4.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766264732000,
+    "size": 346337
+  },
+  "/images/sets/set-1.5.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766264732000,
+    "size": 134834
+  },
+  "/images/sets/set-1.jpg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765695032847.314,
+    "size": 215942
+  },
+  "/images/sets/set-2.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766264718000,
+    "size": 209339
+  },
+  "/images/sets/set-2.2.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766264718000,
+    "size": 190767
+  },
+  "/images/sets/set-2.3.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766264718000,
+    "size": 221829
+  },
+  "/images/sets/set-2.4.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766264718000,
+    "size": 306315
+  },
+  "/images/sets/set-2.jpg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765695032847.314,
+    "size": 140435
+  },
+  "/images/sets/set-3.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766264742000,
+    "size": 234808
+  },
+  "/images/sets/set-3.2.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766264742000,
+    "size": 165082
+  },
+  "/images/sets/set-3.jpg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1765695032847.314,
+    "size": 181470
+  },
+  "/images/sets/set-4.1.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766300290000,
+    "size": 255913
+  },
+  "/images/sets/set-4.2.jpeg": {
+    "width": 1512,
+    "height": 1512,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766300290000,
+    "size": 345606
+  },
+  "/images/sets/set-4.jpeg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766300290000,
+    "size": 186911
+  },
+  "/images/size-chart.jpg": {
+    "width": 1300,
+    "height": 578,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764876405085.6504,
+    "size": 105232
+  },
+  "/images/sizeChart/bottom-style.webp": {
+    "width": 1289,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764772265307.3147,
+    "size": 250014
+  },
+  "/images/sizeChart/copa-size.webp": {
+    "width": 1211,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764772261499.238,
+    "size": 121422
+  },
+  "/images/sizeChart/hip-size.webp": {
+    "width": 1211,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764772263419.8867,
+    "size": 204662
+  },
+  "/images/swimwears/swimwear-1.webp": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764792182000,
+    "size": 136508
+  },
+  "/images/swimwears/swimwear-10.jpeg": {
+    "width": 1512,
+    "height": 2016,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1784857498501.7642,
+    "size": 223258
+  },
+  "/images/swimwears/swimwear-11.webp": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764792292000,
+    "size": 154140
+  },
+  "/images/swimwears/swimwear-12.webp": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764792292000,
+    "size": 134872
+  },
+  "/images/swimwears/swimwear-13.webp": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764792292000,
+    "size": 121594
+  },
+  "/images/swimwears/swimwear-14.webp": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764792292000,
+    "size": 176776
+  },
+  "/images/swimwears/swimwear-15.webp": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764792292000,
+    "size": 138390
+  },
+  "/images/swimwears/swimwear-16.jpeg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768370192915.3203,
+    "size": 146849
+  },
+  "/images/swimwears/swimwear-17.jpeg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766233034000,
+    "size": 136984
+  },
+  "/images/swimwears/swimwear-18.jpeg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766264397592.608,
+    "size": 180734
+  },
+  "/images/swimwears/swimwear-19.jpeg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766233898000,
+    "size": 110077
+  },
+  "/images/swimwears/swimwear-2.webp": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764792182000,
+    "size": 143720
+  },
+  "/images/swimwears/swimwear-20.jpeg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766235754000,
+    "size": 157555
+  },
+  "/images/swimwears/swimwear-21.jpeg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766235762000,
+    "size": 156162
+  },
+  "/images/swimwears/swimwear-22.jpeg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1766236366000,
+    "size": 140686
+  },
+  "/images/swimwears/swimwear-23.jpeg": {
+    "width": 1512,
+    "height": 2016,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768729844000,
+    "size": 231746
+  },
+  "/images/swimwears/swimwear-24.jpeg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768729808000,
+    "size": 133339
+  },
+  "/images/swimwears/swimwear-25.jpeg": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1768729828000,
+    "size": 129252
+  },
+  "/images/swimwears/swimwear-3.webp": {
+    "width": 1195,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800
+    ],
+    "mtime": 1764792182000,
+    "size": 135860
+  },
+  "/images/swimwears/swimwear-4.webp": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764792182000,
+    "size": 139762
+  },
+  "/images/swimwears/swimwear-5.webp": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764792182000,
+    "size": 108716
+  },
+  "/images/swimwears/swimwear-6.webp": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764792182000,
+    "size": 162858
+  },
+  "/images/swimwears/swimwear-7.webp": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764792182000,
+    "size": 180184
+  },
+  "/images/swimwears/swimwear-8.webp": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764792182000,
+    "size": 117312
+  },
+  "/images/swimwears/swimwear-9.webp": {
+    "width": 1200,
+    "height": 1600,
+    "widths": [
+      160,
+      400,
+      800,
+      1200
+    ],
+    "mtime": 1764792546000,
+    "size": 150510
+  },
+  "/images/thong.png": {
+    "width": 130,
+    "height": 130,
+    "widths": [
+      160
+    ],
+    "mtime": 1765061801266.6528,
+    "size": 13568
+  },
+  "/images/turst-1.webp": {
+    "width": 64,
+    "height": 68,
+    "widths": [
+      160
+    ],
+    "mtime": 1766797146545.3281,
+    "size": 2636
+  },
+  "/images/turst-2.webp": {
+    "width": 64,
+    "height": 68,
+    "widths": [
+      160
+    ],
+    "mtime": 1766797133425.2258,
+    "size": 2604
+  },
+  "/images/turst-3.webp": {
+    "width": 64,
+    "height": 68,
+    "widths": [
+      160
+    ],
+    "mtime": 1766797209460.4287,
+    "size": 2550
+  }
+}

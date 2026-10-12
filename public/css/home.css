@@ -222,7 +222,15 @@
 
 /* ---------- Testimonios ---------- */
 .testimonials-section {
-  padding: 8rem 5rem 7rem;
+  position: relative;
+  /* Padding inferior amplio: separa el footer al hacer scroll */
+  padding: 8rem 5rem 12rem;
+  /* Resplandor rosa detrás de las órbitas */
+  background: radial-gradient(
+    ellipse 60rem 40rem at 50% 32rem,
+    rgba(255, 164, 219, 0.28),
+    transparent 70%
+  );
 }
 
 .testimonials-container {
@@ -266,6 +274,29 @@
   z-index: 10;
 }
 
+.testimonials-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  border: 1px solid rgba(22, 22, 22, 0.1);
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 18px -10px rgba(245, 127, 197, 0.6);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.testimonials-eyebrow > span {
+  color: var(--color-pink-strong);
+  letter-spacing: 0.05em;
+}
+
 .testimonials-heading {
   font-size: clamp(1.3rem, 2.5vw, 2.3rem);
   font-weight: 700;
@@ -274,10 +305,22 @@
   text-transform: uppercase;
 }
 
+/* Subrayado rosa bajo el título */
+.testimonials-heading::after {
+  content: "";
+  display: block;
+  width: 4rem;
+  height: 4px;
+  margin: 0.8rem auto 0.4rem;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(90deg, var(--color-pink), var(--color-accent));
+}
+
 .testimonials-text {
   font-family: var(--font-body);
-  line-height: 20px;
+  line-height: 1.5;
   font-size: 1rem;
+  color: var(--color-muted);
 }
 
 .circle-small {
@@ -290,7 +333,6 @@
   align-items: flex-start;
   justify-content: center;
   border-radius: 1000px;
-  border: 1px dashed #aaa;
   z-index: 2;
 }
 
@@ -301,8 +343,31 @@
   inset: auto;
   pointer-events: none;
   border-radius: 1500px;
-  border: 1px dashed #ccc;
   z-index: 1;
+}
+
+/* Órbitas punteadas que giran lentamente (solo el borde, no los avatares) */
+.circle-small::before,
+.circle-large::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1.5px dashed rgba(245, 127, 197, 0.55);
+  animation: orbit-spin 90s linear infinite;
+  pointer-events: none;
+}
+
+.circle-large::before {
+  border-color: rgba(22, 22, 22, 0.15);
+  animation-direction: reverse;
+  animation-duration: 140s;
+}
+
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .profile-wrap {
@@ -313,6 +378,33 @@
   align-items: center;
   display: flex;
   position: absolute;
+  animation: avatar-float 6s ease-in-out infinite;
+}
+
+.profile-wrap.is-2 {
+  animation-delay: -1.5s;
+}
+
+.profile-wrap.is-3 {
+  animation-delay: -3s;
+}
+
+.profile-wrap.is-5 {
+  animation-delay: -4.5s;
+}
+
+.profile-wrap.is-6 {
+  animation-delay: -2.2s;
+}
+
+@keyframes avatar-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -10px;
+  }
 }
 
 .profile-wrap.is-1 {
@@ -354,6 +446,7 @@
   font-weight: 500;
   display: flex;
   position: relative;
+  box-shadow: 0 10px 20px -12px rgba(245, 127, 197, 0.9);
 }
 
 .tooltip-text {
@@ -383,7 +476,13 @@
   min-height: 6rem;
   object-fit: cover;
   border-radius: 50%;
-  border: 2px solid #e5e7eb;
+  /* Anillo degradado rosa/amarillo alrededor del avatar */
+  border: 3px solid transparent;
+  background:
+    linear-gradient(var(--color-white), var(--color-white)) padding-box,
+    linear-gradient(135deg, var(--color-pink), var(--color-accent), var(--color-pink-strong)) border-box;
+  padding: 3px;
+  box-shadow: 0 12px 24px -14px rgba(22, 22, 22, 0.45);
 }
 
 .marquee-track {
@@ -444,11 +543,48 @@
 .testimonial-card {
   width: 100%;
   position: relative;
-  border-radius: 10px;
-  padding: 1.5rem 1.5rem 1rem;
-  background-color: var(--color-white);
-  border: 1px solid var(--color-border);
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  border-radius: 18px;
+  padding: 1.75rem 1.5rem 1.25rem;
+  background:
+    linear-gradient(180deg, var(--color-white) 55%, rgba(255, 164, 219, 0.12)),
+    var(--color-white);
+  border: 1px solid rgba(22, 22, 22, 0.08);
+  box-shadow:
+    0 1px 2px rgba(22, 22, 22, 0.06),
+    0 18px 36px -24px rgba(22, 22, 22, 0.35);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+/* Insignia con comilla en la esquina superior derecha */
+.testimonial-card::after {
+  content: "\201C";
+  position: absolute;
+  top: -0.85rem;
+  right: 1.25rem;
+  display: grid;
+  place-items: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  padding-top: 0.55rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-pink), var(--color-pink-strong));
+  color: var(--color-white);
+  font-family: Georgia, serif;
+  font-size: 1.9rem;
+  line-height: 1;
+  box-shadow: 0 6px 14px -6px rgba(245, 127, 197, 0.9);
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .testimonial-card:hover {
+    transform: translateY(-6px) rotate(-0.6deg);
+    box-shadow:
+      0 1px 2px rgba(22, 22, 22, 0.06),
+      0 26px 44px -22px rgba(245, 127, 197, 0.7);
+  }
 }
 
 .testimonial-header {
@@ -460,11 +596,13 @@
   justify-content: space-between;
   width: calc(60% + 18px);
   padding: 10px 15px;
-  background-color: var(--color-white);
-  border-radius: 10px;
-  border: 1px solid var(--color-border);
+  background: linear-gradient(90deg, #ffe3f3, var(--color-white));
+  border-radius: 14px;
+  border: 1px solid rgba(245, 127, 197, 0.35);
   border-bottom: 0;
   border-right: 0;
+  box-shadow: 0 6px 14px -10px rgba(245, 127, 197, 0.8);
+  z-index: 1;
 }
 
 .testimonial-user {
@@ -491,7 +629,8 @@
   width: 90%;
   object-fit: cover;
   margin-top: 10px;
-  border-radius: 20px;
+  border-radius: 14px;
+  box-shadow: 0 10px 22px -16px rgba(22, 22, 22, 0.5);
 }
 
 #testimonials {
@@ -506,7 +645,7 @@
 
 @media screen and (max-width: 991px) {
   .testimonials-section {
-    height: 1200px;
+    height: calc(1200px + 5rem);
     padding-left: 0;
     padding-right: 0;
   }

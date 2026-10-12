@@ -84,7 +84,7 @@ npm run dev   # http://localhost:3000 (se reinicia solo al guardar)
 
 | Variable | Uso |
 | --- | --- |
-| `DATABASE_URL` | Conexión a PostgreSQL |
+| `DATABASE_URL` | Conexión a PostgreSQL (Neon en producción, local en desarrollo). SSL se activa solo si no es `localhost`; `DATABASE_SSL=true/false` lo fuerza |
 | `MAIL_USER`, `MAIL_PASS` | Cuenta de Gmail para los correos |
 | `ONVOPAY_PUBLIC_KEY`, `ONVOPAY_SECRET_KEY` | Claves de ONVO Pay |
 | `ONVOPAY_WEBHOOK_SECRET` | Secreto del webhook de ONVO (empieza con `webhook_secret_`) |
@@ -112,6 +112,22 @@ utils/shop.js       Arma los datos de la home, la página de producto y los rela
 ```
 
 Cada vista declara sus propios `<link>` y `<script>`; el layout los coloca en el `<head>` y al final del `<body>`.
+Las páginas de compra (checkout, pago SINPE/tarjeta, confirmación) usan `views/checkout-layout.ejs`.
+
+Otros archivos de datos: `data/colors.js` (colores de sets/enterizos), `data/testimonials.js` (carrusel de la home).
+
+## Imágenes y rendimiento
+
+```bash
+npm run images
+```
+
+Genera versiones WebP livianas (160, 400, 800 y 1200 px) en `public/images/opt/` y el manifiesto `data/image-manifest.json`.
+Las vistas usan el helper `img()` (`utils/images.js`) para que cada dispositivo descargue solo el tamaño que necesita.
+**Correrlo cada vez que se agreguen o cambien fotos** (solo procesa las nuevas) y subir la carpeta `opt/` con el resto.
+
+- CSS y JS se sirven con `?v=<versión>` y caché de 1 año; cada deploy cambia la versión.
+- Imágenes y fuentes: caché de 30 días. Las fuentes están en `woff2` (`public/css/fonts.css`).
 
 **Para agregar un producto:** añadirlo en `data/catalog.js` y poner su clave en la colección correspondiente de `data/collections.js`. Para marcarlo agotado: `stock: 0`. Para oferta: `discount: 1` y `oldPrice`.
 

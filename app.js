@@ -43,13 +43,38 @@ app.set("view engine", "ejs");
 app.set("layout extractStyles", true);
 app.set("layout extractScripts", true);
 app.set("views", path.join(__dirname, "views"));
-app.use(express.static(path.join(__dirname, "public")));
+/* ---------- Archivos estáticos y caché ----------
+   CSS/JS se piden con ?v=<versión> (helper asset() en las vistas): se cachean
+   un año y cada deploy cambia la versión. Imágenes y fuentes: 30 días. */
+const ASSET_VERSION = (
+  process.env.VERCEL_GIT_COMMIT_SHA || Date.now().toString(36)
+).slice(0, 8);
+app.locals.asset = (file) => `${file}?v=${ASSET_VERSION}`;
+
+app.use((req, res, next) => {
+  const folder = req.path.match(/^\/(css|js|images|fonts)\//)?.[1];
+
+  if (folder && req.query.v) {
+    res.set("Cache-Control", "public, max-age=31536000, immutable");
+  } else if (folder === "images" || folder === "fonts") {
+    res.set("Cache-Control", "public, max-age=2592000, stale-while-revalidate=86400");
+  } else if (folder) {
+    res.set("Cache-Control", "public, max-age=3600");
+  }
+  next();
+});
+app.use(express.static(path.join(__dirname, "public"), { cacheControl: false }));
 
 app.locals.ONVO_PUBLIC_KEY = process.env.ONVOPAY_PUBLIC_KEY;
 app.locals.formatPrice = require("./public/js/pricing").formatPrice;
+app.locals.img = require("./utils/images").img;
+app.locals.store = require("./data/store");
+// Nombres de colores para el carrito (navegador): { white: "Blanco", … }
+app.locals.colorLabels = Object.fromEntries(
+  require("./data/colors").map(({ id, label }) => [id, label]),
+);
 
-app.use(require("./routes/homeRoute"));
-app.use(require("./routes/productRoute"));
+app.use(require("./routes/shopRoute"));
 app.use(require("./routes/checkoutRoute"));
 app.use(require("./routes/onvopayRoute"));
 app.use(require("./routes/sinpepayRoute"));

@@ -1,6 +1,7 @@
 /* ============================================================
    HEADER — barra de promoción, navegación, logo y carrito.
-   Incluye el menú móvil (panel lateral).
+   Al hacer scroll se compacta (.header--scrolled, ver header.js).
+   Incluye el menú móvil (panel a pantalla completa).
 ============================================================ */
 
 .header {
@@ -8,12 +9,15 @@
   top: 0;
   left: 0;
   z-index: var(--z-header);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   width: 100%;
   padding: 1.8rem clamp(1.2rem, 4vw, 5rem) 0;
   background: var(--gradient-header);
+  transition: box-shadow var(--duration-base) ease;
+}
+
+/* Compacto: línea sutil para separar el header del contenido */
+.header--scrolled {
+  box-shadow: 0 1px 0 rgba(22, 22, 22, 0.08), 0 8px 24px -18px rgba(22, 22, 22, 0.35);
 }
 
 .header__inner {
@@ -31,6 +35,12 @@
   width: 100%;
   max-width: 1930px;
   height: 85px;
+  margin: 0 auto;
+  transition: height var(--duration-base) var(--ease-out);
+}
+
+.header--scrolled .header__bar {
+  height: 62px;
 }
 
 .header__nav,
@@ -42,27 +52,46 @@
 
 .header__nav {
   justify-content: flex-start;
-  gap: clamp(1.2rem, 2.5vw, 3rem);
+  gap: clamp(1.2rem, 2.2vw, 3rem);
 }
 
 .header__actions {
   justify-content: flex-end;
-  gap: clamp(0.8rem, 2vw, 1.6rem);
+  gap: clamp(1rem, 2vw, 1.8rem);
 }
 
+/* ---------- Enlaces ---------- */
 .nav-link {
+  position: relative;
+  padding: 0.35rem 0;
   font-family: var(--font-display);
-  font-size: clamp(0.7rem, 0.85vw, 1rem);
+  font-size: clamp(0.72rem, 0.85vw, 1rem);
   letter-spacing: 1px;
   text-transform: uppercase;
   white-space: nowrap;
-  transition: color var(--duration-base) ease;
 }
 
-.nav-link:hover {
-  color: #3d3d3d;
+/* Subrayado que crece al pasar el mouse; queda fijo en la sección actual */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-base) var(--ease-out);
 }
 
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link[aria-current="true"]::after {
+  transform: scaleX(1);
+}
+
+/* ---------- Logo ---------- */
 .header__logo {
   position: absolute;
   left: 50%;
@@ -75,53 +104,84 @@
 }
 
 .header__logo-img {
+  display: block;
   width: clamp(110px, 12vw, 160px);
-  transition: all 200ms ease;
+  transition: width var(--duration-base) var(--ease-out);
 }
 
-/* ---------- Botón del carrito ---------- */
+.header--scrolled .header__logo-img {
+  width: clamp(92px, 8vw, 118px);
+}
+
+/* ---------- Carrito ---------- */
 .cart-button {
-  position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-left: 25px;
-  padding: 0;
+  gap: 10px;
+  padding: 0.35rem 0;
   border: none;
-  background-color: transparent;
-  font-size: clamp(0.7rem, 0.8vw, 0.9rem);
+  background: transparent;
+  color: var(--color-ink);
+  font-size: clamp(0.72rem, 0.85vw, 1rem);
   letter-spacing: 1px;
   text-transform: uppercase;
-  filter: brightness(110%);
-  transition: all 200ms ease;
+  cursor: pointer;
 }
 
-.cart-button:hover {
-  filter: brightness(200%);
+.cart-button__icon {
+  position: relative;
+  display: inline-flex;
+  transition: transform var(--duration-fast) ease;
+}
+
+.cart-button:hover .cart-button__icon {
+  transform: translateY(-1px) rotate(-6deg);
 }
 
 .cart-icon {
-  width: 32px;
-  height: 32px;
-  color: #1b1b1b;
+  width: 28px;
+  height: 28px;
+  color: var(--color-ink);
 }
 
-/* Número de productos, dentro del ícono */
+/* Burbuja rosa con la cantidad; se oculta con el carrito vacío */
 .cart-count {
   position: absolute;
-  top: 4.4px;
-  right: 5px;
+  top: -7px;
+  right: -9px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
+  min-width: 20px;
   height: 20px;
-  padding-top: 0.14rem;
-  border-radius: 50%;
-  background: transparent;
-  color: var(--color-white);
-  font-size: 12px;
-  font-weight: bold;
+  padding: 2px 5px 0;
+  border: 2px solid var(--color-cream);
+  border-radius: var(--radius-pill);
+  background: var(--color-pink);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.cart-count[data-count="0"] {
+  transform: scale(0);
+}
+
+/* Rebote al agregar un producto */
+.cart-count.is-bumped {
+  animation: cart-bump 0.45s var(--ease-out);
+}
+
+@keyframes cart-bump {
+  40% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* ---------- Barra de promoción (marquesina) ---------- */
@@ -132,13 +192,51 @@
   width: 100%;
   overflow: hidden;
   padding: 0.45rem 0;
-  background: var(--color-ink);
+  background:
+    radial-gradient(120% 220% at 50% 120%, rgba(255, 164, 219, 0.22), transparent 60%),
+    var(--color-ink);
+}
+
+/* Bordes difuminados para que el texto entre y salga suavemente */
+.promo-marquee::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    90deg,
+    var(--color-ink),
+    transparent 8%,
+    transparent 92%,
+    var(--color-ink)
+  );
+  pointer-events: none;
+}
+
+/* Línea de brillo inferior con los colores de marca */
+.promo-marquee::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--color-pink),
+    var(--color-accent),
+    var(--color-pink-strong),
+    var(--color-accent),
+    var(--color-pink)
+  );
+  background-size: 200% 100%;
+  animation: promo-flow 6s linear infinite;
 }
 
 .promo-marquee__track {
   display: flex;
   align-items: center;
-  gap: 5rem;
+  gap: 2.5rem;
   width: max-content;
   animation: marquee 30s linear infinite;
 }
@@ -159,20 +257,75 @@
   white-space: nowrap;
 }
 
+/* Separador entre mensajes */
+.promo-marquee__track > span:not(.promo-marquee__highlight)::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  margin-right: 2.5rem;
+  border-radius: 50%;
+  background: var(--color-pink);
+  box-shadow: 0 0 6px var(--color-pink);
+}
+
+/* "15%" como etiqueta amarilla con destello */
 .promo-marquee__track .promo-marquee__accent {
-  margin: 0 0.25rem;
-  color: var(--color-accent);
-  font-weight: 700;
-  opacity: 0.9;
+  position: relative;
+  overflow: hidden;
+  margin: 0 0.35rem;
+  padding: 0.1em 0.55em;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--color-ink);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  box-shadow: 0 0 10px rgba(253, 227, 92, 0.45);
+}
+
+.promo-marquee__track .promo-marquee__accent::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.75) 50%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  animation: promo-shine 3.2s ease-in-out infinite;
+}
+
+/* Título con degradado rosa → amarillo en movimiento */
+.promo-marquee__track .promo-marquee__highlight {
+  background: linear-gradient(
+    90deg,
+    var(--color-pink),
+    var(--color-accent),
+    var(--color-pink)
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  animation: promo-flow 4s linear infinite;
 }
 
 .promo-marquee__highlight::before,
 .promo-marquee__highlight::after {
   content: "✦";
-  margin: 0 0.4rem;
+  display: inline-block;
+  margin: 0 0.5rem;
   color: var(--color-accent);
   font-size: 0.7rem;
-  opacity: 0.9;
+  -webkit-text-fill-color: var(--color-accent);
+  text-shadow: 0 0 6px rgba(253, 227, 92, 0.8);
+  animation: promo-twinkle 2.4s ease-in-out infinite;
+}
+
+.promo-marquee__highlight::after {
+  animation-delay: 1.2s;
 }
 
 @keyframes marquee {
@@ -184,24 +337,72 @@
   }
 }
 
-/* ---------- Menú móvil ---------- */
+@keyframes promo-flow {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes promo-shine {
+  0%,
+  55% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes promo-twinkle {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(0.85) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15) rotate(90deg);
+  }
+}
+
+/* ---------- Botón de menú (hamburguesa) ---------- */
 .hamburger {
   z-index: 20;
   display: none;
   flex-direction: column;
+  justify-content: center;
   gap: 6px;
+  width: 36px;
+  height: 36px;
+  margin-left: -8px;
+  padding: 8px;
   border: none;
+  border-radius: 50%;
   background: none;
   cursor: pointer;
+  transition: background-color var(--duration-fast) ease;
+}
+
+.hamburger:hover {
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .hamburger span {
   width: 20px;
   height: 1.7px;
   background: #222;
-  transition: 0.4s;
+  transition: width var(--duration-base) var(--ease-out);
 }
 
+.hamburger span:nth-child(2) {
+  width: 14px;
+}
+
+.hamburger:hover span:nth-child(2) {
+  width: 20px;
+}
+
+/* ---------- Menú móvil ---------- */
 .mobile-menu {
   position: fixed;
   top: 0;
@@ -209,48 +410,61 @@
   z-index: 200;
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
   width: 100%;
-  height: 100vh;
-  padding: 7rem 2rem 2rem;
+  height: 100dvh;
+  overflow-y: auto;
+  padding: 1.25rem 1.5rem 2rem;
+  /* Rosa arriba (como el header, para que se lea el logo) y abajo (como el footer) */
   background: linear-gradient(
-    to top,
-    var(--color-pink) 15%,
-    var(--color-cream) 45%
+    to bottom,
+    var(--color-pink) 0,
+    var(--color-cream) 16%,
+    var(--color-cream) 55%,
+    var(--color-pink) 100%
   );
   visibility: hidden; /* cerrado: fuera del orden de tabulación */
   transition:
-    left 0.4s ease,
-    visibility 0s linear 0.4s;
+    left 0.45s var(--ease-out),
+    visibility 0s linear 0.45s;
 }
 
 .mobile-menu.active {
   left: 0;
   visibility: visible;
-  transition: left 0.4s ease;
+  transition: left 0.45s var(--ease-out);
+}
+
+.mobile-menu__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(22, 22, 22, 0.1);
+}
+
+.mobile-menu__logo img {
+  display: block;
+  width: 110px;
 }
 
 .mobile-menu__close {
-  position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
-  z-index: 30;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border: none;
-  background: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
   cursor: pointer;
 }
 
 .mobile-menu__close span {
   position: absolute;
-  width: 22px;
-  height: 2px;
+  width: 18px;
+  height: 1.7px;
   background: #222;
-  transition: 0.3s ease;
 }
 
 .mobile-menu__close span:nth-child(1) {
@@ -261,49 +475,121 @@
   transform: rotate(-45deg);
 }
 
-.mobile-menu__link {
-  color: #222;
+.mobile-menu__nav {
+  padding-top: 1.75rem;
+}
+
+.mobile-menu__heading {
+  margin: 0 0 0.5rem;
+  color: rgba(22, 22, 22, 0.55);
   font-family: var(--font-display);
-  font-size: 1.2rem;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.mobile-menu__list,
+.mobile-menu__secondary {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mobile-menu__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0 0.8rem;
+  border-bottom: 1px solid rgba(22, 22, 22, 0.1);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.mobile-menu__arrow {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  transition: transform var(--duration-fast) ease;
+}
+
+.mobile-menu__link:hover .mobile-menu__arrow {
+  transform: translateX(4px);
+}
+
+.mobile-menu__secondary {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 1.75rem;
+}
+
+.mobile-menu__sublink {
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
   letter-spacing: 1px;
   text-transform: uppercase;
-  opacity: 0;
-  transform: translateX(-20px);
-  transition:
-    opacity 0.4s ease,
-    transform 0.4s ease;
 }
 
 /* Al abrir, los enlaces entran uno tras otro */
-.mobile-menu.active .mobile-menu__link {
-  opacity: 1;
-  transform: translateX(0);
+.mobile-menu__list li,
+.mobile-menu__secondary li {
+  opacity: 0;
+  transform: translateX(-16px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s var(--ease-out);
 }
 
-.mobile-menu.active .mobile-menu__link:nth-of-type(1) {
-  transition-delay: 0.15s;
+.mobile-menu.active .mobile-menu__list li,
+.mobile-menu.active .mobile-menu__secondary li {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(0.12s + var(--i, 0) * 0.06s);
 }
-.mobile-menu.active .mobile-menu__link:nth-of-type(2) {
-  transition-delay: 0.25s;
+
+.mobile-menu__footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  margin-top: auto;
+  padding-top: 2rem;
 }
-.mobile-menu.active .mobile-menu__link:nth-of-type(3) {
-  transition-delay: 0.35s;
+
+.mobile-menu__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.85rem 1.1rem 0.7rem;
+  border: 1px solid var(--color-ink);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
-.mobile-menu.active .mobile-menu__link:nth-of-type(4) {
-  transition-delay: 0.45s;
+
+.mobile-menu__social {
+  display: flex;
+  gap: 0.6rem;
 }
-.mobile-menu.active .mobile-menu__link:nth-of-type(5) {
-  transition-delay: 0.55s;
-}
-.mobile-menu.active .mobile-menu__link:nth-of-type(6) {
-  transition-delay: 0.65s;
-}
-.mobile-menu.active .mobile-menu__link:nth-of-type(7) {
-  transition-delay: 0.75s;
+
+.mobile-menu__social img {
+  display: block;
+  width: 36px;
+  height: 36px;
 }
 
 /* ---------- Responsive ---------- */
-@media screen and (max-width: 1550px) {
+
+/* Menos de 1180px: los enlaces pasan al menú móvil */
+@media screen and (max-width: 1180px) {
   .header__nav,
   .nav-link {
     display: none;
@@ -312,45 +598,30 @@
   .hamburger {
     display: flex;
   }
-}
 
-@media screen and (max-width: 1200px) {
   .header {
     padding: 1rem 1.5rem 0;
+  }
+
+  /* Con menos relleno arriba, la barra compacta necesita más alto para no tocar la marquesina */
+  .header--scrolled .header__bar {
+    height: 72px;
   }
 }
 
 @media (max-width: 768px) {
+  .header--scrolled .header__bar {
+    height: 70px;
+  }
+
   .cart-icon {
     width: 24px;
     height: 24px;
-  }
-
-  .cart-count {
-    top: 2px;
-    right: 3px;
-    width: 16px;
-    height: 16px;
-    font-size: 10px;
   }
 }
 
 @media (max-width: 550px) {
   .cart-text {
     display: none;
-  }
-}
-
-/* Rebote del contador al agregar un producto */
-.cart-count.is-bumped {
-  animation: cart-bump 0.45s var(--ease-out);
-}
-
-@keyframes cart-bump {
-  40% {
-    transform: scale(1.45);
-  }
-  100% {
-    transform: scale(1);
   }
 }

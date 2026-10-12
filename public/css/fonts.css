@@ -1,0 +1,33 @@
+/* ============================================================
+   FUENTES — se declaran una sola vez para todo el sitio.
+   Hatton: títulos y botones · Lato: textos.
+============================================================ */
+@font-face {
+  font-family: "Hatton";
+  src:
+    url("/fonts/Hatton-Ultralight.woff2") format("woff2"),
+    url("/fonts/Hatton-Ultralight.otf") format("opentype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hatton";
+  src:
+    url("/fonts/Hatton-Medium.woff2") format("woff2"),
+    url("/fonts/Hatton-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lato";
+  src:
+    url("/fonts/Lato-Regular.woff2") format("woff2"),
+    url("/fonts/Lato-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

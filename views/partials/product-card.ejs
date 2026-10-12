@@ -7,8 +7,13 @@
             <span class="product-card__overlay" aria-hidden="true"></span>
         <% } %>
         <span class="product-card__media">
-            <img class="product-card__image" src="<%= product.image %>" alt="<%= product.name %>"
-                width="1200" height="1600" loading="<%= eager ? 'eager' : 'lazy' %>" decoding="async" />
+            <%- img(product.image, {
+                alt: product.name,
+                class: "product-card__image",
+                sizes: "(max-width: 770px) 50vw, (max-width: 991px) 32vw, 20vw",
+                loading: eager ? "eager" : "lazy",
+                fetchpriority: eager ? "high" : undefined,
+            }) %>
         </span>
     </a>
 

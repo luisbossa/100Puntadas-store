@@ -31,6 +31,7 @@
                             <div class="testimonials-div">
                                 <div class="circle-wrap">
                                     <div class="header-wrap">
+                                        <span class="testimonials-eyebrow"><span aria-hidden="true">★★★★★</span> Opiniones reales</span>
                                         <h2 id="testimonials-title" class="testimonials-heading">Testimonios que nos inspiran</h2>
                                         <p class="testimonials-text">
                                             Historias reales de clientes que eligieron 100puntadas
@@ -54,14 +55,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <img width="<%= b.w %>" loading="lazy" alt="" src="/images/<%= b.img %>" class="testimonial-img" />
+                                                <%- img("/images/" + b.img, { class: "testimonial-img", alt: "", sizes: b.w + "px" }) %>
                                             </div>
                                         <% }) %>
                                     </div>
                                     <div class="circle-large" aria-hidden="true">
                                         <% smallBubbles.forEach((b) => { %>
                                             <div class="profile-wrap <%= b.mod %>">
-                                                <img width="<%= b.w %>" loading="lazy" alt="" src="/images/<%= b.img %>" class="testimonial-img" />
+                                                <%- img("/images/" + b.img, { class: "testimonial-img", alt: "", sizes: b.w + "px" }) %>
                                             </div>
                                         <% }) %>
                                     </div>
@@ -69,7 +70,23 @@
 
                                 <div class="marquee-wrapper">
                                     <div class="marquee-track">
-                                        <div role="list" class="marquee-list" id="marqueeList" aria-label="Mensajes de clientes"></div>
+                                        <div role="list" class="marquee-list" id="marqueeList" aria-label="Mensajes de clientes">
+                                            <% testimonials.forEach(({ user, image }) => { %>
+                                                <div class="marquee-item" role="listitem">
+                                                    <article class="testimonial-card">
+                                                        <header class="testimonial-header">
+                                                            <span class="testimonial-user"><%= user %></span>
+                                                            <div class="testimonial-stars">
+                                                                <img src="/images/stars.svg" alt="5 de 5 estrellas" width="80" height="14" loading="lazy">
+                                                            </div>
+                                                        </header>
+                                                        <figure class="testimonial-media">
+                                                            <%- img(image, { class: "testimonial-image", alt: "Mensaje de " + user + " sobre su compra", sizes: "(max-width: 767px) 20rem, 27rem" }) %>
+                                                        </figure>
+                                                    </article>
+                                                </div>
+                                            <% }) %>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -81,9 +98,9 @@
                 <span class="cursor-btn">Comprar</span>
             </div>
 
-            <link rel="stylesheet" href="/css/home.css" />
-            <link rel="stylesheet" href="/css/cursor.css" />
+            <link rel="stylesheet" href="<%= asset('/css/home.css') %>" />
+            <link rel="stylesheet" href="<%= asset('/css/cursor.css') %>" />
 
-            <script src="/js/image-fade.js"></script>
-            <script src="/js/testimonials.js"></script>
-            <script src="/js/cursor.js"></script>
+            <script src="<%= asset('/js/image-fade.js') %>"></script>
+            <script src="<%= asset('/js/testimonials.js') %>"></script>
+            <script src="<%= asset('/js/cursor.js') %>"></script>

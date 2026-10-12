@@ -1,36 +1,28 @@
 const { Pool } = require("pg");
 
+/* ============================================================
+   CONEXIÓN A POSTGRESQL
+   - Producción: Neon (requiere SSL).
+   - Desarrollo: PostgreSQL local (sin SSL).
+   Se decide por la URL; DATABASE_SSL=true/false lo fuerza.
+============================================================ */
+const connectionString = process.env.DATABASE_URL;
+
+const isLocal = /@(localhost|127\.0\.0\.1)(:\d+)?\//.test(connectionString || "");
+const useSSL = process.env.DATABASE_SSL
+  ? process.env.DATABASE_SSL === "true"
+  : !isLocal;
+
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  connectionString,
+  ssl: useSSL ? { rejectUnauthorized: false } : false,
+  // En Vercel cada función abre su propio pool: pocas conexiones y que se liberen rápido.
+  max: process.env.VERCEL ? 3 : 10,
+  idleTimeoutMillis: 10_000,
+});
+
+pool.on("error", (err) => {
+  console.error("POSTGRES POOL ERROR:", err.message);
 });
 
 module.exports = pool;
-
-// const { Pool } = require("pg");
-
-// const pool = new Pool({
-//   host: process.env.DB_HOST,
-//   user: process.env.DB_USER,
-//   password: process.env.DB_PASSWORD,
-//   database: process.env.DB_DATABASE,
-//   port: process.env.DB_PORT,
-//   ssl: false
-// });
-
-// module.exports = pool;
-
-// (async () => {
-//   try {
-//     const client = await pool.connect();
-//     const res = await client.query("SELECT NOW()");
-//     console.log("PostgreSQL conectado:", res.rows[0]);
-//     client.release();
-//   } catch (err) {
-//     console.error("Error conectando a PostgreSQL:", err.message);
-//   }
-// })();
-
-

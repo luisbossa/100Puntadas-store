@@ -1,95 +1,83 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ============================================================
+   PAGO SINPE — paso 2: datos bancarios y detalle del pedido
+============================================================ */
 
-body {
-  height: 100%;
-  font-family: "Inter", system-ui, sans-serif;
+body.page-sinpe {
+  padding-bottom: 3rem;
   background: var(--color-cream);
   color: var(--color-ink);
-  user-select: none;
-  padding-bottom: 3rem;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-weight: 700;
-  color: var(--color-ink);
+.sinpe-page {
+  max-width: 950px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-white);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
-p {
+.sinpe-page p {
   font-size: 0.95rem;
   line-height: 1.5;
 }
 
-/* ===== PAGE WRAPPER ===== */
-.page-wrapper {
-  max-width: 950px;
-  margin: 2rem auto;
-  background: var(--color-white);
-  border-radius: 14px;
-  padding: 2rem;
-  border: 1px solid var(--color-border);
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-}
-
-/* ===== PAGE TITLE ===== */
-.page-title {
-  font-family: var(--font-display);
-  text-align: center;
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
+.sinpe-page__title {
+  margin: 20px 0 2rem;
   color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 44px;
   letter-spacing: 1px;
+  text-align: center;
   text-transform: uppercase;
 }
 
-/* ===== ORDER SUMMARY ===== */
-.order-summary {
-  background: #ecddf0;
-  padding: 1.5rem 2rem;
-  border-radius: 10px;
-  margin-bottom: 2rem;
+.sinpe-page__subtitle {
+  margin: 2rem 0 1rem;
+  color: var(--color-ink);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 36px;
 }
 
-.order-summary p {
+/* ---------- Resumen ---------- */
+.sinpe-summary {
+  margin-bottom: 2rem;
+  padding: 1.5rem 2rem;
+  border-radius: 10px;
+  background: #ecddf0;
+}
+
+.sinpe-page .sinpe-summary p {
   margin-bottom: 0.7rem;
   font-size: 0.95rem;
   font-weight: 600;
 }
 
-.order-summary p strong {
-  color: #333; /* neutro oscuro */
+.sinpe-summary strong {
+  color: #333;
 }
 
-/* ===== SECTION TITLES ===== */
-.section-title {
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--color-ink);
-}
-
-/* ===== BANK DETAILS ===== */
-.bank-detail {
+.sinpe-page .bank-detail {
   margin-bottom: 0.5rem;
   font-size: 0.95rem;
   font-weight: 500;
 }
 
-/* ===== ORDER TABLE ===== */
+/* ---------- Tabla del pedido ---------- */
 .order-table {
   width: 100%;
-  border-collapse: collapse;
   margin-top: 1rem;
-  border-radius: 12px 12px 0 0;
-  border-bottom: 1px solid #e5e5e5;
   overflow: hidden;
+  border-bottom: 1px solid #e5e5e5;
+  border-collapse: collapse;
+  border-radius: 12px 12px 0 0;
 }
 
 .order-table th,
@@ -99,110 +87,98 @@ p {
   vertical-align: middle;
 }
 
-.order-table th {
-  background: #ecddf0;
-  font-weight: 700;
-  color: var(--color-ink);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+.order-table thead th {
   border-bottom: 1px solid var(--color-ink);
+  background: #ecddf0;
+  color: var(--color-ink);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
-.order-table tr:nth-child(even) {
-  background: #fdfdfd; /* casi blanco */
+.order-table tbody tr:nth-child(even) {
+  background: #fdfdfd;
 }
 
-/* ===== ORDER PRODUCT ROW ===== */
-.order-product-row td {
-  vertical-align: middle;
-}
-
-.product-name {
+.order-table__name {
+  font-size: 0.95rem;
   font-weight: 600;
 }
 
-.product-meta {
-  font-size: 0.78rem;
-  color: #666;
+.order-table__meta {
   margin-top: 3px;
+  color: #666;
+  font-size: 0.78rem;
+  line-height: 1.4;
 }
 
-.product-unit-price,
-.product-total-price {
+.order-table__price {
   font-weight: 700;
 }
 
-/* ===== ORDER TOTAL ROW ===== */
-.order-total-row td {
-  font-weight: 700;
+/* Totales al pie de la tabla */
+.order-table tfoot th,
+.order-table tfoot td {
   border-top: 1px solid #ddd;
+  font-weight: 700;
 }
 
-.order-total-row td:first-child {
-  text-align: start; /* centramos los totales */
+.order-table tfoot th {
+  text-align: start;
 }
 
-/* ===== PAYMENT BUTTON ===== */
-.link-confirm-payment {
-  font-family: var(--font-display);
+/* ---------- Botón y estado ---------- */
+.sinpe-page .payment-reminder {
+  margin-top: 1rem;
+  color: #555;
+  font-style: italic;
+}
+
+.sinpe-confirm-btn {
   display: block;
   width: fit-content;
-  padding: 15px 20px 13px;
   margin: 2rem auto 0;
-  border-radius: 10px;
+  padding: 15px 20px 13px;
   border: none;
-  text-transform: uppercase;
+  border-radius: 10px;
   background: var(--color-ink);
   color: var(--color-white);
-  font-weight: 700;
+  font-family: var(--font-display);
   font-size: 1rem;
+  font-weight: 700;
+  line-height: 20px;
   letter-spacing: 1px;
+  text-transform: uppercase;
   cursor: pointer;
   transition: opacity 0.2s ease;
 }
 
-.link-confirm-payment:hover {
+.sinpe-confirm-btn:hover {
   opacity: 0.95;
 }
 
-/* ===== BUTTON DISABLED STATE ===== */
-.link-confirm-payment:disabled {
+.sinpe-confirm-btn:disabled {
   background: #cfcfcf;
   color: #7a7a7a;
+  opacity: 0.7;
   cursor: not-allowed;
-  opacity: 0.7;
-  pointer-events: none;
-}
-
-/* evita hover cuando está disabled */
-.link-confirm-payment:disabled:hover {
-  opacity: 0.7;
-}
-
-/* ===== PAYMENT REMINDER ===== */
-.payment-reminder {
-  margin-top: 1rem;
-  font-style: italic;
-  color: #555;
 }
 
 .pending-msg {
-  display: block;
-  min-height: auto;
-  text-align: center;
-  padding: 1.5rem;
   margin: 1.5rem auto 0;
-  background: #fff7ed;
+  padding: 1.5rem;
   border: 1px solid #fed7aa;
   border-radius: 12px;
+  background: #fff7ed;
+  color: #9a3412;
   font-size: 1rem;
   font-weight: 500;
-  color: #9a3412;
+  text-align: center;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ---------- Responsive ---------- */
 @media (max-width: 700px) {
-  .page-wrapper {
+  .sinpe-page {
     padding: 1.5rem 1.2rem;
   }
 
@@ -212,42 +188,37 @@ p {
     font-size: 0.9rem;
   }
 
-  .order-summary p {
+  .sinpe-page .sinpe-summary p {
     font-size: 0.9rem;
   }
 
-  .link-confirm-payment {
+  .sinpe-confirm-btn {
     font-size: 0.95rem;
   }
 }
 
 @media (max-width: 600px) {
-  /* ===== PAGE ===== */
-  .page-wrapper {
+  .sinpe-page {
     margin: 1rem;
     padding: 1.2rem 1rem;
     border-radius: 10px;
   }
 
-  .page-title {
-    font-size: 1.4rem;
+  .sinpe-page__title {
     margin-bottom: 1.5rem;
+    font-size: 1.4rem;
   }
 
-  /* ===== ORDER SUMMARY ===== */
-  .order-summary {
+  .sinpe-summary {
     padding: 1rem;
   }
 
-  .order-summary p {
-    font-size: 0.9rem;
+  /* La tabla se desplaza horizontalmente sin romper la página */
+  .order-table-wrap {
+    overflow-x: auto;
   }
 
-  /* ===== TABLE SCROLL ===== */
   .order-table {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
     white-space: nowrap;
   }
 
@@ -257,11 +228,10 @@ p {
     font-size: 0.85rem;
   }
 
-  /* ===== BUTTON ===== */
-  .link-confirm-payment {
+  .sinpe-confirm-btn {
     width: 100%;
-    text-align: center;
     padding: 14px;
     font-size: 0.9rem;
+    text-align: center;
   }
 }

@@ -1,0 +1,146 @@
+/* ============================================================
+   CHECKOUT — base común de las páginas de compra
+   (datos de entrega, pago SINPE, pago con tarjeta y confirmación).
+   Cada página agrega su hoja: checkout.css, sinpe-pay.css, onvo-pay.css, confirm.css
+============================================================ */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  background: var(--color-cream);
+  color: #111;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-family: Inter, system-ui, sans-serif;
+  opacity: 0.8;
+}
+
+:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+/* ---------- Barra superior: logo + pasos ---------- */
+.checkout-topbar {
+  width: 100%;
+  background: var(--gradient-header);
+}
+
+.checkout-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  background: var(--gradient-header);
+}
+
+.checkout-brand {
+  width: 100%;
+  max-width: 120px;
+  padding: 10px;
+  background: var(--gradient-header);
+}
+
+.checkout-brand__logo {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Pasos (1 Entrega · 2 Pago · 3 Confirmación) ---------- */
+.checkout-steps {
+  font-family: var(--font-display);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.checkout-steps__list {
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--color-ink);
+  font-size: 0.85rem;
+}
+
+.step__index {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin-top: -4px;
+  padding-top: 2px;
+  border-radius: 50%;
+  background: var(--color-white);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.step--active {
+  font-weight: 600;
+}
+
+.step--active .step__index {
+  border: 2px solid var(--color-ink);
+  color: var(--color-ink);
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  .checkout-steps__list {
+    gap: 1rem;
+  }
+
+  .step__label {
+    display: none;
+  }
+}
+
+/* ---------- Tarjeta blanca (bloques de contenido) ---------- */
+.card,
+.summary-card {
+  padding: 2rem;
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  background: var(--color-white);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+
+@media (max-width: 550px) {
+  .card,
+  .summary-card {
+    padding: 1.5rem 1.3rem;
+  }
+}
+
+/* Respeta la preferencia del sistema de reducir animaciones */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

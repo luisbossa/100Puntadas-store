@@ -81,8 +81,7 @@
                                 </ul>
                             </div>
 
-                            <img src="/images/sizeChart/hip-size.webp" alt="Guía de medidas corporales"
-                                class="sizechart-image">
+                            <%- img("/images/sizeChart/hip-size.webp", { alt: "Guía de medidas corporales", class: "sizechart-image", sizes: "(max-width: 600px) 90vw, 30vw" }) %>
                         </div>
                         <div class="sizechart-guide">
                             <div class="sizechart-div">
@@ -93,8 +92,7 @@
                                 </p>
                             </div>
 
-                            <img src="/images/sizeChart/copa-size.webp" alt="Guía de estilos de copa"
-                                class="sizechart-image">
+                            <%- img("/images/sizeChart/copa-size.webp", { alt: "Guía de estilos de copa", class: "sizechart-image", sizes: "(max-width: 600px) 90vw, 30vw" }) %>
                         </div>
                         <div class="sizechart-guide">
                             <div class="sizechart-div">
@@ -105,11 +103,10 @@
                                 </p>
                             </div>
 
-                            <img src="/images/sizeChart/bottom-style.webp" alt="Guía de estilos de parte de abajo"
-                                class="sizechart-image">
+                            <%- img("/images/sizeChart/bottom-style.webp", { alt: "Guía de estilos de parte de abajo", class: "sizechart-image", sizes: "(max-width: 600px) 90vw, 30vw" }) %>
                         </div>
                     </div>
                 </section>
             </div>
 
-<link rel="stylesheet" href="/css/sizes.css" />
+<link rel="stylesheet" href="<%= asset('/css/sizes.css') %>" />

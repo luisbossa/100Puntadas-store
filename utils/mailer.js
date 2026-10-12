@@ -11,12 +11,12 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-transporter.verify((error) => {
-  if (error) {
-    console.error("SMTP ERROR:", error);
-  } else {
-    console.log("SMTP listo para enviar correos");
-  }
-});
+// Comprobación de credenciales: solo se usa al arrancar en desarrollo (server.js),
+// no en cada arranque de la función en Vercel.
+transporter.checkConnection = () =>
+  transporter
+    .verify()
+    .then(() => console.log("SMTP listo para enviar correos"))
+    .catch((error) => console.error("SMTP ERROR:", error.message));
 
 module.exports = transporter;

@@ -1,240 +1,153 @@
-<!DOCTYPE html>
-<html lang="es">
+<%
+  // Campo de texto con etiqueta, asterisco de obligatorio y espacio para el error.
+  const field = ({ name, label, placeholder, type = "text", required = true, attrs = "" }) => `
+    <div class="field">
+      <label class="field__label" for="${name}">${label}${required ? '<span class="field__required" aria-hidden="true">*</span>' : ""}</label>
+      <input class="input" name="${name}" id="${name}" type="${type}" placeholder="${placeholder}"
+        ${required ? "required" : ""} ${attrs} aria-describedby="${name}-error" />
+      <small class="field__error" id="${name}-error" aria-live="polite"></small>
+    </div>`;
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Checkout · 100Puntadas</title>
+  const select = (name, label, placeholder, locked) => `
+    <div class="field">
+      <label class="field__label" for="${name}">${label}<span class="field__required" aria-hidden="true">*</span></label>
+      <select class="input" name="${name}" id="${name}" required ${locked ? 'data-locked="true"' : ""} aria-describedby="${name}-error">
+        <option value="">${placeholder}</option>
+      </select>
+      <small class="field__error" id="${name}-error" aria-live="polite"></small>
+    </div>`;
+%>
+<main>
+    <form id="checkoutForm" class="checkout-grid" novalidate>
 
-	<link rel="stylesheet" href="/css/tokens.css" />
-	<link rel="stylesheet" href="/css/checkout.css" />
-</head>
+        <div class="checkout-grid__main">
+            <!-- CONTACTO -->
+            <section class="card" aria-labelledby="contact-title">
+                <h2 id="contact-title" class="card__title">Información de contacto</h2>
 
-<body>
-	<header class="header-filler">
-		<div class="checkout-header">
-			<a href="/" class="checkout-brand">
-				<img class="logo-img" src="/images/logo.png" alt="logo">
-			</a>
+                <div class="field-row">
+                    <%- field({ name: "email", label: "Correo electrónico", placeholder: "Correo electrónico", type: "email", attrs: 'autocomplete="email"' }) %>
+                    <%- field({ name: "phone", label: "Número de teléfono", placeholder: "Teléfono de contacto", type: "tel", attrs: 'inputmode="numeric" autocomplete="tel-national"' }) %>
+                </div>
+            </section>
 
-			<nav class="checkout-steps">
-				<div class="step active">
-					<span class="step-index">1</span>
-					<span class="step-label">Entrega</span>
-				</div>
+            <!-- ENTREGA -->
+            <section class="card" aria-labelledby="shipping-title">
+                <h2 id="shipping-title" class="card__title">Dirección de entrega</h2>
 
-				<div class="step">
-					<span class="step-index2">2</span>
-					<span class="step-label">Pago</span>
-				</div>
+                <div class="field-row">
+                    <%- field({ name: "full_name", label: "Nombre completo", placeholder: "Nombre completo", attrs: 'autocomplete="name"' }) %>
+                    <%- field({ name: "national_id", label: "Cédula de identificación", placeholder: "Cédula de identificación", attrs: 'inputmode="numeric" maxlength="11"' }) %>
+                </div>
 
-				<div class="step">
-					<span class="step-index2">3</span>
-					<span class="step-label">Confirmación</span>
-				</div>
-			</nav>
-		</div>
-	</header>
+                <div class="field-row">
+                    <%- select("province", "Provincia", "Provincia", false) %>
+                    <%- select("canton", "Cantón", "Cantón", true) %>
+                </div>
 
-	<!-- MAIN -->
-	<main class="checkout-wrapper">
+                <div class="field-row">
+                    <%- select("district", "Distrito", "Distrito", true) %>
+                    <%- field({ name: "neighborhood", label: "Barrio", placeholder: "Barrio o comunidad" }) %>
+                </div>
 
-		<section class="checkout-left">
+                <%- field({ name: "address", label: "Dirección", placeholder: "Dirección", attrs: 'autocomplete="street-address"' }) %>
 
-			<!-- CONTACTO -->
-			<div class="card m-bottom">
-				<h2>Información de contacto</h2>
+                <div class="field">
+                    <label class="field__label" for="address_details">Indicaciones adicionales</label>
+                    <textarea class="input input--textarea" name="address_details" id="address_details"
+                        placeholder="Información adicional del domicilio"></textarea>
+                </div>
+            </section>
+        </div>
 
-				<div class="row">
-					<div class="field">
-						<label class="checkout-label" for="email">Correo electrónico<span
-								class="checkout-span">*</span></label>
-						<input class="input" name="email" id="email" type="email" placeholder="Correo electrónico"
-							required />
-						<small class="error-msg"></small>
-					</div>
+        <aside class="checkout-grid__aside">
+            <!-- TIPO DE ENVÍO -->
+            <section class="card" aria-labelledby="delivery-title">
+                <h2 id="delivery-title" class="card__title">Tipo de envío</h2>
 
-					<div class="field">
-						<label class="checkout-label" for="phone">Número de teléfono<span
-								class="checkout-span">*</span></label>
-						<input class="input" name="phone" id="phone" type="tel" inputmode="numeric"
-							placeholder="Teléfono de contacto" required />
-						<small class="error-msg"></small>
-					</div>
-				</div>
-			</div>
+                <div class="radio-field" role="radiogroup" aria-labelledby="delivery-title">
+                    <label class="radio-option">
+                        <input type="radio" name="shipping_type" value="correos" checked>
+                        <span>
+                            Correos de Costa Rica:
+                            <small><b><%= formatPrice(2500) %></b></small>
+                        </span>
+                    </label>
 
-			<!-- SHIPPING -->
-			<div class="card">
-				<h2>Dirección de entrega</h2>
+                    <label class="radio-option">
+                        <input type="radio" name="shipping_type" value="store">
+                        <span>
+                            Recoger en físico
+                            <small>L–V 11am–7pm · Sáb 11am–6pm</small>
+                        </span>
+                    </label>
+                </div>
+            </section>
 
-				<div class="row">
-					<div class="field">
-						<label class="checkout-label" for="full_name">Nombre completo<span
-								class="checkout-span">*</span></label>
-						<input class="input" name="full_name" id="full_name" placeholder="Nombre completo" required />
-						<small class="error-msg"></small>
-					</div>
+            <!-- RESUMEN -->
+            <section class="summary-card" aria-labelledby="summary-title">
+                <h3 id="summary-title" class="card__title">Resumen del pedido</h3>
 
-					<div class="field">
-						<label class="checkout-label" for="national_id">Cédula de identificación<span
-								class="checkout-span">*</span></label>
-						<input class="input" name="national_id" id="national_id" placeholder="Cédula de identificación"
-							required maxlength="11" />
-						<small class="error-msg"></small>
-					</div>
-				</div>
+                <div class="order-products" id="orderProducts"></div>
 
-				<div class="row">
-					<div class="field">
-						<label class="checkout-label" for="province">Provincia<span
-								class="checkout-span">*</span></label>
-						<select class="input" name="province" id="province" required>
-							<option value="">Provincia</option>
-						</select>
-						<small class="error-msg"></small>
-					</div>
+                <div class="totals-row totals-row--discount" id="discountRow" hidden>
+                    <span>Descuento (15%)</span>
+                    <span class="totals-row__discount">− <span id="cartDiscount">0 ₡</span></span>
+                </div>
 
-					<div class="field">
-						<label class="checkout-label" for="canton">Cantón<span class="checkout-span">*</span></label>
-						<select class="input" name="canton" id="canton" required data-locked="true">
-							<option value="">Cantón</option>
-						</select>
-						<small class="error-msg"></small>
-					</div>
-				</div>
+                <div class="totals-row totals-row--shipping" id="shippingRow">
+                    <span>Envío</span>
+                    <span id="shippingCost">0 ₡</span>
+                </div>
 
-				<div class="row">
-					<div class="field">
-						<label class="checkout-label" for="district">Distrito<span
-								class="checkout-span">*</span></label>
-						<select class="input" name="district" id="district" required data-locked="true">
-							<option value="">Distrito</option>
-						</select>
-						<small class="error-msg"></small>
-					</div>
+                <div class="totals-row totals-row--total">
+                    <span>Total</span>
+                    <span id="orderTotal" aria-live="polite">0 ₡</span>
+                </div>
 
-					<div class="field">
-						<label class="checkout-label" for="neighborhood">Barrio<span
-								class="checkout-span">*</span></label>
-						<input class="input" name="neighborhood" id="neighborhood" placeholder="Barrio o comunidad"
-							required />
-						<small class="error-msg"></small>
-					</div>
+                <div class="payment-methods">
+                    <h2 id="payment-title" class="card__title">Método de pago</h2>
 
-				</div>
+                    <div class="radio-field">
+                        <div class="radio-group" role="radiogroup" aria-labelledby="payment-title">
+                            <label class="radio-option">
+                                <input type="radio" name="payment_method" value="sinpe" required>
+                                <span>SINPE o Transferencia Bancaria</span>
+                            </label>
 
-				<div class="field">
-					<label class="checkout-label" for="address">Dirección<span class="checkout-span">*</span></label>
-					<input class="input" name="address" id="address" placeholder="Dirección" required />
-					<small class="error-msg"></small>
-				</div>
+                            <label class="radio-option">
+                                <input type="radio" name="payment_method" value="card">
+                                <span>Tarjeta de crédito o débito</span>
+                            </label>
+                        </div>
+                        <small class="form-message" id="formMessage" role="alert"></small>
+                    </div>
+                </div>
 
-				<div class="field">
-					<label class="checkout-label" for="address_details">Indicaciones adicionales</label>
-					<textarea class="input textarea" name="address_details" id="address_details"
-						placeholder="Información adicional del domicilio"></textarea>
-				</div>
-			</div>
-		</section>
+                <button type="submit" id="checkoutBtn" class="checkout-cta">Continuar al pago</button>
+            </section>
 
-		<!-- RIGHT -->
-		<aside class="checkout-right">
+            <!-- CONFIANZA -->
+            <ul class="trust-list">
+                <li class="trust-item">
+                    <%- img("/images/turst-1.webp", { alt: "", sizes: "38px" }) %>
+                    <span>Pago 100% seguro</span>
+                </li>
+                <li class="trust-item">
+                    <%- img("/images/turst-2.webp", { alt: "", sizes: "38px" }) %>
+                    <span>Entrega confiable</span>
+                </li>
+                <li class="trust-item">
+                    <%- img("/images/turst-3.webp", { alt: "", sizes: "38px" }) %>
+                    <span>Soporte 24/7</span>
+                </li>
+            </ul>
+        </aside>
+    </form>
+</main>
 
-			<div class="card">
-				<h2>Tipo de envío</h2>
+<link rel="stylesheet" href="<%= asset('/css/checkout.css') %>" />
 
-				<div class="field radio-field">
-					<label class="radio-option">
-						<input type="radio" name="shipping_type" value="correos" checked>
-						<span>
-							Correos de Costa Rica:
-							<small><b><%= formatPrice(2500) %></b></small>
-						</span>
-					</label>
-
-					<label class="radio-option">
-						<input type="radio" name="shipping_type" value="store">
-						<span>
-							Recoger en físico
-							<small>L–V 11am–7pm · Sáb 11am–6pm</small>
-						</span>
-					</label>
-				</div>
-
-			</div>
-
-
-			<div class="summary-card">
-				<h3>Resumen del pedido</h3>
-
-				<div class="order-products"></div>
-
-				<div class="totals-row discount-row" id="discountRow" style="display:none;">
-					<span>Descuento (15% x 2 prendas)</span>
-					<span class="red-discount">− <span id="cartDiscount">0 ₡</span></span>
-				</div>
-
-				<div id="shippingRow" class="totals-row">
-					<span>Envío</span>
-					<span id="shippingCost">0 ₡</span>
-				</div>
-
-				<div class="totals-row total">
-					<span>Total</span>
-					<span class="order-total">0 ₡</span>
-				</div>
-
-
-				<div class="payment-div">
-					<h2>Método de pago</h2>
-
-					<div class="radio-field">
-						<div class="rb-div">
-							<div class="radio-option-div">
-								<label class="radio-option">
-									<input type="radio" name="payment_method" value="sinpe" required>
-									<span>SINPE o Transferencia Bancaria</span>
-								</label>
-
-								<label class="radio-option">
-									<input type="radio" name="payment_method" value="card">
-									<span>Tarjeta de crédito o débito</span>
-								</label>
-							</div>
-							<small class="rb-msg"></small>
-						</div>
-					</div>
-				</div>
-
-
-				<button id="checkout-btn" class="checkout-cta">Continuar al pago</button>
-			</div>
-
-			<!-- TRUST -->
-			<div class="trust-div">
-
-				<div class="trust-item">
-					<img class="trust-img" src="/images/turst-1.webp">
-					<span>Pago 100% seguro</span>
-				</div>
-
-				<div class="trust-item">
-					<img class="trust-img" src="/images/turst-2.webp">
-					<span>Entrega confiable</span>
-				</div>
-
-				<div class="trust-item">
-					<img class="trust-img" src="/images/turst-3.webp">
-					<span>Soporte 24/7</span>
-				</div>
-			</div>
-		</aside>
-	</main>
-
-
-	<script src="/js/pricing.js"></script>
-	<script src="/js/checkout.js"></script>
-</body>
-
-</html>
+<script src="<%= asset('/js/constants.js') %>"></script>
+<script src="<%= asset('/js/pricing.js') %>"></script>
+<script src="<%= asset('/js/checkout.js') %>"></script>

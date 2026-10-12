@@ -64,13 +64,15 @@
 
     <%- defineContent("head") %>
 
-    <link rel="preload" href="/fonts/Hatton-Medium.otf" as="font" type="font/otf" crossorigin />
-    <link rel="stylesheet" href="/css/tokens.css" />
-    <link rel="stylesheet" href="/css/reset.css" />
-    <link rel="stylesheet" href="/css/base.css" />
-    <link rel="stylesheet" href="/css/header.css" />
-    <link rel="stylesheet" href="/css/footer.css" />
-    <link rel="stylesheet" href="/css/cart.css" />
+    <link rel="preload" href="/fonts/Hatton-Medium.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="<%= asset('/css/tokens.css') %>" />
+    <link rel="stylesheet" href="<%= asset('/css/fonts.css') %>" />
+    <link rel="stylesheet" href="<%= asset('/css/scrollbar.css') %>" />
+    <link rel="stylesheet" href="<%= asset('/css/reset.css') %>" />
+    <link rel="stylesheet" href="<%= asset('/css/base.css') %>" />
+    <link rel="stylesheet" href="<%= asset('/css/header.css') %>" />
+    <link rel="stylesheet" href="<%= asset('/css/footer.css') %>" />
+    <link rel="stylesheet" href="<%= asset('/css/cart.css') %>" />
     <%- style %>
 
     <script>
@@ -103,47 +105,86 @@
 
     <aside id="cartPanel" class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cartTitle"
         aria-hidden="true">
-        <div class="cart-header">
-            <h2 id="cartTitle">Tu carrito</h2>
-            <button type="button" id="closeCartBtn" class="cart-close-btn" aria-label="Cerrar carrito">✕</button>
-        </div>
+        <header class="cart-panel__header">
+            <h2 id="cartTitle" class="cart-panel__title">
+                Tu carrito <span class="cart-panel__count" id="cartTitleCount"></span>
+            </h2>
+            <button type="button" id="closeCartBtn" class="cart-panel__close" aria-label="Cerrar carrito">
+                <span></span>
+                <span></span>
+            </button>
+        </header>
 
-        <div id="emptyCartMessage" class="emptyCartMessage">
-            <img class="cart-img" src="/images/cart-img.png" alt="" loading="lazy">
-            Aún no has agregado ningún vestido de baño a tu carrito.
-        </div>
-
-        <div class="cart-items" aria-live="polite"></div>
-
-        <div class="cart-footer">
-            <p class="cart-promo" id="cartPromo" hidden></p>
-
-            <div class="totals">
-                <div class="totals-row" id="discountRow" style="display:none;">
-                    <span>Descuento (15%)</span>
-                    <span class="red-discount">-<span id="cartDiscount">0 ₡</span></span>
-                </div>
-
-                <div class="totals-row total-row" id="totalRow">
-                    <strong>Total</strong>
-                    <strong id="cartTotal">0 ₡</strong>
-                </div>
+        <!-- Promo "lleva dos y ahorra" con barra de progreso -->
+        <div class="cart-promo" id="cartPromo" hidden>
+            <p class="cart-promo__text" id="cartPromoText"></p>
+            <div class="cart-promo__track" aria-hidden="true">
+                <span class="cart-promo__fill" id="cartPromoFill"></span>
             </div>
-
-            <a href="/checkout" class="cart-checkout-btn" id="checkoutBtn">
-                Finalizar compra
-            </a>
         </div>
+
+        <!-- Carrito vacío -->
+        <div class="cart-empty" id="emptyCartMessage">
+            <svg class="cart-empty__art" viewBox="0 0 160 160" width="150" height="150" aria-hidden="true">
+                <circle class="art-bg" cx="80" cy="82" r="66" />
+                <!-- top -->
+                <path class="art-line" d="M38 78h84 M68 44 64 26 M92 44 96 26" />
+                <path class="art-piece" d="M46 78 68 44 74 78Z M86 78 92 44 114 78Z" />
+                <path class="art-stitch" d="M52 74 68 50 M108 74 92 50" />
+                <!-- bottom -->
+                <path class="art-line" d="M44 98h72" />
+                <path class="art-piece" d="M52 98h56l-14 26q-14 8-28 0Z" />
+                <path class="art-stitch" d="M58 103h44" />
+                <!-- destellos -->
+                <path class="art-sparkle" d="M128 36l3 8 8 3-8 3-3 8-3-8-8-3 8-3Z M30 120l2 5 5 2-5 2-2 5-2-5-5-2 5-2Z" />
+            </svg>
+            <h3 class="cart-empty__title">Tu carrito está vacío</h3>
+            <p class="cart-empty__text">Descubre nuestras piezas tejidas a mano, hechas para el verano.</p>
+            <div class="cart-empty__actions">
+                <a href="/#bikinis" class="cart-btn cart-btn--solid" data-close-cart>Ver bikinis</a>
+                <a href="/#sets" class="cart-btn cart-btn--outline" data-close-cart>Sets de playa</a>
+            </div>
+            <p class="cart-empty__hint">✦ Lleva dos prendas y ahorra 15% ✦</p>
+        </div>
+
+        <ul class="cart-items" role="list" aria-live="polite"></ul>
+
+        <footer class="cart-panel__footer" id="cartFooter">
+            <dl class="cart-summary">
+                <div class="cart-summary__row">
+                    <dt>Subtotal</dt>
+                    <dd id="cartSubtotal">0 ₡</dd>
+                </div>
+                <div class="cart-summary__row cart-summary__row--discount" id="discountRow" hidden>
+                    <dt>Descuento (15%)</dt>
+                    <dd>-<span id="cartDiscount">0 ₡</span></dd>
+                </div>
+                <div class="cart-summary__row cart-summary__row--muted">
+                    <dt>Envío</dt>
+                    <dd>Se calcula en el checkout</dd>
+                </div>
+                <div class="cart-summary__row cart-summary__row--total">
+                    <dt>Total</dt>
+                    <dd id="cartTotal">0 ₡</dd>
+                </div>
+            </dl>
+
+            <a href="/checkout" class="cart-btn cart-btn--solid cart-btn--block" id="checkoutBtn">Finalizar compra</a>
+            <button type="button" class="cart-panel__continue" data-close-cart>Seguir comprando</button>
+        </footer>
     </aside>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="/js/constants.js"></script>
-    <script src="/js/pricing.js"></script>
-    <script src="/js/res-menu.js"></script>
-    <script src="/js/cart.js"></script>
-    <script src="/js/footer.js"></script>
+    <script>
+        window.COLOR_LABELS = <%- JSON.stringify(colorLabels) %>;
+    </script>
+    <script src="<%= asset('/js/constants.js') %>"></script>
+    <script src="<%= asset('/js/pricing.js') %>"></script>
+    <script src="<%= asset('/js/header.js') %>"></script>
+    <script src="<%= asset('/js/cart.js') %>"></script>
+    <script src="<%= asset('/js/footer.js') %>"></script>
 
     <%- script %>
 </body>

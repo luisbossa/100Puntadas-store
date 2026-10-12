@@ -1,102 +1,14 @@
-document.addEventListener("DOMContentLoaded", async () => {
-  /* ================= HELPERS ================= */
-  function escapeHTML(value) {
-    return String(value ?? "").replace(
-      /[&<>"']/g,
-      (c) =>
-        ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
-          c
-        ],
-    );
-  }
+/* ============================================================
+   CHECKOUT — paso 1
+   Muestra el resumen del carrito, valida el formulario, crea la orden
+   en el servidor y redirige al pago (SINPE o tarjeta).
+============================================================ */
+(function () {
+  const form = document.getElementById("checkoutForm");
+  const submitBtn = document.getElementById("checkoutBtn");
+  const formMessage = document.getElementById("formMessage");
 
-  function getVal(name) {
-    return document.querySelector(`[name="${name}"]`)?.value.trim() || "";
-  }
-
-  function normalizePrice(v) {
-    return Number(String(v || 0).replace(/[^\d]/g, ""));
-  }
-
-  function showError(field, msg, text) {
-    field.classList.add("error");
-    msg.textContent = text;
-    return false;
-  }
-
-  function validateField(input) {
-    const field = input.closest(".field");
-    if (!field) return true;
-
-    let msg = field.querySelector(".error-msg");
-    if (!msg) {
-      msg = document.createElement("small");
-      msg.className = "error-msg";
-      field.appendChild(msg);
-    }
-
-    const value = input.value.trim();
-
-    if (!value) {
-      return showError(field, msg, "Campo obligatorio");
-    }
-
-    if (input.name === "phone" && !/^[245678]\d{3}-\d{4}$/.test(value)) {
-      return showError(field, msg, "Teléfono inválido");
-    }
-
-    if (input.name === "national_id" && !/^\d-\d{4}-\d{4}$/.test(value)) {
-      return showError(field, msg, "Cédula inválida");
-    }
-
-    field.classList.remove("error");
-    msg.textContent = "";
-    return true;
-  }
-
-  function scrollToFirstError() {
-    const firstErrorField = document.querySelector(".field.error");
-
-    if (!firstErrorField) return;
-
-    firstErrorField.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-    });
-
-    const input = firstErrorField.querySelector("input, select, textarea");
-    input?.focus({ preventScroll: true });
-  }
-
-  function clearCheckoutForm() {
-    document
-      .querySelectorAll("input:not([type='radio']), textarea")
-      .forEach((el) => (el.value = ""));
-
-    document.querySelectorAll("select").forEach((select) => {
-      select.selectedIndex = 0;
-    });
-
-    const defaultShipping = document.querySelector(
-      'input[name="shipping_type"][value="correos"]',
-    );
-    if (defaultShipping) defaultShipping.checked = true;
-
-    document.querySelectorAll(".field").forEach((field) => {
-      field.classList.remove("error");
-      const msg = field.querySelector(".error-msg");
-      if (msg) msg.textContent = "";
-    });
-  }
-
-  /* ================= BLOQUEO POST-PAGO ================= */
-  if (sessionStorage.getItem("order_completed") === "true") {
-    sessionStorage.removeItem("order_completed");
-    localStorage.removeItem("checkoutData");
-    location.replace("/");
-    return;
-  }
-
+  /* ================= DATOS DEL CARRITO ================= */
   let data;
   try {
     data = JSON.parse(localStorage.getItem("checkoutData"));
@@ -104,338 +16,301 @@ document.addEventListener("DOMContentLoaded", async () => {
     data = null;
   }
 
-  // Carritos guardados antes de este cambio no traen id: se vuelve a la tienda.
+  // Sin carrito (o de una versión vieja sin id) no hay nada que pagar.
   if (!data?.cart?.length || data.cart.some((item) => !item.id)) {
     localStorage.removeItem("checkoutData");
     location.replace("/");
     return;
   }
 
+  // Volver atrás desde el checkout lleva a la tienda, no a una página de pago vieja.
   history.replaceState(null, "", location.href);
   window.addEventListener("popstate", () => location.replace("/"));
 
-  /* ================= ÍTEMS PARA CALCULAR ================= */
-  // El total que se muestra es una vista previa: el servidor lo recalcula.
+  const toNumber = (value) => Number(String(value || 0).replace(/[^\d]/g, ""));
+
+  /* ================= MENSAJES ================= */
+  function showMessage(text) {
+    formMessage.textContent = text;
+    formMessage.classList.toggle("is-visible", Boolean(text));
+  }
+
+  function setFieldError(input, text) {
+    const field = input.closest(".field");
+    const error = field?.querySelector(".field__error");
+    if (!field || !error) return;
+
+    field.classList.toggle("has-error", Boolean(text));
+    error.textContent = text;
+    input.setAttribute("aria-invalid", text ? "true" : "false");
+  }
+
+  /* ================= RESUMEN DE PRODUCTOS ================= */
+  function renderOrderProducts() {
+    const list = document.getElementById("orderProducts");
+
+    list.replaceChildren(
+      ...data.cart.map((item) => {
+        const row = document.createElement("div");
+        row.className = "order-product";
+
+        const details = [
+          item.color,
+          item.size && "Talla: " + item.size,
+          item.topSize && "Top: " + item.topSize,
+          item.bottomSize && "Bottom: " + item.bottomSize,
+        ]
+          .filter(Boolean)
+          .join(" · ");
+
+        const info = document.createElement("div");
+        info.className = "order-product__info";
+        const img = Object.assign(document.createElement("img"), {
+          src: thumbnail(item.image),
+          alt: item.name,
+          width: 50,
+          height: 50,
+        });
+        const text = document.createElement("div");
+        text.append(
+          Object.assign(document.createElement("strong"), { textContent: item.name }),
+          Object.assign(document.createElement("small"), { textContent: details }),
+        );
+        info.append(img, text);
+
+        const price = document.createElement("div");
+        price.className = "order-product__price";
+        price.append(
+          Object.assign(document.createElement("span"), { textContent: `x${item.quantity}` }),
+          Object.assign(document.createElement("strong"), {
+            textContent: Pricing.formatPrice(toNumber(item.price) * Number(item.quantity)),
+          }),
+        );
+
+        row.append(info, price);
+        return row;
+      }),
+    );
+  }
+
+  /* ================= TOTALES (vista previa; el servidor los recalcula) ================= */
   const pricingItems = data.cart.map((item) => ({
-    price: normalizePrice(item.price),
+    price: toNumber(item.price),
     quantity: Number(item.quantity),
     discount: item.discount,
   }));
 
-  /* ================= RESUMEN DE PRODUCTOS ================= */
-  const orderProductsBox = document.querySelector(".order-products");
-
-  function renderOrderProducts(cart) {
-    orderProductsBox.innerHTML = "";
-
-    cart.forEach((item) => {
-      const row = document.createElement("div");
-      row.className = "order-product";
-
-      const details = [
-        item.color,
-        item.size && "Talla: " + item.size,
-        item.topSize && "Top: " + item.topSize,
-        item.bottomSize && "Bottom: " + item.bottomSize,
-      ]
-        .filter(Boolean)
-        .join(" · ");
-
-      row.innerHTML = `
-        <div class="order-product-info">
-          <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" />
-          <div>
-            <strong>${escapeHTML(item.name)}</strong>
-            <small>${escapeHTML(details)}</small>
-          </div>
-        </div>
-
-        <div class="order-product-price">
-          <span>x${item.quantity}</span>
-          <strong>${Pricing.formatPrice(
-            normalizePrice(item.price) * Number(item.quantity),
-          )}</strong>
-        </div>
-      `;
-
-      orderProductsBox.appendChild(row);
-    });
+  function selectedShipping() {
+    return form.querySelector('input[name="shipping_type"]:checked')?.value;
   }
 
-  renderOrderProducts(data.cart);
+  function updateTotals() {
+    const { discount, shipping, total } = Pricing.calculateTotals(
+      pricingItems,
+      selectedShipping(),
+    );
 
-  let shippingType = "correos";
+    document.getElementById("discountRow").hidden = !discount;
+    document.getElementById("cartDiscount").textContent = Pricing.formatPrice(discount);
+    document.getElementById("shippingRow").classList.toggle("is-visible", Boolean(shipping));
+    document.getElementById("shippingCost").textContent = Pricing.formatPrice(shipping);
+    document.getElementById("orderTotal").textContent = Pricing.formatPrice(total);
+  }
 
-  /* ================= ELEMENTOS ================= */
-  const totalBox = document.querySelector(".order-total");
-  const discountRow = document.getElementById("discountRow");
-  const discountBox = document.getElementById("cartDiscount");
-  const shippingRow = document.getElementById("shippingRow");
-  const shippingCostBox = document.getElementById("shippingCost");
-
+  /* ================= PROVINCIA → CANTÓN → DISTRITO ================= */
   const provinceSelect = document.getElementById("province");
   const cantonSelect = document.getElementById("canton");
   const districtSelect = document.getElementById("district");
 
-  cantonSelect.dataset.locked = "true";
-  districtSelect.dataset.locked = "true";
-
-  cantonSelect.addEventListener("mousedown", (e) => {
-    if (cantonSelect.dataset.locked === "true") {
-      e.preventDefault();
-      showFieldError(provinceSelect, "Primero debes seleccionar una provincia");
-    }
-  });
-
-  districtSelect.addEventListener("mousedown", (e) => {
-    if (districtSelect.dataset.locked === "true") {
-      e.preventDefault();
-      showFieldError(cantonSelect, "Primero debes seleccionar un cantón");
-    }
-  });
-
-  provinceSelect.addEventListener("change", () => {
-    const field = provinceSelect.closest(".field");
-    if (!field) return;
-
-    field.classList.remove("error");
-    const msg = field.querySelector(".error-msg");
-    if (msg) msg.textContent = "";
-  });
-
-  cantonSelect.addEventListener("change", () => {
-    const field = cantonSelect.closest(".field");
-    if (!field) return;
-
-    field.classList.remove("error");
-    const msg = field.querySelector(".error-msg");
-    if (msg) msg.textContent = "";
-  });
-
-  /* ================= FORMATOS INPUT ================= */
-  const phoneInput = document.querySelector('[name="phone"]');
-  const idInput = document.querySelector('[name="national_id"]');
-
-  phoneInput?.addEventListener("input", () => {
-    let v = phoneInput.value.replace(/\D/g, "");
-    if (v.length > 4) v = v.slice(0, 4) + "-" + v.slice(4, 8);
-    phoneInput.value = v.slice(0, 9);
-  });
-
-  idInput?.addEventListener("input", () => {
-    let v = idInput.value.replace(/\D/g, "");
-    if (v.length > 1) v = v.slice(0, 1) + "-" + v.slice(1);
-    if (v.length > 6) v = v.slice(0, 6) + "-" + v.slice(6);
-    idInput.value = v.slice(0, 12);
-  });
-
-  /* ================= PROVINCIAS ================= */
-  async function loadProvinces() {
-    const res = await fetch("/api/provinces");
-    const provinces = await res.json();
-
-    provinceSelect.innerHTML =
-      `<option value="">Provincia</option>` +
-      provinces
-        .map((p) => `<option value="${p.code}">${p.province}</option>`)
-        .join("");
+  function fillSelect(select, placeholder, rows, valueKey, labelKey) {
+    select.replaceChildren(
+      new Option(placeholder, ""),
+      ...rows.map((row) => new Option(row[labelKey], row[valueKey])),
+    );
   }
 
-  provinceSelect.addEventListener("change", async () => {
-    cantonSelect.innerHTML = `<option value="">Cantón</option>`;
-    districtSelect.innerHTML = `<option value="">Distrito</option>`;
+  async function fetchList(url) {
+    try {
+      const res = await fetch(url);
+      return res.ok ? await res.json() : [];
+    } catch {
+      return [];
+    }
+  }
 
+  async function loadProvinces() {
+    const provinces = await fetchList("/api/provinces");
+    fillSelect(provinceSelect, "Provincia", provinces, "code", "province");
+    if (!provinces.length) showMessage("No pudimos cargar las provincias. Recarga la página.");
+  }
+
+  // Cantón y distrito se habilitan en orden
+  function guardLocked(select, previous, text) {
+    select.addEventListener("mousedown", (e) => {
+      if (select.dataset.locked === "true") {
+        e.preventDefault();
+        setFieldError(previous, text);
+        previous.focus();
+      }
+    });
+  }
+  guardLocked(cantonSelect, provinceSelect, "Primero debes seleccionar una provincia");
+  guardLocked(districtSelect, cantonSelect, "Primero debes seleccionar un cantón");
+
+  provinceSelect.addEventListener("change", async () => {
+    setFieldError(provinceSelect, "");
+    fillSelect(cantonSelect, "Cantón", [], "code", "canton");
+    fillSelect(districtSelect, "Distrito", [], "code", "district");
+    cantonSelect.dataset.locked = districtSelect.dataset.locked = "true";
     if (!provinceSelect.value) return;
 
-    const res = await fetch(`/api/cantons/${provinceSelect.value}`);
-    const cantons = await res.json();
-
-    cantonSelect.innerHTML += cantons
-      .map((c) => `<option value="${c.code}">${c.canton}</option>`)
-      .join("");
-
+    const cantons = await fetchList(`/api/cantons/${provinceSelect.value}`);
+    fillSelect(cantonSelect, "Cantón", cantons, "code", "canton");
     cantonSelect.dataset.locked = "false";
   });
 
   cantonSelect.addEventListener("change", async () => {
-    districtSelect.innerHTML = `<option value="">Distrito</option>`;
-
+    setFieldError(cantonSelect, "");
+    fillSelect(districtSelect, "Distrito", [], "code", "district");
+    districtSelect.dataset.locked = "true";
     if (!cantonSelect.value) return;
 
-    const res = await fetch(`/api/districts/${cantonSelect.value}`);
-    const districts = await res.json();
-
-    districtSelect.innerHTML += districts
-      .map((d) => `<option value="${d.code}">${d.district}</option>`)
-      .join("");
-
+    const districts = await fetchList(`/api/districts/${cantonSelect.value}`);
+    fillSelect(districtSelect, "Distrito", districts, "code", "district");
     districtSelect.dataset.locked = "false";
   });
 
-  loadProvinces();
+  /* ================= FORMATO MIENTRAS SE ESCRIBE ================= */
+  form.phone.addEventListener("input", () => {
+    let v = form.phone.value.replace(/\D/g, "");
+    if (v.length > 4) v = v.slice(0, 4) + "-" + v.slice(4, 8);
+    form.phone.value = v.slice(0, 9);
+  });
 
-  /* ================= TOTALES ================= */
-  function updateTotals() {
-    const { discount, shipping, total } = Pricing.calculateTotals(
-      pricingItems,
-      shippingType,
+  form.national_id.addEventListener("input", () => {
+    let v = form.national_id.value.replace(/\D/g, "");
+    if (v.length > 1) v = v.slice(0, 1) + "-" + v.slice(1);
+    if (v.length > 6) v = v.slice(0, 6) + "-" + v.slice(6);
+    form.national_id.value = v.slice(0, 12);
+  });
+
+  /* ================= VALIDACIÓN ================= */
+  const RULES = {
+    email: [/^\S+@\S+\.\S+$/, "Correo inválido"],
+    phone: [/^[245678]\d{3}-\d{4}$/, "Teléfono inválido"],
+    national_id: [/^\d-\d{4}-\d{4}$/, "Cédula inválida"],
+  };
+
+  function validateField(input) {
+    const value = input.value.trim();
+    let error = "";
+
+    if (!value) error = "Campo obligatorio";
+    else if (RULES[input.name] && !RULES[input.name][0].test(value)) error = RULES[input.name][1];
+    else if (input.name === "address" && value.length < 10) error = "Escribe la dirección completa";
+
+    setFieldError(input, error);
+    return !error;
+  }
+
+  // Al corregir un campo con error, se revalida en el momento
+  form.addEventListener("input", (e) => {
+    if (e.target.closest(".field.has-error")) validateField(e.target);
+  });
+
+  /* ================= ENVÍO ================= */
+  async function postJSON(url, body) {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    return res.json();
+  }
+
+  function setBusy(busy) {
+    submitBtn.disabled = busy;
+    submitBtn.textContent = busy ? "Procesando…" : "Continuar al pago";
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    showMessage("");
+
+    const invalid = [...form.querySelectorAll(".field [required]")].filter(
+      (input) => !validateField(input),
     );
 
-    discountRow.style.display = discount ? "flex" : "none";
-    discountBox.textContent = Pricing.formatPrice(discount);
-
-    shippingRow.classList.toggle("show", !!shipping);
-    shippingCostBox.textContent = Pricing.formatPrice(shipping);
-
-    totalBox.textContent = Pricing.formatPrice(total);
-  }
-
-  function updateShipping() {
-    shippingType = document.querySelector(
-      'input[name="shipping_type"]:checked',
-    )?.value;
-
-    updateTotals();
-  }
-
-  document
-    .querySelectorAll('input[name="shipping_type"]')
-    .forEach((r) => r.addEventListener("change", updateShipping));
-
-  updateShipping();
-
-  /* ================= SUBMIT ================= */
-  document
-    .querySelector("#checkout-btn")
-    .addEventListener("click", async () => {
-      let valid = true;
-
-      document
-        .querySelectorAll("input[required], select[required]")
-        .forEach((f) => {
-          if (!validateField(f)) valid = false;
-        });
-
-      if (!valid) {
-        scrollToFirstError();
-        return;
-      }
-
-      data.email = getVal("email");
-      data.phone = getVal("phone");
-      data.full_name = getVal("full_name");
-      data.national_id = getVal("national_id");
-      data.address = getVal("address");
-      data.neighborhood = getVal("neighborhood");
-      data.address_details = getVal("address_details");
-      data.province = getVal("province");
-      data.canton = getVal("canton");
-      data.district = getVal("district");
-
-      const paymentMethod = document.querySelector(
-        'input[name="payment_method"]:checked',
-      )?.value;
-      data.payment_method = paymentMethod;
-
-      const rbMsg = document.querySelector(".rb-msg");
-
-      if (!paymentMethod) {
-        rbMsg.textContent =
-          "Debes escoger un método de pago antes de continuar.";
-        rbMsg.classList.add("show");
-        return;
-      }
-
-      rbMsg.textContent = "";
-
-      data.shipping_type = shippingType;
-
-      try {
-        const resOrder = await fetch("/api/orders", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(data),
-        });
-
-        const jsonOrder = await resOrder.json();
-
-        if (!jsonOrder.success) {
-          rbMsg.textContent = "Error al crear la orden: " + jsonOrder.error;
-          rbMsg.classList.add("show");
-          return;
-        }
-
-        rbMsg.textContent = "";
-        rbMsg.classList.remove("show");
-
-        const { orderToken, orderNumber, totals } = jsonOrder;
-
-        if (paymentMethod === "card") {
-          const orderData = {
-            orderNumber,
-            total: totals.total,
-            paymentMethod: "Tarjeta",
-            createdAt: new Date().toISOString(),
-          };
-
-          sessionStorage.setItem("order_completed", JSON.stringify(orderData));
-
-          clearCheckoutForm();
-          localStorage.removeItem("checkoutData");
-
-          const resPayment = await fetch("/create-intent", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ orderToken }),
-          });
-
-          const jsonPayment = await resPayment.json();
-
-          if (!jsonPayment.success) {
-            alert("Error al crear el pago: " + jsonPayment.error);
-            return;
-          }
-
-          location.replace(
-            `/payment?paymentIntentId=${jsonPayment.paymentIntentId}&orderNumber=${orderNumber}`,
-          );
-        } else if (paymentMethod === "sinpe") {
-          const orderData = {
-            orderNumber,
-            total: totals.total,
-            paymentMethod: "SINPE Móvil",
-            createdAt: new Date().toISOString(),
-          };
-
-          sessionStorage.setItem("order_completed", JSON.stringify(orderData));
-
-          clearCheckoutForm();
-          localStorage.removeItem("checkoutData");
-
-          location.replace(
-            `/payment-sinpe?order=${encodeURIComponent(orderToken)}`,
-          );
-        }
-      } catch (err) {
-        console.error(err);
-        alert("Error interno al procesar el pago");
-      }
-    });
-
-  function showFieldError(input, text) {
-    const field = input.closest(".field");
-    if (!field) return;
-
-    let msg = field.querySelector(".error-msg");
-    if (!msg) {
-      msg = document.createElement("small");
-      msg.className = "error-msg";
-      field.appendChild(msg);
+    if (invalid.length) {
+      invalid[0].focus({ preventScroll: true });
+      invalid[0].closest(".field").scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
     }
 
-    field.classList.add("error");
-    msg.textContent = text;
+    const paymentMethod = form.querySelector('input[name="payment_method"]:checked')?.value;
+    if (!paymentMethod) {
+      showMessage("Debes escoger un método de pago antes de continuar.");
+      return;
+    }
 
-    field.scrollIntoView({ behavior: "smooth", block: "center" });
-  }
-});
+    const value = (name) => form[name].value.trim();
+    const order = {
+      cart: data.cart,
+      email: value("email"),
+      phone: value("phone"),
+      full_name: value("full_name"),
+      national_id: value("national_id"),
+      province: value("province"),
+      canton: value("canton"),
+      district: value("district"),
+      neighborhood: value("neighborhood"),
+      address: value("address"),
+      address_details: value("address_details"),
+      shipping_type: selectedShipping(),
+      payment_method: paymentMethod,
+    };
+
+    setBusy(true);
+
+    try {
+      const created = await postJSON("/api/orders", order);
+      if (!created.success) throw new Error(created.error || "No se pudo crear la orden");
+
+      const { orderToken, orderNumber, totals } = created;
+      let nextUrl;
+
+      if (paymentMethod === "card") {
+        const payment = await postJSON("/create-intent", { orderToken });
+        if (!payment.success) throw new Error(payment.error || "No se pudo iniciar el pago");
+        nextUrl = `/payment?paymentIntentId=${encodeURIComponent(payment.paymentIntentId)}&orderNumber=${orderNumber}`;
+      } else {
+        nextUrl = `/payment-sinpe?order=${encodeURIComponent(orderToken)}`;
+      }
+
+      // Solo con la orden (y el pago) creados se guarda el resumen y se vacía el checkout
+      sessionStorage.setItem(
+        "order_completed",
+        JSON.stringify({
+          orderNumber,
+          total: totals.total,
+          paymentMethod: paymentMethod === "card" ? "Tarjeta" : "SINPE Móvil",
+          createdAt: new Date().toISOString(),
+        }),
+      );
+      localStorage.removeItem("checkoutData");
+      location.replace(nextUrl);
+    } catch (err) {
+      console.error(err);
+      showMessage(err.message || "Error al procesar el pedido. Intenta de nuevo.");
+      setBusy(false);
+    }
+  });
+
+  /* ================= INICIO ================= */
+  renderOrderProducts();
+  form.querySelectorAll('input[name="shipping_type"]').forEach((radio) =>
+    radio.addEventListener("change", updateTotals),
+  );
+  updateTotals();
+  loadProvinces();
+})();
