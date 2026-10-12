@@ -1,47 +1,91 @@
 <%
   const wa = store.whatsapp;
-  const waUrl = `https://wa.me/${wa.number}?text=${encodeURIComponent(wa.message)}`;
+  const number = order.order_number || order.id;
+  const waUrl = `https://wa.me/${wa.number}?text=${encodeURIComponent(`¡Hola 100 Puntadas! Tengo una consulta sobre mi pedido #${number}.`)}`;
+  const date = new Date(order.created_at).toLocaleDateString("es-CR", { day: "numeric", month: "long", year: "numeric", timeZone: "America/Costa_Rica" });
+  const method = order.payment_method === "card" ? "Tarjeta" : "SINPE Móvil / transferencia";
+  const variants = (item) => [
+    item.size && `Talla ${item.size}`,
+    item.top_size && `Top ${item.top_size}`,
+    item.bottom_size && `Bottom ${item.bottom_size}`,
+    item.bottom_style,
+    item.color && (colorLabels[item.color] || item.color),
+  ].filter(Boolean).join(" · ");
+  const address = [order.province_name, order.canton_name, order.district_name].filter(Boolean).join(", ");
+
+  const copy = {
+    paid: { eyebrow: "Pedido confirmado", title: "¡Gracias por tu compra!",
+            text: `Confirmamos tu pago. Te enviamos el detalle a ${order.email}. Tu pedido llegará en 2 a 3 días hábiles.` },
+    processing: { eyebrow: "Procesando el pago", title: "Estamos confirmando tu pago",
+            text: "Esto tarda unos segundos. Puedes quedarte en esta página: se actualizará sola cuando ONVO confirme el pago." },
+    cancelled: { eyebrow: "Pedido cancelado", title: "Este pedido fue cancelado",
+            text: "No registramos el pago de este pedido. Si crees que es un error, escríbenos por WhatsApp con tu número de pedido." },
+  }[state];
 %>
 <main class="confirm-wrapper">
-    <div class="confirm-receipt">
-        <!-- Recibo: encabezado -->
+    <div class="confirm-receipt" data-confirm-state="<%= state %>" data-order-token="<%= orderToken %>">
+        <!-- Encabezado -->
         <section class="confirm-card" aria-labelledby="confirm-title">
-            <div class="confirm-card__icon" aria-hidden="true">
-                <% for (let i = 0; i < 8; i++) { %><span class="confetti"></span><% } %>
-                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M5 12.5l4.5 4.5L19 7.5" />
-                </svg>
+            <div class="confirm-card__icon confirm-card__icon--<%= state %>" aria-hidden="true">
+                <% if (state === "paid") { %>
+                    <% for (let i = 0; i < 8; i++) { %><span class="confetti"></span><% } %>
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+                <% } else if (state === "processing") { %>
+                    <span class="confirm-spinner"></span>
+                <% } else { %>
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
+                <% } %>
             </div>
 
-            <span class="confirm-eyebrow">Pedido confirmado</span>
-            <h1 id="confirm-title" class="confirm-heading">¡Gracias por tu compra!</h1>
-
-            <p class="confirm-subtext">
-                Has realizado tu compra con éxito. Tu pedido será entregado en un plazo de 2 a 3
-                días hábiles.
-            </p>
+            <span class="confirm-eyebrow"><%= copy.eyebrow %></span>
+            <h1 id="confirm-title" class="confirm-heading"><%= copy.title %></h1>
+            <p class="confirm-subtext" role="status" aria-live="polite"><%= copy.text %></p>
         </section>
 
-        <!-- Recibo: detalle -->
-        <section class="confirm-card" aria-label="Detalle del pedido">
+        <!-- Resumen -->
+        <section class="confirm-card" aria-label="Resumen del pedido">
             <dl class="confirm-summary">
-                <div>
-                    <dt>Pedido</dt>
-                    <dd id="confirm-order">—</dd>
-                </div>
-                <div>
-                    <dt>Fecha de compra</dt>
-                    <dd id="confirm-date">—</dd>
-                </div>
-                <div>
-                    <dt>Método de pago</dt>
-                    <dd id="confirm-method">—</dd>
-                </div>
+                <div><dt>Pedido</dt><dd>#<%= number %></dd></div>
+                <div><dt>Fecha de compra</dt><dd><%= date %></dd></div>
+                <div><dt>Método de pago</dt><dd><%= method %></dd></div>
                 <div class="confirm-summary__total">
-                    <dt>Total pagado</dt>
-                    <dd id="confirm-total">0 ₡</dd>
+                    <dt><%= state === "paid" ? "Total pagado" : "Total" %></dt>
+                    <dd><%= formatPrice(order.total) %></dd>
                 </div>
             </dl>
+        </section>
+
+        <!-- Detalle -->
+        <section class="confirm-card" aria-labelledby="confirm-items-title">
+            <h2 id="confirm-items-title" class="confirm-section-title">Tu pedido</h2>
+            <ul class="confirm-items">
+                <% items.forEach((item) => { %>
+                    <li class="confirm-item">
+                        <%- img(item.image, { alt: "", class: "confirm-item__img", sizes: "56px" }) %>
+                        <div class="confirm-item__body">
+                            <span class="confirm-item__name"><%= item.product_name %></span>
+                            <span class="confirm-item__meta"><%= variants(item) %><%= variants(item) ? " · " : "" %>Cantidad: <%= item.quantity %></span>
+                        </div>
+                        <span class="confirm-item__price"><%= formatPrice(item.price * item.quantity) %></span>
+                    </li>
+                <% }) %>
+            </ul>
+
+            <dl class="confirm-totals">
+                <div><dt>Subtotal</dt><dd><%= formatPrice(order.subtotal) %></dd></div>
+                <% if (Number(order.discount) > 0) { %>
+                    <div class="confirm-totals__discount"><dt>Descuento</dt><dd>−<%= formatPrice(order.discount) %></dd></div>
+                <% } %>
+                <div><dt>Envío</dt><dd><%= Number(order.shipping) > 0 ? formatPrice(order.shipping) : "Retiro en tienda" %></dd></div>
+                <div class="confirm-totals__total"><dt>Total</dt><dd><%= formatPrice(order.total) %></dd></div>
+            </dl>
+
+            <div class="confirm-delivery">
+                <span class="confirm-delivery__label">Entrega</span>
+                <p><%= order.full_name %> · <%= order.phone %></p>
+                <p><%= address %></p>
+                <p><%= order.address %><%= order.neighborhood ? `, ${order.neighborhood}` : "" %></p>
+            </div>
         </section>
 
         <!-- Acciones -->

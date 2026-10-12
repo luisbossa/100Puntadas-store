@@ -1,5 +1,5 @@
-const db = require("../db/pool");
 const orderToken = require("../utils/orderToken");
+const { getOrderWithItems, isPaid } = require("../utils/orders");
 
 /* La orden se identifica con un token firmado (no con el id),
    para que nadie pueda ver los datos de otra persona cambiando el número. */
@@ -9,21 +9,23 @@ exports.paymentPage = async (req, res) => {
   if (!orderId) return res.redirect("/");
 
   try {
-    const [{ rows: orderRows }, { rows: orderItems }] = await Promise.all([
-      db.query("SELECT * FROM orders WHERE id = $1", [orderId]),
-      db.query("SELECT * FROM order_items WHERE order_id = $1", [orderId]),
-    ]);
+    const data = await getOrderWithItems(orderId);
+    if (!data) return res.redirect("/");
 
-    if (!orderRows.length) return res.redirect("/");
+    const token = encodeURIComponent(req.query.order);
+    if (data.order.payment_method === "card") return res.redirect(`/payment?order=${token}`);
 
     res.render("sinpe-pay", {
       layout: "checkout-layout",
       pageTitle: "Pago por SINPE",
       step: 2,
       bodyClass: "page-sinpe",
-      order: orderRows[0],
-      orderItems,
+      order: data.order,
+      orderItems: data.items,
       orderToken: req.query.order,
+      // Si ya se aprobó (o incluso se envió), el botón llega habilitado.
+      confirmed: isPaid(data.order.status),
+      cancelled: data.order.status === "cancelled",
     });
   } catch (err) {
     console.error("SINPE PAGE ERROR:", err);
@@ -31,20 +33,20 @@ exports.paymentPage = async (req, res) => {
   }
 };
 
+// Estado de la orden para el navegador (página SINPE y confirmación con tarjeta).
+// confirmed = pagado, enviado o entregado.
 exports.paymentStatus = async (req, res) => {
   const orderId = orderToken.verify(req.params.token);
   if (!orderId) return res.status(404).json({ ok: false });
 
   try {
-    const { rows } = await db.query("SELECT status FROM orders WHERE id = $1", [
-      orderId,
-    ]);
+    const data = await getOrderWithItems(orderId);
+    if (!data) return res.json({ ok: false });
 
-    if (!rows.length) return res.json({ ok: false });
-
-    res.json({ ok: true, status: rows[0].status });
+    const { status } = data.order;
+    res.json({ ok: true, status, confirmed: isPaid(status) });
   } catch (err) {
-    console.error("SINPE STATUS ERROR:", err);
+    console.error("ORDER STATUS ERROR:", err);
     res.json({ ok: false });
   }
 };

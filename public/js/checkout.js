@@ -276,27 +276,19 @@
       const created = await postJSON("/api/orders", order);
       if (!created.success) throw new Error(created.error || "No se pudo crear la orden");
 
-      const { orderToken, orderNumber, totals } = created;
+      const { orderToken } = created;
       let nextUrl;
 
       if (paymentMethod === "card") {
         const payment = await postJSON("/create-intent", { orderToken });
         if (!payment.success) throw new Error(payment.error || "No se pudo iniciar el pago");
-        nextUrl = `/payment?paymentIntentId=${encodeURIComponent(payment.paymentIntentId)}&orderNumber=${orderNumber}`;
+        nextUrl = `/payment?order=${encodeURIComponent(orderToken)}`;
       } else {
         nextUrl = `/payment-sinpe?order=${encodeURIComponent(orderToken)}`;
       }
 
-      // Solo con la orden (y el pago) creados se guarda el resumen y se vacía el checkout
-      sessionStorage.setItem(
-        "order_completed",
-        JSON.stringify({
-          orderNumber,
-          total: totals.total,
-          paymentMethod: paymentMethod === "card" ? "Tarjeta" : "SINPE Móvil",
-          createdAt: new Date().toISOString(),
-        }),
-      );
+      // Con la orden (y el pago) creados se vacía el checkout. La confirmación
+      // se arma en el servidor con /confirm?order=<token>.
       localStorage.removeItem("checkoutData");
       location.replace(nextUrl);
     } catch (err) {

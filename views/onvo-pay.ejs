@@ -34,7 +34,8 @@
 
         <!-- El SDK de ONVO dibuja aquí el formulario de la tarjeta -->
         <div id="onvo-checkout-container" class="onvo-checkout" data-public-key="<%= ONVO_PUBLIC_KEY %>"
-            data-payment-intent="<%= String(paymentIntentId).split(':')[0] %>">
+            data-payment-intent="<%= String(paymentIntentId).split(':')[0] %>"
+            data-order-token="<%= orderToken %>">
             <p class="onvo-loading">Cargando el formulario de pago seguro…</p>
         </div>
 

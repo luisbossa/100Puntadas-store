@@ -3,7 +3,7 @@
 ============================================================ */
 (function () {
   const container = document.getElementById("onvo-checkout-container");
-  const { publicKey, paymentIntent } = container?.dataset || {};
+  const { publicKey, paymentIntent, orderToken } = container?.dataset || {};
   if (!paymentIntent) return;
 
   function mount() {
@@ -13,8 +13,9 @@
         publicKey,
         paymentIntentId: paymentIntent,
         paymentType: "one_time",
+        // La confirmación se verifica en el servidor (consulta a ONVO si el webhook aún no llegó).
         onSuccess: () => {
-          window.location.href = "/confirm";
+          window.location.href = `/confirm?order=${encodeURIComponent(orderToken)}`;
         },
         onError: (err) => {
           console.error("Error en el pago:", err);

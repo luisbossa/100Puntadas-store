@@ -3,6 +3,8 @@ const Pricing = require("../public/js/pricing");
 const orderToken = require("../utils/orderToken");
 const { getFreshProducts, findRedirect } = require("../utils/catalog");
 const { DEFAULT_SIZES } = require("../utils/shop");
+const { getOrderWithItems, isPaid } = require("../utils/orders");
+const onvo = require("../utils/onvo");
 
 /* ================= HELPERS ================= */
 const cleanText = (v, max = 40) =>
@@ -97,12 +99,44 @@ exports.checkoutPage = (req, res) => {
   });
 };
 
-exports.confirmPage = (req, res) => {
+/* Confirmación verificada en el servidor (/confirm?order=<token>):
+   - pagado / enviado / entregado → recibo con los datos reales
+   - tarjeta pendiente → se consulta a ONVO (por si el webhook no llegó);
+     si sigue en proceso, la página espera y se actualiza sola
+   - SINPE pendiente → vuelve a su página de pago
+   - cancelado → aviso */
+exports.confirmPage = async (req, res) => {
+  const orderId = orderToken.verify(req.query.order);
+  if (!orderId) return res.redirect("/");
+
+  let data = await getOrderWithItems(orderId);
+  if (!data) return res.redirect("/");
+
+  const token = encodeURIComponent(req.query.order);
+  const { order } = data;
+
+  if (order.status === "pending" && order.payment_method === "card" && order.payment_intent_id) {
+    try {
+      const intent = await onvo.getIntent(order.payment_intent_id);
+      if ((await onvo.syncFromIntent(order.id, intent)).paid) data = await getOrderWithItems(orderId);
+    } catch (err) {
+      console.error("CONFIRM: no se pudo consultar ONVO", err.message);
+    }
+  }
+
+  const { status, payment_method: method } = data.order;
+  if (status === "pending" && method === "sinpe") return res.redirect(`/payment-sinpe?order=${token}`);
+  if (status === "pending" && !data.order.payment_intent_id) return res.redirect("/");
+
   res.render("confirm", {
     layout: "checkout-layout",
-    pageTitle: "Pedido confirmado",
+    pageTitle: isPaid(status) ? "Pedido confirmado" : "Confirmando tu pago",
     step: 3,
     bodyClass: "page-confirm",
+    order: data.order,
+    items: data.items,
+    orderToken: req.query.order,
+    state: isPaid(status) ? "paid" : status === "cancelled" ? "cancelled" : "processing",
   });
 };
 

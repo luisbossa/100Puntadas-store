@@ -26,23 +26,40 @@ document.addEventListener("click", async (event) => {
   const status = document.getElementById("sinpeStatus");
   if (!btn) return;
 
-  const { orderToken, orderNumber, total, createdAt } = btn.dataset;
+  const { orderToken } = btn.dataset;
+  const confirmUrl = `/confirm?order=${encodeURIComponent(orderToken)}`;
   const POLL_MS = 5000;
   const MAX_WAIT_MS = 30 * 60 * 1000; // deja de consultar tras 30 min
   const startedAt = Date.now();
   let timer = null;
 
+  btn.addEventListener("click", () => {
+    window.location.href = confirmUrl;
+  });
+
+  // Ya llegó aprobado desde el servidor: no hay nada que esperar.
+  if (!btn.disabled) return;
+
   async function checkStatus() {
     try {
-      const res = await fetch(`/payment-sinpe/${encodeURIComponent(orderToken)}/status`);
+      const res = await fetch(`/api/order-status/${encodeURIComponent(orderToken)}`);
       const data = await res.json();
 
-      if (data?.ok && data.status === "paid") {
+      // "confirmed" = pagado, enviado o entregado (el panel pudo avanzarlo más).
+      if (data?.ok && data.confirmed) {
         stop();
         btn.disabled = false;
-        btn.textContent = "Confirmar pedido";
-        status.textContent = "✅ Pago confirmado. Ya puedes continuar con tu pedido.";
+        btn.textContent = "Ver mi pedido";
+        status.textContent = "✅ Pago confirmado. Ya puedes ver tu pedido.";
         status.classList.add("is-confirmed");
+        return;
+      }
+
+      if (data?.ok && data.status === "cancelled") {
+        stop();
+        btn.hidden = true;
+        status.textContent =
+          "Este pedido fue cancelado. Si ya realizaste el pago, escríbenos por WhatsApp con tu número de pedido.";
         return;
       }
     } catch (err) {
@@ -52,7 +69,7 @@ document.addEventListener("click", async (event) => {
     if (Date.now() - startedAt > MAX_WAIT_MS) {
       stop();
       status.textContent =
-        "Seguimos verificando tu pago. Recarga esta página más tarde o escríbenos por Whatsapp al 8792-5172.";
+        "Seguimos verificando tu pago. Recarga esta página más tarde o escríbenos por WhatsApp al 8792-5172.";
     }
   }
 
@@ -65,22 +82,15 @@ document.addEventListener("click", async (event) => {
     timer = null;
   }
 
-  // No consultar mientras la pestaña está en segundo plano
+  // No consultar mientras la pestaña está en segundo plano.
   document.addEventListener("visibilitychange", () => {
     if (document.hidden) stop();
-    else {
+    else if (btn.disabled) {
       checkStatus();
       start();
     }
   });
 
-  btn.addEventListener("click", () => {
-    sessionStorage.setItem(
-      "order_completed",
-      JSON.stringify({ orderNumber, total: Number(total), paymentMethod: "SINPE Móvil", createdAt }),
-    );
-    window.location.href = "/confirm";
-  });
-
+  checkStatus(); // primera consulta inmediata
   start();
 })();

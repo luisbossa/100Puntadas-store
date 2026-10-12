@@ -134,18 +134,23 @@
 
     <!-- CONFIRMACIÓN -->
     <section class="sinpe-confirm" aria-label="Confirmación del pago">
-        <div class="pending-msg" id="sinpeStatus" role="status" aria-live="polite">
-            Tu pago SINPE está en proceso de verificación. El botón <strong>“He enviado el pago”</strong> se habilitará
-            automáticamente una vez que confirmemos el comprobante.
+        <div class="pending-msg<%= confirmed ? ' is-confirmed' : '' %>" id="sinpeStatus" role="status" aria-live="polite">
+            <% if (confirmed) { %>
+                ✅ Pago confirmado. Ya puedes ver tu pedido.
+            <% } else if (cancelled) { %>
+                Este pedido fue cancelado. Si ya realizaste el pago, escríbenos por WhatsApp con tu número de pedido.
+            <% } else { %>
+                Tu pago SINPE está en proceso de verificación. El botón <strong>“Ver mi pedido”</strong> se habilitará
+                automáticamente cuando confirmemos el comprobante.
+            <% } %>
         </div>
 
-        <button type="button" id="sinpeConfirmBtn" class="sinpe-confirm-btn" disabled
-            data-order-token="<%= orderToken %>"
-            data-order-number="<%= orderNumber %>"
-            data-total="<%= order.total %>"
-            data-created-at="<%= new Date(order.created_at).toISOString() %>">
-            He enviado el pago
-        </button>
+        <% if (!cancelled) { %>
+            <button type="button" id="sinpeConfirmBtn" class="sinpe-confirm-btn" <%= confirmed ? "" : "disabled" %>
+                data-order-token="<%= orderToken %>">
+                <%= confirmed ? "Ver mi pedido" : "Esperando confirmación…" %>
+            </button>
+        <% } %>
     </section>
 </main>
 
