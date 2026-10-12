@@ -16,6 +16,8 @@ app.use(
     contentSecurityPolicy: false,
     // El checkout de ONVO puede abrir ventanas de autenticación 3DS.
     crossOriginOpenerPolicy: false,
+    // El panel administrativo (otro dominio) muestra las imágenes de productos.
+    crossOriginResourcePolicy: { policy: "cross-origin" },
     referrerPolicy: { policy: "strict-origin-when-cross-origin" },
   }),
 );
