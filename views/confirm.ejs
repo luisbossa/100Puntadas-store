@@ -1,10 +1,20 @@
+<%
+  const wa = store.whatsapp;
+  const waUrl = `https://wa.me/${wa.number}?text=${encodeURIComponent(wa.message)}`;
+%>
 <main class="confirm-wrapper">
     <div class="confirm-receipt">
         <!-- Recibo: encabezado -->
         <section class="confirm-card" aria-labelledby="confirm-title">
-            <div class="confirm-card__icon" aria-hidden="true"></div>
+            <div class="confirm-card__icon" aria-hidden="true">
+                <% for (let i = 0; i < 8; i++) { %><span class="confetti"></span><% } %>
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12.5l4.5 4.5L19 7.5" />
+                </svg>
+            </div>
 
-            <h1 id="confirm-title" class="confirm-heading">¡GRACIAS POR TU COMPRA!</h1>
+            <span class="confirm-eyebrow">Pedido confirmado</span>
+            <h1 id="confirm-title" class="confirm-heading">¡Gracias por tu compra!</h1>
 
             <p class="confirm-subtext">
                 Has realizado tu compra con éxito. Tu pedido será entregado en un plazo de 2 a 3
@@ -27,18 +37,20 @@
                     <dt>Método de pago</dt>
                     <dd id="confirm-method">—</dd>
                 </div>
-                <div>
+                <div class="confirm-summary__total">
                     <dt>Total pagado</dt>
                     <dd id="confirm-total">0 ₡</dd>
                 </div>
             </dl>
         </section>
 
-        <!-- Acción -->
+        <!-- Acciones -->
         <section class="confirm-card">
             <div class="confirm-actions">
                 <a href="/" class="confirm-btn">Volver al inicio</a>
+                <a href="<%= waUrl %>" class="confirm-btn confirm-btn--ghost" target="_blank" rel="noopener">¿Dudas? Escríbenos</a>
             </div>
+            <p class="confirm-signoff">Hecho a mano con amor · 100 Puntadas</p>
         </section>
     </div>
 </main>

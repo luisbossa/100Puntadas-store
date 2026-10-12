@@ -23,7 +23,7 @@
         <div class="checkout-grid__main">
             <!-- CONTACTO -->
             <section class="card" aria-labelledby="contact-title">
-                <h2 id="contact-title" class="card__title">Información de contacto</h2>
+                <h2 id="contact-title" class="card__title"><span class="card__num" aria-hidden="true">1</span>Información de contacto</h2>
 
                 <div class="field-row">
                     <%- field({ name: "email", label: "Correo electrónico", placeholder: "Correo electrónico", type: "email", attrs: 'autocomplete="email"' }) %>
@@ -33,7 +33,7 @@
 
             <!-- ENTREGA -->
             <section class="card" aria-labelledby="shipping-title">
-                <h2 id="shipping-title" class="card__title">Dirección de entrega</h2>
+                <h2 id="shipping-title" class="card__title"><span class="card__num" aria-hidden="true">2</span>Dirección de entrega</h2>
 
                 <div class="field-row">
                     <%- field({ name: "full_name", label: "Nombre completo", placeholder: "Nombre completo", attrs: 'autocomplete="name"' }) %>
@@ -63,7 +63,7 @@
         <aside class="checkout-grid__aside">
             <!-- TIPO DE ENVÍO -->
             <section class="card" aria-labelledby="delivery-title">
-                <h2 id="delivery-title" class="card__title">Tipo de envío</h2>
+                <h2 id="delivery-title" class="card__title"><span class="card__num" aria-hidden="true">3</span>Tipo de envío</h2>
 
                 <div class="radio-field" role="radiogroup" aria-labelledby="delivery-title">
                     <label class="radio-option">
@@ -86,7 +86,7 @@
 
             <!-- RESUMEN -->
             <section class="summary-card" aria-labelledby="summary-title">
-                <h3 id="summary-title" class="card__title">Resumen del pedido</h3>
+                <h3 id="summary-title" class="card__title card__title--summary">Resumen del pedido</h3>
 
                 <div class="order-products" id="orderProducts"></div>
 
@@ -106,7 +106,7 @@
                 </div>
 
                 <div class="payment-methods">
-                    <h2 id="payment-title" class="card__title">Método de pago</h2>
+                    <h2 id="payment-title" class="card__title"><span class="card__num" aria-hidden="true">4</span>Método de pago</h2>
 
                     <div class="radio-field">
                         <div class="radio-group" role="radiogroup" aria-labelledby="payment-title">

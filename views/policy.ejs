@@ -1,97 +1,99 @@
-            <section class="policy-section">
-                <h1 class="page-title">CONDICIONES DE VENTA</h1>
+<%
+  // Texto legal: se mantiene tal cual; solo cambia la presentación.
+  const sections = [
+    {
+      id: "cambios",
+      title: "Política de cambio y retorno",
+      items: [
+        "De conformidad con la Ley N.º 7472 (Ley de Promoción de la Competencia y Defensa Efectiva del Consumidor), el cliente tiene derecho a recibir productos en buen estado y conforme a lo ofrecido.",
+        "Aceptamos cambios únicamente por talla, siempre que la prenda no haya sido usada, lavada ni alterada.",
+        "Por tratarse de vestidos de baño (prendas de uso íntimo), no aceptamos cambios ni devoluciones por cambio de opinión, color o preferencia personal.",
+        "No aceptamos cambios ni devoluciones en productos en descuento, promociones o liquidación, salvo por defectos de fábrica.",
+        "Cualquier defecto de fábrica o inconveniente con la prenda debe ser notificado dentro de un plazo máximo de 48 horas naturales posteriores a la recepción del pedido.",
+        "Para aplicar a un cambio, la prenda debe conservar sus etiquetas originales, protectores higiénicos y encontrarse en la misma condición en que fue enviada.",
+        "El comprador es responsable de cubrir los costos de envío asociados a cambios de talla. En caso de error atribuible a la tienda, los costos serán asumidos por la misma.",
+        "Nos reservamos el derecho de rechazar cualquier solicitud de cambio que no cumpla con las condiciones anteriormente descritas.",
+      ],
+    },
+    {
+      id: "envios",
+      title: "Envíos",
+      items: [
+        "Realizamos envíos dentro de Costa Rica por medio de Correos de Costa Rica u operadores logísticos autorizados.",
+        "Los tiempos de entrega son estimados y pueden variar según la ubicación del destinatario y condiciones externas al comercio.",
+        "Una vez despachado el pedido, la responsabilidad de la entrega recae en la empresa de transporte seleccionada.",
+      ],
+    },
+    {
+      id: "responsabilidad",
+      title: "Responsabilidad y uso del producto",
+      items: [
+        "Es responsabilidad del cliente revisar cuidadosamente la guía de tallas antes de realizar la compra.",
+        "La tienda no se hace responsable por daños ocasionados por uso indebido, lavado incorrecto o incumplimiento de las instrucciones de cuidado del producto.",
+        "Los colores de los productos pueden variar levemente según la configuración de pantalla o dispositivo desde el cual se realice la compra.",
+        "Al realizar una compra en nuestro sitio web, el cliente declara haber leído y aceptado todas las políticas aquí descritas.",
+      ],
+    },
+  ];
+  // Resumen rápido: extraído de los puntos de arriba
+  const highlights = [
+    { big: "Talla", text: "Cambios únicamente por talla, en prendas sin usar." },
+    { big: "48 h", text: "Para reportar cualquier defecto desde que recibes tu pedido." },
+    { big: "CR", text: "Envíos dentro de Costa Rica por Correos de Costa Rica." },
+  ];
+  const wa = store.whatsapp;
+  const waUrl = `https://wa.me/${wa.number}?text=${encodeURIComponent(wa.message)}`;
+%>
+            <div class="policy page-section">
+                <!-- Encabezado editorial -->
+                <header class="policy__hero">
+                    <div>
+                        <span class="policy__eyebrow">Políticas de la tienda</span>
+                        <h1 class="policy__title">Condiciones de venta</h1>
+                    </div>
+                    <p class="policy__lead">Todo lo que necesitas saber sobre cambios, envíos y el cuidado de tu compra.</p>
+                </header>
 
-                <div class="policy-div">
-                    <h2 class="terms-title" id="cambios">Política de cambio y retorno</h2>
-                    <ul class="terms-list">
-                        <li class="terms-item">
-                            De conformidad con la Ley N.º 7472 (Ley de Promoción de la Competencia y Defensa
-                            Efectiva del Consumidor), el cliente tiene derecho a recibir productos en buen estado y
-                            conforme a lo ofrecido.
+                <!-- Resumen -->
+                <ul class="policy__highlights" role="list">
+                    <% highlights.forEach((h) => { %>
+                        <li class="policy-highlight">
+                            <span class="policy-highlight__big"><%= h.big %></span>
+                            <span class="policy-highlight__text"><%= h.text %></span>
                         </li>
+                    <% }) %>
+                </ul>
 
-                        <li class="terms-item">
-                            Aceptamos cambios únicamente por talla, siempre que la prenda no haya sido usada, lavada
-                            ni alterada.
-                        </li>
-
-                        <li class="terms-item">
-                            Por tratarse de vestidos de baño (prendas de uso íntimo), no aceptamos cambios ni
-                            devoluciones por cambio de opinión, color o preferencia personal.
-                        </li>
-
-                        <li class="terms-item">
-                            No aceptamos cambios ni devoluciones en productos en descuento, promociones o
-                            liquidación, salvo por defectos de fábrica.
-                        </li>
-
-                        <li class="terms-item">
-                            Cualquier defecto de fábrica o inconveniente con la prenda debe ser notificado dentro de
-                            un plazo máximo de 48 horas naturales posteriores a la recepción del pedido.
-                        </li>
-
-                        <li class="terms-item">
-                            Para aplicar a un cambio, la prenda debe conservar sus etiquetas originales, protectores
-                            higiénicos y encontrarse en la misma condición en que fue enviada.
-                        </li>
-
-                        <li class="terms-item">
-                            El comprador es responsable de cubrir los costos de envío asociados a cambios de talla.
-                            En caso de error atribuible a la tienda, los costos serán asumidos por la misma.
-                        </li>
-
-                        <li class="terms-item">
-                            Nos reservamos el derecho de rechazar cualquier solicitud de cambio que no cumpla con
-                            las condiciones anteriormente descritas.
-                        </li>
-                    </ul>
-
-                    <h2 class="terms-title margin-t" id="envios">Envíos</h2>
-                    <p class="terms-text">
-                    <ul class="terms-list">
-                        <li class="terms-item">
-                            Realizamos envíos dentro de Costa Rica por medio de Correos de Costa Rica u operadores
-                            logísticos autorizados.
-                        </li>
-                        <li class="terms-item">
-                            Los tiempos de entrega son estimados y pueden variar según la ubicación del destinatario y
-                            condiciones externas al comercio.
-                        </li>
-                        <li class="terms-item">
-                            Una vez despachado el pedido, la responsabilidad de la entrega recae en la empresa de
-                            transporte seleccionada.
-                        </li>
-                    </ul>
-                    </p>
-
-                    <h2 class="terms-title margin-t" id="responsabilidad">Responsabilidad y uso del producto</h2>
-                    <ul class="terms-list">
-                        <li class="terms-item">
-                            Es responsabilidad del cliente revisar cuidadosamente la guía de tallas antes de
-                            realizar la compra.
-                        </li>
-
-                        <li class="terms-item">
-                            La tienda no se hace responsable por daños ocasionados por uso indebido, lavado
-                            incorrecto o incumplimiento de
-                            las instrucciones de cuidado del producto.
-                        </li>
-
-                        <li class="terms-item">
-                            Los colores de los productos pueden variar levemente según la configuración de pantalla
-                            o dispositivo desde el
-                            cual se realice la compra.
-                        </li>
-
-                        <li class="terms-item">
-                            Al realizar una compra en nuestro sitio web, el cliente declara haber leído y aceptado
-                            todas las políticas aquí
-                            descritas.
-                        </li>
-                    </ul>
-
-
+                <!-- Secciones: número y título a la izquierda, puntos a la derecha -->
+                <div class="policy__sections">
+                    <% sections.forEach((s, i) => { %>
+                        <section class="policy-block" aria-labelledby="<%= s.id %>">
+                            <div class="policy-block__aside">
+                                <span class="policy-block__num" aria-hidden="true"><%= String(i + 1).padStart(2, "0") %></span>
+                                <h2 class="policy-block__title" id="<%= s.id %>"><%= s.title %></h2>
+                            </div>
+                            <ol class="policy-block__list">
+                                <% s.items.forEach((item) => { %>
+                                    <li><%= item %></li>
+                                <% }) %>
+                            </ol>
+                        </section>
+                    <% }) %>
                 </div>
-            </section>
+
+                <!-- Ayuda por WhatsApp -->
+                <div class="policy__help">
+                    <div>
+                        <p class="policy__help-title">¿Tienes alguna duda?</p>
+                        <p class="policy__help-text">Escríbenos y con gusto te ayudamos.</p>
+                    </div>
+                    <a class="policy__help-btn" href="<%= waUrl %>" target="_blank" rel="noopener">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z" />
+                        </svg>
+                        Escríbenos por WhatsApp
+                    </a>
+                </div>
+            </div>
 
 <link rel="stylesheet" href="<%= asset('/css/policy.css') %>" />

@@ -32,6 +32,14 @@
     background-color 0.2s ease;
 }
 
+/* Sobre un producto agotado: gris oscuro y sin invitar a comprar */
+.cursor.is-soldout .cursor-btn {
+  background-color: #3a3a3a;
+  border-color: rgba(255, 255, 255, 0.6);
+  color: var(--color-white);
+  transform: scale(0.9);
+}
+
 .cursor {
   transform: translate(-50%, -50%);
   pointer-events: none;

@@ -28,8 +28,10 @@
   (function waitForSDK() {
     if (typeof onvo !== "undefined") return mount();
     if (Date.now() - startedAt > 15000) {
-      container.querySelector(".onvo-loading").textContent =
+      const loading = container.querySelector(".onvo-loading");
+      loading.textContent =
         "No pudimos cargar el formulario de pago. Recarga la página para intentarlo de nuevo.";
+      loading.classList.add("is-error");
       return;
     }
     setTimeout(waitForSDK, 100);

@@ -1,0 +1,139 @@
+/* ============================================================
+   TABLA DE MEDIDAS (partials/size-table.ejs)
+   Compartida por /sizes y el modal de la ficha de producto.
+   En móvil cada fila se vuelve una tarjeta.
+============================================================ */
+
+.sizes__table-wrap {
+  max-width: 64rem;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(22, 22, 22, 0.08);
+  border-radius: 24px;
+  background: var(--color-white);
+  box-shadow: 0 30px 60px -45px rgba(22, 22, 22, 0.45);
+}
+
+.sizes-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: clamp(0.9rem, 1vw, 1.05rem);
+}
+
+.sizes-table thead th {
+  padding: 1.1rem 1.25rem 0.95rem;
+  background: linear-gradient(90deg, #ffd3ec, #ffe9f5);
+  color: var(--color-ink);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-align: left;
+  text-transform: uppercase;
+  vertical-align: bottom;
+}
+
+.sizes-table thead small {
+  display: block;
+  margin-top: 2px;
+  color: var(--color-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+}
+
+.sizes-table tbody th,
+.sizes-table td {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid #f1eef0;
+  color: #333;
+  font-weight: 400;
+  text-align: left;
+}
+
+.sizes-table tbody tr {
+  transition: background-color var(--duration-base) ease;
+}
+
+.sizes-table tbody tr:hover {
+  background-color: rgba(255, 164, 219, 0.12);
+}
+
+/* Talla en círculo, como los botones de talla de la ficha */
+.sizes-table__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  padding-top: 4px;
+  border-radius: 50%;
+  background: var(--color-ink);
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  box-shadow: 0 0 0 3px var(--color-white), 0 0 0 5px var(--color-pink);
+}
+
+@media (max-width: 600px) {
+  .sizes__table-wrap {
+    overflow: visible;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+  }
+
+  .sizes-table,
+  .sizes-table tbody,
+  .sizes-table tr,
+  .sizes-table th,
+  .sizes-table td {
+    display: block;
+  }
+
+  .sizes-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .sizes-table tbody {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .sizes-table tbody tr {
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(22, 22, 22, 0.08);
+    border-radius: 20px;
+    background: var(--color-white);
+    box-shadow: 0 18px 36px -28px rgba(22, 22, 22, 0.45);
+  }
+
+  .sizes-table tbody tr:hover {
+    background: var(--color-white);
+  }
+
+  .sizes-table tbody th {
+    padding: 0 0 0.75rem;
+    border: 0;
+  }
+
+  .sizes-table td {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.55rem 0;
+    border-top: 1px dashed #eee;
+  }
+
+  .sizes-table td::before {
+    content: attr(data-label);
+    color: var(--color-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+}

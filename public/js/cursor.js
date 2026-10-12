@@ -12,10 +12,20 @@
     return;
   }
 
+  const label = cursorEl.querySelector(".cursor-btn");
+  const buyText = label.textContent;
   let snappedTo = null;
+
+  // Sobre un producto agotado el cursor dice "Agotado" en vez de "Comprar"
+  function setSoldOut(isSoldOut) {
+    cursorEl.classList.toggle("is-soldout", isSoldOut);
+    label.textContent = isSoldOut ? "Agotado" : buyText;
+  }
 
   function follow(e) {
     if (snappedTo) return;
+
+    setSoldOut(Boolean(e.target.closest(".product-card--soldout")));
 
     if (e.target.closest(".no-cursor-zone")) {
       cursorEl.style.opacity = "0";
@@ -33,6 +43,7 @@
     if (!link || link === snappedTo || link.closest(".no-cursor-zone")) return;
 
     snappedTo = link;
+    setSoldOut(false);
     const rect = link.getBoundingClientRect();
     cursorEl.style.opacity = "1";
     cursorEl.style.top = rect.top + window.scrollY + rect.height / 2 + "px";

@@ -4,7 +4,11 @@
                 <div class="catalog">
                     <% collections.forEach((collection, sectionIndex) => { %>
                         <section id="<%= collection.id %>" class="catalog__section" aria-labelledby="<%= collection.id %>-title">
-                            <h2 id="<%= collection.id %>-title" class="section-title"><%= collection.title %></h2>
+                            <div class="section-head">
+                                <h2 id="<%= collection.id %>-title" class="section-title"><%= collection.title %></h2>
+                                <span class="section-head__line" aria-hidden="true"></span>
+                                <span class="section-head__count"><%= collection.products.length %> <%= collection.products.length === 1 ? "pieza" : "piezas" %></span>
+                            </div>
                             <ul class="product-grid" role="list">
                                 <% collection.products.forEach((product, i) => { %>
                                     <%- include("partials/product-card", { product, eager: sectionIndex === 0 && i < 5 }) %>

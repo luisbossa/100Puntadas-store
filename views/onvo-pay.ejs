@@ -1,11 +1,50 @@
-<main class="onvo-wrapper">
-    <h1 class="onvo-heading">Realiza tu pago</h1>
+<%
+  const wa = store.whatsapp;
+  const waUrl = `https://wa.me/${wa.number}?text=${encodeURIComponent(`¡Hola 100 Puntadas! Tengo una consulta sobre el pago del pedido #${orderNumber}.`)}`;
+%>
+<main class="onvo-page">
+    <!-- ENCABEZADO -->
+    <header class="onvo-hero">
+        <span class="onvo-hero__icon" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="10" width="16" height="11" rx="2.5" />
+                <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+            </svg>
+        </span>
+        <h1 class="onvo-hero__title">Realiza tu pago</h1>
+        <p class="onvo-hero__lead">Completa los datos de tu tarjeta para finalizar tu pedido <strong>#<%= orderNumber %></strong>.</p>
+    </header>
 
-    <!-- El SDK de ONVO dibuja aquí el formulario de la tarjeta -->
-    <div id="onvo-checkout-container" class="onvo-checkout" data-public-key="<%= ONVO_PUBLIC_KEY %>"
-        data-payment-intent="<%= String(paymentIntentId).split(':')[0] %>">
-        <p class="onvo-loading">Cargando el formulario de pago seguro…</p>
-    </div>
+    <section class="onvo-card" aria-label="Pago con tarjeta">
+        <div class="onvo-card__head">
+            <span class="onvo-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z" />
+                    <path d="M8.5 12l2.5 2.5 4.5-5" />
+                </svg>
+                Pago seguro
+            </span>
+            <ul class="onvo-cards" aria-label="Tarjetas aceptadas">
+                <li><img src="/images/visa.svg" alt="Visa" width="38" height="24"></li>
+                <li><img src="/images/mastercard.svg" alt="Mastercard" width="38" height="24"></li>
+                <li><img src="/images/amex.svg" alt="American Express" width="38" height="24"></li>
+                <li><img src="/images/maestro.svg" alt="Maestro" width="38" height="24"></li>
+            </ul>
+        </div>
+
+        <!-- El SDK de ONVO dibuja aquí el formulario de la tarjeta -->
+        <div id="onvo-checkout-container" class="onvo-checkout" data-public-key="<%= ONVO_PUBLIC_KEY %>"
+            data-payment-intent="<%= String(paymentIntentId).split(':')[0] %>">
+            <p class="onvo-loading">Cargando el formulario de pago seguro…</p>
+        </div>
+
+        <p class="onvo-card__note">Procesado de forma segura por ONVO.</p>
+    </section>
+
+    <p class="onvo-help">
+        ¿Problemas con el pago?
+        <a href="<%= waUrl %>" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+    </p>
 </main>
 
 <link rel="stylesheet" href="<%= asset('/css/onvo-pay.css') %>" />

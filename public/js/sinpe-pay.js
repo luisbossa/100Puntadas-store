@@ -3,6 +3,24 @@
    Consulta el estado cada 5 s (solo con la pestaña visible) y
    habilita el botón para ir a la confirmación cuando está pagado.
 ============================================================ */
+/* Botones "Copiar" de los datos bancarios */
+document.addEventListener("click", async (event) => {
+  const copyBtn = event.target.closest("[data-copy]");
+  if (!copyBtn) return;
+
+  try {
+    await navigator.clipboard.writeText(copyBtn.dataset.copy);
+    copyBtn.textContent = "¡Copiado!";
+    copyBtn.classList.add("is-copied");
+    setTimeout(() => {
+      copyBtn.textContent = "Copiar";
+      copyBtn.classList.remove("is-copied");
+    }, 1800);
+  } catch (err) {
+    console.error("No se pudo copiar", err);
+  }
+});
+
 (function () {
   const btn = document.getElementById("sinpeConfirmBtn");
   const status = document.getElementById("sinpeStatus");
@@ -24,6 +42,7 @@
         btn.disabled = false;
         btn.textContent = "Confirmar pedido";
         status.textContent = "✅ Pago confirmado. Ya puedes continuar con tu pedido.";
+        status.classList.add("is-confirmed");
         return;
       }
     } catch (err) {

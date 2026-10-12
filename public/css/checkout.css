@@ -6,9 +6,10 @@
 .checkout-grid {
   display: grid;
   grid-template-columns: 1.4fr 1fr;
+  align-items: start;
   gap: 2rem;
   max-width: 1200px;
-  margin: 2rem auto 1.5rem;
+  margin: 2.5rem auto 2rem;
   padding: 0 1rem;
 }
 
@@ -18,16 +19,53 @@
   gap: 1.5rem;
 }
 
+/* El resumen acompaña al hacer scroll en escritorio */
 .checkout-grid__aside {
+  position: sticky;
+  top: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: start;
   gap: 1.5rem;
 }
 
+/* ---------- Tarjetas ---------- */
+.card,
+.summary-card {
+  border: 1px solid rgba(22, 22, 22, 0.07);
+  border-radius: 24px;
+  box-shadow: 0 24px 48px -40px rgba(22, 22, 22, 0.45);
+}
+
 .card__title {
-  margin-bottom: 1.2rem;
-  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Número del paso en círculo rosa */
+.card__num {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  padding-top: 3px;
+  border-radius: 50%;
+  background: var(--color-pink);
+  color: var(--color-ink);
+  font-size: 0.9rem;
+}
+
+.card__title--summary {
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed rgba(22, 22, 22, 0.15);
 }
 
 /* ---------- Campos ---------- */
@@ -41,46 +79,60 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   width: 100%;
   margin-bottom: 10px;
 }
 
 .field__label {
-  font-size: 15px;
+  color: #333;
+  font-size: 0.85rem;
   font-weight: 600;
 }
 
 .field__required {
-  color: var(--color-danger);
+  margin-left: 2px;
+  color: var(--color-pink-strong);
 }
 
 .input {
   width: 100%;
-  height: 43px;
-  padding: 0 12px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 0.9rem;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid #e3e1e2;
+  border-radius: 12px;
+  background: #fcfbfa;
+  font-size: 0.95rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
 }
 
+.input:hover {
+  border-color: #cfcbcd;
+}
+
+/* Foco: borde negro con anillo rosa */
 .input:focus {
   border-color: var(--color-ink);
   outline: none;
+  background: var(--color-white);
+  box-shadow: 0 0 0 4px rgba(255, 164, 219, 0.35);
 }
 
 .input--textarea {
-  height: 90px;
+  height: 96px;
   padding-top: 12px;
   font-family: Inter, system-ui, sans-serif;
   resize: none;
 }
 
 select.input {
-  padding-right: 30px;
+  padding-right: 34px;
   padding-left: 14px;
   background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20fill='%23161616'%20height='24'%20viewBox='0%200%2024%2024'%20width='24'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cpath%20d='M7%2010l5%205%205-5z'/%3E%3Cpath%20d='M0%200h24v24H0z' fill='none'/%3E%3C/svg%3E");
-  background-position: right 8px center;
+  background-position: right 10px center;
   background-repeat: no-repeat;
   background-size: 22px;
   color: var(--color-ink);
@@ -90,7 +142,8 @@ select.input {
 
 /* Cantón/distrito bloqueados hasta elegir provincia/cantón */
 select[data-locked="true"] {
-  background-color: #f5f5f5;
+  background-color: #f3f1f2;
+  color: #999;
   cursor: not-allowed;
 }
 
@@ -114,7 +167,7 @@ select[data-locked="true"] {
 
 .field.has-error .input {
   border-color: var(--color-danger);
-  box-shadow: 0 0 0 2px rgba(209, 26, 42, 0.15);
+  box-shadow: 0 0 0 4px rgba(209, 26, 42, 0.12);
   animation: shake 0.25s ease;
 }
 
@@ -151,6 +204,7 @@ select[data-locked="true"] {
 }
 
 /* ---------- Opciones de envío y pago ---------- */
+.radio-field[role="radiogroup"],
 .radio-group {
   display: flex;
   flex-direction: column;
@@ -162,14 +216,18 @@ select[data-locked="true"] {
   align-items: center;
   gap: 0.9rem;
   padding: 1rem 1.1rem;
-  border: 1.5px solid #ddd;
-  border-radius: 12px;
+  border: 1.5px solid #e6e3e4;
+  border-radius: 16px;
   background: var(--color-white);
   cursor: pointer;
   transition:
     border-color 0.25s ease,
     box-shadow 0.25s ease,
-    background 0.25s ease;
+    background-color 0.25s ease;
+}
+
+.radio-option:hover {
+  border-color: var(--color-pink-strong);
 }
 
 .radio-option span {
@@ -182,26 +240,29 @@ select[data-locked="true"] {
 
 .radio-option small {
   color: #666;
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 500;
 }
 
 /* Radio personalizado */
 .radio-option input[type="radio"] {
   display: grid;
+  flex: none;
   place-content: center;
-  width: 18px;
-  height: 18px;
-  border: 1px solid #aaa;
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid #bbb;
   border-radius: 50%;
+  background: var(--color-white);
   cursor: pointer;
   appearance: none;
+  transition: border-color 0.2s ease;
 }
 
 .radio-option input[type="radio"]::before {
   content: "";
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: var(--color-ink);
   transform: scale(0);
@@ -216,54 +277,76 @@ select[data-locked="true"] {
   transform: scale(1);
 }
 
+/* Seleccionada: fondo rosado suave y borde negro */
 .radio-option:has(input:checked) {
   border-color: var(--color-ink);
-  box-shadow: 0 0 0 2px rgba(22, 22, 22, 0.08);
+  background: rgba(255, 164, 219, 0.14);
+  box-shadow: 0 10px 20px -16px rgba(245, 127, 197, 0.9);
 }
 
 /* Dentro del resumen, las opciones de pago son más compactas */
 .summary-card .radio-option {
-  padding: 0.75rem 0.9rem;
-  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
 }
 
 .summary-card .radio-option span {
   font-size: 0.9rem;
-  font-weight: 600;
 }
 
 /* ---------- Resumen del pedido ---------- */
+.order-products {
+  display: flex;
+  flex-direction: column;
+}
+
 .order-product {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid #f0eeef;
 }
 
 .order-product__info {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.92rem;
 }
 
 .order-product__info img {
-  width: 50px;
-  height: 50px;
-  border-radius: var(--radius-sm);
+  width: 58px;
+  height: 58px;
+  border: 1px solid #eee;
+  border-radius: 12px;
   object-fit: cover;
 }
 
 .order-product__info small {
   display: block;
   margin-top: 4px;
-  color: #666;
+  color: #777;
+  font-size: 0.78rem;
 }
 
 .order-product__price {
   display: flex;
+  align-items: center;
   gap: 10px;
   text-align: right;
   white-space: nowrap;
+}
+
+/* Cantidad en pastilla */
+.order-product__price span {
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: #f3f1f2;
+  color: #555;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
 .totals-row {
@@ -271,14 +354,19 @@ select[data-locked="true"] {
   align-items: center;
   justify-content: space-between;
   padding: 0.6rem 0;
-  font-size: 0.9rem;
+  color: #444;
+  font-size: 0.92rem;
 }
 
+/* Descuento en pastilla rosada */
 .totals-row--discount {
-  margin: 0.6rem 0;
-  padding: 0.6rem 0.9rem;
-  border-radius: 8px;
-  background: #fafafa;
+  margin: 0.8rem 0 0.2rem;
+  padding: 0.7rem 1rem;
+  border: 1px dashed rgba(245, 127, 197, 0.7);
+  border-radius: 14px;
+  background: rgba(255, 164, 219, 0.14);
+  color: var(--color-ink);
+  font-weight: 600;
 }
 
 .totals-row--discount[hidden] {
@@ -308,35 +396,69 @@ select[data-locked="true"] {
 }
 
 .totals-row--total {
-  margin-top: 1rem;
+  align-items: baseline;
+  margin-top: 0.6rem;
   padding-top: 1rem;
-  border-top: 2px solid var(--color-ink);
-  font-size: 1.15rem;
-  font-weight: 800;
+  border-top: 1px solid var(--color-ink);
+  color: var(--color-ink);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.totals-row--total #orderTotal {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 400;
 }
 
 .payment-methods {
-  margin-top: 1.2rem;
-  padding: 1.4rem 0;
+  margin-top: 1.5rem;
+  padding: 1.5rem 0 1rem;
+  border-top: 1px dashed rgba(22, 22, 22, 0.15);
 }
 
 /* ---------- Botón principal ---------- */
 .checkout-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
   width: 100%;
-  height: 50px;
+  height: 56px;
   border: none;
-  border-radius: 10px;
+  border-radius: var(--radius-pill);
   background: var(--color-ink);
   color: var(--color-white);
-  font-weight: 700;
-  letter-spacing: 0.8px;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  letter-spacing: 1px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: opacity 150ms ease;
+  box-shadow: 0 16px 30px -18px rgba(22, 22, 22, 0.8);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s var(--ease-out),
+    box-shadow 0.3s var(--ease-out);
 }
 
-.checkout-cta:hover {
-  opacity: 0.9;
+/* Flecha (con CSS: el texto del botón lo cambia checkout.js) */
+.checkout-cta::after {
+  content: "→";
+  margin-top: -3px;
+  transition: transform 0.3s var(--ease-out);
+}
+
+.checkout-cta:hover:not(:disabled) {
+  background: var(--color-pink);
+  color: var(--color-ink);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 32px -14px rgba(245, 127, 197, 0.9);
+}
+
+.checkout-cta:hover:not(:disabled)::after {
+  transform: translateX(4px);
 }
 
 .checkout-cta:disabled {
@@ -344,11 +466,15 @@ select[data-locked="true"] {
   opacity: 0.6;
 }
 
+.checkout-cta:disabled::after {
+  content: none;
+}
+
 /* ---------- Sellos de confianza ---------- */
 .trust-list {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -356,23 +482,26 @@ select[data-locked="true"] {
 
 .trust-item {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 3px;
-  width: 100%;
+  gap: 0.4rem;
+  padding: 0.9rem 0.5rem;
+  border: 1px solid rgba(22, 22, 22, 0.07);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.7);
   color: #444;
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   font-weight: 600;
 }
 
 .trust-item img {
-  width: 38px;
-  height: 38px;
+  width: 34px;
+  height: 34px;
   object-fit: cover;
 }
 
 .trust-item span {
-  margin-top: -5px;
   text-align: center;
 }
 
@@ -381,9 +510,22 @@ select[data-locked="true"] {
   .checkout-grid {
     grid-template-columns: 1fr;
   }
+
+  .checkout-grid__aside {
+    position: static;
+  }
 }
 
 @media (max-width: 550px) {
+  .checkout-grid {
+    margin-top: 1.5rem;
+  }
+
+  .card,
+  .summary-card {
+    border-radius: 20px;
+  }
+
   .field-row {
     flex-direction: column;
     gap: 3px;

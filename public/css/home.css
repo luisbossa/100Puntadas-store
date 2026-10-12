@@ -18,8 +18,37 @@
   scroll-margin-top: 8rem;
 }
 
+/* Encabezado de colección: título · línea · cantidad de piezas */
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin: 0 15px 1.75rem;
+}
+
+.section-head__line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-pink-strong), rgba(255, 164, 219, 0.15));
+}
+
+.section-head__count {
+  flex: none;
+  padding: 0.35rem 0.85rem 0.25rem;
+  border: 1px solid rgba(22, 22, 22, 0.12);
+  border-radius: var(--radius-pill);
+  background: var(--color-white);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 .section-title {
-  margin: 0 0 1rem 15px;
+  position: relative;
+  margin: 0;
   font-family: var(--font-display);
   font-size: clamp(1.2rem, 2.5vw, 2.5rem);
   font-weight: 400;
@@ -28,11 +57,25 @@
   text-transform: uppercase;
 }
 
+/* Punto rosa delante del título */
+.section-title::before {
+  content: "";
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  margin-right: 0.5em;
+  border-radius: 50%;
+  background: var(--color-pink);
+  box-shadow: 0 0 0 0.15em rgba(255, 164, 219, 0.35);
+  vertical-align: 0.2em;
+}
+
 /* ---------- Grilla ---------- */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   column-gap: 12px;
+  row-gap: 1rem;
   margin: 0 auto;
   padding: 0;
   list-style: none;
@@ -62,7 +105,12 @@
   max-width: 400px;
   overflow: hidden;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+  border-radius: 16px;
+  box-shadow: 0 14px 28px -24px rgba(22, 22, 22, 0.5);
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) ease;
 }
 
 /* Todas las fotos son 3:4: se reserva el espacio antes de cargar (sin saltos) */
@@ -80,8 +128,41 @@
 
 /* Zoom suave de la foto al pasar el mouse */
 @media (hover: hover) {
+  .product-card__link:hover .product-card__media {
+    transform: translateY(-6px);
+    border-color: var(--color-pink);
+    box-shadow: 0 24px 36px -22px rgba(245, 127, 197, 0.75);
+  }
+
   .product-card__link:hover .product-card__image {
     transform: scale(1.04);
+  }
+
+  .product-card:has(.product-card__link:hover) .product-card__name {
+    color: var(--color-pink-strong);
+  }
+}
+
+/* Las tarjetas suben con un fundido al entrar en pantalla (navegadores que lo soportan) */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    /* Las agotadas se excluyen: la animación pisaría su opacidad reducida */
+    .product-card:not(.product-card--soldout) {
+      animation: card-reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 60%;
+    }
+  }
+}
+
+@keyframes card-reveal {
+  from {
+    opacity: 0;
+    translate: 0 40px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
   }
 }
 
@@ -100,10 +181,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.4rem 0.3rem 0.2rem;
-  border-radius: 0.4rem;
-  background: var(--color-sale);
+  padding: 0.45rem 0.55rem 0.25rem;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, #ef2d4f, var(--color-sale));
   color: var(--color-white);
+  box-shadow: 0 6px 14px -6px rgba(212, 25, 53, 0.8);
   font-size: clamp(0.6rem, 1vw, 0.8rem);
   font-weight: 700;
   text-align: center;
@@ -135,6 +217,19 @@
   letter-spacing: inherit;
 }
 
+.product-card__name {
+  transition: color var(--duration-base) ease;
+}
+
+.product-card__price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  color: var(--color-muted);
+}
+
 .product-card__old-price {
   color: #d32a43;
   font-size: 0.7rem;
@@ -142,8 +237,13 @@
 }
 
 /* ---------- Agotado ---------- */
+/* La tarjeta sigue recibiendo el mouse (para el cursor "Agotado"), pero el enlace no */
 .product-card--soldout {
   opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.product-card--soldout .product-card__link {
   pointer-events: none;
 }
 
@@ -193,6 +293,15 @@
     padding-top: 4rem;
   }
 
+  .section-head {
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-head__count {
+    font-size: 0.65rem;
+  }
+
   .catalog__section {
     scroll-margin-top: 110px;
   }
@@ -224,7 +333,7 @@
 .testimonials-section {
   position: relative;
   /* Padding inferior amplio: separa el footer al hacer scroll */
-  padding: 8rem 5rem 12rem;
+  padding: 8rem 5rem 10rem;
   /* Resplandor rosa detrás de las órbitas */
   background: radial-gradient(
     ellipse 60rem 40rem at 50% 32rem,
@@ -545,9 +654,8 @@
   position: relative;
   border-radius: 18px;
   padding: 1.75rem 1.5rem 1.25rem;
-  background:
-    linear-gradient(180deg, var(--color-white) 55%, rgba(255, 164, 219, 0.12)),
-    var(--color-white);
+  /* Blanco liso: las capturas (fondo blanco) se funden con la tarjeta */
+  background: var(--color-white);
   border: 1px solid rgba(22, 22, 22, 0.08);
   box-shadow:
     0 1px 2px rgba(22, 22, 22, 0.06),
@@ -630,7 +738,6 @@
   object-fit: cover;
   margin-top: 10px;
   border-radius: 14px;
-  box-shadow: 0 10px 22px -16px rgba(22, 22, 22, 0.5);
 }
 
 #testimonials {
