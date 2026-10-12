@@ -83,13 +83,19 @@ app.locals.siteUrl = SITE_URL;
 app.locals.absUrl = (src) => (/^https?:\/\//.test(src) ? src : SITE_URL + src);
 
 // Colecciones del menú (desde la base de datos, cacheadas).
-const { getNavCollections } = require("./utils/shop");
+const { getCatalog } = require("./utils/catalog");
 app.use(async (req, res, next) => {
   if (req.method !== "GET") return next();
-  res.locals.navCollections = await getNavCollections().catch((err) => {
+  try {
+    const { collections, campaign } = await getCatalog();
+    res.locals.navCollections = collections.map(({ id, title }) => ({ id, title }));
+    // Campaña de descuento vigente (Promociones en el panel): barra de promoción y textos.
+    res.locals.campaign = campaign;
+  } catch (err) {
     console.error("MENÚ: no se pudieron cargar las colecciones", err.message);
-    return [];
-  });
+    res.locals.navCollections = [];
+    res.locals.campaign = null;
+  }
   next();
 });
 

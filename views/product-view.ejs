@@ -30,6 +30,10 @@
                                         <h1 id="product-title" class="product__title"><%= product.name %></h1>
                                         <div class="product__price-wrap">
                                             <p class="product__price"><%= price %></p>
+                                            <% if (product.oldPrice > product.price) { %>
+                                                <s class="product__old-price"><%= formatPrice(product.oldPrice) %></s>
+                                                <span class="product__badge">-<%= Math.round((1 - product.price / product.oldPrice) * 100) %>%</span>
+                                            <% } %>
                                         </div>
                                     </div>
 

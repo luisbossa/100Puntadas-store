@@ -7,5 +7,6 @@ router.get("/", homeController.home);
 router.get("/policy", homeController.policy);
 router.get("/sizes", homeController.sizes);
 router.get("/product/:slug", productController.productView);
+router.get("/api/cart/prices", productController.cartPrices);
 
 module.exports = router;

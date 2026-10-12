@@ -230,6 +230,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
   renderCart();
 
+  /* ================= PRECIOS VIGENTES =================
+     El carrito guarda el precio al agregar. Al cargar la página se
+     consultan los precios actuales (campañas de descuento, cambios
+     en el panel) y se actualiza si algo cambió. */
+  (async function refreshPrices() {
+    const cart = getCart();
+    if (!cart.length) return;
+    try {
+      const ids = [...new Set(cart.map((item) => item.id))].join(",");
+      const res = await fetch(`/api/cart/prices?ids=${encodeURIComponent(ids)}`);
+      const { prices } = await res.json();
+
+      let changed = false;
+      for (const item of cart) {
+        const current = prices[item.id];
+        if (!current?.available || current.price == null) continue;
+        if (item.price !== current.price || item.discount !== current.discount) {
+          item.price = current.price;
+          item.discount = current.discount;
+          changed = true;
+        }
+      }
+      if (changed) {
+        saveCart(cart);
+        renderCart();
+      }
+    } catch (err) {
+      console.error("No se pudieron actualizar los precios del carrito", err);
+    }
+  })();
+
   /* ================= IR AL CHECKOUT ================= */
   $("checkoutBtn")?.addEventListener("click", (e) => {
     e.preventDefault();

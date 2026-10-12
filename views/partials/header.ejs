@@ -13,8 +13,13 @@
         <div class="promo-marquee" role="region" aria-label="Promoción">
             <div class="promo-marquee__track">
                 <% for (let i = 0; i < 4; i++) { %>
-                    <span class="promo-marquee__highlight" <%- i ? 'aria-hidden="true"' : '' %>>PROMOCIÓN DE VERANO</span>
-                    <span <%- i ? 'aria-hidden="true"' : '' %>>LLEVA DOS PRENDAS Y AHORRA UN <span class="promo-marquee__accent">15%</span></span>
+                    <% if (locals.campaign) { %>
+                        <span class="promo-marquee__highlight" <%- i ? 'aria-hidden="true"' : '' %>><%= campaign.name.toUpperCase() %></span>
+                        <span <%- i ? 'aria-hidden="true"' : '' %>><%= (campaign.banner_text || `${campaign.percent}% de descuento en toda la tienda`).toUpperCase() %> · <span class="promo-marquee__accent">-<%= campaign.percent %>%</span></span>
+                    <% } else { %>
+                        <span class="promo-marquee__highlight" <%- i ? 'aria-hidden="true"' : '' %>>PROMOCIÓN DE VERANO</span>
+                        <span <%- i ? 'aria-hidden="true"' : '' %>>LLEVA DOS PRENDAS Y AHORRA UN <span class="promo-marquee__accent">15%</span></span>
+                    <% } %>
                     <span <%- i ? 'aria-hidden="true"' : '' %>>DESCUENTO AUTOMÁTICO</span>
                 <% } %>
             </div>

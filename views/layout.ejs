@@ -144,7 +144,9 @@
                 <a href="/#bikinis" class="cart-btn cart-btn--solid" data-close-cart>Ver bikinis</a>
                 <a href="/#sets" class="cart-btn cart-btn--outline" data-close-cart>Sets de playa</a>
             </div>
-            <p class="cart-empty__hint">✦ Lleva dos prendas y ahorra 15% ✦</p>
+            <p class="cart-empty__hint">✦ <%= locals.campaign && campaign.suspend_bundle_promo
+                ? `${campaign.name}: ${campaign.percent}% de descuento`
+                : "Lleva dos prendas y ahorra 15%" %> ✦</p>
         </div>
 
         <ul class="cart-items" role="list" aria-live="polite"></ul>

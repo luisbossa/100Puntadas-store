@@ -1,4 +1,5 @@
 const db = require("../db/pool");
+const { getActiveCampaign, applyCampaign } = require("./campaign");
 
 /* ============================================================
    CATÁLOGO — fuente única: la base de datos (se administra
@@ -9,6 +10,7 @@ const db = require("../db/pool");
      currency, description, description2, images[], sizes[],
      styles[{ label, img }], stock }
    stock: null = bajo pedido, 0 = agotado, n = unidades.
+   Incluye la campaña de descuento vigente (campaign) ya aplicada a los precios.
 ============================================================ */
 const TTL_MS = 30 * 1000;
 
@@ -16,7 +18,7 @@ let cache = null; // { products, collections, loadedAt }
 let loading = null;
 
 async function load() {
-  const [products, collections] = await Promise.all([
+  const [products, collections, campaign] = await Promise.all([
     db.query(`
       SELECT p.id, p.slug, p.name, p.product_type, p.price, p.old_price, p.discount,
              p.currency, p.description, p.description2, p.main_image, p.stock,
@@ -38,11 +40,13 @@ async function load() {
       WHERE c.active
       GROUP BY c.id
       ORDER BY c.position`),
+    getActiveCampaign(),
   ]);
 
   const bySlug = {};
   for (const p of products.rows) {
-    bySlug[p.slug] = {
+    // La campaña vigente (Promociones en el panel) rebaja el precio al leerlo.
+    bySlug[p.slug] = applyCampaign({
       id: p.slug, // es lo que guarda el carrito del navegador
       dbId: p.id,
       slug: p.slug,
@@ -58,7 +62,7 @@ async function load() {
       sizes: p.sizes,
       styles: p.styles,
       stock: p.stock,
-    };
+    }, campaign);
   }
 
   return {
@@ -66,6 +70,7 @@ async function load() {
     collections: collections.rows
       .map((c) => ({ id: c.slug, title: c.name, products: c.products }))
       .filter((c) => c.products.length),
+    campaign,
     loadedAt: Date.now(),
   };
 }

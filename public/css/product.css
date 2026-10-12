@@ -157,7 +157,7 @@
 
 .product__price {
   margin-top: 10px;
-  padding: 0.35rem 1rem 0.2rem;
+  padding: 0.55rem 1rem 0.1rem;
   border-radius: var(--radius-pill);
   background: var(--color-accent);
   color: var(--color-ink);
@@ -759,6 +759,76 @@
   transform: translateX(4px);
 }
 
+/* Escritorio: modal más ancho y en dos columnas (tabla | cómo medirte)
+   para que todo quepa sin scroll, incluso en laptops de 768 px de alto. */
+@media (min-width: 960px) {
+  .sizechart-modal {
+    display: grid;
+    grid-template-columns: minmax(0, 1.85fr) minmax(250px, 1fr);
+    grid-template-areas:
+      "head head"
+      "table tips"
+      "table more";
+    grid-template-rows: auto 1fr auto;
+    column-gap: 1.75rem;
+    max-width: 1120px;
+    max-height: 96vh;
+    max-height: 96dvh;
+    padding: 2rem 2.25rem 2.25rem;
+  }
+
+  /* El botón de cerrar sale del flujo de la grilla */
+  .sizechart-modal .close-modal-btn {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    margin: 0;
+  }
+
+  .sizechart-modal__head {
+    grid-area: head;
+    margin-bottom: 1.5rem;
+  }
+
+  .sizechart-modal .sizes__table-wrap {
+    grid-area: table;
+    align-self: start;
+    margin: 0;
+  }
+
+  .sizechart-modal .sizes-table tbody th,
+  .sizechart-modal .sizes-table td {
+    padding: 0.8rem 1.1rem;
+  }
+
+  .sizechart-modal .sizes-table thead th {
+    padding: 0.95rem 1.1rem 0.8rem;
+  }
+
+  .sizechart-modal .sizes-table__badge {
+    width: 2.3rem;
+    height: 2.3rem;
+    font-size: 1rem;
+  }
+
+  .sizechart-modal__tips {
+    grid-area: tips;
+    align-self: start;
+    margin: 0;
+  }
+
+  .sizechart-modal__tips ol {
+    gap: 0.6rem;
+  }
+
+  .sizechart-modal__more {
+    grid-area: more;
+    align-self: end;
+    width: 100%;
+    margin: 1rem 0 0;
+  }
+}
+
 /* ---------- Productos relacionados ---------- */
 .related {
   position: relative;
@@ -979,3 +1049,26 @@
   }
 }
 
+
+/* Precio anterior (oferta o campaña de descuento) */
+.product__price-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.product__old-price {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+.product__badge {
+  padding: 2px 8px;
+  border-radius: var(--radius-pill);
+  background: var(--color-sale);
+  color: var(--color-white);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
