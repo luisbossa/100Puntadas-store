@@ -1,7 +1,7 @@
 <li class="product-card<%= product.soldOut ? ' product-card--soldout' : '' %>">
     <a href="<%= product.url %>" class="product-card__link" <%- product.soldOut ? 'aria-disabled="true" tabindex="-1"' : '' %>>
         <% if (product.onSale) { %>
-            <span class="product-card__badge">30% OFF</span>
+            <span class="product-card__badge"><%= product.salePercent ? `${product.salePercent}% OFF` : "OFERTA" %></span>
         <% } %>
         <% if (product.soldOut) { %>
             <span class="product-card__overlay" aria-hidden="true"></span>

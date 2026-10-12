@@ -1,42 +1,59 @@
-const catalog = require("../data/catalog");
-const collections = require("../data/collections");
+const { getCatalog } = require("./catalog");
+const { formatPrice } = require("../public/js/pricing");
+const COLORS = require("../data/colors");
 
 /* ============================================================
    HELPERS DE TIENDA para las vistas (home, producto, relacionados)
+   Los productos vienen de la base de datos (utils/catalog.js).
 ============================================================ */
+const DEFAULT_SIZES = ["XS", "S", "M", "L"];
 
-const { formatPrice } = require("../public/js/pricing");
+// "30% OFF" calculado del precio anterior (null si no aplica).
+const salePercent = (product) =>
+  product.oldPrice > product.price
+    ? Math.round((1 - product.price / product.oldPrice) * 100)
+    : null;
 
 // Datos que necesita una tarjeta de producto.
-const toCard = (slug) => {
-  const product = catalog[slug];
-  return {
-    slug,
-    name: product.name,
-    url: `/product/${slug}`,
-    image: product.images[0],
-    price: formatPrice(product.price),
-    oldPrice: product.oldPrice ? formatPrice(product.oldPrice) : null,
-    onSale: product.discount === 1,
-    soldOut: product.stock === 0,
-  };
-};
+const toCard = (product) => ({
+  slug: product.slug,
+  name: product.name,
+  url: `/product/${product.slug}`,
+  image: product.images[0],
+  price: formatPrice(product.price),
+  oldPrice: product.oldPrice ? formatPrice(product.oldPrice) : null,
+  onSale: product.discount === 1,
+  salePercent: salePercent(product),
+  soldOut: product.stock === 0,
+});
 
 exports.formatPrice = formatPrice;
+exports.DEFAULT_SIZES = DEFAULT_SIZES;
 
-exports.getProduct = (slug) =>
-  Object.hasOwn(catalog, slug) ? catalog[slug] : null;
+exports.getProduct = async (slug) => {
+  const { products } = await getCatalog();
+  return Object.hasOwn(products, slug) ? products[slug] : null;
+};
 
-exports.getCollections = () =>
-  collections.map((collection) => ({
+exports.getCollections = async () => {
+  const { products, collections } = await getCatalog();
+  return collections.map((collection) => ({
     ...collection,
-    products: collection.products.map(toCard),
+    products: collection.products.map((slug) => toCard(products[slug])),
   }));
+};
+
+// Para el menú: [{ id, title }]
+exports.getNavCollections = async () => {
+  const { collections } = await getCatalog();
+  return collections.map(({ id, title }) => ({ id, title }));
+};
 
 // Productos al azar (disponibles) distintos del actual.
-exports.getRelated = (currentSlug, limit = 4) => {
-  const pool = Object.keys(catalog).filter(
-    (slug) => slug !== currentSlug && catalog[slug].stock !== 0,
+async function getRelated(currentSlug, limit = 4) {
+  const { products } = await getCatalog();
+  const pool = Object.values(products).filter(
+    (p) => p.slug !== currentSlug && p.stock !== 0,
   );
 
   for (let i = pool.length - 1; i > 0; i--) {
@@ -45,18 +62,14 @@ exports.getRelated = (currentSlug, limit = 4) => {
   }
 
   return pool.slice(0, limit).map(toCard);
-};
+}
 
 /* ============================================================
    PÁGINA DE PRODUCTO
 ============================================================ */
-const DEFAULT_SIZES = ["XS", "S", "M", "L"];
-
-const COLORS = require("../data/colors");
-
 // Grupos de opciones según el tipo de prenda.
 function getOptionGroups(product) {
-  const sizes = product.sizes || DEFAULT_SIZES;
+  const sizes = product.sizes?.length ? product.sizes : DEFAULT_SIZES;
   const colors = { label: "Colores", name: "color", type: "color", options: COLORS };
 
   if (product.productType === "bikini") {
@@ -76,13 +89,13 @@ function getOptionGroups(product) {
   }
 
   return [
-    { label: "Tallas", name: "single-size", type: "size", options: DEFAULT_SIZES },
+    { label: "Tallas", name: "single-size", type: "size", options: sizes },
     colors,
   ];
 }
 
-exports.getProductPage = (slug) => {
-  const product = exports.getProduct(slug);
+exports.getProductPage = async (slug) => {
+  const product = await exports.getProduct(slug);
   if (!product) return null;
 
   return {
@@ -93,7 +106,7 @@ exports.getProductPage = (slug) => {
     optionGroups: getOptionGroups(product),
     // "Lo que necesitas saber" solo aplica a bikinis (top + bottom combinables)
     showFitNotes: product.productType === "bikini",
-    related: exports.getRelated(slug),
+    related: await getRelated(slug),
     // Lo mínimo que necesita el navegador para armar el ítem del carrito
     cartData: {
       id: product.id,

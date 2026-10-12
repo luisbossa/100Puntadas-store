@@ -1,23 +1,31 @@
 const db = require("../db/pool");
-const catalog = require("../data/catalog");
 const Pricing = require("../public/js/pricing");
 const orderToken = require("../utils/orderToken");
+const { getFreshProducts, findRedirect } = require("../utils/catalog");
+const { DEFAULT_SIZES } = require("../utils/shop");
 
 /* ================= HELPERS ================= */
-const productsById = Object.fromEntries(
-  Object.values(catalog).map((product) => [product.id, product]),
-);
-
-const DEFAULT_SIZES = ["XS", "S", "M", "L"];
-
 const cleanText = (v, max = 40) =>
   typeof v === "string" && v.trim() ? v.trim().slice(0, max) : null;
 
-// Reconstruye cada ítem del carrito con los datos reales del catálogo.
-// Del cliente solo se toman id, cantidad y variantes; nunca precio ni nombre.
-function buildOrderItems(cart) {
+// Reconstruye cada ítem del carrito con los datos reales de la base de datos
+// (sin caché: precio y stock actuales). Del cliente solo se toman id,
+// cantidad y variantes; nunca precio ni nombre.
+async function buildOrderItems(cart) {
+  const products = await getFreshProducts();
+  const unitsByProduct = {};
+
+  // Carritos guardados con un slug anterior (el producto se renombró en el panel).
+  const find = (id) => (Object.hasOwn(products, id) ? products[id] : null);
+  const renamed = {};
+  for (const raw of cart) {
+    if (typeof raw?.id === "string" && !find(raw.id)) {
+      renamed[raw.id] = await findRedirect(raw.id);
+    }
+  }
+
   return cart.map((raw) => {
-    const product = productsById[raw?.id];
+    const product = find(raw?.id) || find(renamed[raw?.id]);
     if (!product) throw new Error("Producto no disponible");
     if (product.stock === 0) throw new Error(`${product.name} está agotado`);
 
@@ -30,7 +38,14 @@ function buildOrderItems(cart) {
       throw new Error("Cantidad inválida");
     }
 
-    const sizes = product.sizes || DEFAULT_SIZES;
+    unitsByProduct[product.id] = (unitsByProduct[product.id] || 0) + quantity;
+    if (product.stock !== null && unitsByProduct[product.id] > product.stock) {
+      throw new Error(
+        `Solo ${product.stock === 1 ? "queda 1 unidad" : `quedan ${product.stock} unidades`} de ${product.name}`,
+      );
+    }
+
+    const sizes = product.sizes?.length ? product.sizes : DEFAULT_SIZES;
     const styles = (product.styles || []).map((s) => s.label);
 
     const topSize = cleanText(raw.topSize);
@@ -46,6 +61,7 @@ function buildOrderItems(cart) {
     }
 
     return {
+      productId: product.dbId,
       name: product.name,
       image: product.images[0],
       price: product.price,
@@ -150,8 +166,9 @@ exports.getInfo = async (req, res) => {
 
   let items;
   try {
-    items = buildOrderItems(cart);
+    items = await buildOrderItems(cart);
   } catch (err) {
+    if (err.code) throw err; // error de base de datos, no de validación
     return res.status(400).json({ success: false, error: err.message });
   }
 
@@ -259,10 +276,11 @@ exports.getInfo = async (req, res) => {
     for (const item of items) {
       await client.query(
         `INSERT INTO order_items
-        (order_id, product_name, image, price, quantity, top_size, bottom_size, bottom_style, size, color)
-        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)`,
+        (order_id, product_id, product_name, image, price, quantity, top_size, bottom_size, bottom_style, size, color)
+        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`,
         [
           orderId,
+          item.productId,
           item.name,
           item.image,
           item.price,

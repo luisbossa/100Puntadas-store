@@ -1,12 +1,8 @@
 <%
   // En la home los enlaces van a las anclas directamente; en otras páginas, a la home + ancla.
   const anchor = (id) => (isHome ? "#" : "/#") + id;
-  const collections = [
-    { id: "bikinis", label: "Bikinis" },
-    { id: "jumpsuits", label: "Enterizos" },
-    { id: "crochets", label: "Bikinis tejidos" },
-    { id: "sets", label: "Sets de playa" },
-  ];
+  // Colecciones del menú: vienen de la base de datos (middleware en app.js).
+  const collections = (locals.navCollections || []).map(({ id, title }) => ({ id, label: title }));
   const wa = store.whatsapp;
   const waUrl = `https://wa.me/${wa.number}?text=${encodeURIComponent(wa.message)}`;
 %>

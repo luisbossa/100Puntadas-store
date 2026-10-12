@@ -94,9 +94,6 @@ npm run dev   # http://localhost:3000 (se reinicia solo al guardar)
 ## Estructura del proyecto
 
 ```
-data/
-  catalog.js        Productos (precio, fotos, tallas). Fuente única: la usan las vistas y el checkout.
-  collections.js    Secciones de la tienda y el orden de los productos en la home.
 views/
   layout.ejs        Estructura común (head, header, footer, carrito).
   partials/         header, footer y tarjeta de producto reutilizables.
@@ -108,6 +105,7 @@ public/css/
   home.css · product.css · sizes.css · policy.css    Una hoja por página.
 public/js/
   pricing.js        Reglas de descuento y envío (las usa el navegador y el servidor).
+utils/catalog.js    Lee productos y colecciones de la base de datos (caché de 30 s).
 utils/shop.js       Arma los datos de la home, la página de producto y los relacionados.
 ```
 
@@ -129,7 +127,17 @@ Las vistas usan el helper `img()` (`utils/images.js`) para que cada dispositivo 
 - CSS y JS se sirven con `?v=<versión>` y caché de 1 año; cada deploy cambia la versión.
 - Imágenes y fuentes: caché de 30 días. Las fuentes están en `woff2` (`public/css/fonts.css`).
 
-**Para agregar un producto:** añadirlo en `data/catalog.js` y poner su clave en la colección correspondiente de `data/collections.js`. Para marcarlo agotado: `stock: 0`. Para oferta: `discount: 1` y `oldPrice`.
+## Productos
+
+Los productos, sus fotos, tallas, coberturas y colecciones viven en la base de datos y se administran
+desde el **panel BBoard** (agregar, editar, ocultar, eliminar). La tienda los lee con `utils/catalog.js`:
+los cambios se ven en menos de 30 segundos. El checkout siempre consulta precio y stock actuales.
+
+- Agotado: stock 0 en el panel. "Bajo pedido" (sin límite): sin control de unidades.
+- Oferta: precio anterior en el panel (el % del badge se calcula solo).
+- El inventario se descuenta automáticamente cuando un pedido pasa a pagado (trigger en la base de datos)
+  y se devuelve si un pedido pagado se cancela.
+- Las fotos subidas desde el panel van a Vercel Blob; no requieren `npm run images`.
 
 ## Ejecución en producción
 

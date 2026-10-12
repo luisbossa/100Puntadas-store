@@ -267,7 +267,7 @@
       "@type": "Product",
       name: product.name,
       description: product.description,
-      image: product.images.map((src) => "https://100puntadas.vercel.app" + src),
+      image: product.images.map(absUrl),
       brand: { "@type": "Brand", name: "100 Puntadas" },
       offers: {
         "@type": "Offer",

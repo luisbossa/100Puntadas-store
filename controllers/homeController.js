@@ -1,9 +1,9 @@
 const { getCollections } = require("../utils/shop");
 const testimonials = require("../data/testimonials");
 
-exports.home = (req, res) => {
+exports.home = async (req, res) => {
   res.render("index", {
-    collections: getCollections(),
+    collections: await getCollections(),
     testimonials,
     isHome: true,
     noCursorZone: true,

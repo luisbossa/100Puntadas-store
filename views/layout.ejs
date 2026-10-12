@@ -10,7 +10,7 @@
   const title = locals.pageTitle ? pageTitle + " | 100 Puntadas" : "100 Puntadas | Vestidos de baño de crochet";
   const description = locals.pageDescription ||
     "100 Puntadas es una tienda virtual de vestidos de baño tejidos a mano en crochet. Diseños únicos, artesanales y hechos en Costa Rica.";
-  const image = siteUrl + (locals.pageImage || "/images/og-image.png");
+  const image = absUrl(locals.pageImage || "/images/og-image.png");
 %>
     <title><%= title %></title>
     <meta name="description" content="<%= description %>" />

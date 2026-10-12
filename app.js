@@ -76,6 +76,23 @@ app.locals.colorLabels = Object.fromEntries(
   require("./data/colors").map(({ id, label }) => [id, label]),
 );
 
+// URL absoluta para SEO/Open Graph: las imágenes subidas desde el panel
+// ya son absolutas (Vercel Blob); las del repo son rutas /images/...
+const SITE_URL = "https://100puntadas.vercel.app";
+app.locals.siteUrl = SITE_URL;
+app.locals.absUrl = (src) => (/^https?:\/\//.test(src) ? src : SITE_URL + src);
+
+// Colecciones del menú (desde la base de datos, cacheadas).
+const { getNavCollections } = require("./utils/shop");
+app.use(async (req, res, next) => {
+  if (req.method !== "GET") return next();
+  res.locals.navCollections = await getNavCollections().catch((err) => {
+    console.error("MENÚ: no se pudieron cargar las colecciones", err.message);
+    return [];
+  });
+  next();
+});
+
 app.use(require("./routes/shopRoute"));
 app.use(require("./routes/checkoutRoute"));
 app.use(require("./routes/onvopayRoute"));
@@ -85,6 +102,16 @@ app.use("/webhooks", require("./routes/webhookRoute"));
 // Cualquier otra ruta: página 404 con el diseño del sitio
 app.use((req, res) => {
   res.status(404).render("404", { pageTitle: "Página no encontrada" });
+});
+
+// Error inesperado (p. ej. la base de datos no responde).
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
+  console.error("ERROR:", err);
+  if (req.accepts(["html", "json"]) === "json" || req.path.startsWith("/api/")) {
+    return res.status(500).json({ success: false, error: "Error interno del servidor" });
+  }
+  res.status(500).render("500", { pageTitle: "Algo salió mal" });
 });
 
 module.exports = app;
